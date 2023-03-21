@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nama_lengkap');
             $table->string('password');
             $table->string('level');
+            $table->date('tanggal_lahir')->nullable();
             $table->string('foto')->nullable();
             $table->string('email')->nullable();
             $table->string('alamat')->nullable();

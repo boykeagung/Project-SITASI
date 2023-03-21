@@ -8,6 +8,7 @@ use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\TAController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SeminarController;
+use App\Http\Controllers\TUYudisiumController;
 use App\Http\Controllers\KoordinatorTAController;
 use App\Http\Controllers\KoordinatorProposalController;
 use App\Http\Controllers\KoordinatorSeminarController;
@@ -88,6 +89,11 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     //     return view('mahasiswa.dashboard-mahasiswa');
     // });
     Route::get('dashboard-mahasiswa', [TAController::class, 'index1']);
+
+    #Residensi TA Mahasiswa
+    Route::get('/dashboard-mahasiswa-residensi-ta', function () {
+        return view('mahasiswa.dashboard-mahasiswa-residensi-ta');
+    });
 
     #TA Mahasiswa
     Route::get('dashboard-mahasiswa-proposal-ta', [TAController::class, 'index']);
@@ -301,6 +307,10 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator']], function (
     Route::get('dashboard-dospenguji-sidang-kp', [DospengSidangKPController::class, 'index']);
     Route::get('dashboard-dospenguji-edit-sidang-kp/{id}', [DospengSidangKPController::class, 'edit']);
     Route::put('dashboard-dospenguji-sidang-kp/{id}', [DospengSidangKPController::class, 'update']);
+
+    // Yudisium
+    Route::get('dashboard-dospem-yudisium', [DospemYudisiumController::class, 'index']);
+    Route::get('dashboard-dospeng-yudisium', [DospengYudisiumController::class, 'index']);
 });
 
 Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
@@ -320,8 +330,9 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
     Route::get('dashboard-tata-usaha-form-001', [TUForm001Controller::class, 'index']);
     Route::get('dashboard-tata-usaha-edit-form-001/{id}', [TUForm001Controller::class, 'edit']);
     Route::put('dashboard-tata-usaha-form-001/{id}', [TUForm001Controller::class, 'update']);
-
+    
     // Route::get('generate-form-001/{id}', [Form001Controller::class, 'generateForm001TU']); //generate form-001
+    Route::get('dashboard-tata-usaha-yudisium', [TUYudisiumController::class, 'index']);
 });
 
 
