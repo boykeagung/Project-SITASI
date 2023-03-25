@@ -25,7 +25,7 @@ use App\Http\Controllers\SidangKPController;
 use App\Http\Controllers\Form001Controller;
 use App\Http\Controllers\TUForm001Controller;
 use App\Http\Controllers\testForm001Controller;
-use App\Http\Controllers\YudisiumController;
+use App\Http\Controllers\MahasiswaYudisiumController;
 use App\Http\Controllers\TUYudisiumController;
 use App\Http\Controllers\DospemYudisiumController;
 use App\Http\Controllers\DospengYudisiumController;
@@ -167,11 +167,11 @@ Route::get('/dashboard-mahasiswa-sidang-ta', function () {
     return view('mahasiswa.dashboard-mahasiswa-sidang-ta');
 });
 
-Route::get('/dashboard-mahasiswa-yudisium', [YudisiumController::class, 'index']);
-Route::post('dashboard-mahasiswa-yudisium/update-mahasiswa', [YudisiumController::class, 'updateMahasiswa']);
-Route::post('dashboard-mahasiswa-yudisium/update-persyaratan', [YudisiumController::class, 'updatePersyaratan']);
+Route::get('/dashboard-mahasiswa-yudisium', [MahasiswaYudisiumController::class, 'index']);
+Route::post('dashboard-mahasiswa-yudisium/update-mahasiswa', [MahasiswaYudisiumController::class, 'updateMahasiswa']);
+Route::post('dashboard-mahasiswa-yudisium/update-persyaratan', [MahasiswaYudisiumController::class, 'updatePersyaratan']);
 //reset file
-Route::get('dashboard-mahasiswa-yudisium/reset/{nrp}/{persyaratan}', [YudisiumController::class, 'resetPersyaratan']);
+Route::get('dashboard-mahasiswa-yudisium/reset/{nrp}/{persyaratan}', [MahasiswaYudisiumController::class, 'resetPersyaratan']);
 
 /* koordinator ta */
 Route::group(['middleware' => ['auth', 'rolecek:koordinator-yudisium']], function () {

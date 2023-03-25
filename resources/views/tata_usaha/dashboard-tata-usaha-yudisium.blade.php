@@ -84,9 +84,9 @@
                                             12346
                                         </td>
                                         <td class="align-middle">
-                                            <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-3"
-                                                width="35" data-toggle="tooltip" title=""
-                                                data-original-title="Nur Alpiana"> Nur Alpiana
+                                            <img alt="image" src="assets/img/avatar/avatar-1.png"
+                                                class="rounded-circle mr-3" width="35" data-toggle="tooltip"
+                                                title="" data-original-title="Nur Alpiana"> Nur Alpiana
                                         </td>
                                         <td class="align-middle">Sistem Informasi</td>
                                         <td class="align-middle">
@@ -100,7 +100,7 @@
                                                 <button type="button" class="btn btn-danger">Batalkan</button>
                                                 <button type="button" class="btn btn-secondary">Edit</button>
                                                 <button type="button" class="btn btn-primary">Setujui</button>
-                                              </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
