@@ -8,7 +8,6 @@ use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\TAController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SeminarController;
-use App\Http\Controllers\TUYudisiumController;
 use App\Http\Controllers\KoordinatorTAController;
 use App\Http\Controllers\KoordinatorProposalController;
 use App\Http\Controllers\KoordinatorSeminarController;
@@ -27,6 +26,9 @@ use App\Http\Controllers\Form001Controller;
 use App\Http\Controllers\TUForm001Controller;
 use App\Http\Controllers\testForm001Controller;
 use App\Http\Controllers\YudisiumController;
+use App\Http\Controllers\TUYudisiumController;
+use App\Http\Controllers\DospemYudisiumController;
+use App\Http\Controllers\DospengYudisiumController;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
 use App\Models\TA;
@@ -126,7 +128,7 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::get('dashboard-mahasiswa-edit-kp/{id}', [KPController::class, 'edit']); //select
     Route::put('dashboard-mahasiswa-kp/{id}', [KPController::class, 'update']); //update
     Route::delete('dashboard-mahasiswa-kp/{id}', [KPController::class, 'delete']); //delete
-    
+
     #Form-001 
     Route::get('dashboard-mahasiswa-form-001', [Form001Controller::class, 'index']);
     Route::get('dashboard-mahasiswa-tambah-form-001', [Form001Controller::class, 'create']);
@@ -314,7 +316,7 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator']], function (
 });
 
 Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
-    
+
     Route::get('dashboard-tata-usaha', [UsersController::class, 'index']);
     Route::get('dashboard-tata-usaha-tambah-data-mahasiswa', [UsersController::class, 'create']); //create 
     Route::post('dashboard-tata-usaha-tambah-data-mahasiswa', [UsersController::class, 'store']); //store
@@ -330,7 +332,7 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
     Route::get('dashboard-tata-usaha-form-001', [TUForm001Controller::class, 'index']);
     Route::get('dashboard-tata-usaha-edit-form-001/{id}', [TUForm001Controller::class, 'edit']);
     Route::put('dashboard-tata-usaha-form-001/{id}', [TUForm001Controller::class, 'update']);
-    
+
     // Route::get('generate-form-001/{id}', [Form001Controller::class, 'generateForm001TU']); //generate form-001
     Route::get('dashboard-tata-usaha-yudisium', [TUYudisiumController::class, 'index']);
 });
@@ -343,7 +345,7 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
 
 Route::get('/dashboard-koordinator-sidang-ta', function () {
     return view('koordinator.dashboard-koordinator-sidang-ta');
-}); 
+});
 
 // Route::get('/generate-form-001', function () {
 //     return view('tata_usaha.generate-form-001');
@@ -352,37 +354,37 @@ Route::get('/dashboard-koordinator-sidang-ta', function () {
 /* koordinator kp */
 // Route::group(['middleware' => ['auth', 'rolecek:koordinator-kp']], function () {
 
-    // Mahasiswa
-    Route::get('dashboard-koordinator-ta', [MahasiswaController::class, 'index']);
-    Route::get('dashboard-koordinator-tambah-data-mahasiswa', [MahasiswaController::class, 'create']); //create 
-    Route::post('dashboard-koordinator-tambah-data-mahasiswa', [MahasiswaController::class, 'store']); //store
-    Route::get('dashboard-koordinator-edit-data-mahasiswa/{id}', [MahasiswaController::class, 'edit']); //select
-    Route::PUT('dashboard-koordinator-ta/{id}', [MahasiswaController::class, 'update']); //update
-    Route::delete('dashboard-koordinator-ta/{id}', [MahasiswaController::class, 'delete']); //delete
+// Mahasiswa
+Route::get('dashboard-koordinator-ta', [MahasiswaController::class, 'index']);
+Route::get('dashboard-koordinator-tambah-data-mahasiswa', [MahasiswaController::class, 'create']); //create 
+Route::post('dashboard-koordinator-tambah-data-mahasiswa', [MahasiswaController::class, 'store']); //store
+Route::get('dashboard-koordinator-edit-data-mahasiswa/{id}', [MahasiswaController::class, 'edit']); //select
+Route::PUT('dashboard-koordinator-ta/{id}', [MahasiswaController::class, 'update']); //update
+Route::delete('dashboard-koordinator-ta/{id}', [MahasiswaController::class, 'delete']); //delete
 
-    // Dosen
-    Route::get('dashboard-koordinator-ta-dosen', [DosenController::class, 'index']);
-    Route::get('dashboard-koordinator-tambah-data-dosen', [DosenController::class, 'create']); //create 
-    Route::post('dashboard-koordinator-tambah-data-dosen', [DosenController::class, 'store']); //store
-    Route::get('dashboard-koordinator-edit-data-dosen/{id}', [DosenController::class, 'edit']); //select
-    Route::PUT('dashboard-koordinator-ta-dosen/{id}', [DosenController::class, 'update']); //update
-    Route::delete('dashboard-koordinator-ta-dosen/{id}', [DosenController::class, 'delete']); //delete
+// Dosen
+Route::get('dashboard-koordinator-ta-dosen', [DosenController::class, 'index']);
+Route::get('dashboard-koordinator-tambah-data-dosen', [DosenController::class, 'create']); //create 
+Route::post('dashboard-koordinator-tambah-data-dosen', [DosenController::class, 'store']); //store
+Route::get('dashboard-koordinator-edit-data-dosen/{id}', [DosenController::class, 'edit']); //select
+Route::PUT('dashboard-koordinator-ta-dosen/{id}', [DosenController::class, 'update']); //update
+Route::delete('dashboard-koordinator-ta-dosen/{id}', [DosenController::class, 'delete']); //delete
 
-    // KP
-    Route::get('dashboard-koordinator-kp', [KoordinatorKPController::class, 'index']);
-    Route::get('dashboard-koordinator-tambah-kp', [KoordinatorKPController::class, 'create']);
-    Route::post('dashboard-koordinator-tambah-kp', [KoordinatorKPController::class, 'store']);
-    Route::get('dashboard-koordinator-edit-kp/{id}', [KoordinatorKPController::class, 'edit']);
-    Route::put('dashboard-koordinator-kp/{id}', [KoordinatorKPController::class, 'update']);
-    Route::delete('dashboard-koordinator-kp/{id}', [KoordinatorKPController::class, 'delete']); //delete
+// KP
+Route::get('dashboard-koordinator-kp', [KoordinatorKPController::class, 'index']);
+Route::get('dashboard-koordinator-tambah-kp', [KoordinatorKPController::class, 'create']);
+Route::post('dashboard-koordinator-tambah-kp', [KoordinatorKPController::class, 'store']);
+Route::get('dashboard-koordinator-edit-kp/{id}', [KoordinatorKPController::class, 'edit']);
+Route::put('dashboard-koordinator-kp/{id}', [KoordinatorKPController::class, 'update']);
+Route::delete('dashboard-koordinator-kp/{id}', [KoordinatorKPController::class, 'delete']); //delete
 
-    // Sidang KP
-    Route::get('dashboard-koordinator-sidang-kp', [KoordinatorSidangKPController::class, 'index']);
-    Route::get('dashboard-koordinator-tambah-sidang-kp', [KoordinatorSidangKPController::class, 'create']);
-    Route::post('dashboard-koordinator-tambah-sidang-kp', [KoordinatorSidangKPController::class, 'store']);
-    Route::get('dashboard-koordinator-edit-sidang-kp/{id}', [KoordinatorSidangKPController::class, 'edit']);
-    Route::put('dashboard-koordinator-sidang-kp/{id}', [KoordinatorSidangKPController::class, 'update']);
-    Route::delete('dashboard-koordinator-sidang-kp/{id}', [KoordinatorSidangKPController::class, 'delete']); //delete
+// Sidang KP
+Route::get('dashboard-koordinator-sidang-kp', [KoordinatorSidangKPController::class, 'index']);
+Route::get('dashboard-koordinator-tambah-sidang-kp', [KoordinatorSidangKPController::class, 'create']);
+Route::post('dashboard-koordinator-tambah-sidang-kp', [KoordinatorSidangKPController::class, 'store']);
+Route::get('dashboard-koordinator-edit-sidang-kp/{id}', [KoordinatorSidangKPController::class, 'edit']);
+Route::put('dashboard-koordinator-sidang-kp/{id}', [KoordinatorSidangKPController::class, 'update']);
+Route::delete('dashboard-koordinator-sidang-kp/{id}', [KoordinatorSidangKPController::class, 'delete']); //delete
 // });
 
 // TA
