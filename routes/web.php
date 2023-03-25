@@ -311,8 +311,7 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator']], function (
     Route::put('dashboard-dospenguji-sidang-kp/{id}', [DospengSidangKPController::class, 'update']);
 
     // Yudisium
-    Route::get('dashboard-dospem-yudisium', [DospemYudisiumController::class, 'index']);
-    Route::get('dashboard-dospeng-yudisium', [DospengYudisiumController::class, 'index']);
+    Route::get('dashboard-dosen-yudisium', [DospemYudisiumController::class, 'index']);
 });
 
 Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
