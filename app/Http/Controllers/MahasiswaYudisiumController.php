@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Mahasiswa;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use App\Models\Yudisium;
+use App\Models\Mahasiswa;
 
 class MahasiswaYudisiumController extends Controller
 {
@@ -41,7 +41,6 @@ class MahasiswaYudisiumController extends Controller
             Yudisium::create($userData);
         }
 
-        $data['user'] = Yudisium::all();
         $join = DB::table('users')
             ->join('mahasiswa', 'users.username', '=', 'mahasiswa.nrp')
             ->join('yudisium', 'users.username', '=', 'yudisium.nrp')

@@ -57,7 +57,8 @@
                             @foreach ($collection as $item)
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="py-2 sticky-top">
-                                        <form action="{{ url()->current() }}/update-mahasiswa" method="post">
+                                        <form id="form-1" action="{{ url()->current() }}/update-mahasiswa"
+                                            method="post">
                                             @csrf
                                             <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
                                             <div class="card card-primary">
@@ -176,7 +177,8 @@
                             @endforeach
                             @foreach ($collection as $item)
                                 <div class="col-12 col-md-6 col-lg-8">
-                                    <form action="{{ url()->current() }}/update-persyaratan" method="post">
+                                    <form id="form-2" action="{{ url()->current() }}/update-persyaratan"
+                                        method="post">
                                         @csrf
                                         <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
                                         <div class="py-2">
@@ -213,22 +215,24 @@
                                                                             <div class="badge badge-info">Wajib</div>
                                                                         </td>
                                                                         <td> <?php if ($item->pas_foto != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/pas_foto"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?>
                                                                             <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile" name="inputPasFoto">
+                                                                                    accept="application/pdf"
+                                                                                    name="inputPasFoto">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
                                                                                     file</label>
@@ -249,21 +253,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->akta_kelahiran != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/akta_kelahiran"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputAktaKelahiran">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -284,21 +289,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->ijasah_sekolah_menengah != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/ijasah_sekolah_menengah"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputIjasahSekolahMenengah">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -319,21 +325,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->judul_ta_id != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/judul_ta_id"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputJudulTugasAkhirIndonesia">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -354,21 +361,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->judul_ta_en != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/judul_ta_en"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputJudulTugasAkhirInggris">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -393,21 +401,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->bebas_pinjam_buku != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/bebas_pinjam_buku"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputBebasPinjamBuku">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -428,21 +437,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->transkrip_dari_sikad != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/transkrip_dari_sikad"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputTranskripDariSikad">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -463,21 +473,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->resume_skk_dan_simskk != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/resume_skk_dan_simskk"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputResumeSkkDanSimskk">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -498,21 +509,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->hasil_test_ept != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/hasil_test_ept"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputHasilTestEpt">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -538,21 +550,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->bukti_pembayaran != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/bukti_pembayaran"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputBuktiPembayaran">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -578,21 +591,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->surat_ganti_nama != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/surat_ganti_nama"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputSuratGantiNama">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -613,21 +627,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->form_biodata_peserta_yudisium != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/form_biodata_peserta_yudisium"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputFormBiodataPesertaYudisium">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -651,21 +666,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->sertifikat_keahlian != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
-                                                                                <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/pas_foto"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/sertifikat_keahlian"
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputSertifikatKeahlian">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -686,21 +702,23 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->poster_a3 != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/poster_a3"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile" name="inputPoseterA3">
+                                                                                    accept="application/pdf"
+                                                                                    name="inputPoseterA3">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
                                                                                     file</label>
@@ -720,21 +738,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->buku_tugas_akhir_sah != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/buku_tugas_akhir_sah"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputBukuTugasAkhirSah">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -755,21 +774,22 @@
                                                                         </td>
                                                                         <td>
                                                                             <?php if ($item->jurnal_penelitian != null) {?>
-                                                                            <div class="btn-group" role="group">
+                                                                            <div class="btn-group d-flex justify-content-between"
+                                                                                role="group">
                                                                                 <a href="#"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/jurnal_penelitian"
-                                                                                    class="btn btn-icon text-warning icon-left"><i
-                                                                                        class="far fa-edit"></i> Ganti</a>
+                                                                                    class="btn btn-icon text-danger icon-left"><i
+                                                                                        class="fa fa-times"></i> Hapus</a>
                                                                             </div>
                                                                             <?php
                                                             }else{
                                                             ?> <div class="custom-file">
                                                                                 <input type="file"
+                                                                                    onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf, application/vnd.ms-excel"
-                                                                                    id="customFile"
+                                                                                    accept="application/pdf"
                                                                                     name="inputJurnalPenelitian">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -783,8 +803,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <input class="card-footer btn btn-primary bg-primary" type="submit"
-                                                    value="Save Edit">
                                             </div>
                                         </div>
                                     </form>
@@ -792,19 +810,33 @@
                             @endforeach
                         </div>
 
-                        <div class="card card-primary">
+                        <div class="card card-warning">
                             <div class="card-header">
                                 <h4>Kirim Pengajuan</h4>
                             </div>
                             <div class="card-body">
                                 <p>Sebelum mengirim pastikan semua file sesuai kriteria persyaratan Yudisium.</p>
                             </div>
-                            <input class="card-footer btn btn-primary bg-primary" type="submit" value="Kirim">
+                            <input class="card-footer btn btn-warning bg-warning" type="submit" value="Kirim">
                         </div>
                     </div>
                 </section>
             </div>
 
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#submit-pengajuan").click(function() {
+                        confirm("Press a button!");
+                    });
+                });
+                document.addEventListener("DOMContentLoaded", function(event) {
+                    var scrollpos = localStorage.getItem('scrollpos');
+                    if (scrollpos) window.scrollTo(0, scrollpos);
+                });
+                window.onbeforeunload = function(e) {
+                    localStorage.setItem('scrollpos', window.scrollY);
+                };
+            </script>
             @include('footer')
 
         </div>
