@@ -27,6 +27,7 @@ use App\Http\Controllers\TUForm001Controller;
 use App\Http\Controllers\testForm001Controller;
 use App\Http\Controllers\YudisiumController;
 use App\Http\Controllers\DospemNilaiKPController;
+use App\Http\Controllers\NilaiDosPemController;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
 use App\Models\TA;
@@ -144,6 +145,11 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::get('dashboard-mahasiswa-edit-sidang-kp/{id}', [SidangKPController::class, 'edit']); //select
     Route::put('dashboard-mahasiswa-sidang-kp/{id}', [SidangKPController::class, 'update']); //update
     Route::delete('dashboard-mahasiswa-sidang-kp/{id}', [SidangKPController::class, 'delete']); //delete
+
+    #Nilai
+    Route::get('dashboard-mahasiswa-penilaian-kp', [NilaiDosPemController::class, 'index']);
+    Route::get('dashboard-mahasiswa-tambah-penilaian-kp', [NilaiDosPemController::class, 'create']);
+    Route::post('dashboard-mahasiswa-penilaian-kp', [NilaiDosPemController::class, 'store']);
 });
 
 // Route::get('/index', function () {

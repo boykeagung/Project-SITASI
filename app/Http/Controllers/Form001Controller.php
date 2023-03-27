@@ -109,23 +109,11 @@ class Form001Controller extends Controller
         return redirect('dashboard-mahasiswa-form-001');
     }
 
-    //TU-Form-001
 
-    // public function indexForm001()
-    // {
-    //     $data['kp_form001'] = Form001::
-    //         select('username', 'nama' ,'perusahaan1', 'alamat_perusahaan1', 'bidang_perusahaan1','perusahaan2', 'alamat_perusahaan2', 'bidang_perusahaan2')
-    //         ->get();
-    //     return view('tata_usaha.dashboard-tata-usaha-form-001', $data);
-    // }
 
     public function generateForm001($id)
     {
-        // $data['kp_form001'] = Form001::latest()->first()
-        //     ->select('username', 'nama' ,'perusahaan1', 'alamat_perusahaan1', 'bidang_perusahaan1','perusahaan2', 'alamat_perusahaan2', 'bidang_perusahaan2')
-        //     ->get($id);
-        // $pdf = PDF::loadView('mahasiswa.mahasiswa-generate-form-001', $data);
-        // return $pdf->stream();
+
 
         $data['kp_form001'] = Form001::findOrFail($id)
             ->select('username', 'nama' ,'perusahaan1', 'alamat_perusahaan1', 'bidang_perusahaan1','perusahaan2', 'alamat_perusahaan2', 'bidang_perusahaan2')
@@ -147,44 +135,6 @@ class Form001Controller extends Controller
         return $pdf->stream();
     }
 
-    // public function storeForm001(Request $request){
-    //     $request->validate([
-
-    //         'file' => 'required|mimes:doc,docx,xls,xlsx,pdf,jpg,jpeg,png,bmp'
-    //     ]);
-
-    //     if($request->hasFile('file')) {
-    //         $uploadPath = public_path('uploads');
-
-    //         if(!File::isDirectory($uploadPath)) {
-    //             File::makeDirectory($uploadPath, 0755, true, true);
-    //         }
-
-    //         $file = $request->file('file');
-    //         $explode = explode('.', $file->getClientOriginalName());
-    //         $originalName = $explode[0];
-    //         $extension = $file->getClientOriginalExtension();
-    //         $rename = 'file_' . date('YmdHis') . '.' . $extension;
-    //         $mime = $file->getClientMimeType();
-    //         $filesize = $file->getSize();
-
-    //         if($file->move($uploadPath, $rename)) {
-    //             $media = new Media;
-    //             $media->name = $originalName;
-    //             $media->file = $rename;
-    //             $media->extension = $extension;
-    //             $media->size = $filesize;
-    //             $media->mime = $mime;
-    //             $media->save();
-
-    //             return redirect()->back()->with('message', 'Berhasil, file telah di upload');
-    //         }
-
-    //         return redirect()->back()->with('message', 'Error, file tidak dapat di upload');
-    //     }
-
-    //     return redirect()->back()->with('message', 'Error, tidak ada file ditemukan');
-    // }
 
     public function storePdf(Request $request){
          
