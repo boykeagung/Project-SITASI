@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/modules/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/qr-code-scanner.css">
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="/assets/modules/datatables/datatables.min.css">
@@ -20,6 +21,8 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/components.css">
+
+    <script src="{{asset('https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js')}}"></script>
 
 </head>
 
@@ -77,6 +80,7 @@
         <!-- Template JS File -->
         <script src="/assets/js/scripts.js"></script>
         <script src="/assets/js/custom.js"></script>
+        <script src="/js/qr-code-scanner.js"></script>
     </div>
 </body>
 
