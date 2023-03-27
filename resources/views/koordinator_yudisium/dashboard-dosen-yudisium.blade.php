@@ -40,7 +40,7 @@
                                     <i class="fas fa-file"></i>
                                 </div>
                                 <div class="wizard-step-label">
-                                    Setuju Atau Batalkan Pengajuan
+                                    Beri Aksi
                                 </div>
                             </div>
                             <div class="wizard-step wizard-step-warning">
@@ -48,7 +48,7 @@
                                     <i class="fas fa-upload"></i>
                                 </div>
                                 <div class="wizard-step-label">
-                                    Kirim Noti
+                                    Konfirmasi Aksi
                                 </div>
                             </div>
                         </div>
@@ -79,14 +79,11 @@
                                                     <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
                                                 </div>
                                             </th>
-                                            <th>NRP</th>
-                                            <th>Nama</th>
+                                            <th>Mahasiswa</th>
                                             <th>Program Studi</th>
                                             <th>Whatsapp</th>
-                                            <th>Status Yudisium</th>
-                                            <th>Jadwal Yudisium</th>
                                             <th>Status Berkas</th>
-                                            <th>Aksi</th>
+                                            <th>Status Yudisium</th>
                                         </tr>
                                         <tr>
                                             <td class="align-middle">
@@ -97,44 +94,45 @@
                                                 </div>
                                             </td>
                                             <td class="align-middle">
-                                                <b>162019030</b>
+                                                <div class="row">
+                                                    <div class="col col-lg-2">
+                                                        <figure class="avatar mr-2 avatar-sm">
+                                                            <img src="assets/img/avatar/avatar-3.png" alt="...">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="col col-lg-10">
+                                                        <div class="font-weight-bold">
+                                                            Rizal Fakhri Romadona
+                                                        </div>
+                                                        <div class="text-job">16202937</div>
+                                                    </div>
+                                                </div>
                                             </td>
-                                            <td class="align-middle">Muhammad Restu Nubiyanto Saputra
+                                            <td class="align-middle">
+                                                Sistem Informasi
                                             </td>
-                                            <td class="align-middle">Sistem Informasi</td>
                                             <td class="align-middle"><a href="#"
-                                                    class="btn btn-success btn-icon icon-left"><i
+                                                    class="btn w-100 btn-success btn-icon icon-left"><i
                                                         class="fab fa-whatsapp"></i> Message</a>
                                             </td>
                                             <td class="align-middle">
-                                                <div class="text-primary"><b>Diterima</b></div>
+                                                <a href="#" class="w-100 btn btn-icon btn-dark">
+                                                    <i class="far fa-file"></i> Lihat dokumen
+                                                </a>
                                             </td>
-                                            <td class="align-middle">
-                                                18 Agustus 2023
-                                            </td>
-                                            <td class="align-middle">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" data-width="75%"
-                                                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                                                        style="width: 75%;">75%</div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group dropleft">
-                                                    <button type="button" class="btn btn-info dropdown-toggle"
-                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Action
-                                                    </button>
-                                                    <div class="dropdown-menu dropleft" x-placement="left-start"
-                                                        style="position: absolute; transform: translate3d(-202px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                        <a class="dropdown-item text-primary" href="#">Setujui</a>
-                                                        <a class="dropdown-item text-danger" href="#">Batalkan</a>
-                                                    </div>
-                                                </div>
+                                            <td class="align-middle d-flex align-items-center">
+                                                <a href="#" class="btn w-100 btn-icon icon-left btn-danger mr-1">
+                                                    <i class="fas fa-times"></i> Tolak
+                                                </a>
+                                                <a href="#" class="btn w-100 btn-icon icon-left btn-primary ml-1">
+                                                    <i class="fas fa-check"></i> Terima
+                                                </a>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="card-footer bg-whitesmoke d-flex align-items-center">
                             </div>
                         </div>
                     </div>
