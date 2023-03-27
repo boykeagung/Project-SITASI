@@ -34,6 +34,7 @@
                                             <th>Alamat Perusahaan 2</th>
                                             <th>Bidang Perusahaan 2</th> --}}
                                             {{-- <th>Hasil Form-001</th> --}}
+                                            <th>Status</th>
                                             <th>Form-001</th>
                                             <th>Surat Pengantar</th>
                                             <th>Action</th>
@@ -56,6 +57,7 @@
                                             <td>{{$kp_form001->alamat_perusahaan2}}</td>
                                             <td>{{$kp_form001->bidang_perusahaan2}}</td> --}}
                                             {{-- <td>{{link_to('mahasiswa-generate-form-001/'.$kp_form001->id,'Download',['class'=>'btn btn-success', 'target'=>'_blank'])}}</td> --}}
+                                            <td>{{$kp_form001->status}}</td>
                                             <td>
                                                 @if($kp_form001->pdf_form001 == null)
                                                 {{link_to('Form_001/'.$kp_form001->pdf_form001,'Belum Di Upload',['class'=>'btn btn-danger disabled','target'=>'_blank'])}}

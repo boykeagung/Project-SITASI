@@ -18,14 +18,6 @@ class TUForm001Controller extends Controller
         $data['file_pdf'] = Form001::all();
         return view('tata_usaha.dashboard-tata-usaha-form-001', $data);
 
-
-        // $username = Auth::user()->username;
-        // $data['kp_form001'] = Form001::all()->where('username', '=', $username);
-        // $data['file_pdf'] = Form001::all()->where('username', '=', $username);
-
-        // $medias = Media::orderBy('created_at', 'DESC')->get();
-
-        // return view('mahasiswa.dashboard-mahasiswa-form-001', $data);
     }
 
     public function edit($id)
@@ -42,7 +34,7 @@ class TUForm001Controller extends Controller
         ]);
 
         $input = $request->all();
-        $input['status'] = "Diproses";
+        // $input['status'] = "Diproses";
 
         if ($suratPengantar = $request->file('surat')) {
             $destinationPath = 'Surat_Pengantar/';

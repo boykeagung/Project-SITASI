@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('perusahaan2')->nullable();
             $table->string('alamat_perusahaan2')->nullable();
             $table->string('bidang_perusahaan2')->nullable();
+            $table->string('status')->nullable();
             $table->string('pdf_form001')->nullable();
             $table->string('surat')->nullable();
             $table->timestamps();

@@ -16,37 +16,19 @@ class Form001Controller extends Controller
 
     public function index()
     {
-        // $username = Auth::user()->username;
-        // $data['kp_form001'] = Form001::all()->where('username', '=', $username);
-        // return view('mahasiswa.dashboard-mahasiswa-form-001', $data);
 
         $username = Auth::user()->username;
         $data['kp_form001'] = Form001::all()->where('username', '=', $username);
         $data['file_pdf'] = Form001::all()->where('username', '=', $username);
 
-        // $medias = Media::orderBy('created_at', 'DESC')->get();
-
         return view('mahasiswa.dashboard-mahasiswa-form-001', $data);
-
-        // $username = Auth::user()->username;
-        // $data['seminar'] = Seminar::all()->where('id_seminar', '=', "STA$username");
-        // return view('mahasiswa.dashboard-mahasiswa-seminar-ta', $data);
     }
 
     public function create()
     {
         return view('mahasiswa.dashboard-mahasiswa-tambah-form-001');
-        // $ta = TA::get();
-        // return view('mahasiswa.dashboard-mahasiswa-tambah-ta', ['ta' => $ta]);
+       
     }
-
-    public function create2()
-    {
-        return view('mahasiswa.dashboard-mahasiswa-tambah-file');
-        // $ta = TA::get();
-        // return view('mahasiswa.dashboard-mahasiswa-tambah-ta', ['ta' => $ta]);
-    }
-    
 
     public function store(Request $request)
     {
@@ -57,28 +39,7 @@ class Form001Controller extends Controller
         ]);
 
         $input = $request->all();
-
-        if ($draft = $request->file('draft')) {
-            $destinationPath = 'Form_001/';
-            $form001KP = time() . "_" . $draft->getClientOriginalName();
-            $draft->move($destinationPath, $form001KP);
-            $input['draft'] = "$form001KP";
-        }
-
-        Form001::create($input);
-
-        return redirect('dashboard-mahasiswa-form-001')->with('success', 'Daftar Proposal created successfully.');
-    }
-
-
-    public function store2(Request $request)
-    {
-        $this->validate($request, [
-
-            'file' => "mimes:pdf|max:25000",
-        ]);
-
-        $input = $request->all();
+        $input['status'] = "Diproses";
 
         if ($draft = $request->file('draft')) {
             $destinationPath = 'Form_001/';
@@ -98,26 +59,16 @@ class Form001Controller extends Controller
         return view('mahasiswa.dashboard-mahasiswa-edit-form-001', $data);
     }
 
-    public function edit2($id)
-    {
-        $data['kp_form001'] = Form001::find($id);
-        return view('mahasiswa.dashboard-mahasiswa-tambah-file', $data);
-    }
-
     public function update($id, Request $request)
     {
-        // $ta = Seminar::find($id);
-        // $ta->update($request->all());
-        // return redirect('dashboard-mahasiswa-seminar-ta');
+    
         $this->validate($request, [
             'pdf_form001' => "mimes:pdf|max:5000",
 
-            // 'id_kp' => 'required',
-            // 'username' => 'required',
         ]);
 
         $input = $request->all();
-        $input['status'] = "Diproses";
+        // $input['status'] = "Diproses";
 
         if ($draft = $request->file('pdf_form001')) {
             $destinationPath = 'Form_001/';
@@ -260,5 +211,12 @@ class Form001Controller extends Controller
     public function tanggal(Request $request){
 
         $date = date('Y-m-d H:i:s');
+    }
+
+    public function generateNilaiKP()
+    {
+        // $data['kp_form001'] = Form001::findOrFail();
+        $pdf = PDF::loadView('mahasiswa.generate_nilai_kp');
+        return $pdf->stream();
     }
 }

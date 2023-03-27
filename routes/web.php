@@ -26,6 +26,7 @@ use App\Http\Controllers\Form001Controller;
 use App\Http\Controllers\TUForm001Controller;
 use App\Http\Controllers\testForm001Controller;
 use App\Http\Controllers\YudisiumController;
+use App\Http\Controllers\DospemNilaiKPController;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
 use App\Models\TA;
@@ -133,6 +134,8 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     // Route::get('dashboard-mahasiswa-tambah-file/{id}', [Form001Controller::class, 'tambahFile']);
     // Route::post('dashboard-mahasiswa-form-001', [Form001Controller::class, 'store2']);
     // Route::get('mahasiswa-generate-form-001/{id}', [Form001Controller::class, 'generateForm001']); 
+    Route::get('generate_nilai_kp', [Form001Controller::class, 'generateNilaiKP']); //TESTING generate nilai
+    
 
     #Sidang_kp
     Route::get('dashboard-mahasiswa-sidang-kp', [SidangKPController::class, 'index']);
@@ -301,6 +304,8 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator']], function (
     Route::get('dashboard-dospenguji-sidang-kp', [DospengSidangKPController::class, 'index']);
     Route::get('dashboard-dospenguji-edit-sidang-kp/{id}', [DospengSidangKPController::class, 'edit']);
     Route::put('dashboard-dospenguji-sidang-kp/{id}', [DospengSidangKPController::class, 'update']);
+
+    Route::get('dosen.penilaian_dospem_kp', [DospengSidangKPController::class, 'generateNilai']);
 });
 
 Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
@@ -320,6 +325,8 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
     Route::get('dashboard-tata-usaha-form-001', [TUForm001Controller::class, 'index']);
     Route::get('dashboard-tata-usaha-edit-form-001/{id}', [TUForm001Controller::class, 'edit']);
     Route::put('dashboard-tata-usaha-form-001/{id}', [TUForm001Controller::class, 'update']);
+
+    
 
     // Route::get('generate-form-001/{id}', [Form001Controller::class, 'generateForm001TU']); //generate form-001
 });
@@ -455,3 +462,9 @@ Route::get('/dashboard-tata-usaha-sidang-ta', function () {
 // Route::get('dashboard-koordinator-ta', [UsersController::class, 'index']);
 // Route::get('dashboard-koordinator-tambah-data-mahasiswa', [UsersController::class, 'create']); //create 
 // Route::post('dashboard-koordinator-tambah-data-mahasiswa', [UsersController::class, 'store']); //store
+
+
+Route::get('/nilai', function () {
+    return view('dosen.penilaian_dospem_kp');
+});
+
