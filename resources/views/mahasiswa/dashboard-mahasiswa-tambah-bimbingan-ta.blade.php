@@ -15,7 +15,7 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="dashboard-mahasiswa-proposal-ta/proposal" method="POST" enctype="multipart/form-data">
+                <form action="dashboard-mahasiswa-bimbingan-ta" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="hidden" name="user_id" value="" required>
                     <div class="card-header row">
@@ -38,6 +38,12 @@
                                             <div class="form-group">
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
+                                                        <label for="inputId_ta">ID Bimbingan TA</label><br>
+                                                        {{-- {!!
+                                                        Form::text('id_ta',null,['placeholder'=>'ID Tugas Akhir','class'=>'form-control'])!!} --}}
+                                                        <input class="form-control" type="text" value="BTA{{Auth::user()->username}}" name="id_bta" readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
                                                         <label for="inputId_ta">ID Tugas Akhir</label><br>
                                                         {{-- {!!
                                                         Form::text('id_ta',null,['placeholder'=>'ID Tugas Akhir','class'=>'form-control'])!!} --}}
@@ -47,13 +53,13 @@
                                                         <label for="inputJudul">Waktu Bimbingan</label><br>
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="date" name="judul" placeholder="Judul Tugas Akhir">
+                                                        <input class="form-control" type="date" name="tanggal_bimbingan" placeholder="Judul Tugas Akhir">
                                                     </div>
-                                                    <div class="form-group col-md-12">
+                                                    <div class="form-group col-md-6">
                                                         <label for="inputJudul">Kegiatan Bimbingan</label><br>
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <textarea class="form-control" type="text" name="judul" placeholder="Judul Tugas Akhir"></textarea>
+                                                        <textarea class="form-control" type="text" name="kegiatan" placeholder="Judul Tugas Akhir"></textarea>
                                                     </div>
                                                 </div>
 

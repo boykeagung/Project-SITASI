@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BimbinganTAController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\ProposalController;
@@ -26,6 +27,7 @@ use App\Http\Controllers\Form001Controller;
 use App\Http\Controllers\TUForm001Controller;
 use App\Http\Controllers\testForm001Controller;
 use App\Http\Controllers\YudisiumController;
+use App\Models\bimbingan_ta;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
 use App\Models\TA;
@@ -56,16 +58,16 @@ Route::get('/welcome', function () {
 });
 
 // Route Beta
-Route::get('/bimbingan', function () {
-    return view('mahasiswa/dashboard-mahasiswa-bimbingan-ta');
-});
-Route::get('/tambah_bimbingan', function () {
-    return view('mahasiswa/dashboard-mahasiswa-tambah-bimbingan-ta');
-});
+// Route::get('/bimbingan', function () {
+//     return view('mahasiswa/dashboard-mahasiswa-bimbingan-ta');
+// });
+// Route::get('/tambah_bimbingan', function () {
+//     return view('mahasiswa/dashboard-mahasiswa-tambah-bimbingan-ta');
+// });
 
-Route::get('/pembimbing_bimbingan', function () {
-    return view('dosen_pembimbing_penguji/dashboard-dospem-bimbingan-ta');
-});
+// Route::get('/pembimbing_bimbingan', function () {
+//     return view('dosen_pembimbing_penguji/dashboard-dospem-bimbingan-ta');
+// });
 
 
 // Route::get('/login', 'AuthController@getLogin');
@@ -153,6 +155,13 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::get('dashboard-mahasiswa-edit-sidang-kp/{id}', [SidangKPController::class, 'edit']); //select
     Route::put('dashboard-mahasiswa-sidang-kp/{id}', [SidangKPController::class, 'update']); //update
     Route::delete('dashboard-mahasiswa-sidang-kp/{id}', [SidangKPController::class, 'delete']); //delete
+
+    #bimbingan_ta
+    Route::get('dashboard-mahasiswa-bimbingan-ta', [BimbinganTAController::class, 'index']);
+    Route::get('dashboard-mahasiswa-tambah-bimbingan-ta', [BimbinganTAController::class, 'create']);
+    Route::post('dashboard-mahasiswa-bimbingan-ta', [BimbinganTAController::class, 'store']);
+    Route::get('dashboard-mahasiswa-edit-bimbingan-ta/{id}', [BimbinganTAController::class, 'edit']); //select
+    Route::put('dashboard-mahasiswa-bimbingan-ta/{id}', [BimbinganTAController::class, 'update']); //update
 });
 
 // Route::get('/index', function () {
