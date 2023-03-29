@@ -9,7 +9,6 @@
 
             @include('sidebar.sidebar-tata-usaha')
 
-
             <div class="main-content">
 
                 <div class="wizard-steps">
@@ -65,13 +64,16 @@
                                                 <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
                                             </div>
                                         </th>
-                                        <th>NIK</th>
+                                        <th>NRP</th>
                                         <th>Mahasiswa</th>
-                                        <th>Program Studi</th>
                                         <th>Jadwal Yudisium</th>
                                         <th>Status TA</th>
                                         <th>Aksi</th>
                                     </tr>
+
+                                    <?php
+                                    var_dump($yudisium);
+                                    foreach ($yudisium as $y) { ?>
                                     <tr>
                                         <td class="p-0 text-center">
                                             <div class="custom-checkbox custom-control">
@@ -81,14 +83,13 @@
                                             </div>
                                         </td>
                                         <td class="align-middle">
-                                            12346
+                                            <?= $y->nrp ?>
                                         </td>
                                         <td class="align-middle">
                                             <img alt="image" src="assets/img/avatar/avatar-1.png"
                                                 class="rounded-circle mr-3" width="35" data-toggle="tooltip"
-                                                title="" data-original-title="Nur Alpiana"> Nur Alpiana
+                                                title="" data-original-title="Nur Alpiana"><?= $y->nama_lengkap ?>
                                         </td>
-                                        <td class="align-middle">Sistem Informasi</td>
                                         <td class="align-middle">
                                             <div class="text-primary"><b>18 Agustus 2023</b></div>
                                         </td>
@@ -103,6 +104,7 @@
                                             </div>
                                         </td>
                                     </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
