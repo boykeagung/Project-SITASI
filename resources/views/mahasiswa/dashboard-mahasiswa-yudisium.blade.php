@@ -824,11 +824,6 @@
             </div>
 
             <script type="text/javascript">
-                $(document).ready(function() {
-                    $("#submit-pengajuan").click(function() {
-                        confirm("Press a button!");
-                    });
-                });
                 document.addEventListener("DOMContentLoaded", function(event) {
                     var scrollpos = localStorage.getItem('scrollpos');
                     if (scrollpos) window.scrollTo(0, scrollpos);
