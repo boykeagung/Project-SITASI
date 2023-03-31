@@ -21,6 +21,7 @@ use App\Http\Controllers\DospengSidangKPController;
 use App\Http\Controllers\KoordinatorKPController;
 use App\Http\Controllers\KoordinatorSidangKPController;
 use App\Http\Controllers\KPController;
+use App\Http\Controllers\KoordinatorYudisiumController;
 use App\Http\Controllers\SidangKPController;
 use App\Http\Controllers\Form001Controller;
 use App\Http\Controllers\TUForm001Controller;
@@ -311,7 +312,7 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator']], function (
     Route::put('dashboard-dospenguji-sidang-kp/{id}', [DospengSidangKPController::class, 'update']);
 
     // Yudisium
-    Route::get('dashboard-dosen-yudisium', [DospemYudisiumController::class, 'index']);
+    Route::get('dashboard-dosen-koordinator-yudisium', [DospemYudisiumController::class, 'index']);
 });
 
 Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
@@ -334,6 +335,7 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
 
     // Route::get('generate-form-001/{id}', [Form001Controller::class, 'generateForm001TU']); //generate form-001
     Route::get('dashboard-tata-usaha-yudisium', [TUYudisiumController::class, 'index']);
+    Route::get('dashboard-tata-usaha-yudisium/berkas/{id}', [TUYudisiumController::class, 'lihatBerkasMahasiswa']);
 });
 
 

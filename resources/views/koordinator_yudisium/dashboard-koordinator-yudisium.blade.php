@@ -5,22 +5,24 @@
         <div class="main-wrapper">
             <div class="navbar-bg"></div>
 
-            @include('navbar')
+            @include('  navbar')
 
-            @include('sidebar.sidebar-tata-usaha')
+            @include('sidebar.sidebar-koordinator-yudisium')
+
+            <!-- Main Content -->
 
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Cek Berkas Yudisium</h1>
+                        <h1>Konfirmasi Berkas Yudisium</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active">
                                 <a href="http://127.0.0.1:8000/dashboard-tata-usaha">
-                                    Dashboard TU
+                                    Dashboard Koordinator Yudisium
                                 </a>
                             </div>
                             <div class="breadcrumb-item">
-                                Cek Berkas Yudisium
+                                Konfirmasi Berkas Yudisium
                             </div>
                         </div>
                     </div>
@@ -144,8 +146,7 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <a href="<?= url()->current() . '/berkas/' . $y->nrp ?>"
-                                                        class="btn btn-icon icon-left btn-info w-100">
+                                                    <a href="#" class="btn btn-icon icon-left btn-info w-100">
                                                         <i class="far fa-file"></i> Lihat berkas
                                                     </a>
                                                 </td>
@@ -174,7 +175,6 @@
                     </div>
                 </section>
             </div>
-
         </div>
     </div>
 @endsection

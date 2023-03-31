@@ -28,15 +28,6 @@
                         Akhir</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-dospenguji-sidang-kp'); ?>><i class="fas fa-sticky-note"></i> <span>Sidang Kerja
                         Praktik</span></a></li>
-            <li class="menu-header">
-                Yudisium
-            </li>
-            <li>
-                <a class="nav-link" href=<?= url('dashboard-dosen-yudisium') ?>>
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>Dasbor Dosen Yudisium</span>
-                </a>
-            </li>
             <!--<li class="menu-header">Pengguna</li>
 <li><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Pengguna Admin</span></a></li>
 <li><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Pengguna Mahasiswa</span></a></li>
