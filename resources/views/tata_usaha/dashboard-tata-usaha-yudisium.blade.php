@@ -66,33 +66,42 @@
                             <div class="card-body p-0">
                                 <div class="p-4">
                                     <div class="row">
-                                        <div class="col-3">
+                                        <div class="col-8">
+                                            <ul class="nav nav-pills">
+                                                <li class="nav-item mr-2">
+                                                    <a class="nav-link active" href="#">Semua <span
+                                                            class="badge badge-white">5</span></a>
+                                                </li>
+                                                <li class="nav-item mr-2">
+                                                    <a class="nav-link" href="#">Terkonfirmasi <span
+                                                            class="badge badge-primary">1</span></a>
+                                                </li>
+                                                <li class="nav-item mr-2">
+                                                    <a class="nav-link" href="#">Batal <span
+                                                            class="badge badge-primary">1</span></a>
+                                                </li>
+                                                <li class="nav-item mr-2">
+                                                    <a class="nav-link" href="#">Belum Ada Aksi <span
+                                                            class="badge badge-primary">0</span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-2">
                                             <select class="form-control">
-                                                <option>Option 1</option>
-                                                <option>Option 2</option>
-                                                <option>Option 3</option>
+                                                <option>Urutkan NRP A-Z</option>
+                                                <option>Urutkan NRP Z-A</option>
                                             </select>
                                         </div>
-                                        <div class="col-3">
-                                            <select class="form-control">
-                                                <option>Option 1</option>
-                                                <option>Option 2</option>
-                                                <option>Option 3</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-3">
-                                            <select class="form-control">
-                                                <option>Option 1</option>
-                                                <option>Option 2</option>
-                                                <option>Option 3</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-3">
-                                            <select class="form-control">
-                                                <option>Option 1</option>
-                                                <option>Option 2</option>
-                                                <option>Option 3</option>
-                                            </select>
+                                        <div class="col-2">
+                                            <form>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" placeholder="Search">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-primary"><i
+                                                                class="fas fa-search"></i></button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +170,8 @@
                                         </li>
                                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
                                         <li class="page-item">
-                                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                            <a class="page-link" href="#">2 <span
+                                                    class="sr-only">(current)</span></a>
                                         </li>
                                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                                         <li class="page-item">

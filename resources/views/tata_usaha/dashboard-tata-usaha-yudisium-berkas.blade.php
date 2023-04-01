@@ -34,7 +34,7 @@
                 <section class="section">
                     <div class="row">
                         <?php foreach ($data as $d) {?>
-                        <div class="col-4">
+                        <div class="col col-12 col-lg-5">
                             <div class="card author-box card-primary">
                                 <div class="card-body">
                                     <div class="author-box-left">
@@ -44,35 +44,36 @@
                                     </div>
                                     <div class="author-box-details">
                                         <div class="author-box-name">
-                                            <a href="#">
-                                                <?= $d->nama_lengkap ?>
-                                            </a>
+                                            <?= $d->nama_lengkap ?>
                                         </div>
-                                        <div class="author-box-job">Student </div>
+                                        <div class="author-box-job">Student</div>
                                         <div class="mb-2 mt-3">
                                             <div class="text-small font-weight-bold">Informasi Mahasiswa</div>
                                         </div>
-                                        <div class="author-box-description">
-                                            <?= $d->nrp ?>
-                                            <br>
-                                            <?= $d->tanggal_lahir ?>
-                                            <br>
-                                            <?= $d->no_hp ?><br>
-                                            <?= $d->email ?><br>
-                                            <?= $d->ipk ?><br>
-                                            <?= $d->sks ?><br>
-                                        </div>
-                                        <div class="w-100 d-sm-none"></div>
-                                        <div class="float-right mt-sm-0 mt-3">
-                                            <a href="#" class="btn">View Posts <i
-                                                    class="fas fa-chevron-right"></i></a>
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                NRP
+                                            </div>
+                                            <div class="col-auto">
+                                                <?= $d->nrp ?>
+                                                <?= $d->tanggal_lahir ?>
+                                                <?= $d->no_hp ?>
+                                                <?= $d->email ?>
+                                                <?= $d->ipk ?>
+                                                <?= $d->sks ?>
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="#" class="btn w-100 btn-icon icon-left btn-success">
+                                        <i class="fab fa-whatsapp"></i> Message <?= $d->nama_lengkap ?> on WhatsApp
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <?php } ?>
-                        <div class="col-8">
+                        <div class="col col-12 col-lg-7">
                             <div class="card card-primary">
                                 <div class="card-header">
                                     <h4>Berkas Yudisium Mahasiswa</h4>
@@ -285,9 +286,9 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="card-footer text-right">
-                                    <button class="btn btn-danger">Batalkan / Ulangi</button>
-                                    <button class="btn btn-warning">Lanjutkan Ke Dosen Koordinator</button>
+                                <div class="card-footer d-flex">
+                                    <button class="btn w-100 mr-1 btn-danger">Batalkan / Ulangi</button>
+                                    <button class="btn w-100 ml-1 btn-primary">Lanjutkan Ke Dosen Koordinator</button>
                                 </div>
                             </div>
                         </div>
