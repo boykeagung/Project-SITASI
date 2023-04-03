@@ -178,6 +178,7 @@ Route::get('dashboard-mahasiswa-yudisium/reset/{nrp}/{persyaratan}', [MahasiswaY
 Route::group(['middleware' => ['auth', 'rolecek:koordinator-yudisium']], function () {
     // INDEX
     Route::get('dashboard-koordinator-yudisium', [KoordinatorYudisiumController::class, 'index']);
+    Route::get('dashboard-koordinator-yudisium/berkas/{id}', [TUYudisiumController::class, 'lihatBerkasMahasiswa']);
 
     // // proposal TA
     // Route::get('dashboard-koordinator-tambah-proposal-ta', [KoordinatorProposalController::class, 'create']);
@@ -335,7 +336,7 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
 
     // Route::get('generate-form-001/{id}', [Form001Controller::class, 'generateForm001TU']); //generate form-001
     Route::get('dashboard-tata-usaha-yudisium', [TUYudisiumController::class, 'index']);
-    Route::get('dashboard-tata-usaha-yudisium/berkas/{id}', [TUYudisiumController::class, 'lihatBerkasMahasiswa']);
+    Route::get('dashboard-tata-usaha-yudisium/berkas/{id}', [KoordinatorYudisiumController::class, 'lihatBerkasMahasiswa']);
 });
 
 

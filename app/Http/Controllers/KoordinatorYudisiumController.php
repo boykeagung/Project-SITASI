@@ -12,4 +12,10 @@ class KoordinatorYudisiumController extends Controller
         $yudisium = DB::table('yudisium')->join('mahasiswa', 'yudisium.nrp', '=', 'mahasiswa.nrp')->get();
         return view('koordinator_yudisium.dashboard-koordinator-yudisium', ['yudisium' => $yudisium]);
     }
+
+    public function lihatBerkasMahasiswa(Request $request, $id)
+    {
+        $data = DB::table('yudisium')->join('mahasiswa', 'yudisium.nrp', '=', 'mahasiswa.nrp')->where('mahasiswa.nrp', '=', $id)->get();
+        return view('yudisium.dashboard-berkas-yudisium', ['data' => $data]);
+    }
 }

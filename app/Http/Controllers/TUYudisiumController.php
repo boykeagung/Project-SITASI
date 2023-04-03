@@ -15,6 +15,6 @@ class TUYudisiumController extends Controller
     public function lihatBerkasMahasiswa(Request $request, $id)
     {
         $data = DB::table('yudisium')->join('mahasiswa', 'yudisium.nrp', '=', 'mahasiswa.nrp')->where('mahasiswa.nrp', '=', $id)->get();
-        return view('tata_usaha.dashboard-tata-usaha-yudisium-berkas', ['data' => $data]);
+        return view('yudisium.dashboard-berkas-yudisium', ['data' => $data]);
     }
 }

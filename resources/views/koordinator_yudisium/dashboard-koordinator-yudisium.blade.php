@@ -114,6 +114,7 @@
                                                 <th scope="col">NRP</th>
                                                 <th scope="col">Mahasiswa</th>
                                                 <th scope="col">Progress Berkas</th>
+                                                <th scope="col">Status</th>
                                                 <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
@@ -146,7 +147,11 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-icon icon-left btn-info w-100">
+                                                    <span class="badge badge-primary">Diterima TU</span>
+                                                </td>
+                                                <td>
+                                                    <a href="<?= url()->current() . '/berkas/' . $y->nrp ?>"
+                                                        class="btn btn-icon icon-left btn-info w-100">
                                                         <i class="far fa-file"></i> Lihat berkas
                                                     </a>
                                                 </td>
@@ -162,7 +167,8 @@
                                         </li>
                                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
                                         <li class="page-item">
-                                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                            <a class="page-link" href="#">2 <span
+                                                    class="sr-only">(current)</span></a>
                                         </li>
                                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                                         <li class="page-item">
