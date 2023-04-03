@@ -200,4 +200,8 @@ class MahasiswaYudisiumController extends Controller
             return redirect(URL::to('/'));
         }
     }
+    public function cekYudisium()
+    {
+        return view('mahasiswa.dashboard-mahasiswa-cek-yudisium');
+    }
 }

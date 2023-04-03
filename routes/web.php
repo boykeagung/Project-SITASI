@@ -171,6 +171,7 @@ Route::get('/dashboard-mahasiswa-sidang-ta', function () {
 Route::get('/dashboard-mahasiswa-yudisium', [MahasiswaYudisiumController::class, 'index']);
 Route::post('dashboard-mahasiswa-yudisium/update-mahasiswa', [MahasiswaYudisiumController::class, 'updateMahasiswa']);
 Route::post('dashboard-mahasiswa-yudisium/update-persyaratan', [MahasiswaYudisiumController::class, 'updatePersyaratan']);
+Route::get('dashboard-mahasiswa-yudisium/cek-yudisium', [MahasiswaYudisiumController::class, 'cekYudisium']);
 //reset file
 Route::get('dashboard-mahasiswa-yudisium/reset/{nrp}/{persyaratan}', [MahasiswaYudisiumController::class, 'resetPersyaratan']);
 
