@@ -19,17 +19,11 @@
                             <div class="card-header">
                                 <h4>Residensi Mahasiswa Tugas Akhir</h4>
                             </div>
-                            <div class="card-body table-responsive">
-                                <select class="form-control m-bot15" name="camera_id">
-                                    <option class="text-center">Buka Kamera</option>                            
-                                </select>
-                            </div>
                             <div id="container">
-                                <a id="btn-scan-qr">
-                                  <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg">
+                                <a id="btn-scan-qr" class="btn btn-primary mb-3" style="color: white">
+                                    <i class="fas fa-camera"></i> Buka Kamera
                                 </a>
                                 <canvas hidden="" id="qr-canvas"></canvas>
-                          
                                 <div id="qr-result" hidden="">
                                   <b>Data:</b> <span id="outputData"></span>
                                 </div>
