@@ -28,6 +28,7 @@ use App\Http\Controllers\testForm001Controller;
 use App\Http\Controllers\YudisiumController;
 use App\Http\Controllers\DospemNilaiKPController;
 use App\Http\Controllers\NilaiDosPemController;
+use App\Http\Controllers\NilaiDosPemPerusahaanController;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
 use App\Models\TA;
@@ -135,7 +136,7 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     // Route::get('dashboard-mahasiswa-tambah-file/{id}', [Form001Controller::class, 'tambahFile']);
     // Route::post('dashboard-mahasiswa-form-001', [Form001Controller::class, 'store2']);
     // Route::get('mahasiswa-generate-form-001/{id}', [Form001Controller::class, 'generateForm001']); 
-    Route::get('generate_nilai_kp', [Form001Controller::class, 'generateNilaiKP']); //TESTING generate nilai
+    Route::get('generate_nilai_kp', [NilaiDosPemController::class, 'generateNilaiKP']); //TESTING generate nilai
     
 
     #Sidang_kp
@@ -148,8 +149,17 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
 
     #Nilai
     Route::get('dashboard-mahasiswa-penilaian-kp', [NilaiDosPemController::class, 'index']);
-    Route::get('dashboard-mahasiswa-tambah-penilaian-kp', [NilaiDosPemController::class, 'create']);
+    Route::get('dashboard-mahasiswa-tambah-penilaian-kp-dospem', [NilaiDosPemController::class, 'create']);
     Route::post('dashboard-mahasiswa-penilaian-kp', [NilaiDosPemController::class, 'store']);
+    Route::get('dashboard-mahasiswa-edit-penilaian-kp-dospem/{id}', [NilaiDosPemController::class, 'edit']); //select
+    Route::put('dashboard-mahasiswa-penilaian-kp/{id}', [NilaiDosPemController::class, 'update']);
+    Route::delete('dashboard-mahasiswa-penilaian-kp/{id}', [NilaiDosPemController::class, 'delete']); //delete
+    
+    Route::get('dashboard-mahasiswa-tambah-penilaian-kp-dospem-perusahaan', [NilaiDosPemPerusahaanController::class, 'create']);
+    Route::post('dashboard-mahasiswa-penilaian-kp/perusahaan', [NilaiDosPemPerusahaanController::class, 'store']);
+    Route::get('dashboard-mahasiswa-edit-penilaian-kp-dospem-perusahaan/{id}', [NilaiDosPemPerusahaanController::class, 'edit']); //select
+    Route::put('dashboard-mahasiswa-penilaian-kp/perusahaan/{id}', [NilaiDosPemPerusahaanController::class, 'update']);
+    Route::delete('dashboard-mahasiswa-penilaian-kp/perusahaan/{id}', [NilaiDosPemPerusahaanController::class, 'delete']); //delete
 });
 
 // Route::get('/index', function () {

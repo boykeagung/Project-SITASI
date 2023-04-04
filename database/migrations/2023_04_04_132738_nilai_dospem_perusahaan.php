@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nilai_dospem', function (Blueprint $table) {
+        Schema::create('nilai_dospem_perusahaan', function (Blueprint $table) {
             $table->id();
             $table->string('username');
             $table->string('name');
@@ -27,9 +27,9 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->timestamps();
             $table->foreign('username')->references('username')->on('users')->onDelete('cascade');
+            // $table->foreign('name')->references('name')->on('users')->onDelete('cascade');
         });
     }
-    
 
     /**
      * Reverse the migrations.

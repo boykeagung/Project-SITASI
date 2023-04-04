@@ -41,13 +41,6 @@ class Form001Controller extends Controller
         $input = $request->all();
         $input['status'] = "Diproses";
 
-        if ($draft = $request->file('draft')) {
-            $destinationPath = 'Form_001/';
-            $form001KP = time() . "_" . $draft->getClientOriginalName();
-            $draft->move($destinationPath, $form001KP);
-            $input['draft'] = "$form001KP";
-        }
-
         Form001::create($input);
 
         return redirect('dashboard-mahasiswa-form-001')->with('success', 'Daftar Proposal created successfully.');

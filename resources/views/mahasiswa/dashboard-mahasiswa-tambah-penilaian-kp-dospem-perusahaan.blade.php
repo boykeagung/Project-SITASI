@@ -9,13 +9,12 @@
         @include('navbar')
 
         @include('sidebar.sidebar')
-        {{-- {!! Form::Open(['url'=>'dashboard-mahasiswa-seminar-ta'])!!} --}}
 
 
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="dashboard-mahasiswa-penilaian-kp" method="POST" enctype="multipart/form-data">
+                <form action="dashboard-mahasiswa-penilaian-kp/perusahaan" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="hidden" name="user_id" value="" required>
                     <div class="card-header row">
@@ -41,6 +40,12 @@
                                                         <label for="inputNrp">NRP</label><br>
                                                         <input class="form-control" type="text" value="{{Auth::user()->username}}" name="username" readonly>
                                                     </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputNrp">Nama</label><br>
+                                                        <input class="form-control" type="text" value="{{Auth::user()->name}}" name="name" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Kepribdian</label>
                                                         <br>
@@ -81,6 +86,16 @@
                                                         <input type="text" class="form-control"
                                                             name="komunikasi"
                                                             placeholder=" ">
+                                                    </div>    
+                                                </div>
+
+                                                <div class="form-row"> 
+                                                    
+                                                    <div class="form-group col-md-6">
+                                                        <label for="">Upload Upload Nilai Kerja Praktik Oleh Dosen Pembimbing Perusahaan</label><br>
+                                                        <input class="form-control" type="file" name="pdf_nilai">
+                                                        <span>*File Upload yang diupload berupa pdf maksimal sebesar
+                                                            25MB</span>
                                                     </div>
                                                     
                                                 </div>

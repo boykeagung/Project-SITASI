@@ -75,7 +75,7 @@
 </div>
 @endsection
 
-@push('plugins-css')
+{{-- @push('plugins-css')
 @endpush
 
 @push('template-css')
@@ -85,4 +85,4 @@
 @endpush
 
 @push('specific-js')
-@endpush
+@endpush --}}
