@@ -14,8 +14,8 @@ class DospengProposalController extends Controller
         $username = Auth::user()->username;
         $data['proposal'] = Proposal::join('ta', 'proposal.id_ta', '=', 'ta.id_ta')
             ->join('users', 'ta.username', '=', 'users.username')
-            ->where('ta.pembimbing1', 'like', '%' . $username . '%')
-            ->orWhere('ta.pembimbing2', 'like', '%' . $username . '%')
+            ->where('ta.penguji1', 'like', '%' . $username . '%')
+            ->orWhere('ta.penguji2', 'like', '%' . $username . '%')
             ->select('proposal.*', 'ta.username', 'users.name')
             ->get();
         return view('dosen_pembimbing_penguji.dashboard-dospenguji-proposal-ta', $data);

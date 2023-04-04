@@ -24,6 +24,8 @@
             <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-sidang-ta') ?>><i
                         class="fas fa-book-reader"></i> <span>Sidang Tugas
                         Akhir</span></a></li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-bimbingan-ta') ?>><i
+                        class="fas fa-book-reader"></i> <span>Bimbingan Tugas Akhir</span></a></li>
             {{-- <li><a class="nav-link" href="#"><i class="fas fa-sticky-note"></i> <span>Yudisium</span></a>
             <li class="menu-header">Management Pendaftaran Kerja Praktik</li>
             <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-kp') ?>><i

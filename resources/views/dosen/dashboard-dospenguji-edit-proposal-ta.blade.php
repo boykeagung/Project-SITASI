@@ -56,7 +56,6 @@
                                                     @else
                                                     @endif
                                                 </div>
-
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         {!! Form::submit('Save',['class'=>'btn btn-primary mb-5
