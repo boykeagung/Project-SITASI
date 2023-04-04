@@ -25,6 +25,7 @@ use App\Http\Controllers\KoordinatorSidangKPController;
 use App\Http\Controllers\KPController;
 use App\Http\Controllers\SidangKPController;
 use App\Http\Controllers\Form001Controller;
+use App\Http\Controllers\KoordinatorBimbinganTA;
 use App\Http\Controllers\TUForm001Controller;
 use App\Http\Controllers\testForm001Controller;
 use App\Http\Controllers\YudisiumController;
@@ -304,6 +305,17 @@ Route::group(['middleware' => ['auth', 'rolecek:koordinator']], function () {
     Route::get('dashboard-koordinator-edit-sidang-kp/{id}', [KoordinatorSidangKPController::class, 'edit']);
     Route::put('dashboard-koordinator-sidang-kp/{id}', [KoordinatorSidangKPController::class, 'update']);
     Route::delete('dashboard-koordinator-sidang-kp/{id}', [KoordinatorSidangKPController::class, 'delete']); //delete
+
+    // bimbingan TA 
+    Route::get('dashboard-koordinator-bimbingan-ta', [KoordinatorBimbinganTA::class, 'index']);
+    Route::get('dashboard-koordinator-tambah-bimbingan-ta', [KoordinatorBimbinganTA::class, 'create']);
+    Route::post('dashboard-koordinator-bimbingan-ta', [KoordinatorBimbinganTA::class, 'store']);
+    Route::get('dashboard-koordinator-edit-bimbingan-ta/{id}', [KoordinatorBimbinganTA::class, 'edit']);
+    Route::put('dashboard-koordinator-bimbingan-ta/{id}', [KoordinatorBimbinganTA::class, 'update']);
+    Route::delete('dashboard-koordinator-bimbingan-ta/{id}', [KoordinatorBimbinganTA::class, 'delete']); //delete
+
+    // bimbingan KP
+    Route::get('dashboard-koordinator-bimbingan-kp', [KoordinatorBimbinganTA::class, 'index']);
 });
 
 Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator']], function () {
