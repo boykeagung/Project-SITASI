@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('id_bta');
             $table->string('id_ta');
             $table->string('tanggal_bimbingan')->nullable();
-            $table->string('kegiatan')->nullable();
+            $table->longText('kegiatan')->nullable();
             // $table->string('id_ta')->nullable();
             $table->string('status_p1')->nullable();
             $table->string('status_p2')->nullable();

@@ -46,8 +46,8 @@
                                             <th>{{$bta->id_ta}}</th>
                                             <th>{{$bta->tanggal_bimbingan}}</th>
                                             <th>{{$bta->kegiatan}}</th>
-                                            <th>{{$bta->paraf_p1}}</th>
-                                            <th>{{$bta->paraf_p2}}</th>
+                                            <th>{{$bta->status_p1}}</th>
+                                            <th>{{$bta->status_p2}}</th>
                                             <th>{{$bta->updated_at}}</th>
                                             <th>{{link_to('dashboard-mahasiswa-edit-bimbingan-ta/'.$bta->id,'Edit',['class'=>'btn btn-warning'])}}
                                             </th>

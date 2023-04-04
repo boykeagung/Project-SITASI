@@ -26,7 +26,25 @@ class BimbinganTAController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $input['status_p1'] = "Diproses";
+        $input['status_p2'] = "Diproses";
         bimbingan_ta::create($input);
+        return redirect('dashboard-mahasiswa-bimbingan-ta');
+    }
+
+    public function edit($id)
+    {
+        $data['bimbingan_ta'] = bimbingan_ta::find($id);
+        return view('mahasiswa.dashboard-mahasiswa-edit-bimbingan-ta', $data);
+        // return view('koordinator.dashboard-koordinator-edit-proposal-ta', $data);
+    }
+
+    public function update($id, Request $request)
+    {
+        $input = $request->all();
+        $input['status_p1'] = "Diproses";
+        $input['status_p2'] = "Diproses";
+        bimbingan_ta::find($id)->update($input);
         return redirect('dashboard-mahasiswa-bimbingan-ta');
     }
 }
