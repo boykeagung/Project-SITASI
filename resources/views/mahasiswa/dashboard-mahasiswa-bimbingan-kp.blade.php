@@ -20,11 +20,14 @@
                                 <h4>Bimbingan Kerja Praktik Mahasiswa</h4>
                             </div>
                             <div class="card-body table-responsive">
-                                <a href=<?php echo url('dashboard-mahasiswa-tambah-ta') ?> class="btn btn-primary mb-3">
+                                <a href=<?php echo url('dashboard-mahasiswa-tambah-bimbingan-kp') ?> class="btn btn-primary mb-3">
                                     <i class="fas fa-plus"></i> Tambah Data</a>
+                                <a href=<?php echo url('dashboard-mahasiswa-tambah-ta') ?> class="btn btn-warning mb-3">
+                                    <i class="fas fa-plus"></i> Print</a>
                                 <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
+                                            <th>ID Bimbingan KP</th>
                                             <th>ID TA</th>
                                             <th>Waktu Bimbingan</th>
                                             <th>Kegiatan Bimbingan</th>
@@ -37,15 +40,19 @@
                                     </thead>
 
                                     <tbody>
+                                        @foreach ($bimbingan_kp as $bkp)
                                         <tr>
-                                            <th>162019028</th>
-                                            <th>7 january</th>
-                                            <th>revisi bab 3</th>
-                                            <th>Approve</th>
-                                            {{-- <th>Approve</th> --}}
-                                            <th>Update At</th>
-                                            <th><button>edit</button></th>
+                                            <th>{{$bkp->id_bkp}}</th>
+                                            <th>{{$bkp->id_ta}}</th>
+                                            <th>{{$bkp->tanggal_bimbingan}}</th>
+                                            <th>{{$bkp->kegiatan}}</th>
+                                            <th>{{$bkp->status_p1}}</th>
+                                            {{-- <th>{{$bkp->status_p2}}</th> --}}
+                                            <th>{{$bkp->updated_at}}</th>
+                                            <th>{{link_to('dashboard-mahasiswa-edit-bimbingan-kp/'.$bkp->id,'Edit',['class'=>'btn btn-warning'])}}
+                                            </th>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

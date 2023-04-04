@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BimbinganKPController;
 use App\Http\Controllers\BimbinganTAController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\DosenController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\Form001Controller;
 use App\Http\Controllers\TUForm001Controller;
 use App\Http\Controllers\testForm001Controller;
 use App\Http\Controllers\YudisiumController;
+use App\Models\Bimbingan_kp;
 use App\Models\bimbingan_ta;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
@@ -162,6 +164,13 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::post('dashboard-mahasiswa-bimbingan-ta', [BimbinganTAController::class, 'store']);
     Route::get('dashboard-mahasiswa-edit-bimbingan-ta/{id}', [BimbinganTAController::class, 'edit']); //select
     Route::put('dashboard-mahasiswa-bimbingan-ta/{id}', [BimbinganTAController::class, 'update']); //update
+
+    #bimbingan_kp
+    Route::get('dashboard-mahasiswa-bimbingan-kp', [BimbinganKPController::class, 'index']);
+    Route::get('dashboard-mahasiswa-tambah-bimbingan-kp', [BimbinganKPController::class, 'create']);
+    Route::post('dashboard-mahasiswa-bimbingan-kp', [BimbinganKPController::class, 'store']);
+    Route::get('dashboard-mahasiswa-edit-bimbingan-kp/{id}', [BimbinganKPController::class, 'edit']); //select
+    Route::put('dashboard-mahasiswa-bimbingan-kp/{id}', [BimbinganKPController::class, 'update']); //update
 });
 
 // Route::get('/index', function () {
