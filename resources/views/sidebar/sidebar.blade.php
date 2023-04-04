@@ -12,6 +12,8 @@
             <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa') ?>></i>
                     <span>Progress Tugas Akhir</span></a></li>
             <li class="menu-header">Management Pendaftaran Tugas Akhir</li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-residensi-ta') ?>><i
+                class="fas fa-camera"></i> <span>Residensi Tugas Akhir</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-proposal-ta') ?>><i
                         class="fas fa-sticky-note"></i> <span>Proposal Tugas
                         Akhir</span></a></li>

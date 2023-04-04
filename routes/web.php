@@ -106,6 +106,11 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     // });
     Route::get('dashboard-mahasiswa', [TAController::class, 'index1']);
 
+    #Residensi TA Mahasiswa
+    Route::get('/dashboard-mahasiswa-residensi-ta', function () {
+        return view('mahasiswa.dashboard-mahasiswa-residensi-ta');
+    });
+
     #TA Mahasiswa
     Route::get('dashboard-mahasiswa-proposal-ta', [TAController::class, 'index']);
     Route::get('dashboard-mahasiswa-tambah-ta', [TAController::class, 'create']);
