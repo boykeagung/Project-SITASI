@@ -51,13 +51,4 @@
                     Kerja
                     Praktik</span></a>
         </li>
-        <li class="menu-header">
-            Yudisium
-        </li>
-        <li>
-            <a class="nav-link" href=<?= url('dashboard-dosen-yudisium') ?>>
-                <i class="fas fa-graduation-cap"></i>
-                <span>Dasbor Dosen Yudisium</span>
-            </a>
-        </li>
     @endsection

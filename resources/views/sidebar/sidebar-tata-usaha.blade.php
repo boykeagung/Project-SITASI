@@ -24,7 +24,8 @@
             <li><a class="nav-link" href=<?php echo url('dashboard-tata-usaha-sidang-kp'); ?>><i class="fas fa-book-open"></i> <span>Sidang Kerja
                         Praktik</span></a></li>
             <li class="menu-header">Management Yudisium</li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-tata-usaha-yudisium'); ?>><i class="fas fa-graduation-cap"></i> <span>Manajemen Yudisium</span></a></li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-tata-usaha-yudisium'); ?>><i class="fas fa-graduation-cap"></i> <span>Manajemen
+                        Yudisium</span></a></li>
         </ul>
     </aside>
 </div>

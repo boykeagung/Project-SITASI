@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
@@ -90,104 +89,132 @@ class MahasiswaYudisiumController extends Controller
         $path_to_upload = public_path("Yudisium/$nrp/");
         File::ensureDirectoryExists($path_to_upload);
 
+        $rules = [
+            'inputPasFoto' => 'mimes:pdf',
+            'inputAktaKelahiran' => 'mimes:pdf',
+            'inputIjasahSekolahMenengah' => 'mimes:pdf',
+            'inputJudulTugasAkhirIndonesia' => 'mimes:pdf',
+            'inputJudulTugasAkhirInggris' => 'mimes:pdf',
+            'inputBebasPinjamBuku' => 'mimes:pdf',
+            'inputTranskripDariSikad' => 'mimes:pdf',
+            'inputResumeSkkDanSimskk' => 'mimes:pdf',
+            'inputHasilTestEpt' => 'mimes:pdf',
+            'inputBuktiPembayaran' => 'mimes:pdf',
+            'inputSuratGantiNama' => 'mimes:pdf',
+            'inputFormBiodataPesertaYudisium' => 'mimes:pdf',
+            'inputSertifikatKeahlian' => 'mimes:pdf',
+            'inputPoseterA3' => 'mimes:pdf',
+            'inputBukuTugasAkhirSah' => 'mimes:pdf',
+            'inputJurnalPenelitian' => 'mimes:pdf',
+        ];
+        $messages = [
+            'reportfile.mimes' => 'Only PDF files are allowed.',
+        ];
 
-        if ($req->hasFile('inputPasFoto')) {
-            $file = $req->file('inputPasFoto');
-            $fileName = 'pas_foto_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['pas_foto' => $fileName]);
+        $validator = Validator::make($req->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            if ($req->hasFile('inputPasFoto')) {
+                $file = $req->file('inputPasFoto');
+                $fileName = 'pas_foto_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['pas_foto' => $fileName]);
+            }
+            if ($req->hasFile('inputAktaKelahiran')) {
+                $file = $req->file('inputAktaKelahiran');
+                $fileName = 'akta_kelahiran_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['akta_kelahiran' => $fileName]);
+            }
+            if ($req->hasFile('inputIjasahSekolahMenengah')) {
+                $file = $req->file('inputIjasahSekolahMenengah');
+                $fileName = 'ijasah_sekolah_menengah_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['ijasah_sekolah_menengah' => $fileName]);
+            }
+            if ($req->hasFile('inputJudulTugasAkhirIndonesia')) {
+                $file = $req->file('inputJudulTugasAkhirIndonesia');
+                $fileName = 'judul_ta_id_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['judul_ta_id' => $fileName]);
+            }
+            if ($req->hasFile('inputJudulTugasAkhirInggris')) {
+                $file = $req->file('inputJudulTugasAkhirInggris');
+                $fileName = 'judul_ta_en_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['judul_ta_en' => $fileName]);
+            }
+            if ($req->hasFile('inputBebasPinjamBuku')) {
+                $file = $req->file('inputBebasPinjamBuku');
+                $fileName = 'bebas_pinjam_buku_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['bebas_pinjam_buku' => $fileName]);
+            }
+            if ($req->hasFile('inputTranskripDariSikad')) {
+                $file = $req->file('inputTranskripDariSikad');
+                $fileName = 'transkrip_dari_sikad_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['transkrip_dari_sikad' => $fileName]);
+            }
+            if ($req->hasFile('inputResumeSkkDanSimskk')) {
+                $file = $req->file('inputResumeSkkDanSimskk');
+                $fileName = 'resume_skk_dan_simskk_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['resume_skk_dan_simskk' => $fileName]);
+            }
+            if ($req->hasFile('inputHasilTestEpt')) {
+                $file = $req->file('inputHasilTestEpt');
+                $fileName = 'hasil_test_ept_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['hasil_test_ept' => $fileName]);
+            }
+            if ($req->hasFile('inputBuktiPembayaran')) {
+                $file = $req->file('inputBuktiPembayaran');
+                $fileName = 'bukti_pembayaran_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['bukti_pembayaran' => $fileName]);
+            }
+            if ($req->hasFile('inputSuratGantiNama')) {
+                $file = $req->file('inputSuratGantiNama');
+                $fileName = 'surat_ganti_nama_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['surat_ganti_nama' => $fileName]);
+            }
+            if ($req->hasFile('inputFormBiodataPesertaYudisium')) {
+                $file = $req->file('inputFormBiodataPesertaYudisium');
+                $fileName = 'form_biodata_peserta_yudisium_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['form_biodata_peserta_yudisium' => $fileName]);
+            }
+            if ($req->hasFile('inputSertifikatKeahlian')) {
+                $file = $req->file('inputSertifikatKeahlian');
+                $fileName = 'sertifikat_keahlian_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['sertifikat_keahlian' => $fileName]);
+            }
+            if ($req->hasFile('inputPoseterA3')) {
+                $file = $req->file('inputPoseterA3');
+                $fileName = 'poster_a3_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['poster_a3' => $fileName]);
+            }
+            if ($req->hasFile('inputBukuTugasAkhirSah')) {
+                $file = $req->file('inputBukuTugasAkhirSah');
+                $fileName = 'buku_tugas_akhir_sah_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['buku_tugas_akhir_sah' => $fileName]);
+            }
+            if ($req->hasFile('inputJurnalPenelitian')) {
+                $file = $req->file('inputJurnalPenelitian');
+                $fileName = 'jurnal_penelitian_' . $nrp . '.' . $file->getClientOriginalExtension();
+                $file->move($path_to_upload, $fileName);
+                Yudisium::where('nrp', $nrp)->update(['jurnal_penelitian' => $fileName]);
+            }
+            return redirect(URL::to('/dashboard-mahasiswa-yudisium'));
         }
-        if ($req->hasFile('inputAktaKelahiran')) {
-            $file = $req->file('inputAktaKelahiran');
-            $fileName = 'akta_kelahiran_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['akta_kelahiran' => $fileName]);
-        }
-        if ($req->hasFile('inputIjasahSekolahMenengah')) {
-            $file = $req->file('inputIjasahSekolahMenengah');
-            $fileName = 'ijasah_sekolah_menengah_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['ijasah_sekolah_menengah' => $fileName]);
-        }
-        if ($req->hasFile('inputJudulTugasAkhirIndonesia')) {
-            $file = $req->file('inputJudulTugasAkhirIndonesia');
-            $fileName = 'judul_ta_id_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['judul_ta_id' => $fileName]);
-        }
-        if ($req->hasFile('inputJudulTugasAkhirInggris')) {
-            $file = $req->file('inputJudulTugasAkhirInggris');
-            $fileName = 'judul_ta_en_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['judul_ta_en' => $fileName]);
-        }
-        if ($req->hasFile('inputBebasPinjamBuku')) {
-            $file = $req->file('inputBebasPinjamBuku');
-            $fileName = 'bebas_pinjam_buku_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['bebas_pinjam_buku' => $fileName]);
-        }
-        if ($req->hasFile('inputTranskripDariSikad')) {
-            $file = $req->file('inputTranskripDariSikad');
-            $fileName = 'transkrip_dari_sikad_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['transkrip_dari_sikad' => $fileName]);
-        }
-        if ($req->hasFile('inputResumeSkkDanSimskk')) {
-            $file = $req->file('inputResumeSkkDanSimskk');
-            $fileName = 'resume_skk_dan_simskk_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['resume_skk_dan_simskk' => $fileName]);
-        }
-        if ($req->hasFile('inputHasilTestEpt')) {
-            $file = $req->file('inputHasilTestEpt');
-            $fileName = 'hasil_test_ept_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['hasil_test_ept' => $fileName]);
-        }
-        if ($req->hasFile('inputBuktiPembayaran')) {
-            $file = $req->file('inputBuktiPembayaran');
-            $fileName = 'bukti_pembayaran_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['bukti_pembayaran' => $fileName]);
-        }
-        if ($req->hasFile('inputSuratGantiNama')) {
-            $file = $req->file('inputSuratGantiNama');
-            $fileName = 'surat_ganti_nama_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['surat_ganti_nama' => $fileName]);
-        }
-        if ($req->hasFile('inputFormBiodataPesertaYudisium')) {
-            $file = $req->file('inputFormBiodataPesertaYudisium');
-            $fileName = 'form_biodata_peserta_yudisium_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['form_biodata_peserta_yudisium' => $fileName]);
-        }
-        if ($req->hasFile('inputSertifikatKeahlian')) {
-            $file = $req->file('inputSertifikatKeahlian');
-            $fileName = 'sertifikat_keahlian_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['sertifikat_keahlian' => $fileName]);
-        }
-        if ($req->hasFile('inputPoseterA3')) {
-            $file = $req->file('inputPoseterA3');
-            $fileName = 'poster_a3_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['poster_a3' => $fileName]);
-        }
-        if ($req->hasFile('inputBukuTugasAkhirSah')) {
-            $file = $req->file('inputBukuTugasAkhirSah');
-            $fileName = 'buku_tugas_akhir_sah_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['buku_tugas_akhir_sah' => $fileName]);
-        }
-        if ($req->hasFile('inputJurnalPenelitian')) {
-            $file = $req->file('inputJurnalPenelitian');
-            $fileName = 'jurnal_penelitian_' . $nrp . '.' . $file->getClientOriginalExtension();
-            $file->move($path_to_upload, $fileName);
-            Yudisium::where('nrp', $nrp)->update(['jurnal_penelitian' => $fileName]);
-        }
-        return redirect(URL::to('/dashboard-mahasiswa-yudisium'));
+
     }
 
     public function resetPersyaratan($nrp, $persyaratan)
@@ -264,6 +291,45 @@ class MahasiswaYudisiumController extends Controller
             return redirect(URL::to('/'));
         }
     }
+    public function konfirmasiPersyaratan(Request $req)
+    {
+        $nrp = $req->input('inputNrp');
+        $checkInfoMahasiswa = Mahasiswa::where('nrp', $nrp)
+            ->whereNotNull('nrp')
+            ->whereNotNull('nama_lengkap')
+            ->whereNotNull('tanggal_lahir')
+            ->whereNotNull('password')
+            ->whereNotNull('email')
+            ->whereNotNull('alamat')
+            ->whereNotNull('no_wa')
+            ->whereNotNull('ipk')
+            ->whereNotNull('sks')
+            ->whereNotNull('level')
+            ->get();
+        $checkBerkas = Yudisium::where('nrp', $nrp)
+            ->whereNotNull('pas_foto')
+            ->whereNotNull('akta_kelahiran')
+            ->whereNotNull('ijasah_sekolah_menengah')
+            ->whereNotNull('judul_ta_id')
+            ->whereNotNull('judul_ta_en')
+            ->whereNotNull('bebas_pinjam_buku')
+            ->whereNotNull('transkrip_dari_sikad')
+            ->whereNotNull('resume_skk_dan_simskk')
+            ->whereNotNull('hasil_test_ept')
+            ->whereNotNull('form_biodata_peserta_yudisium')
+            ->whereNotNull('poster_a3')
+            ->whereNotNull('buku_tugas_akhir_sah')
+            ->whereNotNull('jurnal_penelitian')
+            ->get();
+        if (!$checkInfoMahasiswa->isEmpty() && !$checkBerkas->isEmpty()) {
+            Yudisium::where('nrp', $nrp)->update(['status_yudisium' => 'Menunggu']);
+            return redirect()->back()->with('message', 'Lengkap!'); //redir ke status
+        } else {
+            return redirect()->back()->with('message', 'Kami mencoba, namun sepertinya ada data diri atau berkas persyaratan yang belum
+            anda lengkapi.');
+        }
+    }
+
     public function cekYudisium()
     {
         return view('mahasiswa.dashboard-mahasiswa-cek-yudisium');

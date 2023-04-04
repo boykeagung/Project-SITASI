@@ -174,6 +174,7 @@ Route::post('dashboard-mahasiswa-yudisium/update-persyaratan', [MahasiswaYudisiu
 Route::get('dashboard-mahasiswa-yudisium/cek-yudisium', [MahasiswaYudisiumController::class, 'cekYudisium']);
 //reset file
 Route::get('dashboard-mahasiswa-yudisium/reset/{nrp}/{persyaratan}', [MahasiswaYudisiumController::class, 'resetPersyaratan']);
+Route::post('dashboard-mahasiswa-yudisium/konfirmasi-persyaratan-mahasiswa', [MahasiswaYudisiumController::class, 'konfirmasiPersyaratan']);
 
 /* koordinator ta */
 Route::group(['middleware' => ['auth', 'rolecek:koordinator-yudisium']], function () {

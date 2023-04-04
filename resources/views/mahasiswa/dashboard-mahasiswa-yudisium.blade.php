@@ -113,14 +113,16 @@
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
                                                                 <label for="inputIPK">IPK</label>
-                                                                <input type="text" class="form-control" id="inputIPK"
-                                                                    name="inputIPK" value="{{ $item->ipk }}"
+                                                                <input type="number" max="4" class="form-control"
+                                                                    id="inputIPK" name="inputIPK"
+                                                                    value="{{ $item->ipk }}"
                                                                     placeholder="Fill with your GPA" required>
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                 <label for="inputSKS">SKS</label>
-                                                                <input type="text" class="form-control" id="inputSKS"
-                                                                    name="inputSKS" value="{{ $item->sks }}"
+                                                                <input type="number" max="150" class="form-control"
+                                                                    id="inputSKS" name="inputSKS"
+                                                                    value="{{ $item->sks }}"
                                                                     placeholder="Fill with your semester credit" required>
                                                             </div>
                                                         </div>
@@ -233,9 +235,13 @@
                                                                                     class="custom-file-input"
                                                                                     name="inputPasFoto">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
+                                                                                    for="customFile">Pilih dokumen</label>
                                                                             </div>
+                                                                            @if ($errors->has('inputPasFoto'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputPasFoto') }}
+                                                                                </div>
+                                                                            @endif
                                                                             <?php
                                                             } ?>
                                                                         </td>
@@ -264,15 +270,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputAktaKelahiran">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputAktaKelahiran'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputAktaKelahiran') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -300,15 +312,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputIjasahSekolahMenengah">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputIjasahSekolahMenengah'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputIjasahSekolahMenengah') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -336,15 +354,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputJudulTugasAkhirIndonesia">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputJudulTugasAkhirIndonesia'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputJudulTugasAkhirIndonesia') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -372,15 +396,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputJudulTugasAkhirInggris">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputJudulTugasAkhirInggris'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputJudulTugasAkhirInggris') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -412,15 +442,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputBebasPinjamBuku">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputBebasPinjamBuku'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputBebasPinjamBuku') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -448,15 +484,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputTranskripDariSikad">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputTranskripDariSikad'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputTranskripDariSikad') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -484,15 +526,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputResumeSkkDanSimskk">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputResumeSkkDanSimskk'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputResumeSkkDanSimskk') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -520,15 +568,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputHasilTestEpt">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputHasilTestEpt'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputHasilTestEpt') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -561,15 +615,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputBuktiPembayaran">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputBuktiPembayaran'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputBuktiPembayaran') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -602,15 +662,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputSuratGantiNama">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputSuratGantiNama'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputSuratGantiNama') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -638,15 +704,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputFormBiodataPesertaYudisium">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputFormBiodataPesertaYudisium'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputFormBiodataPesertaYudisium') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -677,15 +749,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputSertifikatKeahlian">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputSertifikatKeahlian'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputSertifikatKeahlian') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -713,15 +791,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputPoseterA3">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputPoseterA3'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputPoseterA3') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -749,15 +833,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputBukuTugasAkhirSah">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputBukuTugasAkhirSah'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputBukuTugasAkhirSah') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -785,15 +875,21 @@
                                                                             </div>
                                                                             <?php
                                                             }else{
-                                                            ?> <div class="custom-file">
+                                                            ?>
+                                                                            <div class="custom-file">
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
                                                                                     name="inputJurnalPenelitian">
                                                                                 <label class="custom-file-label"
-                                                                                    for="customFile">Choose
-                                                                                    file</label>
-                                                                            </div><?php
+                                                                                    for="customFile">Pilih dokumen</label>
+                                                                            </div>
+                                                                            @if ($errors->has('inputJurnalPenelitian'))
+                                                                                <div class="error text-danger">
+                                                                                    {{ $errors->first('inputJurnalPenelitian') }}
+                                                                                </div>
+                                                                            @endif
+                                                                            <?php
                                                             } ?>
                                                                         </td>
                                                                     </tr>
@@ -808,16 +904,43 @@
                                 </div>
                             @endforeach
                         </div>
-
-                        <div class="card card-warning">
-                            <div class="card-header">
-                                <h4>Kirim Pengajuan</h4>
+                        @if (session()->has('message'))
+                            <div class="card card-danger">
+                                <div class="card-header">
+                                    <h4>Request Failed</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="empty-state" data-height="400" style="height: 400px;">
+                                        <div class="empty-state-icon bg-danger">
+                                            <i class="fas fa-times"></i>
+                                        </div>
+                                        <h2>Pengajuan Dibatalkan Sistem</h2>
+                                        <p class="lead">
+                                            {{ session()->get('message') }}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <p>Sebelum mengirim pastikan semua file sesuai kriteria persyaratan Yudisium.</p>
-                            </div>
-                            <input class="card-footer btn btn-warning bg-warning" type="submit" value="Kirim">
-                        </div>
+                        @endif
+                        @foreach ($collection as $item)
+                            <form id="form-3" action="{{ url()->current() }}/konfirmasi-persyaratan-mahasiswa"
+                                method="post">
+                                @csrf
+                                <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
+                                <div class="card card-warning">
+                                    <div class="card-header">
+                                        <h4>Kirim Pengajuan</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Sebelum mengirim pastikan semua file sesuai kriteria persyaratan Yudisium.</p>
+                                    </div>
+                                    <input class="card-footer btn btn-warning bg-warning" type="submit" value="Kirim"
+                                        onclick="return confirm('Apakah semua berkas sudah benar?')" data-toggle="tooltip"
+                                        data-placement="top"
+                                        data-original-title="Bagian tata usaha akan memberikan tanggapan setelah anda mengirim pengajuan.">
+                                </div>
+                            </form>
+                        @endforeach
                     </div>
                 </section>
             </div>

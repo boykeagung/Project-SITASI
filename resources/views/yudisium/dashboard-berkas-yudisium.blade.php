@@ -7,28 +7,40 @@
 
             @include('navbar')
 
-            @include('sidebar.sidebar-tata-usaha')
+            <?php if(Auth::user()->level == "koordinator-yudisium") { ?>
+            @include('sidebar.sidebar-koordinator-yudisium')
+            <?php } else if(Auth::user()->level == "tu") { ?>
+            @include('sidebar.tata-usaha')
+            <?php } ?>
 
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
                         <h1>Cek Berkas Yudisium</h1>
+                        <?php if(Auth::user()->level == "koordinator-yudisium") { ?>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active">
-                                <a href="http://127.0.0.1:8000/dashboard-tata-usaha">
+                                <a href="{{ url('/dashboard-koordinator-yudisium') }}">
+                                    Dashboard Koordinator Yudisium
+                                </a>
+                            </div>
+                            <div class="breadcrumb-item">
+                                Detail Permintaan Yudisium
+                            </div>
+                        </div>
+                        <?php } else if(Auth::user()->level == "tu") { ?>
+                        <div class="section-header-breadcrumb">
+                            <div class="breadcrumb-item active">
+                                <a href="{{ url('/dashboard-tata-usaha') }}">
                                     Dashboard TU
                                 </a>
                             </div>
                             <div class="breadcrumb-item">
-                                Yudisium
-                            </div>
-                            <div class="breadcrumb-item">
-                                Berkas
-                            </div>
-                            <div class="breadcrumb-item">
-                                NRP
+                                Detail Permintaan Yudisium
                             </div>
                         </div>
+                        <?php } ?>
+
                     </div>
                 </section>
                 <section class="section">

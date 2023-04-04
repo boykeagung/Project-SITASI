@@ -5,9 +5,13 @@
         <div class="main-wrapper">
             <div class="navbar-bg"></div>
 
-            @include('  navbar')
+            @include('navbar')
 
+            <?php if(Auth::user()->level == "koordinator-yudisium") { ?>
             @include('sidebar.sidebar-koordinator-yudisium')
+            <?php } else if(Auth::user()->level == "tu") { ?>
+            @include('sidebar.tata-usaha')
+            <?php } ?>
 
             <!-- Main Content -->
 
@@ -65,7 +69,7 @@
                     <div class="card card-primary">
                         <div class="collapse show" id="card-collapse">
                             <div class="card-body">
-                                <table id="tabel" class="table table-hover">
+                                <table id="tabel" class="table table-hover border">
                                     <thead>
                                         <th scope="col">NRP</th>
                                         <th scope="col">Mahasiswa</th>
@@ -75,7 +79,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($yudisium as $y) { ?>
+                                        <?php foreach ($yudisium as $y) {
+                                            $array = DB::table('yudisium')
+                                                ->select('pas_foto', 'akta_kelahiran', 'ijasah_sekolah_menengah', 'judul_ta_id', 'judul_ta_en', 'bebas_pinjam_buku', 'transkrip_dari_sikad', 'resume_skk_dan_simskk', 'hasil_test_ept', 'bukti_pembayaran', 'surat_ganti_nama', 'form_biodata_peserta_yudisium', 'sertifikat_keahlian', 'poster_a3', 'buku_tugas_akhir_sah', 'jurnal_penelitian')
+                                                ->where('nrp', $y->nrp)
+                                                ->get();
+                                            $sudah_upload = 0;
+                                            $belum_upload = 0;
+                                            $total_berkas = 16;
+                                            foreach ($array as $item) {
+                                                foreach ($item as $key => $value) {
+                                                    if (is_null($value)) {
+                                                        $belum_upload++;
+                                                    } else {
+                                                        $sudah_upload++;
+                                                    }
+                                                }
+                                            }
+                                            $rata_rata = number_format((float) ($sudah_upload / $total_berkas), 2, '.', '') * 100;
+                                        ?>
                                         <tr>
                                             <td><?= $y->nrp ?></td>
                                             <td>
@@ -84,11 +106,15 @@
                                                 </figure>
                                                 <?= $y->nama_lengkap ?>
                                             </td>
+
                                             <td>
+                                                {{ $sudah_upload . '/' . $belum_upload }}
                                                 <div class="progress" data-height="25" style="height: 25px;">
-                                                    <div class="progress-bar" role="progressbar" data-width="25%"
-                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
-                                                        style="width: 25%;">25%</div>
+                                                    <div class="progress-bar" role="progressbar"
+                                                        data-width="{{ $rata_rata }}%"
+                                                        aria-valuenow="{{ $rata_rata }}" aria-valuemin="0"
+                                                        aria-valuemax="100" style="width: {{ $rata_rata }}%;">
+                                                        {{ $rata_rata }}%</div>
                                                 </div>
                                             </td>
                                             <td>
