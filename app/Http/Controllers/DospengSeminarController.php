@@ -15,8 +15,8 @@ class DospengSeminarController extends Controller
         $username = Auth::user()->username;
         $data['seminar'] = Seminar::join('ta', 'seminar.id_ta', '=', 'ta.id_ta')
             ->join('users', 'ta.username', '=', 'users.username')
-            ->where('ta.pembimbing1', 'like', '%' . $username . '%')
-            ->orWhere('ta.pembimbing2', 'like', '%' . $username . '%')
+            ->where('ta.penguji1', 'like', '%' . $username . '%')
+            ->orWhere('ta.penguji2', 'like', '%' . $username . '%')
             ->select('seminar.*', 'ta.username', 'users.name')
             ->get();
         return view('dosen_pembimbing_penguji.dashboard-dospenguji-seminar-ta', $data);

@@ -8,7 +8,7 @@
             <a href <?php echo url('#') ?>><img src="/assets/img/logo.png" width="70"></a>
         </div>
         <ul class="sidebar-menu">
-            <li class="menu-header">Daftar Mahasiswa Bimbingan</li>
+            <li class="menu-header">Menu Mahasiswa yang Dibimbing</li>
             <li><a class="nav-link" href=<?php echo url('dashboard-dospem-proposal-ta') ?>><i
                         class="fas fa-sticky-note"></i> <span>Proposal Tugas
                         Akhir</span></a></li>
@@ -34,6 +34,12 @@
                         Akhir</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-dospenguji-sidang-kp') ?>><i
                         class="fas fa-sticky-note"></i> <span>Sidang Kerja Praktik</span></a></li>
+            <li class="menu-header">Daftar Mahasiswa Bimbingan</li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-dospem-proposal-ta') ?>><i
+                        class="fas fa-sticky-note"></i> <span>Bimbingan Tugas Akhir</span></a></li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-dospem-seminar-ta') ?>><i
+                        class="fas fa-book-open"></i>
+                    <span>Bimbingan Kerja Praktik</span></a></li>
             <!--<li class="menu-header">Pengguna</li>
 <li><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Pengguna Admin</span></a></li>
 <li><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Pengguna Mahasiswa</span></a></li>

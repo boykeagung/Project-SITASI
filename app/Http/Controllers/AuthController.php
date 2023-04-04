@@ -38,7 +38,7 @@ class AuthController extends Controller
 
     public function LoginKoordinatorYudisium()
     {
-     return view('login.login-koordinator-yudisium');
+        return view('login.login-koordinator-yudisium');
     }
 
     public function PostLoginKoordinatorYudisium(Request $request)
@@ -59,7 +59,7 @@ class AuthController extends Controller
             'username' => 'The provided credentials do not match our records.',
         ])->onlyInput('username');
     }
-    
+
     public function postLoginMahasiswa(Request $request)
     {
 
