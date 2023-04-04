@@ -25,7 +25,7 @@
     <script src="{{asset('https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js')}}"></script>
 
 </head>
-
+    
 <body>
     <div class="container-fluid">
 

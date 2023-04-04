@@ -31,7 +31,7 @@
                                             <th>NRP</th>
                                             <th>Nama Lengkap</th>
                                             <th>Penguji 1</th>
-                                            <th>Penguji 2</th>
+                                            {{-- <th>Penguji 2</th> --}}
                                             <th>Laporan KP</th>
                                             <th>Ruangan</th>
                                             <th>Jam Sidang KP</th>
@@ -41,7 +41,7 @@
                                             <th>Komentar Pembimbing</th>
                                             <th>Komentar Penguji</th>
                                             <th>Update at</th>
-                                            <th>Action</th>
+                                            {{-- <th>Action</th> --}}
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
@@ -56,7 +56,7 @@
                                             <td>{{$skp->username}}</td>
                                             <td>{{$skp->name}}</td>
                                             <td>{{$skp->penguji1}}</td>
-                                            <td>{{$skp->penguji2}}</td>
+                                            {{-- <td>{{$skp->penguji2}}</td> --}}
                                             <td>
                                                 @if($skp->laporan == null)
                                                 {{link_to('Laporan_kp/'.$skp->laporan,'Lihat',['class'=>'btn btn-info disabled','target'=>'_blank'])}}
@@ -78,9 +78,9 @@
                                             <td>{{$skp->komentar1}}</td>
                                             <td>{{$skp->komentar2}}</td>
                                             <td>{{$skp->updated_at}}</td>
-                                            <td>
+                                            {{-- <td>
                                                 {{link_to('dashboard-koordinator-edit-sidang-kp/'.$skp->id,'Edit',['class'=>'btn btn-warning'])}}
-                                            </td>
+                                            </td> --}}
                                             <td>
                                                 {!!
                                                 Form::open(['url'=>'dashboard-koordinator-sidang-kp/'.$skp->id,'method'=>'delete'])!!}

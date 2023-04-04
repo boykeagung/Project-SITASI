@@ -13,21 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kp_form001', function (Blueprint $table) {
+        Schema::create('nilai_dospem_perusahaan', function (Blueprint $table) {
             $table->id();
             $table->string('username');
-            $table->string('nama')->nullable();
-            $table->string('perusahaan1')->nullable();
-            $table->string('alamat_perusahaan1')->nullable();
-            $table->string('bidang_perusahaan1')->nullable();
-            $table->string('perusahaan2')->nullable();
-            $table->string('alamat_perusahaan2')->nullable();
-            $table->string('bidang_perusahaan2')->nullable();
+            $table->string('name');
+            $table->string('kepribadian');
+            $table->string('penguasaan_materi')->nullable();
+            $table->string('keterampilan')->nullable();
+            $table->string('kreatifitas')->nullable();
+            $table->string('tanggung_jawab')->nullable();
+            $table->string('komunikasi')->nullable();
+            $table->string('pdf_nilai')->nullable();
             $table->string('status')->nullable();
-            $table->string('pdf_form001')->nullable();
-            $table->string('surat')->nullable();
             $table->timestamps();
             $table->foreign('username')->references('username')->on('users')->onDelete('cascade');
+            // $table->foreign('name')->references('name')->on('users')->onDelete('cascade');
         });
     }
 
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kp_form001');
+        //
     }
 };

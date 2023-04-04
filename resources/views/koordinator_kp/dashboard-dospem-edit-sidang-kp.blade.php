@@ -1,4 +1,4 @@
-@extends('layouts.layout-dashboard')
+@extends('layout.layout-koordinator-kp')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 
         @include('components.navbar')
 
-        @include('components.sidebar-dospem-dospenguji-ta')
+        @include('sidebar.sidebar-koordinator-kp')
 
         <!-- Main Content -->
         <div class="main-content">
@@ -75,7 +75,7 @@
 </div>
 @endsection
 
-@push('plugins-css')
+{{-- @push('plugins-css')
 @endpush
 
 @push('template-css')
@@ -85,4 +85,4 @@
 @endpush
 
 @push('specific-js')
-@endpush
+@endpush --}}

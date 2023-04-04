@@ -48,7 +48,7 @@ class KoordinatorKPController extends Controller
         $data['kp'] = KP::find($id);
         $data['user'] = User::all()->where('level', 'user');
         $data['user1'] = User::all()->whereIn('level', ['koordinator', 'dosen']);
-        return view('koordinator_kp.dashboard-koordinator-edit-kp', $data);
+        return view('koordinator_kp.dashboard-koordinator-edit-sidang-kp', $data);
     }
 
     public function update($id, Request $request)

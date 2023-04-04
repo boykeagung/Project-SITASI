@@ -29,8 +29,14 @@ use App\Http\Controllers\KoordinatorBimbinganTA;
 use App\Http\Controllers\TUForm001Controller;
 use App\Http\Controllers\testForm001Controller;
 use App\Http\Controllers\YudisiumController;
+
+use App\Http\Controllers\DospemNilaiKPController;
+use App\Http\Controllers\NilaiDosPemController;
+use App\Http\Controllers\NilaiDosPemPerusahaanController;
+
 use App\Models\Bimbingan_kp;
 use App\Models\bimbingan_ta;
+
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
 use App\Models\TA;
@@ -155,6 +161,8 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     // Route::get('dashboard-mahasiswa-tambah-file/{id}', [Form001Controller::class, 'tambahFile']);
     // Route::post('dashboard-mahasiswa-form-001', [Form001Controller::class, 'store2']);
     // Route::get('mahasiswa-generate-form-001/{id}', [Form001Controller::class, 'generateForm001']); 
+    Route::get('generate_nilai_kp', [NilaiDosPemController::class, 'generateNilaiKP']); //TESTING generate nilai
+    
 
     #Sidang_kp
     Route::get('dashboard-mahasiswa-sidang-kp', [SidangKPController::class, 'index']);
@@ -163,6 +171,21 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::get('dashboard-mahasiswa-edit-sidang-kp/{id}', [SidangKPController::class, 'edit']); //select
     Route::put('dashboard-mahasiswa-sidang-kp/{id}', [SidangKPController::class, 'update']); //update
     Route::delete('dashboard-mahasiswa-sidang-kp/{id}', [SidangKPController::class, 'delete']); //delete
+
+
+    #Nilai
+    Route::get('dashboard-mahasiswa-penilaian-kp', [NilaiDosPemController::class, 'index']);
+    Route::get('dashboard-mahasiswa-tambah-penilaian-kp-dospem', [NilaiDosPemController::class, 'create']);
+    Route::post('dashboard-mahasiswa-penilaian-kp', [NilaiDosPemController::class, 'store']);
+    Route::get('dashboard-mahasiswa-edit-penilaian-kp-dospem/{id}', [NilaiDosPemController::class, 'edit']); //select
+    Route::put('dashboard-mahasiswa-penilaian-kp/{id}', [NilaiDosPemController::class, 'update']);
+    Route::delete('dashboard-mahasiswa-penilaian-kp/{id}', [NilaiDosPemController::class, 'delete']); //delete
+    
+    Route::get('dashboard-mahasiswa-tambah-penilaian-kp-dospem-perusahaan', [NilaiDosPemPerusahaanController::class, 'create']);
+    Route::post('dashboard-mahasiswa-penilaian-kp/perusahaan', [NilaiDosPemPerusahaanController::class, 'store']);
+    Route::get('dashboard-mahasiswa-edit-penilaian-kp-dospem-perusahaan/{id}', [NilaiDosPemPerusahaanController::class, 'edit']); //select
+    Route::put('dashboard-mahasiswa-penilaian-kp/perusahaan/{id}', [NilaiDosPemPerusahaanController::class, 'update']);
+    Route::delete('dashboard-mahasiswa-penilaian-kp/perusahaan/{id}', [NilaiDosPemPerusahaanController::class, 'delete']); //delete
 
     #bimbingan_ta
     Route::get('dashboard-mahasiswa-bimbingan-ta', [BimbinganTAController::class, 'index']);
@@ -177,6 +200,7 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::post('dashboard-mahasiswa-bimbingan-kp', [BimbinganKPController::class, 'store']);
     Route::get('dashboard-mahasiswa-edit-bimbingan-kp/{id}', [BimbinganKPController::class, 'edit']); //select
     Route::put('dashboard-mahasiswa-bimbingan-kp/{id}', [BimbinganKPController::class, 'update']); //update
+
 });
 
 // Route::get('/index', function () {
@@ -348,6 +372,8 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator']], function (
     Route::get('dashboard-dospenguji-sidang-kp', [DospengSidangKPController::class, 'index']);
     Route::get('dashboard-dospenguji-edit-sidang-kp/{id}', [DospengSidangKPController::class, 'edit']);
     Route::put('dashboard-dospenguji-sidang-kp/{id}', [DospengSidangKPController::class, 'update']);
+
+    Route::get('dosen.penilaian_dospem_kp', [DospengSidangKPController::class, 'generateNilai']);
 });
 
 Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
@@ -367,6 +393,8 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
     Route::get('dashboard-tata-usaha-form-001', [TUForm001Controller::class, 'index']);
     Route::get('dashboard-tata-usaha-edit-form-001/{id}', [TUForm001Controller::class, 'edit']);
     Route::put('dashboard-tata-usaha-form-001/{id}', [TUForm001Controller::class, 'update']);
+
+    
 
     // Route::get('generate-form-001/{id}', [Form001Controller::class, 'generateForm001TU']); //generate form-001
 });
@@ -502,3 +530,9 @@ Route::get('/dashboard-tata-usaha-sidang-ta', function () {
 // Route::get('dashboard-koordinator-ta', [UsersController::class, 'index']);
 // Route::get('dashboard-koordinator-tambah-data-mahasiswa', [UsersController::class, 'create']); //create 
 // Route::post('dashboard-koordinator-tambah-data-mahasiswa', [UsersController::class, 'store']); //store
+
+
+Route::get('/nilai', function () {
+    return view('dosen.penilaian_dospem_kp');
+});
+

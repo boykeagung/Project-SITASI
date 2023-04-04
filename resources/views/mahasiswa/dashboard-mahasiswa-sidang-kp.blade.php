@@ -31,7 +31,7 @@
                                                 {{-- <th>NRP</th> --}}
                                                 {{-- <th>Nama Lengkap</th> --}}
                                                 <th>Penguji 1</th>
-                                                <th>Penguji 2</th>
+                                                {{-- <th>Penguji 2</th> --}}
                                                 <th>Laporan KP</th>
                                                 <th>Ruangan</th>
                                                 <th>Jam Sidang KP</th>
@@ -56,7 +56,7 @@
                                                 {{-- <td>{{$skp->username}}</td> --}}
                                                 {{-- <td>{{$skp->name}}</td> --}}
                                                 <td>{{$skp->penguji1}}</td>
-                                                <td>{{$skp->penguji2}}</td>
+                                                {{-- <td>{{$skp->penguji2}}</td> --}}
                                                 <td>
                                                     @if($skp->laporan == null)
                                                     {{link_to('Laporan_kp/'.$skp->laporan,'Lihat',['class'=>'btn btn-info disabled','target'=>'_blank'])}}

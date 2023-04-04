@@ -18,6 +18,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4>Daftar Mahasiswa Sidang Proposal Tugas Akhir</h4>
+                                
                             </div>
                             <div class="card-body table-responsive">
                                 <table class="table table-bordered table-striped" id="table1">
@@ -36,6 +37,7 @@
                                             <th>Komentar Penguji</th>
                                             <th>Update At</th>
                                             <th>Action</th>
+                                            
                                         </tr>
                                     </thead>
 
@@ -76,14 +78,17 @@
                                                 {!! Form::submit('Delete',['class'=>'btn btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
                                                 {!! Form::close()!!}
                                             </> --}}
+                                            <td>{{link_to('dashboard-mahasiswa-edit-form-001/'.$kp_form001->id,'Edit',['class'=>'btn btn-outline-warning'])}}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
+                
             </div>
             @include('components.footer')
         </div>
