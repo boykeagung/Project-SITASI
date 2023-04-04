@@ -15,6 +15,9 @@ return new class extends Migration {
                 ->references('username')
                 ->on('users');
             $table->string('toga');
+            $table->string('status_yudisium')->nullable();
+            $table->string('komentar_tu')->nullable();
+            $table->string('komentar_koordinator')->nullable();
             $table->string('pas_foto')->nullable();
             $table->string('akta_kelahiran')->nullable();
             $table->string('ijasah_sekolah_menengah')->nullable();
