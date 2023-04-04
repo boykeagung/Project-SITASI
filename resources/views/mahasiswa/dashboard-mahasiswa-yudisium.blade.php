@@ -52,7 +52,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             @foreach ($collection as $item)
                                 <div class="col-12 col-md-6 col-lg-4">
@@ -178,7 +177,7 @@
                             @foreach ($collection as $item)
                                 <div class="col-12 col-md-6 col-lg-8">
                                     <form id="form-2" action="{{ url()->current() }}/update-persyaratan"
-                                        method="post">
+                                        method="post" enctype="multipart/form-data">
                                         @csrf
                                         <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
                                         <div class="py-2">
@@ -217,7 +216,8 @@
                                                                         <td> <?php if ($item->pas_foto != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->pas_foto) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/pas_foto"
@@ -231,7 +231,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputPasFoto">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -255,7 +254,8 @@
                                                                             <?php if ($item->akta_kelahiran != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->akta_kelahiran) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/akta_kelahiran"
@@ -268,7 +268,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputAktaKelahiran">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -291,7 +290,8 @@
                                                                             <?php if ($item->ijasah_sekolah_menengah != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->ijasah_sekolah_menengah) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/ijasah_sekolah_menengah"
@@ -304,7 +304,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputIjasahSekolahMenengah">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -327,7 +326,8 @@
                                                                             <?php if ($item->judul_ta_id != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->judul_ta_id) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/judul_ta_id"
@@ -340,7 +340,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputJudulTugasAkhirIndonesia">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -363,7 +362,8 @@
                                                                             <?php if ($item->judul_ta_en != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->judul_ta_en) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/judul_ta_en"
@@ -376,7 +376,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputJudulTugasAkhirInggris">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -403,7 +402,8 @@
                                                                             <?php if ($item->bebas_pinjam_buku != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->bebas_pinjam_buku) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/bebas_pinjam_buku"
@@ -416,7 +416,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputBebasPinjamBuku">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -439,7 +438,8 @@
                                                                             <?php if ($item->transkrip_dari_sikad != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->transkrip_dari_sikad) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/transkrip_dari_sikad"
@@ -452,7 +452,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputTranskripDariSikad">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -475,7 +474,8 @@
                                                                             <?php if ($item->resume_skk_dan_simskk != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->resume_skk_dan_simskk) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/resume_skk_dan_simskk"
@@ -488,7 +488,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputResumeSkkDanSimskk">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -511,7 +510,8 @@
                                                                             <?php if ($item->hasil_test_ept != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->hasil_test_ept) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/hasil_test_ept"
@@ -524,7 +524,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputHasilTestEpt">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -552,7 +551,8 @@
                                                                             <?php if ($item->bukti_pembayaran != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->bukti_pembayaran) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/bukti_pembayaran"
@@ -565,7 +565,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputBuktiPembayaran">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -593,7 +592,8 @@
                                                                             <?php if ($item->surat_ganti_nama != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->surat_ganti_nama) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/surat_ganti_nama"
@@ -606,7 +606,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputSuratGantiNama">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -629,7 +628,8 @@
                                                                             <?php if ($item->form_biodata_peserta_yudisium != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->form_biodata_peserta_yudisium) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/form_biodata_peserta_yudisium"
@@ -642,7 +642,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputFormBiodataPesertaYudisium">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -668,7 +667,8 @@
                                                                             <?php if ($item->sertifikat_keahlian != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->sertifikat_keahlian) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/sertifikat_keahlian"
@@ -681,7 +681,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputSertifikatKeahlian">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -704,7 +703,8 @@
                                                                             <?php if ($item->poster_a3 != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->poster_a3) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/poster_a3"
@@ -717,7 +717,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputPoseterA3">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -740,7 +739,8 @@
                                                                             <?php if ($item->buku_tugas_akhir_sah != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->buku_tugas_akhir_sah) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/buku_tugas_akhir_sah"
@@ -753,7 +753,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputBukuTugasAkhirSah">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose
@@ -776,7 +775,8 @@
                                                                             <?php if ($item->jurnal_penelitian != null) {?>
                                                                             <div class="btn-group d-flex justify-content-between"
                                                                                 role="group">
-                                                                                <a href="#"
+                                                                                <a target="_blank"
+                                                                                    href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->jurnal_penelitian) }}"
                                                                                     class="btn btn-icon text-primary icon-left pl-0"><i
                                                                                         class="far fa-file"></i> Lihat</a>
                                                                                 <a href="{{ url()->current() }}/reset/{{ $item->nrp }}/jurnal_penelitian"
@@ -789,7 +789,6 @@
                                                                                 <input type="file"
                                                                                     onchange="javascript:this.form.submit();"
                                                                                     class="custom-file-input"
-                                                                                    accept="application/pdf"
                                                                                     name="inputJurnalPenelitian">
                                                                                 <label class="custom-file-label"
                                                                                     for="customFile">Choose

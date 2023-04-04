@@ -32,9 +32,9 @@
                     </div>
                 </section>
                 <section class="section">
+                    <?php foreach ($data as $d) {?>
                     <div class="row">
-                        <?php foreach ($data as $d) {?>
-                        <div class="col col-12 col-lg-4">
+                        <div class="col col-12 col-lg-3">
                             <div class="sticky-top pt-4">
                                 <div class="card card-primary">
                                     <div class="card-header">
@@ -75,15 +75,14 @@
                                             </table>
                                             <a href="https://wa.me/+<?= $d->no_hp ?>"
                                                 class="btn w-100 btn-icon icon-left btn-success mt-2">
-                                                <i class="fab fa-whatsapp"></i> Message <?= $d->nama_lengkap ?> on WhatsApp
+                                                <i class="fab fa-whatsapp"></i> Message on WhatsApp
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <?php } ?>
-                        <div class="col col-12 col-lg-8">
+                        <div class="col col-12 col-lg-9">
                             <div class="sticky-top pt-4">
                                 <div class="card card-primary">
                                     <div class="card-body d-flex">
@@ -101,18 +100,32 @@
                                         <table class="table table-striped mb-0">
                                             <tbody>
                                                 <tr>
-                                                    <th class="text-center">No</th>
-                                                    <th>Hasil Upload Mahasiswa</th>
+                                                    <th>
+                                                        No
+                                                    </th>
+                                                    <th>
+                                                        Nama Dokumen
+                                                    </th>
+                                                    <th>
+                                                        Dokumen
+                                                    </th>
                                                 </tr>
                                                 <tr>
                                                     <td>
                                                         1
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Pas Foto Berwarna
-                                                        </a>
+                                                        Pas Foto Berwarna
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->pas_foto)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->pas_foto) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -120,10 +133,17 @@
                                                         2
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Akte Kelahiran
-                                                        </a>
+                                                        Akte Kelahiran
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->akta_kelahiran)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->akta_kelahiran) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -131,10 +151,17 @@
                                                         3
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Ijasah SMA
-                                                        </a>
+                                                        Ijasah SMA
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->ijasah_sekolah_menengah)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->ijasah_sekolah_menengah) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -142,10 +169,17 @@
                                                         4
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Judul Tugas Akhir (Bahasa Indonesia)
-                                                        </a>
+                                                        Judul Tugas Akhir (Bahasa Indonesia)
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->judul_ta_id)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->judul_ta_id) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -153,10 +187,17 @@
                                                         5
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Judul Tugas Akhir (Bahasa Inggris)
-                                                        </a>
+                                                        Judul Tugas Akhir (Bahasa Inggris)
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->judul_ta_en)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->judul_ta_en) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -164,11 +205,17 @@
                                                         6
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Bebas Peminjaman Buku Dari Perpustakaan Dan Bukti Penyerahan
-                                                            Buku TA
-                                                        </a>
+                                                        Bebas Peminjaman Buku Dari Perpustakaan Dan Bukti Penyerahan
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->bebas_pinjam_buku)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->bebas_pinjam_buku) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -176,10 +223,17 @@
                                                         7
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Transkrip Dari Sikad
-                                                        </a>
+                                                        Transkrip Dari Sikad
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->transkrip_dari_sikad)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->transkrip_dari_sikad) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -187,10 +241,17 @@
                                                         8
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Resume SKK Dari Simskk
-                                                        </a>
+                                                        Resume SKK Dari Simskk
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->resume_skk_dan_simskk)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->resume_skk_dan_simskk) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -198,10 +259,17 @@
                                                         9
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Hasil Test EPT
-                                                        </a>
+                                                        Hasil Test EPT
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->hasil_test_ept)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->hasil_test_ept) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -209,10 +277,18 @@
                                                         10
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Bila ada
-                                                        </a>
+                                                        Bukti Pembayaran, Melunasi Kewajiban Keuangan/Hutang Disemester
+                                                        Terakhir
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->bukti_pembayaran)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->bukti_pembayaran) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -220,10 +296,17 @@
                                                         11
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Surat Ganti Nama
-                                                        </a>
+                                                        Surat Ganti Nama
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->surat_ganti_nama)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->surat_ganti_nama) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -231,10 +314,17 @@
                                                         12
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Form Biodata Peserta Yudisum
-                                                        </a>
+                                                        Form Biodata Peserta Yudisum
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->form_biodata_peserta_yudisium)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->form_biodata_peserta_yudisium) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -242,10 +332,17 @@
                                                         13
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Sertifikat Keahlian
-                                                        </a>
+                                                        Sertifikat Keahlian
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->sertifikat_keahlian)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->sertifikat_keahlian) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -253,10 +350,17 @@
                                                         14
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Poster Ukuran A3
-                                                        </a>
+                                                        Poster Ukuran A3
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->poster_a3)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->poster_a3) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -264,21 +368,34 @@
                                                         15
                                                     </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Buku Tugas Akhir Yang Telah Disahkan
-                                                        </a>
+                                                        Buku Tugas Akhir Yang Telah Disahkan
+                                                    </td>
+                                                    <td>
+                                                        <?php if(empty($d->buku_tugas_akhir_sah)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->buku_tugas_akhir_sah) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
                                                         16
                                                     </td>
+                                                    <td>Jurnal Penelitian
+                                                    </td>
                                                     <td>
-                                                        <a href="#"class="btn btn-icon icon-left btn-primary">
-                                                            <i class="fa fa-download mr-2"></i>
-                                                            Jurnal Penelitian
-                                                        </a>
+                                                        <?php if(empty($d->jurnal_penelitian)) { ?>
+                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <?php } else { ?>
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->jurnal_penelitian) }}"
+                                                            class="btn btn-icon icon-left btn-dark"><i
+                                                                class="far fa-file"></i> Lihat</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -308,6 +425,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                 </section>
             </div>
 

@@ -10,7 +10,7 @@ class TUYudisiumController extends Controller
     public function index()
     {
         $yudisium = DB::table('yudisium')->join('mahasiswa', 'yudisium.nrp', '=', 'mahasiswa.nrp')->get();
-        return view('tata_usaha.dashboard-tata-usaha-yudisium', ['yudisium' => $yudisium]);
+        return view('yudisium.dashboard-list-pengajuan-yudisium', ['yudisium' => $yudisium]);
     }
     public function lihatBerkasMahasiswa(Request $request, $id)
     {

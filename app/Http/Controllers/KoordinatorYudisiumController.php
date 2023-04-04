@@ -10,7 +10,7 @@ class KoordinatorYudisiumController extends Controller
     public function index()
     {
         $yudisium = DB::table('yudisium')->join('mahasiswa', 'yudisium.nrp', '=', 'mahasiswa.nrp')->get();
-        return view('koordinator_yudisium.dashboard-koordinator-yudisium', ['yudisium' => $yudisium]);
+        return view('yudisium.dashboard-list-pengajuan-yudisium', ['yudisium' => $yudisium]);
     }
 
     public function lihatBerkasMahasiswa(Request $request, $id)
