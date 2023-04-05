@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\File;
 use App\Models\Yudisium;
 use App\Models\Mahasiswa;
+use App\Models\Notifikasi;
 
 class MahasiswaYudisiumController extends Controller
 {
@@ -323,6 +324,13 @@ class MahasiswaYudisiumController extends Controller
             ->get();
         if (!$checkInfoMahasiswa->isEmpty() && !$checkBerkas->isEmpty()) {
             Yudisium::where('nrp', $nrp)->update(['status_yudisium' => 'Menunggu']);
+            DB::table('notifikasi')->insert(
+                array(
+                    'notifikasi_milik' => '11',
+                    'notifikasi_pesan' => 'Ada pengajuan yudisium',
+                    'notifikasi_link' => 'Dayle'
+                )
+            );
             return redirect()->back()->with('message', 'Lengkap!'); //redir ke status
         } else {
             return redirect()->back()->with('message', 'Kami mencoba, namun sepertinya ada data diri atau berkas persyaratan yang belum

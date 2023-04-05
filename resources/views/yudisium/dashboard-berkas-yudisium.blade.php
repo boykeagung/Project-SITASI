@@ -294,7 +294,7 @@
                                                     </td>
                                                     <td>
                                                         <?php if(empty($d->bukti_pembayaran)) { ?>
-                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <span class="badge badge-primary">Opsional</span>
                                                         <?php } else { ?>
                                                         <a target="_blank"
                                                             href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->bukti_pembayaran) }}"
@@ -312,7 +312,7 @@
                                                     </td>
                                                     <td>
                                                         <?php if(empty($d->surat_ganti_nama)) { ?>
-                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <span class="badge badge-primary">Opsional</span>
                                                         <?php } else { ?>
                                                         <a target="_blank"
                                                             href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->surat_ganti_nama) }}"
@@ -348,7 +348,7 @@
                                                     </td>
                                                     <td>
                                                         <?php if(empty($d->sertifikat_keahlian)) { ?>
-                                                        <span class="badge badge-danger">Tidak ada</span>
+                                                        <span class="badge badge-primary">Opsional</span>
                                                         <?php } else { ?>
                                                         <a target="_blank"
                                                             href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->sertifikat_keahlian) }}"

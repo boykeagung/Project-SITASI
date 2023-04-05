@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notifikasi extends Model
 {
+
+    public $table = "notifikasi";
+    protected $fillable = ['notifikasi_milik', 'notifikasi_pesan'];
+    public $timestamps = false;
     use HasFactory;
 }

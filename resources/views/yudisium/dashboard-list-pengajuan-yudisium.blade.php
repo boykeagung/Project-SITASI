@@ -108,8 +108,8 @@
                                             </td>
 
                                             <td>
-                                                {{ $sudah_upload . '/' . $belum_upload }}
-                                                <div class="progress" data-height="25" style="height: 25px;">
+                                                {{ $sudah_upload . '/' . $total_berkas . '. ' . $belum_upload . ' berkas lagi.' }}
+                                                <div class="progress mt-2" data-height="25" style="height: 25px;">
                                                     <div class="progress-bar" role="progressbar"
                                                         data-width="{{ $rata_rata }}%"
                                                         aria-valuenow="{{ $rata_rata }}" aria-valuemin="0"
