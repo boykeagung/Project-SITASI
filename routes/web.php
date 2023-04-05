@@ -21,13 +21,12 @@ use App\Http\Controllers\DospengSidangKPController;
 use App\Http\Controllers\KoordinatorKPController;
 use App\Http\Controllers\KoordinatorSidangKPController;
 use App\Http\Controllers\KPController;
-use App\Http\Controllers\KoordinatorYudisiumController;
 use App\Http\Controllers\SidangKPController;
 use App\Http\Controllers\Form001Controller;
 use App\Http\Controllers\TUForm001Controller;
 use App\Http\Controllers\testForm001Controller;
 use App\Http\Controllers\MahasiswaYudisiumController;
-use App\Http\Controllers\TUYudisiumController;
+use App\Http\Controllers\YudisiumController;
 use App\Http\Controllers\DospemYudisiumController;
 use App\Http\Controllers\DospengYudisiumController;
 use App\Models\Mahasiswa;
@@ -179,8 +178,8 @@ Route::post('dashboard-mahasiswa-yudisium/konfirmasi-persyaratan-mahasiswa', [Ma
 /* koordinator ta */
 Route::group(['middleware' => ['auth', 'rolecek:koordinator-yudisium']], function () {
     // INDEX
-    Route::get('dashboard-koordinator-yudisium', [KoordinatorYudisiumController::class, 'index']);
-    Route::get('dashboard-koordinator-yudisium/berkas/{id}', [TUYudisiumController::class, 'lihatBerkasMahasiswa']);
+    Route::get('dashboard-koordinator-yudisium', [YudisiumController::class, 'index']);
+    Route::get('dashboard-koordinator-yudisium/berkas/{id}', [YudisiumController::class, 'lihatBerkasMahasiswa']);
 
     // // proposal TA
     // Route::get('dashboard-koordinator-tambah-proposal-ta', [KoordinatorProposalController::class, 'create']);
@@ -337,8 +336,8 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
     Route::put('dashboard-tata-usaha-form-001/{id}', [TUForm001Controller::class, 'update']);
 
     // Route::get('generate-form-001/{id}', [Form001Controller::class, 'generateForm001TU']); //generate form-001
-    Route::get('dashboard-tata-usaha-yudisium', [TUYudisiumController::class, 'index']);
-    Route::get('dashboard-tata-usaha-yudisium/berkas/{id}', [KoordinatorYudisiumController::class, 'lihatBerkasMahasiswa']);
+    Route::get('dashboard-tata-usaha-yudisium', [YudisiumController::class, 'index']);
+    Route::get('dashboard-tata-usaha-yudisium/berkas/{id}', [YudisiumController::class, 'lihatBerkasMahasiswa']);
 });
 
 

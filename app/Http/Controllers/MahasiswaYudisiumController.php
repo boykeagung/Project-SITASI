@@ -38,7 +38,8 @@ class MahasiswaYudisiumController extends Controller
         if (Yudisium::where('nrp', '=', $loggedNrp)->doesntExist()) {
             $userData = array(
                 'nrp' => $loggedNrp,
-                'toga' => 'xs'
+                'toga' => 'xs',
+                'status_yudisium' => 'Mengumpulkan'
             );
             Yudisium::create($userData);
         }
@@ -327,8 +328,9 @@ class MahasiswaYudisiumController extends Controller
             DB::table('notifikasi')->insert(
                 array(
                     'notifikasi_milik' => '11',
-                    'notifikasi_pesan' => 'Ada pengajuan yudisium',
-                    'notifikasi_link' => 'Dayle'
+                    'notifikasi_pesan' => 'Lorem ipsum dolor yudisium sit asmet.',
+                    'notifikasi_link' => 'Dayle',
+                    'notifikasi_waktu' => now()
                 )
             );
             return redirect()->back()->with('message', 'Lengkap!'); //redir ke status

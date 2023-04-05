@@ -9,19 +9,20 @@
         </ul>
     </div>
     <ul class="navbar-nav navbar-right">
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                class="nav-link notification-toggle nav-link-lg beep" aria-expanded="false"><i
+
+        <li class="dropdown dropdown-list-toggle">
+            <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i
                     class="far fa-bell"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
-                <div class="dropdown-header">Notifications
+                <div class="dropdown-header">Notifikasi
                     <div class="float-right">
-                        <a href="#">Mark All As Read</a>
+                        <a href="#">Tandai Baca Semua</a>
                     </div>
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons" tabindex="3"
                     style="overflow: hidden; outline: none;">
-                    {{-- <?php foreach ($notifikasi as $n) { ?> --}}
-                    {{-- <a href="{{ $n->notifikasi_link }}" class="dropdown-item">
+                    <?php foreach ($notifikasi as $n) { ?>
+                    <a href="{{ $n->notifikasi_link }}" class="dropdown-item">
                         <div class="dropdown-item-icon bg-info text-white">
                             <i class="fas fa-bell"></i>
                         </div>
@@ -29,23 +30,11 @@
                             {{ $n->notifikasi_pesan }}
                             <div class="time">Yesterday</div>
                         </div>
-                    </a> --}}
-                    {{-- <?php }?> --}}
+                    </a>
+                    <?php } ?>
                 </div>
                 <div class="dropdown-footer text-center">
-                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-                </div>
-                <div id="ascrail2002" class="nicescroll-rails nicescroll-rails-vr"
-                    style="width: 9px; z-index: 1000; cursor: default; position: absolute; top: 58px; left: 341px; height: 350px; opacity: 0.3; display: none;">
-                    <div class="nicescroll-cursors"
-                        style="position: relative; top: 0px; float: right; width: 7px; height: 306px; background-color: rgb(66, 66, 66); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 5px;">
-                    </div>
-                </div>
-                <div id="ascrail2002-hr" class="nicescroll-rails nicescroll-rails-hr"
-                    style="height: 9px; z-index: 1000; top: 399px; left: 0px; position: absolute; cursor: default; display: none; width: 341px; opacity: 0.3;">
-                    <div class="nicescroll-cursors"
-                        style="position: absolute; top: 0px; height: 7px; width: 350px; background-color: rgb(66, 66, 66); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 5px; left: 0px;">
-                    </div>
+                    <a href="#">Lihat Semua <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </li>

@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class TUYudisiumController extends Controller
+class YudisiumController extends Controller
 {
     public function index()
     {
         $yudisium = DB::table('yudisium')->join('mahasiswa', 'yudisium.nrp', '=', 'mahasiswa.nrp')->get();
         return view('yudisium.dashboard-list-pengajuan-yudisium', ['yudisium' => $yudisium]);
     }
+
     public function lihatBerkasMahasiswa(Request $request, $id)
     {
         $data = DB::table('yudisium')->join('mahasiswa', 'yudisium.nrp', '=', 'mahasiswa.nrp')->where('mahasiswa.nrp', '=', $id)->get();
