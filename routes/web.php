@@ -87,6 +87,15 @@ Route::get('/logout', [AuthController::class, 'logout']);
 /* mahasiswa */
 
 Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
+
+    Route::get('/dashboard-mahasiswa-yudisium', [MahasiswaYudisiumController::class, 'index']);
+    Route::post('dashboard-mahasiswa-yudisium/update-mahasiswa', [MahasiswaYudisiumController::class, 'updateMahasiswa']);
+    Route::post('dashboard-mahasiswa-yudisium/update-persyaratan', [MahasiswaYudisiumController::class, 'updatePersyaratan']);
+    Route::get('dashboard-mahasiswa-yudisium/cek-yudisium', [MahasiswaYudisiumController::class, 'cekYudisium']);
+    Route::get('dashboard-mahasiswa-yudisium/reset/{nrp}/{persyaratan}', [MahasiswaYudisiumController::class, 'resetPersyaratan']);
+    Route::post('dashboard-mahasiswa-yudisium/konfirmasi-persyaratan-mahasiswa', [MahasiswaYudisiumController::class, 'konfirmasiPersyaratan']);
+    Route::get('dashboard-mahasiswa-yudisium/tarikAjuan/{nrp}', [MahasiswaYudisiumController::class, 'tarikAjuan']);
+
     // Route::get('/dashboard-mahasiswa', function () {
     //     return view('mahasiswa.dashboard-mahasiswa');
     // });
@@ -167,13 +176,6 @@ Route::get('/dashboard-mahasiswa-sidang-ta', function () {
     return view('mahasiswa.dashboard-mahasiswa-sidang-ta');
 });
 
-Route::get('/dashboard-mahasiswa-yudisium', [MahasiswaYudisiumController::class, 'index']);
-Route::post('dashboard-mahasiswa-yudisium/update-mahasiswa', [MahasiswaYudisiumController::class, 'updateMahasiswa']);
-Route::post('dashboard-mahasiswa-yudisium/update-persyaratan', [MahasiswaYudisiumController::class, 'updatePersyaratan']);
-Route::get('dashboard-mahasiswa-yudisium/cek-yudisium', [MahasiswaYudisiumController::class, 'cekYudisium']);
-//reset file
-Route::get('dashboard-mahasiswa-yudisium/reset/{nrp}/{persyaratan}', [MahasiswaYudisiumController::class, 'resetPersyaratan']);
-Route::post('dashboard-mahasiswa-yudisium/konfirmasi-persyaratan-mahasiswa', [MahasiswaYudisiumController::class, 'konfirmasiPersyaratan']);
 
 /* koordinator ta */
 Route::group(['middleware' => ['auth', 'rolecek:koordinator-yudisium']], function () {
@@ -312,9 +314,6 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator']], function (
     Route::get('dashboard-dospenguji-sidang-kp', [DospengSidangKPController::class, 'index']);
     Route::get('dashboard-dospenguji-edit-sidang-kp/{id}', [DospengSidangKPController::class, 'edit']);
     Route::put('dashboard-dospenguji-sidang-kp/{id}', [DospengSidangKPController::class, 'update']);
-
-    // Yudisium
-    Route::get('dashboard-dosen-koordinator-yudisium', [DospemYudisiumController::class, 'index']);
 });
 
 Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {

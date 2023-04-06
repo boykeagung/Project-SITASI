@@ -10,7 +10,7 @@
             <?php if(Auth::user()->level == "koordinator-yudisium") { ?>
             @include('sidebar.sidebar-koordinator-yudisium')
             <?php } else if(Auth::user()->level == "tu") { ?>
-            @include('sidebar.tata-usaha')
+            @include('sidebar.sidebar-tata-usaha')
             <?php } ?>
 
             <!-- Main Content -->
@@ -81,12 +81,12 @@
                                     <tbody>
                                         <?php foreach ($yudisium as $y) {
                                             $array = DB::table('yudisium')
-                                                ->select('pas_foto', 'akta_kelahiran', 'ijasah_sekolah_menengah', 'judul_ta_id', 'judul_ta_en', 'bebas_pinjam_buku', 'transkrip_dari_sikad', 'resume_skk_dan_simskk', 'hasil_test_ept', 'bukti_pembayaran', 'surat_ganti_nama', 'form_biodata_peserta_yudisium', 'sertifikat_keahlian', 'poster_a3', 'buku_tugas_akhir_sah', 'jurnal_penelitian')
+                                                ->select('pas_foto', 'akta_kelahiran', 'ijasah_sekolah_menengah', 'judul_ta_id', 'judul_ta_en', 'bebas_pinjam_buku', 'transkrip_dari_sikad', 'resume_skk_dan_simskk', 'hasil_test_ept', 'form_biodata_peserta_yudisium', 'poster_a3', 'buku_tugas_akhir_sah', 'jurnal_penelitian')
                                                 ->where('nrp', $y->nrp)
                                                 ->get();
                                             $sudah_upload = 0;
                                             $belum_upload = 0;
-                                            $total_berkas = 16;
+                                            $total_berkas = 13;
                                             foreach ($array as $item) {
                                                 foreach ($item as $key => $value) {
                                                     if (is_null($value)) {
@@ -108,8 +108,8 @@
                                             </td>
 
                                             <td>
-                                                {{ $sudah_upload . '/' . $total_berkas . '. ' . $belum_upload . ' berkas lagi.' }}
-                                                <div class="progress mt-2" data-height="25" style="height: 25px;">
+                                                {{-- {{ $sudah_upload . '/' . $total_berkas . '. ' . $belum_upload . ' berkas lagi.' }} --}}
+                                                <div class="progress" data-height="25" style="height: 25px;">
                                                     <div class="progress-bar" role="progressbar"
                                                         data-width="{{ $rata_rata }}%"
                                                         aria-valuenow="{{ $rata_rata }}" aria-valuemin="0"
@@ -118,7 +118,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <span class="badge badge-primary">Diterima TU</span>
+                                                {{ $y->status_yudisium }}
                                             </td>
                                             <td>
                                                 <a href="<?= url()->current() . '/berkas/' . $y->nrp ?>"
