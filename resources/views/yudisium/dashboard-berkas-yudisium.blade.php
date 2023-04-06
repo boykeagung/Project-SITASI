@@ -1,5 +1,8 @@
 @extends('layouts.layout-dashboard')
 
+@section('page', 'SITASI')
+@section('title', 'Detail Pengajuan')
+
 @section('content')
     <div id="app">
         <div class="main-wrapper">
@@ -7,13 +10,13 @@
 
             @include('navbar')
 
-            <?php if(Auth::user()->level == "koordinator-yudisium") { ?>
-            @include('sidebar.sidebar-koordinator-yudisium')
-            <?php } else if(Auth::user()->level == "tu") { ?>
-            @include('sidebar.sidebar-tata-usaha')
-            <?php } ?>
+            @if (Auth::user()->level == 'koordinator-yudisium')
+                @include('sidebar.sidebar-koordinator-yudisium')
+            @elseif(Auth::user()->level == 'tu')
+                @include('sidebar.sidebar-tata-usaha')
+            @endif
 
-            @foreach ($data as $d)
+            @foreach ($data as $item)
                 <div class="main-content">
                     <section class="section">
                         <div class="section-header">
@@ -47,36 +50,40 @@
                         <div class="section-title">Tata Cara</div>
                         <?php if(Auth::user()->level == "koordinator-yudisium") { ?>
                         <div class="wizard-steps">
-                            <div class="wizard-step wizard-step-active">
+                            <div class="wizard-step wizard-step-active" data-toggle="tooltip"
+                                data-original-title="Cek kembali berkas persyaratan yang sudah dicek tata usaha">
                                 <div class="wizard-step-icon">
-                                    <i class="fas fa-tshirt"></i>
+                                    <i class="fas fa-user-check"></i>
                                 </div>
                                 <div class="wizard-step-label">
-                                    Order Placed
+                                    Cek Syarat & Komentar TU
                                 </div>
                             </div>
-                            <div class="wizard-step wizard-step-active">
+                            <div class="wizard-step wizard-step-active" data-toggle="tooltip"
+                                data-original-title="Berikan komentar mengenai ditolaknya/diterimanya pengajuan persyaratan mahasiswa">
                                 <div class="wizard-step-icon">
-                                    <i class="fas fa-credit-card"></i>
+                                    <i class="fas fa-comment"></i>
                                 </div>
                                 <div class="wizard-step-label">
-                                    Payment Completed
+                                    Berikan Komentar
                                 </div>
                             </div>
-                            <div class="wizard-step wizard-step-active">
+                            <div class="wizard-step wizard-step-active" data-toggle="tooltip"
+                                data-original-title="Setelah kirim hasil mahasiswa akan menerima notifikasi web, untuk berjaga kabari juga mahasiswa melalui WhatsApp">
                                 <div class="wizard-step-icon">
-                                    <i class="fas fa-shipping-fast"></i>
+                                    <i class="fas fa-paper-plane"></i>
                                 </div>
                                 <div class="wizard-step-label">
-                                    Product Shipped
+                                    Kirim Hasil
                                 </div>
                             </div>
-                            <div class="wizard-step wizard-step-success">
+                            <div class="wizard-step wizard-step-info" data-toggle="tooltip"
+                                data-original-title="Pekerjaan untuk pengajuan ini selesai! ulangi jika menerima notifikasi pengajuan dari mahasiswa lain lagi.">
                                 <div class="wizard-step-icon">
-                                    <i class="fas fa-check"></i>
+                                    <i class="fas fa-info"></i>
                                 </div>
                                 <div class="wizard-step-label">
-                                    Order Completed
+                                    Selesai!
                                 </div>
                             </div>
                         </div>
@@ -101,7 +108,7 @@
                                 </div>
                             </div>
                             <div class="wizard-step wizard-step-active" data-toggle="tooltip"
-                                data-original-title="Jika diterima maka dilanjutkan ke koordinator yudisium, bila ditolak maka mahasiswa akan memperbaiki persyaratan">
+                                data-original-title="Setelah kirim hasil mahasiswa akan menerima notifikasi web, untuk berjaga kabari juga mahasiswa melalui WhatsApp">
                                 <div class="wizard-step-icon">
                                     <i class="fas fa-paper-plane"></i>
                                 </div>
@@ -125,6 +132,7 @@
                                 <div class="section-title">Biodata & Berkas</div>
                                 <div class="card card-secondary">
                                     <div class="card-header">
+                                        <i class="fas fa-user-check mr-2"></i>
                                         <h4>Biodata Mahasiswa</h4>
                                     </div>
                                     <div class="card-body p-0">
@@ -133,48 +141,61 @@
                                                 <tr>
                                                     <td style="white-space: nowrap;width: 1%;font-weight: bold;">Foto
                                                     </td>
-                                                    <td>
+                                                    <td class="d-flex justify-content-between align-items-center">
                                                         <figure class="avatar">
-                                                            <img src="<?= $d->nrp ?>">
+                                                            <img src="<?= $item->nrp ?>">
                                                         </figure>
+                                                        <a href="#" class="btn btn-primary btn-icon icon-left">
+                                                            <i class="fas fa-expand-arrows-alt"></i> Perjelas</a>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="white-space: nowrap;width: 1%;font-weight: bold;">NRP
                                                     </td>
-                                                    <td><?= $d->nrp ?></td>
+                                                    <td><?= $item->nrp ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="white-space: nowrap;width: 1%;font-weight: bold;">Nama
                                                         Lengkap
                                                     </td>
-                                                    <td><?= $d->nama_lengkap ?></td>
+                                                    <td><?= $item->nama_lengkap ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="white-space: nowrap;width: 1%;font-weight: bold;">Tanggal
                                                         Lahir
                                                     </td>
-                                                    <td><?= $d->tanggal_lahir ?></td>
+                                                    <td><?= $item->tanggal_lahir ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="white-space: nowrap;width: 1%;font-weight: bold;">No. HP
                                                     </td>
-                                                    <td><?= $d->no_hp ?></td>
+                                                    <td class="d-flex justify-content-between align-items-center">
+                                                        <?= $item->no_hp ?>
+                                                        <a target="_blank"
+                                                            href="https://wa.me/<?= $item->no_hp ?>?text=Halo%<?= $item->nama_lengkap ?>%20silahkan%20cek%20notifikasi%20website%20SITASI,%20ada%20pemberitahuan%20baru%20mengenai%20pengajuan%20yudisium%20Anda."
+                                                            class="btn btn-success btn-icon icon-left">
+                                                            <i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="white-space: nowrap;width: 1%;font-weight: bold;">Email
                                                     </td>
-                                                    <td><?= $d->email ?></td>
+                                                    <td class="d-flex justify-content-between align-items-center">
+                                                        <?= $item->email ?>
+                                                        <a target="_blank" href="mailto:<?= $item->email ?>"
+                                                            class="btn btn-primary btn-icon icon-left">
+                                                            <i class="fas fa-at"></i> Email</a>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="white-space: nowrap;width: 1%;font-weight: bold;">IPK
                                                     </td>
-                                                    <td><?= $d->ipk ?></td>
+                                                    <td><?= $item->ipk ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="white-space: nowrap;width: 1%;font-weight: bold;">SKS
                                                     </td>
-                                                    <td><?= $d->sks ?></td>
+                                                    <td><?= $item->sks ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -182,6 +203,7 @@
                                 </div>
                                 <div class="card card-secondary">
                                     <div class="card-header">
+                                        <i class="fas fa-file mr-2"></i>
                                         <h4>Berkas Mahasiswa</h4>
                                     </div>
                                     <div class="card-body p-0">
@@ -207,11 +229,11 @@
                                                             Pas Foto Berwarna
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->pas_foto)) { ?>
+                                                            <?php if(empty($item->pas_foto)) { ?>
                                                             <span class="badge badge-danger">Tidak ada</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->pas_foto) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->pas_foto) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -225,11 +247,11 @@
                                                             Akte Kelahiran
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->akta_kelahiran)) { ?>
+                                                            <?php if(empty($item->akta_kelahiran)) { ?>
                                                             <span class="badge badge-danger">Tidak ada</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->akta_kelahiran) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->akta_kelahiran) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -243,11 +265,11 @@
                                                             Ijasah SMA
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->ijasah_sekolah_menengah)) { ?>
+                                                            <?php if(empty($item->ijasah_sekolah_menengah)) { ?>
                                                             <span class="badge badge-danger">Tidak ada</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->ijasah_sekolah_menengah) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->ijasah_sekolah_menengah) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -261,11 +283,11 @@
                                                             Judul Tugas Akhir (Bahasa Indonesia)
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->judul_ta_id)) { ?>
+                                                            <?php if(empty($item->judul_ta_id)) { ?>
                                                             <span class="badge badge-danger">Tidak ada</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->judul_ta_id) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->judul_ta_id) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -279,11 +301,11 @@
                                                             Judul Tugas Akhir (Bahasa Inggris)
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->judul_ta_en)) { ?>
+                                                            <?php if(empty($item->judul_ta_en)) { ?>
                                                             <span class="badge badge-danger">Tidak ada</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->judul_ta_en) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->judul_ta_en) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -297,11 +319,11 @@
                                                             Bebas Peminjaman Buku Dari Perpustakaan Dan Bukti Penyerahan
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->bebas_pinjam_buku)) { ?>
+                                                            <?php if(empty($item->bebas_pinjam_buku)) { ?>
                                                             <span class="badge badge-danger">Tidak ada</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->bebas_pinjam_buku) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->bebas_pinjam_buku) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -315,11 +337,11 @@
                                                             Transkrip Dari Sikad
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->transkrip_dari_sikad)) { ?>
+                                                            <?php if(empty($item->transkrip_dari_sikad)) { ?>
                                                             <span class="badge badge-danger">Tidak ada</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->transkrip_dari_sikad) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->transkrip_dari_sikad) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -333,11 +355,11 @@
                                                             Resume SKK Dari Simskk
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->resume_skk_dan_simskk)) { ?>
+                                                            <?php if(empty($item->resume_skk_dan_simskk)) { ?>
                                                             <span class="badge badge-danger">Tidak ada</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->resume_skk_dan_simskk) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->resume_skk_dan_simskk) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -351,11 +373,11 @@
                                                             Hasil Test EPT
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->hasil_test_ept)) { ?>
+                                                            <?php if(empty($item->hasil_test_ept)) { ?>
                                                             <span class="badge badge-danger">Tidak ada</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->hasil_test_ept) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->hasil_test_ept) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -371,11 +393,11 @@
                                                             Terakhir
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->bukti_pembayaran)) { ?>
+                                                            <?php if(empty($item->bukti_pembayaran)) { ?>
                                                             <span class="badge badge-primary">Opsional</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->bukti_pembayaran) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->bukti_pembayaran) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -389,11 +411,11 @@
                                                             Surat Ganti Nama
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->surat_ganti_nama)) { ?>
+                                                            <?php if(empty($item->surat_ganti_nama)) { ?>
                                                             <span class="badge badge-primary">Opsional</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->surat_ganti_nama) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->surat_ganti_nama) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -407,11 +429,11 @@
                                                             Form Biodata Peserta Yudisum
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->form_biodata_peserta_yudisium)) { ?>
+                                                            <?php if(empty($item->form_biodata_peserta_yudisium)) { ?>
                                                             <span class="badge badge-danger">Tidak ada</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->form_biodata_peserta_yudisium) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->form_biodata_peserta_yudisium) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -425,11 +447,11 @@
                                                             Sertifikat Keahlian
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->sertifikat_keahlian)) { ?>
+                                                            <?php if(empty($item->sertifikat_keahlian)) { ?>
                                                             <span class="badge badge-primary">Opsional</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->sertifikat_keahlian) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->sertifikat_keahlian) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -443,11 +465,11 @@
                                                             Poster Ukuran A3
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->poster_a3)) { ?>
+                                                            <?php if(empty($item->poster_a3)) { ?>
                                                             <span class="badge badge-danger">Tidak ada</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->poster_a3) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->poster_a3) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -461,11 +483,11 @@
                                                             Buku Tugas Akhir Yang Telah Disahkan
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->buku_tugas_akhir_sah)) { ?>
+                                                            <?php if(empty($item->buku_tugas_akhir_sah)) { ?>
                                                             <span class="badge badge-danger">Tidak ada</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->buku_tugas_akhir_sah) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->buku_tugas_akhir_sah) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -478,11 +500,11 @@
                                                         <td>Jurnal Penelitian
                                                         </td>
                                                         <td>
-                                                            <?php if(empty($d->jurnal_penelitian)) { ?>
+                                                            <?php if(empty($item->jurnal_penelitian)) { ?>
                                                             <span class="badge badge-danger">Tidak ada</span>
                                                             <?php } else { ?>
                                                             <a target="_blank"
-                                                                href="{{ asset('Yudisium/' . $d->nrp . '/' . $d->jurnal_penelitian) }}"
+                                                                href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->jurnal_penelitian) }}"
                                                                 class="btn btn-icon icon-left btn-dark"><i
                                                                     class="far fa-file"></i> Lihat</a>
                                                             <?php } ?>
@@ -496,9 +518,10 @@
                             </div>
                             <div class="col col-12 col-lg-4">
                                 <div class="sticky-top pt-1">
-                                    <div class="section-title">Data Pengajuan</div>
+                                    <div class="section-title">Informasi Pengajuan</div>
                                     <div class="card card-secondary">
                                         <div class="card-header">
+                                            <i class="fas fa-info-circle mr-2"></i>
                                             <h4>Informasi Permintaan</h4>
                                         </div>
                                         <div class="card-body p-0">
@@ -509,34 +532,32 @@
                                                             Status
                                                             Yudisium</td>
                                                         <td>
-                                                            <?= !empty($d->status_yudisium) ? $d->status_yudisium : 'Pengisian formulir' ?>
+                                                            <?= !empty($item->status_yudisium) ? $item->status_yudisium : 'Pengisian formulir' ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                            Tanggal Diajukan
+                                                        </td>
+                                                        <td>
+                                                            <?= !empty($item->tanggal_modifikasi_mahasiswa) ? date('d-M-Y h:i:s a', strtotime($item->tanggal_modifikasi_mahasiswa)) : 'Belum ada aksi' ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td style="white-space: nowrap;width: 1%;font-weight: bold;">
                                                             Tanggal
-                                                            Modifikasi Mahasiswa
-                                                        </td>
+                                                            Modifikasi TU</td>
                                                         <td>
-                                                            <?= !empty($d->tanggal_modifikasi_mahasiswa) ? $d->tanggal_modifikasi_mahasiswa : '-' ?>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="white-space: nowrap;width: 1%;font-weight: bold;">
-                                                            Tanggal
-                                                            Modifikasi Tata
-                                                            Usaha</td>
-                                                        <td>
-                                                            <?= !empty($d->tanggal_modifikasi_tu) ? $d->tanggal_modifikasi_tu : '-' ?>
+                                                            <?= !empty($item->tanggal_modifikasi_tu) ? date('d-M-Y h:i:s a', strtotime($item->tanggal_modifikasi_tu)) : 'Belum ada aksi' ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td style="white-space: nowrap;width: 1%;font-weight: bold;">
                                                             Tanggal
                                                             Modifikasi
-                                                            Koordinator Yudisium</td>
+                                                            Koor</td>
                                                         <td>
-                                                            <?= !empty($d->tanggal_modifikasi_koordinator) ? $d->tanggal_modifikasi_koordinator : '-' ?>
+                                                            <?= !empty($item->tanggal_modifikasi_koordinator) ? $item->tanggal_modifikasi_koordinator : 'Belum ada aksi' ?>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -546,36 +567,87 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="section-title">Hasil</div>
-                        <div class="card card-info">
+
+
+                        {{ Form::open(['url' => url()->current() . '/aksi']) }}
+                        <div class="section-title">Aksi</div>
+                        <div class="card card-primary">
                             <div class="card-header">
-                                <h4>Berikan komentar dan hasil</h4>
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                <h4>Aksi</h4>
                             </div>
-                            <div class="card-body">
-                                <?php if(Auth::user()->level == "koordinator-yudisium") { ?>
-                                TODO:
-                                <?php } else if(Auth::user()->level == "tu") { ?>
-                                <div class="form-group">
-                                    <textarea class="form-control" aria-describedby="komentar"
-                                        placeholder="Berikan komentar mengenai diterima/ditolaknya biodata dan berkas ..." required></textarea>
-                                </div>
-                                <label class="mr-2">Dari hasil pengecekan persyaratan yang dilakukan tata usaha maka
-                                    pengajuan</label>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="inputDiterima" name="inputStatusYudisium"
-                                        class="custom-control-input">
-                                    <label class="custom-control-label" for="inputDiterima" required>Diterima</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="inputDitolak" name="inputStatusYudisium"
-                                        class="custom-control-input">
-                                    <label class="custom-control-label" for="inputDitolak">Ditolak</label>
-                                </div>
-                                <?php } ?>
+                            <div class="card-body pb-0">
+                                <p>Mahasiswa akan menerima notifikasi hasil aksi via web SITASI, jika ingin melakukan
+                                    via
+                                    WhatsApp
+                                    messengger anda dapat melihat seksi biodata.</p>
+                                @if (Auth::user()->level == 'koordinator-yudisium')
+                                    <input type="hidden" name="inputBy" value="koor">
+                                    <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
+                                    <div class="form-group">
+                                        <label class="form-label">Komentar Tata Usaha</label>
+                                        <blockquote>
+                                            <?= !empty($item->komentar_tu) ? $item->komentar_tu : 'Belum ada komentar' ?>
+                                        </blockquote>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Komentar Koordinator Yudisium</label>
+                                        <textarea name="inputKomentar" class="form-control" aria-describedby="komentar"
+                                            placeholder="Komentar yang berkaitan dengan hasil akhir pengecekan..." required>
+                                            <?php if (!empty($item->komentar_koor)) {
+                                                echo $item->komentar_koor;
+                                            } ?>
+                                            </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Keputusan</label>
+                                        <div class="selectgroup w-100">
+                                            <label class="selectgroup-item">
+                                                <input type="radio" name="inputKeputusan" value="Diterima"
+                                                    class="selectgroup-input" checked>
+                                                <span class="selectgroup-button">Diterima</span>
+                                            </label>
+                                            <label class="selectgroup-item">
+                                                <input type="radio" name="inputKeputusan" value="Mengisi"
+                                                    class="selectgroup-input">
+                                                <span class="selectgroup-button">Ditolak</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {{ Form::close() }}
+                                @elseif(Auth::user()->level == 'tu')
+                                    <input type="hidden" name="inputBy" value="tu">
+                                    <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
+                                    <div class="form-group">
+                                        <label class="form-label">Komentar Tata Usaha</label>
+                                        <textarea name="inputKomentar" class="form-control"
+                                            aria-describedby="komentar"placeholder="Komentar yang berkaitan dengan hasil akhir pengecekan..." required><?php if (!empty($item->komentar_tu)) {
+                                                echo $item->komentar_tu;
+                                            } ?>
+                                        </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Keputusan</label>
+                                        <div class="selectgroup w-100">
+                                            <label class="selectgroup-item">
+                                                <input type="radio" name="inputKeputusan" value="Dikonfirmasi TU"
+                                                    class="selectgroup-input" checked>
+                                                <span class="selectgroup-button">Lanjutkan ke Koordinator</span>
+                                            </label>
+                                            <label class="selectgroup-item">
+                                                <input type="radio" name="inputKeputusan" value="Mengisi"
+                                                    class="selectgroup-input">
+                                                <span class="selectgroup-button">Tolak</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
-                            <input class="card-footer btn btn-info bg-info" type="submit" value="Kirim Hasil"
-                                onclick="return confirm('Apakah semua berkas sudah anda cek dan benar?')">
+                            <input class="card-footer btn btn-primary bg-primary" type="submit" value="Kirim"
+                                onclick="return confirm('Apakah semua berkas sudah anda cek dan benar?')"
+                                @if ($item->status_yudisium != 'Dikonfirmasi TU' && Auth::user()->level == 'koordinator-yudisium') disabled @endif>
                         </div>
+                        {{ Form::close() }}
                     </section>
                 </div>
             @endforeach
@@ -593,4 +665,11 @@
 @endpush
 
 @push('specific-js')
+    <script>
+        $(document).ready(function() {
+            $('textarea').each(function() {
+                $(this).val($(this).val().trim());
+            });
+        });
+    </script>
 @endpush

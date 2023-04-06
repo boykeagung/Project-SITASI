@@ -182,6 +182,7 @@ Route::group(['middleware' => ['auth', 'rolecek:koordinator-yudisium']], functio
     // INDEX
     Route::get('dashboard-koordinator-yudisium', [YudisiumController::class, 'index']);
     Route::get('dashboard-koordinator-yudisium/berkas/{id}', [YudisiumController::class, 'lihatBerkasMahasiswa']);
+    Route::post('dashboard-koordinator-yudisium/berkas/{id}/aksi', [YudisiumController::class, 'aksiBerkasMahasiswa']);
 
     // // proposal TA
     // Route::get('dashboard-koordinator-tambah-proposal-ta', [KoordinatorProposalController::class, 'create']);
@@ -337,6 +338,7 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
     // Route::get('generate-form-001/{id}', [Form001Controller::class, 'generateForm001TU']); //generate form-001
     Route::get('dashboard-tata-usaha-yudisium', [YudisiumController::class, 'index']);
     Route::get('dashboard-tata-usaha-yudisium/berkas/{id}', [YudisiumController::class, 'lihatBerkasMahasiswa']);
+    Route::post('dashboard-tata-usaha-yudisium/berkas/{id}/aksi', [YudisiumController::class, 'aksiBerkasMahasiswa']);
 });
 
 

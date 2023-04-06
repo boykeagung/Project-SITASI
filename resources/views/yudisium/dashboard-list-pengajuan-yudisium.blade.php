@@ -1,5 +1,8 @@
 @extends('layouts.layout-dashboard')
 
+@section('page', 'SITASI')
+@section('title', 'Daftar Permintaan Yudisium')
+
 @section('content')
     <div id="app">
         <div class="main-wrapper">
@@ -38,36 +41,12 @@
                     </div>
                 </section>
                 <section class="section">
-                    <div class="wizard-steps">
-                        <div class="wizard-step wizard-step-active">
-                            <div class="wizard-step-icon">
-                                <i class="fas fa-inbox"></i>
-                            </div>
-                            <div class="wizard-step-label">
-                                Mahasiswa Mengajukan Permintaan
-                            </div>
-                        </div>
-                        <div class="wizard-step wizard-step-active">
-                            <div class="wizard-step-icon">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="wizard-step-label">
-                                Tata Usaha Cek Berkas
-                            </div>
-                        </div>
-                        <div class="wizard-step wizard-step-warning">
-                            <div class="wizard-step-icon">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="wizard-step-label">
-                                Koordinator Yudisium Mengkonfirmasi
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="section">
                     <div class="card card-primary">
                         <div class="collapse show" id="card-collapse">
+                            <div class="card-header">
+                                <i class="fas fa-inbox mr-2"></i>
+                                <h4>Daftar Pengajuan Yudisium Oleh Mahasiswa</h4>
+                            </div>
                             <div class="card-body">
                                 <table id="tabel" class="table table-hover border">
                                     <thead>

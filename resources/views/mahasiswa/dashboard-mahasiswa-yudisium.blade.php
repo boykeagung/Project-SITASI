@@ -122,7 +122,7 @@
                                                                 </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label for="inputSKS">SKS</label>
-                                                                    <input type="number" max="150"
+                                                                    <input type="number" min="144"
                                                                         class="form-control" id="inputSKS"
                                                                         name="inputSKS" value="{{ $item->sks }}"
                                                                         placeholder="Fill with your semester credit"
@@ -1000,13 +1000,18 @@
                                 <div class="card-header">
                                     <h4>Formulir Pengajuan Yudisium Telah Diajukan!</h4>
                                     <div class="card-header-action">
-                                        {{ Form::open(['url' => 'dashboard-mahasiswa-yudisium/tarikAjuan/' . $item->nrp, 'method' => 'get']) }}
-                                        <input type="submit" class="btn btn-warning" data-toggle="tooltip"
-                                            data-placement="left"
-                                            data-original-title="Jika anda merasa ada isian yang salah silahkan lakukan edit kembali dengan menarik ajuan."
-                                            value="Tarik Kembali Pengajuan"
-                                            onclick="return confirm('Apakah anda yakin untuk mengedit kembali ajuan?')">
-                                        {{ Form::close() }}
+                                        @if ($item->status_yudisium == 'Diajukan')
+                                            {{ Form::open(['url' => 'dashboard-mahasiswa-yudisium/tarikAjuan/' . $item->nrp, 'method' => 'get']) }}
+                                            <input type="submit" class="btn btn-warning" data-toggle="tooltip"
+                                                data-placement="left"
+                                                data-original-title="Jika anda merasa ada isian yang salah silahkan lakukan edit kembali dengan menarik ajuan."
+                                                value="Tarik Kembali Pengajuan"
+                                                onclick="return confirm('Apakah anda yakin untuk mengedit kembali ajuan?')">
+                                            {{ Form::close() }}
+                                        @else
+                                            <a class="btn btn-primary"
+                                                href="{{ url()->current() . '/cek-yudisium' }}">Selengkapnya</a>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="card-body p-0">
@@ -1026,7 +1031,7 @@
                                                     Modifikasi Mahasiswa
                                                 </td>
                                                 <td>
-                                                    <?= !empty($item->tanggal_modifikasi_mahasiswa) ? $item->tanggal_modifikasi_mahasiswa : '-' ?>
+                                                    <?= !empty($item->tanggal_modifikasi_mahasiswa) ? date('d-M-Y h:i:s a', strtotime($item->tanggal_modifikasi_mahasiswa)) : '-' ?>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1035,7 +1040,7 @@
                                                     Modifikasi Tata
                                                     Usaha</td>
                                                 <td>
-                                                    <?= !empty($item->tanggal_modifikasi_tu) ? $item->tanggal_modifikasi_tu : '-' ?>
+                                                    <?= !empty($item->tanggal_modifikasi_tu) ? date('d-M-Y h:i:s a', strtotime($item->tanggal_modifikasi_tu)) : '-' ?>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1044,7 +1049,7 @@
                                                     Modifikasi
                                                     Koordinator Yudisium</td>
                                                 <td>
-                                                    <?= !empty($item->tanggal_modifikasi_koordinator) ? $item->tanggal_modifikasi_koordinator : '-' ?>
+                                                    <?= !empty($item->tanggal_modifikasi_koordinator) ? date('d-M-Y h:i:s a', strtotime($item->tanggal_modifikasi_koordinator)) : '-' ?>
                                                 </td>
                                             </tr>
                                         </tbody>
