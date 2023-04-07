@@ -87,7 +87,7 @@
                                                                     <input type="text" class="form-control"
                                                                         id="inputNama" name="inputNama"
                                                                         value="{{ $item->name }}"
-                                                                        placeholder="Fill with your full name">
+                                                                        placeholder="Fill with your full name" required>
                                                                     @if ($errors->has('inputPasFoto'))
                                                                         <div class="error text-danger">
                                                                             {{ $errors->first('inputNama') }}
@@ -99,7 +99,7 @@
                                                                 <label for="inputEmail">Email</label>
                                                                 <input type="text" class="form-control" id="inputEmail"
                                                                     name="inputEmail" value="{{ $item->email }}"
-                                                                    placeholder="Fill with your email">
+                                                                    placeholder="Fill with your email" required>
                                                                 @if ($errors->has('inputEmail'))
                                                                     <div class="error text-danger">
                                                                         {{ $errors->first('inputEmail') }}
@@ -111,7 +111,7 @@
                                                                     <label for="inputTanggalLahir">Tanggal Lahir</label>
                                                                     <input type="date" class="form-control"
                                                                         id="inputTanggalLahir" name="inputTanggalLahir"
-                                                                        value="{{ $item->tanggal_lahir }}">
+                                                                        value="{{ $item->tanggal_lahir }}" required>
                                                                     @if ($errors->has('inputTanggalLahir'))
                                                                         <div class="error text-danger">
                                                                             {{ $errors->first('inputTanggalLahir') }}
@@ -123,7 +123,7 @@
                                                                     <input type="text" class="form-control"
                                                                         id="inputTelepon" name="inputTelepon"
                                                                         value="{{ $item->no_hp }}"
-                                                                        placeholder="Fill with your phone number">
+                                                                        placeholder="Fill with your phone number" required>
                                                                     @if ($errors->has('inputTelepon'))
                                                                         <div class="error text-danger">
                                                                             {{ $errors->first('inputTelepon') }}
@@ -141,7 +141,7 @@
                                                                     <input type="number" max="4"
                                                                         class="form-control" id="inputIPK" name="inputIPK"
                                                                         value="{{ $item->ipk }}"
-                                                                        placeholder="Fill with your GPA">
+                                                                        placeholder="Fill with your GPA" required>
                                                                     @if ($errors->has('inputIPK'))
                                                                         <div class="error text-danger">
                                                                             {{ $errors->first('inputIPK') }}
