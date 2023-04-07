@@ -28,15 +28,15 @@ use App\Http\Controllers\Form001Controller;
 use App\Http\Controllers\KoordinatorBimbinganTA;
 use App\Http\Controllers\TUForm001Controller;
 use App\Http\Controllers\testForm001Controller;
+use App\Http\Controllers\MahasiswaYudisiumController;
 use App\Http\Controllers\YudisiumController;
-
 use App\Http\Controllers\DospemNilaiKPController;
 use App\Http\Controllers\NilaiDosPemController;
 use App\Http\Controllers\NilaiDosPemPerusahaanController;
-
 use App\Models\Bimbingan_kp;
 use App\Models\bimbingan_ta;
-
+use App\Http\Controllers\DospemYudisiumController;
+use App\Http\Controllers\DospengYudisiumController;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
 use App\Models\TA;
@@ -107,6 +107,15 @@ Route::get('/logout', [AuthController::class, 'logout']);
 /* mahasiswa */
 
 Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
+
+    Route::get('/dashboard-mahasiswa-yudisium', [MahasiswaYudisiumController::class, 'index']);
+    Route::post('dashboard-mahasiswa-yudisium/update-mahasiswa', [MahasiswaYudisiumController::class, 'updateMahasiswa']);
+    Route::post('dashboard-mahasiswa-yudisium/update-persyaratan', [MahasiswaYudisiumController::class, 'updatePersyaratan']);
+    Route::get('dashboard-mahasiswa-yudisium/tentang-yudisium', [MahasiswaYudisiumController::class, 'tentangYudisium']);
+    Route::get('dashboard-mahasiswa-yudisium/reset/{nrp}/{persyaratan}', [MahasiswaYudisiumController::class, 'resetPersyaratan']);
+    Route::post('dashboard-mahasiswa-yudisium/konfirmasi-persyaratan-mahasiswa', [MahasiswaYudisiumController::class, 'konfirmasiPersyaratan']);
+    Route::get('dashboard-mahasiswa-yudisium/tarikAjuan/{nrp}', [MahasiswaYudisiumController::class, 'tarikAjuan']);
+
     // Route::get('/dashboard-mahasiswa', function () {
     //     return view('mahasiswa.dashboard-mahasiswa');
     // });
@@ -219,16 +228,13 @@ Route::get('/dashboard-mahasiswa-sidang-ta', function () {
     return view('mahasiswa.dashboard-mahasiswa-sidang-ta');
 });
 
-Route::get('/dashboard-mahasiswa-yudisium', [YudisiumController::class, 'index']);
-Route::post('dashboard-mahasiswa-yudisium/update-mahasiswa', [YudisiumController::class, 'updateMahasiswa']);
-Route::post('dashboard-mahasiswa-yudisium/update-persyaratan', [YudisiumController::class, 'updatePersyaratan']);
-//reset file
-Route::get('dashboard-mahasiswa-yudisium/reset/{nrp}/{persyaratan}', [YudisiumController::class, 'resetPersyaratan']);
 
 /* koordinator ta */
 Route::group(['middleware' => ['auth', 'rolecek:koordinator-yudisium']], function () {
     // INDEX
-    Route::get('dashboard-koordinator-yudisium', [KoordinatorYudisiumController::class, 'index']);
+    Route::get('dashboard-koordinator-yudisium', [YudisiumController::class, 'index']);
+    Route::get('dashboard-koordinator-yudisium/berkas/{id}', [YudisiumController::class, 'lihatBerkasMahasiswa']);
+    Route::post('dashboard-koordinator-yudisium/berkas/{id}/aksi', [YudisiumController::class, 'aksiBerkasMahasiswa']);
 
     // // proposal TA
     // Route::get('dashboard-koordinator-tambah-proposal-ta', [KoordinatorProposalController::class, 'create']);
@@ -397,6 +403,9 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
     
 
     // Route::get('generate-form-001/{id}', [Form001Controller::class, 'generateForm001TU']); //generate form-001
+    Route::get('dashboard-tata-usaha-yudisium', [YudisiumController::class, 'index']);
+    Route::get('dashboard-tata-usaha-yudisium/berkas/{id}', [YudisiumController::class, 'lihatBerkasMahasiswa']);
+    Route::post('dashboard-tata-usaha-yudisium/berkas/{id}/aksi', [YudisiumController::class, 'aksiBerkasMahasiswa']);
 });
 
 
