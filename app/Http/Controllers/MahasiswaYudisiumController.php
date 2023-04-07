@@ -382,13 +382,6 @@ class MahasiswaYudisiumController extends Controller
                             'notifikasi_link' => 'dashboard-mahasiswa-yudisium',
                             'notifikasi_waktu' => now(),
                             'notifikasi_baca' => 0
-                        ],
-                        [
-                            'notifikasi_milik' => '162019035',
-                            'notifikasi_pesan' => 'Mahasiswa [' . $nrp . '] telah menarik permintaan Yudisium',
-                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium',
-                            'notifikasi_waktu' => now(),
-                            'notifikasi_baca' => 0
                         ]
                     )
                 );
