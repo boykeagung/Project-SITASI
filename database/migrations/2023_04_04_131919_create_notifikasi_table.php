@@ -21,7 +21,8 @@ return new class extends Migration {
                 ->on('users');
             $table->string('notifikasi_pesan');
             $table->string('notifikasi_link');
-            $table->date('notifikasi_waktu');
+            $table->datetime('notifikasi_waktu');
+            $table->string('notifikasi_baca');
         });
     }
 

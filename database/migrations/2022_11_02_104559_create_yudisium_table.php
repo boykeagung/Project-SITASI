@@ -16,9 +16,9 @@ return new class extends Migration {
                 ->on('users');
             $table->string('toga');
             $table->string('status_yudisium')->nullable();
-            $table->string('tanggal_modifikasi_mahasiswa')->nullable();
-            $table->string('tanggal_modifikasi_tu')->nullable();
-            $table->string('tanggal_modifikasi_koordinator')->nullable();
+            $table->datetime('tanggal_modifikasi_mahasiswa')->nullable();
+            $table->datetime('tanggal_modifikasi_tu')->nullable();
+            $table->datetime('tanggal_modifikasi_koordinator')->nullable();
             $table->string('komentar_tu')->nullable();
             $table->string('komentar_koordinator')->nullable();
             $table->string('pas_foto')->nullable();

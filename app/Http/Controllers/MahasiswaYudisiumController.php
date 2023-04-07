@@ -52,37 +52,62 @@ class MahasiswaYudisiumController extends Controller
         return view('mahasiswa.dashboard-mahasiswa-yudisium', ['collection' => $join]);
 
     }
-
     public function updateMahasiswa(Request $req)
     {
-        $nrp = $req->input('inputNrp');
-        $nama = $req->input('inputNama');
-        $tanggal_lahir = $req->input('inputTanggalLahir');
-        $alamat = $req->input('inputAlamat');
-        $email = $req->input('inputEmail');
-        $telepon = $req->input('inputTelepon');
-        $ipk = $req->input('inputIPK');
-        $sks = $req->input('inputSKS');
-        $toga = $req->input('inputToga');
+        $rules = [
+            'inputNrp' => 'required',
+            'inputNama' => 'required',
+            'inputTanggalLahir' => 'required|before:today',
+            'inputAlamat' => 'required',
+            'inputEmail' => 'required|email',
+            'inputTelepon' => 'required|numeric',
+            'inputIPK' => 'required|numeric|min:0|max:4',
+            'inputSKS' => 'required|numeric|min:144',
+            'inputToga' => 'required',
+        ];
+        $messages = [
+            'inputNrp' => 'Cek kembali form ini.',
+            'inputNama' => 'Cek kembali form ini.',
+            'inputTanggalLahir' => 'Cek kembali form ini.',
+            'inputAlamat' => 'Cek kembali form ini.',
+            'inputEmail' => 'Cek kembali form ini.',
+            'inputTelepon' => 'Cek kembali form ini.',
+            'inputIPK' => 'Cek kembali form ini.',
+            'inputSKS' => 'Cek kembali form ini.',
+            'inputToga' => 'Cek kembali form ini.',
+        ];
+        $validator = Validator::make($req->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            $nrp = $req->input('inputNrp');
+            $nama = $req->input('inputNama');
+            $tanggal_lahir = $req->input('inputTanggalLahir');
+            $alamat = $req->input('inputAlamat');
+            $email = $req->input('inputEmail');
+            $telepon = $req->input('inputTelepon');
+            $ipk = $req->input('inputIPK');
+            $sks = $req->input('inputSKS');
+            $toga = $req->input('inputToga');
 
-        Mahasiswa::where('nrp', $nrp)->update([
-            'nrp' => $nrp,
-            'nama_lengkap' => $nama,
-            'tanggal_lahir' => $tanggal_lahir,
-            'alamat' => $alamat,
-            'email' => $email,
-            'no_hp' => $telepon,
-            'no_wa' => $telepon,
-            'ipk' => $ipk,
-            'sks' => $sks,
-        ]);
+            Mahasiswa::where('nrp', $nrp)->update([
+                'nrp' => $nrp,
+                'nama_lengkap' => $nama,
+                'tanggal_lahir' => $tanggal_lahir,
+                'alamat' => $alamat,
+                'email' => $email,
+                'no_hp' => $telepon,
+                'no_wa' => $telepon,
+                'ipk' => $ipk,
+                'sks' => $sks,
+            ]);
 
-        Yudisium::where('nrp', $nrp)->update([
-            'toga' => $toga,
-            'tanggal_modifikasi_mahasiswa' => now()
-        ]);
-
-        return redirect(URL::to('/dashboard-mahasiswa-yudisium'));
+            Yudisium::where('nrp', $nrp)->update([
+                'toga' => $toga,
+                'tanggal_modifikasi_mahasiswa' => now()
+            ]);
+            return redirect(URL::to('/dashboard-mahasiswa-yudisium'));
+        }
     }
 
     public function updatePersyaratan(Request $req)
@@ -93,7 +118,7 @@ class MahasiswaYudisiumController extends Controller
         File::ensureDirectoryExists($path_to_upload);
 
         $rules = [
-            'inputPasFoto' => 'mimes:pdf',
+            'inputPasFoto' => 'mimes:png,jpg,jpeg',
             'inputAktaKelahiran' => 'mimes:pdf',
             'inputIjasahSekolahMenengah' => 'mimes:pdf',
             'inputJudulTugasAkhirIndonesia' => 'mimes:pdf',
@@ -105,13 +130,28 @@ class MahasiswaYudisiumController extends Controller
             'inputBuktiPembayaran' => 'mimes:pdf',
             'inputSuratGantiNama' => 'mimes:pdf',
             'inputFormBiodataPesertaYudisium' => 'mimes:pdf',
-            'inputSertifikatKeahlian' => 'mimes:pdf',
+            'inputSertifikatKeahlian' => 'mimes:pdf,rar,zip',
             'inputPoseterA3' => 'mimes:pdf',
             'inputBukuTugasAkhirSah' => 'mimes:pdf',
             'inputJurnalPenelitian' => 'mimes:pdf',
         ];
         $messages = [
-            'reportfile.mimes' => 'Only PDF files are allowed.',
+            'inputPasFoto.mimes' => 'Ekstensi file bukan png, jpg, jpeg.',
+            'inputAktaKelahiran.mimes' => 'Ekstensi file bukan pdf.',
+            'inputIjasahSekolahMenengah.mimes' => 'Ekstensi file bukan pdf.',
+            'inputJudulTugasAkhirIndonesia.mimes' => 'Ekstensi file bukan pdf.',
+            'inputJudulTugasAkhirInggris.mimes' => 'Ekstensi file bukan pdf.',
+            'inputBebasPinjamBuku.mimes' => 'Ekstensi file bukan pdf.',
+            'inputTranskripDariSikad.mimes' => 'Ekstensi file bukan pdf.',
+            'inputResumeSkkDanSimskk.mimes' => 'Ekstensi file bukan pdf.',
+            'inputHasilTestEpt.mimes' => 'Ekstensi file bukan pdf.',
+            'inputBuktiPembayaran.mimes' => 'Ekstensi file bukan pdf.',
+            'inputSuratGantiNama.mimes' => 'Ekstensi file bukan pdf.',
+            'inputFormBiodataPesertaYudisium.mimes' => 'Ekstensi file bukan pdf.',
+            'inputSertifikatKeahlian.mimes' => 'Ekstensi file bukan pdf,rar,zip.',
+            'inputPoseterA3.mimes' => 'Ekstensi file bukan pdf.',
+            'inputBukuTugasAkhirSah.mimes' => 'Ekstensi file bukan pdf.',
+            'inputJurnalPenelitian.mimes' => 'Ekstensi file bukan pdf.'
         ];
 
         $validator = Validator::make($req->all(), $rules, $messages);
@@ -329,13 +369,30 @@ class MahasiswaYudisiumController extends Controller
                 Yudisium::where('nrp', $nrp)->update(['status_yudisium' => 'Diajukan', 'tanggal_modifikasi_mahasiswa' => now()]);
                 Notifikasi::insert(
                     array(
-                        'notifikasi_milik' => '162019035',
-                        'notifikasi_pesan' => 'Mahasiswa <b>' . $nrp . '</b> mengajukan permintaan Yudisium',
-                        'notifikasi_link' => $nrp,
-                        'notifikasi_waktu' => now()
+                        [
+                            'notifikasi_milik' => '162019035',
+                            'notifikasi_pesan' => 'Mahasiswa [' . $nrp . '] mengajukan permintaan Yudisium',
+                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
+                            'notifikasi_waktu' => now(),
+                            'notifikasi_baca' => 0
+                        ],
+                        [
+                            'notifikasi_milik' => $nrp,
+                            'notifikasi_pesan' => 'Anda telah mengajukan permintaan Yudisium',
+                            'notifikasi_link' => 'dashboard-mahasiswa-yudisium',
+                            'notifikasi_waktu' => now(),
+                            'notifikasi_baca' => 0
+                        ],
+                        [
+                            'notifikasi_milik' => '162019035',
+                            'notifikasi_pesan' => 'Mahasiswa [' . $nrp . '] telah menarik permintaan Yudisium',
+                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium',
+                            'notifikasi_waktu' => now(),
+                            'notifikasi_baca' => 0
+                        ]
                     )
                 );
-                return redirect()->back()->with('message', 'Lengkap!'); //redir ke status
+                return redirect()->back();
             } else {
                 return redirect()->back()->with('message', 'Kami mencoba, namun sepertinya ada data diri atau berkas persyaratan yang belum
             anda lengkapi.');
@@ -349,13 +406,27 @@ class MahasiswaYudisiumController extends Controller
     {
         if ($nrp == Auth::user()->username) {
             Yudisium::where('nrp', $nrp)->update(['status_yudisium' => 'Mengisi', 'tanggal_modifikasi_mahasiswa' => now()]);
+            Notifikasi::insert(
+                array(
+                    'notifikasi_milik' => $nrp,
+                    'notifikasi_pesan' => 'Anda ' . $nrp . ' telah menarik permintaan Yudisium',
+                    'notifikasi_link' => 'dashboard-mahasiswa-yudisium' . $nrp,
+                    'notifikasi_waktu' => now(),
+                    'notifikasi_baca' => 0
+                )
+            );
             return redirect()->back();
         } else {
             return redirect()->back();
         }
     }
-    public function cekYudisium()
+    public function tentangYudisium()
     {
-        return view('mahasiswa.dashboard-mahasiswa-cek-yudisium');
+        $join = DB::table('users')
+            ->join('mahasiswa', 'users.username', '=', 'mahasiswa.nrp')
+            ->join('yudisium', 'users.username', '=', 'yudisium.nrp')
+            ->where('users.username', Auth::user()->username)
+            ->get();
+        return view('mahasiswa.dashboard-mahasiswa-tentang-yudisium', ['collection' => $join]);
     }
 }

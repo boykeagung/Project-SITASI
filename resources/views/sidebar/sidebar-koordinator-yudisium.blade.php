@@ -11,7 +11,7 @@
             <li class="menu-header">Dashboard</li>
             <li>
                 <a class="nav-link" href=<?= url('dashboard-koordinator-yudisium') ?>>
-                    <i class="fas fa-th-large"></i>
+                    <i class="fas fa-graduation-cap"></i>
                     <span>Yudisium</span>
                 </a>
             </li>

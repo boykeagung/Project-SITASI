@@ -29,11 +29,11 @@
                         Praktik</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-sidang-kp'); ?>><i class="fas fa-book-open"></i> <span>Sidang Kerja
                         Praktik</span></a></li>
-            <li class="menu-header">Pengajuan Yudisium</li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-yudisium'); ?>><i class="fas fa-sticky-note"></i>
+            <li class="menu-header">Yudisium</li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-yudisium'); ?>><i class="fas fa-graduation-cap"></i>
                     <span>Daftar Yudisium</span></a></li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-yudisium/cek-yudisium'); ?>><i class="fas fa-sticky-note"></i>
-                    <span>Status Yudisium</span></a></li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-yudisium/tentang-yudisium'); ?>><i class="fas fa-graduation-cap"></i>
+                    <span>Tata Cara Yudisium</span></a></li>
             <!--<li class="menu-header">Pengguna</li>
 <li><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Pengguna Admin</span></a></li>
 <li><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Pengguna Mahasiswa</span></a></li>

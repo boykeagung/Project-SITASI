@@ -143,9 +143,12 @@
                                                     </td>
                                                     <td class="d-flex justify-content-between align-items-center">
                                                         <figure class="avatar">
-                                                            <img src="<?= $item->nrp ?>">
+                                                            <img
+                                                                src="{{ asset('Yudisium/' . $item->nrp . '/' . $item->pas_foto) }}">
                                                         </figure>
-                                                        <a href="#" class="btn btn-primary btn-icon icon-left">
+                                                        <a target="_blank"
+                                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->pas_foto) }}"
+                                                            class="btn btn-primary btn-icon icon-left">
                                                             <i class="fas fa-expand-arrows-alt"></i> Perjelas</a>
                                                     </td>
                                                 </tr>
@@ -518,23 +521,15 @@
                             </div>
                             <div class="col col-12 col-lg-4">
                                 <div class="sticky-top pt-1">
-                                    <div class="section-title">Informasi Pengajuan</div>
+                                    <div class="section-title">Detail Pengajuan</div>
                                     <div class="card card-secondary">
                                         <div class="card-header">
-                                            <i class="fas fa-info-circle mr-2"></i>
-                                            <h4>Informasi Permintaan</h4>
+                                            <i class="fas fa-calendar mr-2"></i>
+                                            <h4>Timeline</h4>
                                         </div>
                                         <div class="card-body p-0">
                                             <table class="table table-bordered m-0">
                                                 <tbody>
-                                                    <tr>
-                                                        <td style="white-space: nowrap;width: 1%;font-weight: bold;">
-                                                            Status
-                                                            Yudisium</td>
-                                                        <td>
-                                                            <?= !empty($item->status_yudisium) ? $item->status_yudisium : 'Pengisian formulir' ?>
-                                                        </td>
-                                                    </tr>
                                                     <tr>
                                                         <td style="white-space: nowrap;width: 1%;font-weight: bold;">
                                                             Tanggal Diajukan
@@ -564,6 +559,27 @@
                                             </table>
                                         </div>
                                     </div>
+                                    <div class="card card-info">
+                                        <div class="card-header">
+                                            <i class="fas fa-info-circle mr-2"></i>
+                                            <h4>Status Pengajuan</h4>
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <table class="table table-bordered m-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                            Hasil Terakhir</td>
+                                                        <td>
+                                                            <span class="badge badge-primary">
+                                                                <?= !empty($item->status_yudisium) ? $item->status_yudisium : 'Belum diajukan' ?>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -577,25 +593,23 @@
                                 <h4>Aksi</h4>
                             </div>
                             <div class="card-body pb-0">
-                                <p>Mahasiswa akan menerima notifikasi hasil aksi via web SITASI, jika ingin melakukan
-                                    via
-                                    WhatsApp
-                                    messengger anda dapat melihat seksi biodata.</p>
                                 @if (Auth::user()->level == 'koordinator-yudisium')
                                     <input type="hidden" name="inputBy" value="koor">
                                     <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
                                     <div class="form-group">
                                         <label class="form-label">Komentar Tata Usaha</label>
-                                        <blockquote>
-                                            <?= !empty($item->komentar_tu) ? $item->komentar_tu : 'Belum ada komentar' ?>
-                                        </blockquote>
+                                        <textarea class="form-control" disabled>
+                                        <?php if (!empty($item->komentar_tu)) {
+                                            echo $item->komentar_tu;
+                                        } ?>
+                                        </textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Komentar Koordinator Yudisium</label>
                                         <textarea name="inputKomentar" class="form-control" aria-describedby="komentar"
                                             placeholder="Komentar yang berkaitan dengan hasil akhir pengecekan..." required>
-                                            <?php if (!empty($item->komentar_koor)) {
-                                                echo $item->komentar_koor;
+                                            <?php if (!empty($item->komentar_koordinator)) {
+                                                echo $item->komentar_koordinator;
                                             } ?>
                                             </textarea>
                                     </div>
@@ -632,7 +646,7 @@
                                             <label class="selectgroup-item">
                                                 <input type="radio" name="inputKeputusan" value="Dikonfirmasi TU"
                                                     class="selectgroup-input" checked>
-                                                <span class="selectgroup-button">Lanjutkan ke Koordinator</span>
+                                                <span class="selectgroup-button">Lanjut ke Koordinator</span>
                                             </label>
                                             <label class="selectgroup-item">
                                                 <input type="radio" name="inputKeputusan" value="Mengisi"
@@ -643,9 +657,9 @@
                                     </div>
                                 @endif
                             </div>
-                            <input class="card-footer btn btn-primary bg-primary" type="submit" value="Kirim"
+                            <input class="card-footer btn btn-primary bg-primary" type="submit" value="Submit"
                                 onclick="return confirm('Apakah semua berkas sudah anda cek dan benar?')"
-                                @if ($item->status_yudisium != 'Dikonfirmasi TU' && Auth::user()->level == 'koordinator-yudisium') disabled @endif>
+                                @if ($item->status_yudisium == 'Mengisi') disabled @endif>
                         </div>
                         {{ Form::close() }}
                     </section>

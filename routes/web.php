@@ -91,7 +91,7 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::get('/dashboard-mahasiswa-yudisium', [MahasiswaYudisiumController::class, 'index']);
     Route::post('dashboard-mahasiswa-yudisium/update-mahasiswa', [MahasiswaYudisiumController::class, 'updateMahasiswa']);
     Route::post('dashboard-mahasiswa-yudisium/update-persyaratan', [MahasiswaYudisiumController::class, 'updatePersyaratan']);
-    Route::get('dashboard-mahasiswa-yudisium/cek-yudisium', [MahasiswaYudisiumController::class, 'cekYudisium']);
+    Route::get('dashboard-mahasiswa-yudisium/tentang-yudisium', [MahasiswaYudisiumController::class, 'tentangYudisium']);
     Route::get('dashboard-mahasiswa-yudisium/reset/{nrp}/{persyaratan}', [MahasiswaYudisiumController::class, 'resetPersyaratan']);
     Route::post('dashboard-mahasiswa-yudisium/konfirmasi-persyaratan-mahasiswa', [MahasiswaYudisiumController::class, 'konfirmasiPersyaratan']);
     Route::get('dashboard-mahasiswa-yudisium/tarikAjuan/{nrp}', [MahasiswaYudisiumController::class, 'tarikAjuan']);

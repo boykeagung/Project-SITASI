@@ -15,20 +15,17 @@
                     class="far fa-bell"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Notifikasi
-                    <div class="float-right">
-                        <a href="#">Tandai Baca Semua</a>
-                    </div>
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons" tabindex="3"
-                    style="overflow: hidden; outline: none;">
+                    style="outline: none; height: fit-content; max-height: 300px;">
                     <?php foreach ($notifikasi as $n) { ?>
-                    <a href="{{ $n->notifikasi_link }}" class="dropdown-item">
+                    <a href="{{ url($n->notifikasi_link) }} " class="dropdown-item">
                         <div class="dropdown-item-icon bg-info text-white">
                             <i class="fas fa-bell"></i>
                         </div>
                         <div class="dropdown-item-desc">
                             {{ $n->notifikasi_pesan }}
-                            <div class="time">Yesterday</div>
+                            <div class="time">{{ date('d-M-Y h:i:s a', strtotime($n->notifikasi_waktu)) }}</div>
                         </div>
                     </a>
                     <?php } ?>

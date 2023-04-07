@@ -1,4 +1,7 @@
-@extends('layout.layout-mahasiswa')
+@extends('layouts.layout-dashboard')
+
+@section('page', 'SITASI')
+@section('title', 'Pendaftaran Yudisium')
 
 @section('content')
     <div id="app">
@@ -84,28 +87,48 @@
                                                                     <input type="text" class="form-control"
                                                                         id="inputNama" name="inputNama"
                                                                         value="{{ $item->name }}"
-                                                                        placeholder="Fill with your full name" required>
+                                                                        placeholder="Fill with your full name">
+                                                                    @if ($errors->has('inputPasFoto'))
+                                                                        <div class="error text-danger">
+                                                                            {{ $errors->first('inputNama') }}
+                                                                        </div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="inputEmail">Email</label>
-                                                                <input type="email" class="form-control" id="inputEmail"
+                                                                <input type="text" class="form-control" id="inputEmail"
                                                                     name="inputEmail" value="{{ $item->email }}"
-                                                                    placeholder="Fill with your email" required>
+                                                                    placeholder="Fill with your email">
+                                                                @if ($errors->has('inputEmail'))
+                                                                    <div class="error text-danger">
+                                                                        {{ $errors->first('inputEmail') }}
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-6">
                                                                     <label for="inputTanggalLahir">Tanggal Lahir</label>
                                                                     <input type="date" class="form-control"
                                                                         id="inputTanggalLahir" name="inputTanggalLahir"
-                                                                        value="{{ $item->tanggal_lahir }}" required>
+                                                                        value="{{ $item->tanggal_lahir }}">
+                                                                    @if ($errors->has('inputTanggalLahir'))
+                                                                        <div class="error text-danger">
+                                                                            {{ $errors->first('inputTanggalLahir') }}
+                                                                        </div>
+                                                                    @endif
                                                                 </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label for="inputTelepon">Nomor Telepon</label>
                                                                     <input type="text" class="form-control"
                                                                         id="inputTelepon" name="inputTelepon"
                                                                         value="{{ $item->no_hp }}"
-                                                                        placeholder="Fill with your phone number" required>
+                                                                        placeholder="Fill with your phone number">
+                                                                    @if ($errors->has('inputTelepon'))
+                                                                        <div class="error text-danger">
+                                                                            {{ $errors->first('inputTelepon') }}
+                                                                        </div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -118,7 +141,12 @@
                                                                     <input type="number" max="4"
                                                                         class="form-control" id="inputIPK" name="inputIPK"
                                                                         value="{{ $item->ipk }}"
-                                                                        placeholder="Fill with your GPA" required>
+                                                                        placeholder="Fill with your GPA">
+                                                                    @if ($errors->has('inputIPK'))
+                                                                        <div class="error text-danger">
+                                                                            {{ $errors->first('inputIPK') }}
+                                                                        </div>
+                                                                    @endif
                                                                 </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label for="inputSKS">SKS</label>
@@ -127,6 +155,11 @@
                                                                         name="inputSKS" value="{{ $item->sks }}"
                                                                         placeholder="Fill with your semester credit"
                                                                         required>
+                                                                    @if ($errors->has('inputSKS'))
+                                                                        <div class="error text-danger">
+                                                                            {{ $errors->first('inputSKS') }}
+                                                                        </div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -169,6 +202,11 @@
                                                                         <span class="selectgroup-button">XXL</span>
                                                                     </label>
                                                                 </div>
+                                                                @if ($errors->has('inputToga'))
+                                                                    <div class="error text-danger">
+                                                                        {{ $errors->first('inputToga') }}
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -212,7 +250,7 @@
                                                                             </td>
                                                                             <td>Pas Foto Berwarna</td>
                                                                             <td>-</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>JPG, JPEG, PNG (400KB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
@@ -238,8 +276,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputPasFoto">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputPasFoto'))
                                                                                     <div class="error text-danger">
@@ -283,8 +321,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputAktaKelahiran">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputAktaKelahiran'))
                                                                                     <div class="error text-danger">
@@ -328,8 +366,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputIjasahSekolahMenengah">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputIjasahSekolahMenengah'))
                                                                                     <div class="error text-danger">
@@ -373,8 +411,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputJudulTugasAkhirIndonesia">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputJudulTugasAkhirIndonesia'))
                                                                                     <div class="error text-danger">
@@ -418,8 +456,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputJudulTugasAkhirInggris">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputJudulTugasAkhirInggris'))
                                                                                     <div class="error text-danger">
@@ -467,8 +505,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputBebasPinjamBuku">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputBebasPinjamBuku'))
                                                                                     <div class="error text-danger">
@@ -513,8 +551,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputTranskripDariSikad">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputTranskripDariSikad'))
                                                                                     <div class="error text-danger">
@@ -558,8 +596,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputResumeSkkDanSimskk">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputResumeSkkDanSimskk'))
                                                                                     <div class="error text-danger">
@@ -603,8 +641,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputHasilTestEpt">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputHasilTestEpt'))
                                                                                     <div class="error text-danger">
@@ -653,8 +691,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputBuktiPembayaran">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputBuktiPembayaran'))
                                                                                     <div class="error text-danger">
@@ -704,8 +742,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputSuratGantiNama">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputSuratGantiNama'))
                                                                                     <div class="error text-danger">
@@ -749,8 +787,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputFormBiodataPesertaYudisium">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputFormBiodataPesertaYudisium'))
                                                                                     <div class="error text-danger">
@@ -767,10 +805,9 @@
                                                                             </td>
                                                                             <td>Sertifikat Keahlian</td>
                                                                             <td>Jika lebih dari 1 sertifikat, silahkan
-                                                                                diupload
-                                                                                berulang
+                                                                                dikirim dalam bentuk rar/zip
                                                                             </td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF/RAR/ZIP (400KB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-secondary">Opsional
                                                                                 </div>
@@ -798,8 +835,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputSertifikatKeahlian">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputSertifikatKeahlian'))
                                                                                     <div class="error text-danger">
@@ -843,8 +880,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputPoseterA3">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputPoseterA3'))
                                                                                     <div class="error text-danger">
@@ -888,8 +925,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputBukuTugasAkhirSah">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputBukuTugasAkhirSah'))
                                                                                     <div class="error text-danger">
@@ -933,8 +970,8 @@
                                                                                         class="custom-file-input"
                                                                                         name="inputJurnalPenelitian">
                                                                                     <label class="custom-file-label"
-                                                                                        for="customFile">Pilih
-                                                                                        dokumen</label>
+                                                                                        for="customFile">Submit
+                                                                                        file</label>
                                                                                 </div>
                                                                                 @if ($errors->has('inputJurnalPenelitian'))
                                                                                     <div class="error text-danger">
@@ -973,27 +1010,48 @@
                                         </div>
                                     </div>
                                 @endif
-                                @foreach ($collection as $item)
-                                    <form id="form-3" action="{{ url()->current() }}/konfirmasi-persyaratan-mahasiswa"
-                                        method="post">
-                                        @csrf
-                                        <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
-                                        <div class="card card-warning">
-                                            <div class="card-header">
-                                                <h4>Kirim Pengajuan</h4>
-                                            </div>
-                                            <div class="card-body">
-                                                <p>Sebelum mengirim pastikan semua file sesuai kriteria persyaratan
-                                                    Yudisium.</p>
-                                            </div>
-                                            <input class="card-footer btn btn-warning bg-warning" type="submit"
-                                                value="Kirim"
-                                                onclick="return confirm('Apakah semua berkas sudah benar?')"
-                                                data-toggle="tooltip" data-placement="top"
-                                                data-original-title="Bagian tata usaha akan memberikan tanggapan setelah anda mengirim pengajuan.">
+                                <form id="form-3" action="{{ url()->current() }}/konfirmasi-persyaratan-mahasiswa"
+                                    method="post">
+                                    @csrf
+                                    <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
+                                    <div class="card card-warning">
+                                        <div class="card-header">
+                                            <h4>Kirim Pengajuan</h4>
                                         </div>
-                                    </form>
-                                @endforeach
+                                        <div class="card-body">
+                                            <p>Sebelum mengirim pastikan semua file sesuai kriteria persyaratan
+                                                Yudisium.</p>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Komentar Tata Usaha</label>
+                                                        <textarea disabled class="form-control" aria-describedby="komentar"><?php if (!empty($item->komentar_tu)) {
+                                                            echo $item->komentar_tu;
+                                                        } else {
+                                                            echo 'Belum ada';
+                                                        } ?>
+                                                            </textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Komentar Koordinator Yudisium</label>
+                                                        <textarea disabled class="form-control" aria-describedby="komentar"><?php if (!empty($item->komentar_koordinator)) {
+                                                            echo $item->komentar_koordinator;
+                                                        } else {
+                                                            echo 'Belum ada';
+                                                        } ?>
+                                                            </textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input class="card-footer btn btn-warning bg-warning" type="submit"
+                                            value="Kirim" onclick="return confirm('Apakah semua berkas sudah benar?')"
+                                            data-toggle="tooltip" data-placement="top"
+                                            data-original-title="Bagian tata usaha akan memberikan tanggapan setelah anda mengirim pengajuan.">
+                                    </div>
+                                </form>
                             </div>
                         @else
                             <div class="card card-primary">
@@ -1010,7 +1068,7 @@
                                             {{ Form::close() }}
                                         @else
                                             <a class="btn btn-primary"
-                                                href="{{ url()->current() . '/cek-yudisium' }}">Selengkapnya</a>
+                                                href="{{ url()->current() . '/tentang-yudisium' }}">Selengkapnya</a>
                                         @endif
                                     </div>
                                 </div>
@@ -1056,6 +1114,358 @@
                                     </table>
                                 </div>
                             </div>
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h4>Hasil Upload Biodata</h4>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">NRP
+                                                </td>
+                                                <td><?= $item->nrp ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">Nama
+                                                    Lengkap
+                                                </td>
+                                                <td><?= $item->nama_lengkap ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">Tanggal
+                                                    Lahir
+                                                </td>
+                                                <td><?= $item->tanggal_lahir ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">No. HP
+                                                </td>
+                                                <td class="d-flex justify-content-between align-items-center">
+                                                    <?= $item->no_hp ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">Email
+                                                </td>
+                                                <td class="d-flex justify-content-between align-items-center">
+                                                    <?= $item->email ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">IPK
+                                                </td>
+                                                <td><?= $item->ipk ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">SKS
+                                                </td>
+                                                <td><?= $item->sks ?></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Hasil Upload Dokumen</h4>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    1
+                                                </td>
+                                                <td>
+                                                    Pas Foto Berwarna
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->pas_foto)) { ?>
+                                                    <span class="badge badge-danger">Tidak ada</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->pas_foto) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    2
+                                                </td>
+                                                <td>
+                                                    Akte Kelahiran
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->akta_kelahiran)) { ?>
+                                                    <span class="badge badge-danger">Tidak ada</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->akta_kelahiran) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    3
+                                                </td>
+                                                <td>
+                                                    Ijasah SMA
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->ijasah_sekolah_menengah)) { ?>
+                                                    <span class="badge badge-danger">Tidak ada</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->ijasah_sekolah_menengah) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    4
+                                                </td>
+                                                <td>
+                                                    Judul Tugas Akhir (Bahasa Indonesia)
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->judul_ta_id)) { ?>
+                                                    <span class="badge badge-danger">Tidak ada</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->judul_ta_id) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    5
+                                                </td>
+                                                <td>
+                                                    Judul Tugas Akhir (Bahasa Inggris)
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->judul_ta_en)) { ?>
+                                                    <span class="badge badge-danger">Tidak ada</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->judul_ta_en) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    6
+                                                </td>
+                                                <td>
+                                                    Bebas Peminjaman Buku Dari Perpustakaan Dan Bukti Penyerahan
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->bebas_pinjam_buku)) { ?>
+                                                    <span class="badge badge-danger">Tidak ada</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->bebas_pinjam_buku) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    7
+                                                </td>
+                                                <td>
+                                                    Transkrip Dari Sikad
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->transkrip_dari_sikad)) { ?>
+                                                    <span class="badge badge-danger">Tidak ada</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->transkrip_dari_sikad) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    8
+                                                </td>
+                                                <td>
+                                                    Resume SKK Dari Simskk
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->resume_skk_dan_simskk)) { ?>
+                                                    <span class="badge badge-danger">Tidak ada</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->resume_skk_dan_simskk) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    9
+                                                </td>
+                                                <td>
+                                                    Hasil Test EPT
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->hasil_test_ept)) { ?>
+                                                    <span class="badge badge-danger">Tidak ada</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->hasil_test_ept) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    10
+                                                </td>
+                                                <td>
+                                                    Bukti Pembayaran, Melunasi Kewajiban Keuangan/Hutang
+                                                    Disemester
+                                                    Terakhir
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->bukti_pembayaran)) { ?>
+                                                    <span class="badge badge-primary">Opsional</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->bukti_pembayaran) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    11
+                                                </td>
+                                                <td>
+                                                    Surat Ganti Nama
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->surat_ganti_nama)) { ?>
+                                                    <span class="badge badge-primary">Opsional</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->surat_ganti_nama) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    12
+                                                </td>
+                                                <td>
+                                                    Form Biodata Peserta Yudisum
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->form_biodata_peserta_yudisium)) { ?>
+                                                    <span class="badge badge-danger">Tidak ada</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->form_biodata_peserta_yudisium) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    13
+                                                </td>
+                                                <td>
+                                                    Sertifikat Keahlian
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->sertifikat_keahlian)) { ?>
+                                                    <span class="badge badge-primary">Opsional</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->sertifikat_keahlian) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    14
+                                                </td>
+                                                <td>
+                                                    Poster Ukuran A3
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->poster_a3)) { ?>
+                                                    <span class="badge badge-danger">Tidak ada</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->poster_a3) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    15
+                                                </td>
+                                                <td>
+                                                    Buku Tugas Akhir Yang Telah Disahkan
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->buku_tugas_akhir_sah)) { ?>
+                                                    <span class="badge badge-danger">Tidak ada</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->buku_tugas_akhir_sah) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    16
+                                                </td>
+                                                <td>Jurnal Penelitian
+                                                </td>
+                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                    <?php if(empty($item->jurnal_penelitian)) { ?>
+                                                    <span class="badge badge-danger">Tidak ada</span>
+                                                    <?php } else { ?>
+                                                    <a target="_blank"
+                                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->jurnal_penelitian) }}"
+                                                        class="btn btn-icon icon-left btn-dark"><i
+                                                            class="far fa-file"></i> Lihat</a>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         @endif
                     @endforeach
                 </section>
@@ -1075,3 +1485,13 @@
         </div>
     </div>
 @endsection
+
+@push('specific-js')
+    <script>
+        $(document).ready(function() {
+            $('textarea').each(function() {
+                $(this).val($(this).val().trim());
+            });
+        });
+    </script>
+@endpush
