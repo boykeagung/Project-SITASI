@@ -108,7 +108,7 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
 
-    Route::get('/dashboard-mahasiswa-yudisium', [MahasiswaYudisiumController::class, 'index']);
+    Route::get('dashboard-mahasiswa-yudisium', [MahasiswaYudisiumController::class, 'index']);
     Route::post('dashboard-mahasiswa-yudisium/update-mahasiswa', [MahasiswaYudisiumController::class, 'updateMahasiswa']);
     Route::post('dashboard-mahasiswa-yudisium/update-persyaratan', [MahasiswaYudisiumController::class, 'updatePersyaratan']);
     Route::get('dashboard-mahasiswa-yudisium/tentang-yudisium', [MahasiswaYudisiumController::class, 'tentangYudisium']);
