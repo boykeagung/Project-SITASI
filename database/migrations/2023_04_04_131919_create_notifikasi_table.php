@@ -15,14 +15,16 @@ return new class extends Migration {
         Schema::create('notifikasi', function (Blueprint $table) {
             $table->id('notifikasi_id');
             $table->string('notifikasi_milik');
+            $table->string('notifikasi_icon');
+            $table->string('notifikasi_pesan');
+            $table->string('notifikasi_link');
+            $table->datetime('notifikasi_waktu');
+            $table->string('notifikasi_layanan');
+            $table->string('notifikasi_baca');
             $table
                 ->foreign('notifikasi_milik')
                 ->references('username')
                 ->on('users');
-            $table->string('notifikasi_pesan');
-            $table->string('notifikasi_link');
-            $table->datetime('notifikasi_waktu');
-            $table->string('notifikasi_baca');
         });
     }
 

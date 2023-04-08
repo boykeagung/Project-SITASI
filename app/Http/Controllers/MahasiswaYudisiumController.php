@@ -14,6 +14,7 @@ use App\Models\Notifikasi;
 
 class MahasiswaYudisiumController extends Controller
 {
+
     public function index()
     {
         $loggedNrp = Auth::user()->username;
@@ -370,24 +371,28 @@ class MahasiswaYudisiumController extends Controller
                 Notifikasi::insert(
                     array(
                         [
-                            'notifikasi_milik' => '162019035',
-                            'notifikasi_pesan' => 'Mahasiswa [' . $nrp . '] mengajukan permintaan Yudisium',
-                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
+                            'notifikasi_milik' => $nrp,
+                            'notifikasi_icon' => 'fas fa-paper-plane',
+                            'notifikasi_pesan' => 'Anda telah menyerahkan formulir pendaftaran Yudisium',
+                            'notifikasi_link' => 'dashboard-mahasiswa-yudisium',
                             'notifikasi_waktu' => now(),
+                            'notifikasi_layanan' => 'Yudisium',
                             'notifikasi_baca' => 0
                         ],
                         [
-                            'notifikasi_milik' => $nrp,
-                            'notifikasi_pesan' => 'Anda telah mengajukan permintaan Yudisium',
-                            'notifikasi_link' => 'dashboard-mahasiswa-yudisium',
+                            'notifikasi_milik' => config('global.id_tu'),
+                            'notifikasi_icon' => 'fas fa-inbox',
+                            'notifikasi_pesan' => 'Mahasiswa ' . $nrp . ' menyerahkan formulir pendaftaran Yudisium',
+                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
                             'notifikasi_waktu' => now(),
+                            'notifikasi_layanan' => 'Yudisium',
                             'notifikasi_baca' => 0
                         ]
                     )
                 );
                 return redirect()->back();
             } else {
-                return redirect()->back()->with('message', 'Kami mencoba, namun sepertinya ada data diri atau berkas persyaratan yang belum
+                return redirect()->back()->with('message', 'Data diri atau berkas persyaratan yang belum
             anda lengkapi.');
             }
         } else {
@@ -401,11 +406,24 @@ class MahasiswaYudisiumController extends Controller
             Yudisium::where('nrp', $nrp)->update(['status_yudisium' => 'Mengisi', 'tanggal_modifikasi_mahasiswa' => now()]);
             Notifikasi::insert(
                 array(
-                    'notifikasi_milik' => $nrp,
-                    'notifikasi_pesan' => 'Anda ' . $nrp . ' telah menarik permintaan Yudisium',
-                    'notifikasi_link' => 'dashboard-mahasiswa-yudisium' . $nrp,
-                    'notifikasi_waktu' => now(),
-                    'notifikasi_baca' => 0
+                    [
+                        'notifikasi_milik' => $nrp,
+                        'notifikasi_icon' => 'fas fa-user-edit',
+                        'notifikasi_pesan' => 'Anda telah menarik formulir pendaftaran Yudisium',
+                        'notifikasi_link' => 'dashboard-mahasiswa-yudisium' . $nrp,
+                        'notifikasi_waktu' => now(),
+                        'notifikasi_layanan' => 'Yudisium',
+                        'notifikasi_baca' => 0
+                    ],
+                    [
+                        'notifikasi_milik' => config('global.id_tu'),
+                        'notifikasi_icon' => 'fas fa-user-edit',
+                        'notifikasi_pesan' => 'Mahasiswa ' . $nrp . ' telah menarik formulir pendaftaran Yudisium',
+                        'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
+                        'notifikasi_waktu' => now(),
+                        'notifikasi_layanan' => 'Yudisium',
+                        'notifikasi_baca' => 0
+                    ],
                 )
             );
             return redirect()->back();

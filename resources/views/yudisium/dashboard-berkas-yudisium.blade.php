@@ -128,82 +128,83 @@
                         </div>
                         <?php } ?>
                         <div class="row">
-                            <div class="col col-12 col-lg-8 pt-1">
-                                <div class="section-title">Biodata & Berkas</div>
-                                <div class="card card-secondary">
-                                    <div class="card-header">
-                                        <i class="fas fa-user-check mr-2"></i>
-                                        <h4>Biodata Mahasiswa</h4>
-                                    </div>
-                                    <div class="card-body p-0">
-                                        <table class="table table-bordered m-0">
-                                            <tbody>
-                                                <tr>
-                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">Foto
-                                                    </td>
-                                                    <td class="d-flex justify-content-between align-items-center">
-                                                        <figure class="avatar">
-                                                            <img
-                                                                src="{{ asset('Yudisium/' . $item->nrp . '/' . $item->pas_foto) }}">
-                                                        </figure>
-                                                        <a target="_blank"
-                                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->pas_foto) }}"
-                                                            class="btn btn-primary btn-icon icon-left">
-                                                            <i class="fas fa-expand-arrows-alt"></i> Perjelas</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">NRP
-                                                    </td>
-                                                    <td><?= $item->nrp ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">Nama
-                                                        Lengkap
-                                                    </td>
-                                                    <td><?= $item->nama_lengkap ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">Tanggal
-                                                        Lahir
-                                                    </td>
-                                                    <td><?= $item->tanggal_lahir ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">No. HP
-                                                    </td>
-                                                    <td class="d-flex justify-content-between align-items-center">
-                                                        <?= $item->no_hp ?>
-                                                        <a target="_blank"
-                                                            href="https://wa.me/<?= $item->no_hp ?>?text=Halo%<?= $item->nama_lengkap ?>%20silahkan%20cek%20notifikasi%20website%20SITASI,%20ada%20pemberitahuan%20baru%20mengenai%20pengajuan%20yudisium%20Anda."
-                                                            class="btn btn-success btn-icon icon-left">
-                                                            <i class="fab fa-whatsapp"></i> WhatsApp</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">Email
-                                                    </td>
-                                                    <td class="d-flex justify-content-between align-items-center">
-                                                        <?= $item->email ?>
-                                                        <a target="_blank" href="mailto:<?= $item->email ?>"
-                                                            class="btn btn-primary btn-icon icon-left">
-                                                            <i class="fas fa-at"></i> Email</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">IPK
-                                                    </td>
-                                                    <td><?= $item->ipk ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">SKS
-                                                    </td>
-                                                    <td><?= $item->sks ?></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <div class="col col-12 col-lg-3">
+                                <div class="section-body">
+                                    <h2 class="section-title">Timeline Pengajuan</h2>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="activities">
+                                                @foreach ($detailAjuan as $n)
+                                                    <div class="activity">
+                                                        <div class="activity-icon bg-primary text-white shadow-primary">
+                                                            <i class="{{ $n->notifikasi_icon }}"></i>
+                                                        </div>
+                                                        <div class="activity-detail">
+                                                            <div class="mb-2">
+                                                                <span class="text-job text-primary">
+                                                                    {{ date('j F Y - h:i:s a', strtotime($n->notifikasi_waktu)) }}
+                                                                </span>
+                                                            </div>
+                                                            <p>{{ $n->notifikasi_pesan }}</p>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col col-12 col-lg-9">
+                                <div class="section-title mb-5">Informasi Data Mahasiswa</div>
+                                <div class="card profile-widget">
+                                    <div class="profile-widget-header">
+                                        <img alt="image"
+                                            src="{{ asset('Yudisium/' . $item->nrp . '/' . $item->pas_foto) }}"
+                                            class="rounded-circle profile-widget-picture"
+                                            style="object-fit: cover;width:100px;height:100px;">
+                                        <div class="profile-widget-items">
+                                            <div class="profile-widget-item">
+                                                <div class="profile-widget-item-label">NRP</div>
+                                                <div class="profile-widget-item-value">{{ $item->nrp }}</div>
+                                            </div>
+                                            <div class="profile-widget-item">
+                                                <div class="profile-widget-item-label">IPK</div>
+                                                <div class="profile-widget-item-value">{{ $item->ipk }}</div>
+                                            </div>
+                                            <div class="profile-widget-item">
+                                                <div class="profile-widget-item-label">SKS</div>
+                                                <div class="profile-widget-item-value">{{ $item->sks }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="profile-widget-description">
+                                        <div class="profile-widget-name mb-0">{{ $item->nama_lengkap }}
+                                            <div class="text-muted d-inline font-weight-normal">
+                                                <div class="slash"></div> {{ $item->email }}
+                                            </div>
+                                        </div>
+                                        Lahir pada tanggal
+                                        <strong>{{ date('j F Y', strtotime($item->tanggal_lahir)) }}</strong>,
+                                        bertempat tinggal di
+                                        <strong>{{ $item->alamat }}</strong>.
+                                    </div>
+                                    <div class="card-footer bg-whitesmoke">
+                                        <a href="mailto:{{ $item->email }}"
+                                            class="btn btn-icon icon-left btn-secondary text-dark mr-2 my-2"><i
+                                                class="fas fa-envelope"></i> Email
+                                        </a>
+                                        <a href="https://wa.me/{{ $item->no_wa }}"
+                                            class="btn btn-icon icon-left btn-secondary text-dark mr-2 my-2"><i
+                                                class="fab fa-whatsapp"></i> WhatsApp
+                                        </a>
+                                        <a href="tel:{{ $item->no_hp }}"
+                                            class="btn btn-icon icon-left btn-secondary text-dark mr-2 my-2"><i
+                                                class="fas fa-phone"></i> {{ $item->no_hp }}
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="section-title mb-5">Berkas Mahasiswa</div>
                                 <div class="card card-secondary">
                                     <div class="card-header">
                                         <i class="fas fa-file mr-2"></i>
@@ -518,67 +519,63 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col col-12 col-lg-4">
-                                <div class="sticky-top pt-1">
-                                    <div class="section-title">Detail Pengajuan</div>
-                                    <div class="card card-secondary">
-                                        <div class="card-header">
-                                            <i class="fas fa-calendar mr-2"></i>
-                                            <h4>Timeline</h4>
-                                        </div>
-                                        <div class="card-body p-0">
-                                            <table class="table table-bordered m-0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="white-space: nowrap;width: 1%;font-weight: bold;">
-                                                            Tanggal Diajukan
-                                                        </td>
-                                                        <td>
-                                                            <?= !empty($item->tanggal_modifikasi_mahasiswa) ? date('d-M-Y h:i:s a', strtotime($item->tanggal_modifikasi_mahasiswa)) : 'Belum ada aksi' ?>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="white-space: nowrap;width: 1%;font-weight: bold;">
-                                                            Tanggal
-                                                            Modifikasi TU</td>
-                                                        <td>
-                                                            <?= !empty($item->tanggal_modifikasi_tu) ? date('d-M-Y h:i:s a', strtotime($item->tanggal_modifikasi_tu)) : 'Belum ada aksi' ?>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="white-space: nowrap;width: 1%;font-weight: bold;">
-                                                            Tanggal
-                                                            Modifikasi
-                                                            Koor</td>
-                                                        <td>
-                                                            <?= !empty($item->tanggal_modifikasi_koordinator) ? $item->tanggal_modifikasi_koordinator : 'Belum ada aksi' ?>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                <div class="section-title">Detail Pengajuan</div>
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <i class="fas fa-calendar mr-2"></i>
+                                        <h4>Timeline</h4>
                                     </div>
-                                    <div class="card card-info">
-                                        <div class="card-header">
-                                            <i class="fas fa-info-circle mr-2"></i>
-                                            <h4>Status Pengajuan</h4>
-                                        </div>
-                                        <div class="card-body p-0">
-                                            <table class="table table-bordered m-0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="white-space: nowrap;width: 1%;font-weight: bold;">
-                                                            Hasil Terakhir</td>
-                                                        <td>
-                                                            <span class="badge badge-primary">
-                                                                <?= !empty($item->status_yudisium) ? $item->status_yudisium : 'Belum diajukan' ?>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                    <div class="card-body p-0">
+                                        <table class="table table-bordered m-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                        Tanggal Diajukan
+                                                    </td>
+                                                    <td>
+                                                        <?= !empty($item->tanggal_modifikasi_mahasiswa) ? date('d-M-Y h:i:s a', strtotime($item->tanggal_modifikasi_mahasiswa)) : 'Belum ada aksi' ?>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                        Tanggal
+                                                        Modifikasi TU</td>
+                                                    <td>
+                                                        <?= !empty($item->tanggal_modifikasi_tu) ? date('d-M-Y h:i:s a', strtotime($item->tanggal_modifikasi_tu)) : 'Belum ada aksi' ?>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                        Tanggal
+                                                        Modifikasi
+                                                        Koor</td>
+                                                    <td>
+                                                        <?= !empty($item->tanggal_modifikasi_koordinator) ? $item->tanggal_modifikasi_koordinator : 'Belum ada aksi' ?>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="card card-info">
+                                    <div class="card-header">
+                                        <i class="fas fa-info-circle mr-2"></i>
+                                        <h4>Status Pengajuan</h4>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <table class="table table-bordered m-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                        Hasil Terakhir</td>
+                                                    <td>
+                                                        <span class="badge badge-primary">
+                                                            <?= !empty($item->status_yudisium) ? $item->status_yudisium : 'Belum diajukan' ?>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
