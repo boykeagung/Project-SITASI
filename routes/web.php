@@ -171,7 +171,7 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     // Route::post('dashboard-mahasiswa-form-001', [Form001Controller::class, 'store2']);
     // Route::get('mahasiswa-generate-form-001/{id}', [Form001Controller::class, 'generateForm001']); 
     Route::get('generate_nilai_kp', [NilaiDosPemController::class, 'generateNilaiKP']); //TESTING generate nilai
-    
+
 
     #Sidang_kp
     Route::get('dashboard-mahasiswa-sidang-kp', [SidangKPController::class, 'index']);
@@ -189,7 +189,7 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::get('dashboard-mahasiswa-edit-penilaian-kp-dospem/{id}', [NilaiDosPemController::class, 'edit']); //select
     Route::put('dashboard-mahasiswa-penilaian-kp/{id}', [NilaiDosPemController::class, 'update']);
     Route::delete('dashboard-mahasiswa-penilaian-kp/{id}', [NilaiDosPemController::class, 'delete']); //delete
-    
+
     Route::get('dashboard-mahasiswa-tambah-penilaian-kp-dospem-perusahaan', [NilaiDosPemPerusahaanController::class, 'create']);
     Route::post('dashboard-mahasiswa-penilaian-kp/perusahaan', [NilaiDosPemPerusahaanController::class, 'store']);
     Route::get('dashboard-mahasiswa-edit-penilaian-kp-dospem-perusahaan/{id}', [NilaiDosPemPerusahaanController::class, 'edit']); //select
@@ -400,7 +400,7 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
     Route::get('dashboard-tata-usaha-edit-form-001/{id}', [TUForm001Controller::class, 'edit']);
     Route::put('dashboard-tata-usaha-form-001/{id}', [TUForm001Controller::class, 'update']);
 
-    
+
 
     // Route::get('generate-form-001/{id}', [Form001Controller::class, 'generateForm001TU']); //generate form-001
     Route::get('dashboard-tata-usaha-yudisium', [YudisiumController::class, 'index']);
@@ -544,4 +544,3 @@ Route::get('/dashboard-tata-usaha-sidang-ta', function () {
 Route::get('/nilai', function () {
     return view('dosen.penilaian_dospem_kp');
 });
-
