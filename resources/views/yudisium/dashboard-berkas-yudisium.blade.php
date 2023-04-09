@@ -421,25 +421,27 @@
                                         <i class="fas fa-file"></i> Jurnal Penelitian
                                     </button>
                                 @endif
-                                <div class="section-title">Timeline Formulir</div>
-                                <div class="activities">
-                                    @foreach ($detailAjuan as $n)
-                                        <div class="activity">
-                                            <div
-                                                class="activity-icon bg-{{ $n->notifikasi_color }} text-white shadow-primary">
-                                                <i class="{{ $n->notifikasi_icon }}"></i>
-                                            </div>
-                                            <div class="activity-detail">
-                                                <div class="mb-2">
-                                                    <span class="text-job text-primary">
-                                                        {{ date('j F Y - h:i a', strtotime($n->notifikasi_time)) }}
-                                                    </span>
+                                @if (!$detailAjuan->isEmpty())
+                                    <div class="section-title">Timeline Formulir</div>
+                                    <div class="activities">
+                                        @foreach ($detailAjuan as $n)
+                                            <div class="activity">
+                                                <div
+                                                    class="activity-icon bg-{{ $n->notifikasi_color }} text-white shadow-primary">
+                                                    <i class="{{ $n->notifikasi_icon }}"></i>
                                                 </div>
-                                                <p>{{ $n->notifikasi_message }}</p>
+                                                <div class="activity-detail">
+                                                    <div class="mb-2">
+                                                        <span class="text-job text-primary">
+                                                            {{ date('j F Y - h:i a', strtotime($n->notifikasi_time)) }}
+                                                        </span>
+                                                    </div>
+                                                    <p>{{ $n->notifikasi_message }}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endforeach
-                                </div>
+                                        @endforeach
+                                    </div>
+                                @endif
                             </div>
                             <div class="col col-12 col-lg-4">
                                 <div class="card card-primary">

@@ -25,7 +25,6 @@ class YudisiumController extends Controller
         $detailAjuan = DB::table('notifikasi')
             ->where('notifikasi_own', '=', Auth::user()->username)
             ->where('notifikasi_context', '=', 'Yudisium')
-            ->where('notifikasi_message', 'LIKE', '%' . $id . '%')
             ->get();
         return view('yudisium.dashboard-berkas-yudisium', ['data' => $data, 'detailAjuan' => $detailAjuan]);
     }

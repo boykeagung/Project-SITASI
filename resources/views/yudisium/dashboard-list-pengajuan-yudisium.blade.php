@@ -45,14 +45,49 @@
                         <div class="col-lg-4 col-md-4 col-sm-12">
                             <div class="card card-statistic-2">
                                 <div class="card-icon shadow-primary bg-primary">
-                                    <i class="fas fa-archive"></i>
+                                    <i class="fas fa-users"></i>
                                 </div>
                                 <div class="card-wrap">
                                     <div class="card-header">
-                                        <h4>Total Orders</h4>
+                                        <h4>Tahap Pengisian</h4>
                                     </div>
                                     <div class="card-body">
-                                        59
+                                        @php
+                                            $count_mengisi = 0;
+                                        @endphp
+                                        @foreach ($yudisium as $y)
+                                            @php
+                                                if ($y->status_yudisium == 'Mengisi') {
+                                                    $count_mengisi++;
+                                                }
+                                            @endphp
+                                            {{ $count_mengisi }}
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="card card-statistic-2">
+                                <div class="card-icon shadow-primary bg-primary">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <div class="card-wrap">
+                                    <div class="card-header">
+                                        <h4>Menunggu Dicek</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        @php
+                                            $count_diajukan = 0;
+                                        @endphp
+                                        @foreach ($yudisium as $y)
+                                            @php
+                                                if ($y->status_yudisium == 'Diajukan') {
+                                                    $count_diajukan++;
+                                                }
+                                            @endphp
+                                            {{ $count_diajukan }}
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -64,25 +99,20 @@
                                 </div>
                                 <div class="card-wrap">
                                     <div class="card-header">
-                                        <h4>Total Orders</h4>
+                                        <h4>Total Selesai</h4>
                                     </div>
                                     <div class="card-body">
-                                        59
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12">
-                            <div class="card card-statistic-2">
-                                <div class="card-icon shadow-primary bg-primary">
-                                    <i class="fas fa-archive"></i>
-                                </div>
-                                <div class="card-wrap">
-                                    <div class="card-header">
-                                        <h4>Total Orders</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        59
+                                        @php
+                                            $count_selesai = 0;
+                                        @endphp
+                                        @foreach ($yudisium as $y)
+                                            @php
+                                                if ($y->status_yudisium == 'Dikonfirmasi TU' || $y->status_yudisium == 'Diterima') {
+                                                    $count_selesai++;
+                                                }
+                                            @endphp
+                                            {{ $count_selesai }}
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

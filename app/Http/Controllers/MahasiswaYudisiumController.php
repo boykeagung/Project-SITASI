@@ -50,7 +50,12 @@ class MahasiswaYudisiumController extends Controller
             ->join('yudisium', 'users.username', '=', 'yudisium.nrp')
             ->where('users.username', $loggedNrp)
             ->get();
-        return view('mahasiswa.dashboard-mahasiswa-yudisium', ['collection' => $join]);
+
+        $detailAjuan = DB::table('notifikasi')
+            ->where('notifikasi_own', '=', Auth::user()->username)
+            ->where('notifikasi_context', '=', 'Yudisium')
+            ->get();
+        return view('mahasiswa.dashboard-mahasiswa-yudisium', ['collection' => $join, 'detailAjuan' => $detailAjuan]);
 
     }
     public function updateMahasiswa(Request $req)
@@ -414,7 +419,7 @@ class MahasiswaYudisiumController extends Controller
                         'notifikasi_icon' => 'fas fa-user-edit',
                         'notifikasi_color' => 'warning',
                         'notifikasi_message' => 'Anda menarik formulir pendaftaran yudisium untuk dikoreksi',
-                        'notifikasi_link' => 'dashboard-mahasiswa-yudisium' . $nrp,
+                        'notifikasi_link' => 'dashboard-mahasiswa-yudisium',
                         'notifikasi_time' => now(),
                         'notifikasi_context' => 'Yudisium',
                         'notifikasi_read' => 0
@@ -424,7 +429,7 @@ class MahasiswaYudisiumController extends Controller
                         'notifikasi_icon' => 'fas fa-user-edit',
                         'notifikasi_color' => 'warning',
                         'notifikasi_message' => 'Mahasiswa ' . $nrp . ' menarik formulir pendaftaran yudisium untuk dikoreksi',
-                        'notifikasi_link' => 'dashboard-mahasiswa-yudisium' . $nrp,
+                        'notifikasi_link' => 'dashboard-mahasiswa-yudisium/',
                         'notifikasi_time' => now(),
                         'notifikasi_context' => 'Yudisium',
                         'notifikasi_read' => 0

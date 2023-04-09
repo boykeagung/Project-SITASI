@@ -4,15 +4,22 @@
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a>
             </li>
             <li>
-                <h1 class="header-nav">Dashboard</h1>
+                <h1 class="header-nav">SITASI Itenas</h1>
             </li>
         </ul>
     </div>
     <ul class="navbar-nav navbar-right">
 
         <li class="dropdown dropdown-list-toggle">
-            <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i
-                    class="far fa-bell"></i></a>
+            @if ($beepState)
+                <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i
+                        class="far fa-bell"></i>
+                </a>
+            @else
+                <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg"><i
+                        class="far fa-bell"></i>
+                </a>
+            @endif
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Notifikasi
                 </div>
@@ -23,25 +30,33 @@
                         {{ Form::hidden('inputNotificationID', $n->notifikasi_id) }}
                         {{ Form::hidden('inputNotificationRedirectLink', $n->notifikasi_link) }}
                         @if ($n->notifikasi_read == 0)
+                            <button onclick="javascript:this.form.submit();"
+                                class="dropdown-item dt-notification-button">
+                                <div class="dropdown-item-icon bg-{{ $n->notifikasi_color }} text-white">
+                                    <i class="{{ $n->notifikasi_icon }}"></i>
+                                </div>
+                                <div class="dropdown-item-desc text-dark">
+                                    {{ $n->notifikasi_message }}
+                                    <div class="time">{{ date('d-M-Y h:i a', strtotime($n->notifikasi_time)) }}</div>
+                                </div>
+                            </button>
+                        @else
                             <button onclick="javascript:this.form.submit();" class="dropdown-item"
-                                style="cursor: pointer;background-color:#fffae5;">
-                            @else
-                                <button onclick="javascript:this.form.submit();" class="dropdown-item"
-                                    style="cursor: pointer;">
+                                style="cursor: pointer;outline: none;">
+                                <div class="dropdown-item-icon bg-{{ $n->notifikasi_color }} text-white">
+                                    <i class="{{ $n->notifikasi_icon }}"></i>
+                                </div>
+                                <div class="dropdown-item-desc">
+                                    {{ $n->notifikasi_message }}
+                                    <div class="time">{{ date('d-M-Y h:i a', strtotime($n->notifikasi_time)) }}</div>
+                                </div>
+                            </button>
                         @endif
-                        <div class="dropdown-item-icon bg-{{ $n->notifikasi_color }} text-white">
-                            <i class="{{ $n->notifikasi_icon }}"></i>
-                        </div>
-                        <div class="dropdown-item-desc">
-                            {{ $n->notifikasi_message }}
-                            <div class="time">{{ date('d-M-Y h:i a', strtotime($n->notifikasi_time)) }}</div>
-                        </div>
-                        </button>
                         {{ Form::close() }}
                     @endforeach
                 </div>
                 <div class="dropdown-footer text-center">
-                    <a href="#">Lihat Semua <i class="fas fa-chevron-right"></i></a>
+                    <a href="{{ url('/notifikasi') }}">Lihat Semua <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </li>

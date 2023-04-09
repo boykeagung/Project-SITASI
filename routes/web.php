@@ -104,6 +104,7 @@ Route::post('/post-login-tu', [AuthController::class, 'PostLoginTU']);
 // Logout
 Route::get('/logout', [AuthController::class, 'logout']);
 
+Route::get('notifikasi', [NotificationController::class, 'index']);
 Route::post('/readNotification', [NotificationController::class, 'readNotification']);
 
 /* mahasiswa */
