@@ -9,7 +9,7 @@ class Notifikasi extends Model
 {
 
     public $table = "notifikasi";
-    protected $fillable = ['notifikasi_milik', 'notifikasi_pesan'];
+    protected $fillable = ['notifikasi_own', 'notifikasi_message'];
     public $timestamps = false;
     use HasFactory;
 }

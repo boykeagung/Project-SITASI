@@ -18,17 +18,27 @@
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons" tabindex="3"
                     style="outline: none; height: fit-content; max-height: 300px;">
-                    <?php foreach ($notifikasi as $n) { ?>
-                    <a href="{{ url($n->notifikasi_link) }}" class="dropdown-item">
-                        <div class="dropdown-item-icon bg-info text-white">
+                    @foreach ($notifikasi as $n)
+                        {{ Form::open(['url' => url('/readNotification')]) }}
+                        {{ Form::hidden('inputNotificationID', $n->notifikasi_id) }}
+                        {{ Form::hidden('inputNotificationRedirectLink', $n->notifikasi_link) }}
+                        @if ($n->notifikasi_read == 0)
+                            <button onclick="javascript:this.form.submit();" class="dropdown-item"
+                                style="cursor: pointer;background-color:#fffae5;">
+                            @else
+                                <button onclick="javascript:this.form.submit();" class="dropdown-item"
+                                    style="cursor: pointer;">
+                        @endif
+                        <div class="dropdown-item-icon bg-{{ $n->notifikasi_color }} text-white">
                             <i class="{{ $n->notifikasi_icon }}"></i>
                         </div>
                         <div class="dropdown-item-desc">
-                            {{ $n->notifikasi_pesan }}
-                            <div class="time">{{ date('d-M-Y h:i:s a', strtotime($n->notifikasi_waktu)) }}</div>
+                            {{ $n->notifikasi_message }}
+                            <div class="time">{{ date('d-M-Y h:i a', strtotime($n->notifikasi_time)) }}</div>
                         </div>
-                    </a>
-                    <?php } ?>
+                        </button>
+                        {{ Form::close() }}
+                    @endforeach
                 </div>
                 <div class="dropdown-footer text-center">
                     <a href="#">Lihat Semua <i class="fas fa-chevron-right"></i></a>

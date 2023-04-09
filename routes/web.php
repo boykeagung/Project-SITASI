@@ -25,6 +25,7 @@ use App\Http\Controllers\KoordinatorSidangKPController;
 use App\Http\Controllers\KPController;
 use App\Http\Controllers\SidangKPController;
 use App\Http\Controllers\Form001Controller;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\KoordinatorBimbinganTA;
 use App\Http\Controllers\TUForm001Controller;
 use App\Http\Controllers\testForm001Controller;
@@ -103,6 +104,7 @@ Route::post('/post-login-tu', [AuthController::class, 'PostLoginTU']);
 // Logout
 Route::get('/logout', [AuthController::class, 'logout']);
 
+Route::post('/readNotification', [NotificationController::class, 'readNotification']);
 
 /* mahasiswa */
 

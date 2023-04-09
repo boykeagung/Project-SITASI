@@ -1054,6 +1054,14 @@
                                 </form>
                             </div>
                         @else
+                            <div class="row">
+                                <div class="col col-12 col-lg-6">
+
+                                </div>
+                                <div class="col col-12 col-lg-6">
+
+                                </div>
+                            </div>
                             <div class="card card-primary">
                                 <div class="card-header">
                                     <h4>Formulir Pengajuan Yudisium Telah Diajukan!</h4>
@@ -1089,7 +1097,7 @@
                                                     Modifikasi Mahasiswa
                                                 </td>
                                                 <td>
-                                                    <?= !empty($item->tanggal_modifikasi_mahasiswa) ? date('d-M-Y h:i:s a', strtotime($item->tanggal_modifikasi_mahasiswa)) : '-' ?>
+                                                    <?= !empty($item->tanggal_modifikasi_mahasiswa) ? date('d-M-Y h:i a', strtotime($item->tanggal_modifikasi_mahasiswa)) : '-' ?>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1098,7 +1106,7 @@
                                                     Modifikasi Tata
                                                     Usaha</td>
                                                 <td>
-                                                    <?= !empty($item->tanggal_modifikasi_tu) ? date('d-M-Y h:i:s a', strtotime($item->tanggal_modifikasi_tu)) : '-' ?>
+                                                    <?= !empty($item->tanggal_modifikasi_tu) ? date('d-M-Y h:i a', strtotime($item->tanggal_modifikasi_tu)) : '-' ?>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1107,7 +1115,7 @@
                                                     Modifikasi
                                                     Koordinator Yudisium</td>
                                                 <td>
-                                                    <?= !empty($item->tanggal_modifikasi_koordinator) ? date('d-M-Y h:i:s a', strtotime($item->tanggal_modifikasi_koordinator)) : '-' ?>
+                                                    <?= !empty($item->tanggal_modifikasi_koordinator) ? date('d-M-Y h:i a', strtotime($item->tanggal_modifikasi_koordinator)) : '-' ?>
                                                 </td>
                                             </tr>
                                         </tbody>

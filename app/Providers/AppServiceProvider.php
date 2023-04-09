@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         // Using view composer to set following variables globally
         view()->composer('*', function ($view) {
             if (isset(auth()->user()->username)) {
-                $view->with('notifikasi', DB::table('notifikasi')->where('notifikasi_milik', auth()->user()->username)->orderBy('notifikasi_waktu', 'DESC')->get());
+                $view->with('notifikasi', DB::table('notifikasi')->where('notifikasi_own', auth()->user()->username)->orderBy('notifikasi_time', 'DESC')->get());
             }
         });
     }
