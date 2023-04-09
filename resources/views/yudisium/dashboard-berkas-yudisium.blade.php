@@ -128,7 +128,7 @@
                         </div>
                         <?php } ?>
                         <div class="row">
-                            <div class="col col-12 col-lg-6">
+                            <div class="col col-12 col-lg-8">
                                 <div class="section-title mb-5">Informasi Data Mahasiswa</div>
                                 <div class="card profile-widget">
                                     <div class="profile-widget-header">
@@ -163,15 +163,15 @@
                                         <strong>{{ $item->alamat }}</strong>.
                                     </div>
                                     <div class="card-footer bg-whitesmoke">
-                                        <a href="mailto:{{ $item->email }}"
+                                        <a target="_blank" href="mailto:{{ $item->email }}"
                                             class="btn btn-icon icon-left btn-secondary text-dark mr-2 my-2"><i
                                                 class="fas fa-envelope"></i> Email
                                         </a>
-                                        <a href="https://wa.me/{{ $item->no_wa }}"
+                                        <a target="_blank" href="https://wa.me/{{ $item->no_wa }}"
                                             class="btn btn-icon icon-left btn-secondary text-dark mr-2 my-2"><i
                                                 class="fab fa-whatsapp"></i> WhatsApp
                                         </a>
-                                        <a href="tel:{{ $item->no_hp }}"
+                                        <a target="_blank" href="tel:{{ $item->no_hp }}"
                                             class="btn btn-icon icon-left btn-secondary text-dark mr-2 my-2"><i
                                                 class="fas fa-phone"></i> {{ $item->no_hp }}
                                         </a>
@@ -323,7 +323,7 @@
                                     ?>
                                     <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
                                         href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->bukti_pembayaran) }}">
-                                        <i class="fas fa-file"></i> Bukti Pembayaran
+                                        <i class="fas fa-file"></i> Bukti Pembayaran (Opsional)
                                         <span class="badge badge-transparent">{{ $extension }}</span>
                                     </a>
                                 @else
@@ -338,7 +338,7 @@
                                     ?>
                                     <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
                                         href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->surat_ganti_nama) }}">
-                                        <i class="fas fa-file"></i> Surat Ganti Nama
+                                        <i class="fas fa-file"></i> Surat Ganti Nama (Opsional)
                                         <span class="badge badge-transparent">{{ $extension }}</span>
                                     </a>
                                 @else
@@ -368,7 +368,7 @@
                                     ?>
                                     <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
                                         href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->sertifikat_keahlian) }}">
-                                        <i class="fas fa-file"></i> Sertifikat Keahlian
+                                        <i class="fas fa-file"></i> Sertifikat Keahlian (Opsional)
                                         <span class="badge badge-transparent">{{ $extension }}</span>
                                     </a>
                                 @else
@@ -421,9 +421,28 @@
                                         <i class="fas fa-file"></i> Jurnal Penelitian
                                     </button>
                                 @endif
+                                <div class="section-title">Timeline Formulir</div>
+                                <div class="activities">
+                                    @foreach ($detailAjuan as $n)
+                                        <div class="activity">
+                                            <div
+                                                class="activity-icon bg-{{ $n->notifikasi_color }} text-white shadow-primary">
+                                                <i class="{{ $n->notifikasi_icon }}"></i>
+                                            </div>
+                                            <div class="activity-detail">
+                                                <div class="mb-2">
+                                                    <span class="text-job text-primary">
+                                                        {{ date('j F Y - h:i a', strtotime($n->notifikasi_time)) }}
+                                                    </span>
+                                                </div>
+                                                <p>{{ $n->notifikasi_message }}</p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
-                            <div class="col col-12 col-lg-6">
-                                <div class="card card-secondary">
+                            <div class="col col-12 col-lg-4">
+                                <div class="card card-primary">
                                     <div class="card-header">
                                         <i class="fas fa-comment mr-2"></i>
                                         <h4>Hasil</h4>
@@ -467,70 +486,24 @@
                                         </table>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="section-title">Timeline Formulir</div>
-
-
-
-
-                        <div class="col col-12 col-lg-6">
-                            <div class="section-body">
-                                <h2 class="section-title">Timeline Pengajuan</h2>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="activities">
-                                            @foreach ($detailAjuan as $n)
-                                                <div class="activity">
-                                                    <div
-                                                        class="activity-icon bg-{{ $n->notifikasi_color }} text-white shadow-primary">
-                                                        <i class="{{ $n->notifikasi_icon }}"></i>
-                                                    </div>
-                                                    <div class="activity-detail">
-                                                        <div class="mb-2">
-                                                            <span class="text-job text-primary">
-                                                                {{ date('j F Y - h:i a', strtotime($n->notifikasi_time)) }}
-                                                            </span>
-                                                        </div>
-                                                        <p>{{ $n->notifikasi_message }}</p>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{ Form::open(['url' => url()->current() . '/aksi']) }}
-                        <div class="row">
-                            <div class="col col-12 col-lg-6">
-
                                 <div class="card card-primary">
                                     <div class="card-header">
                                         <i class="fas fa-paper-plane mr-2"></i>
                                         <h4>Aksi</h4>
                                     </div>
+                                    {{ Form::open(['url' => url()->current() . '/aksi']) }}
                                     <div class="card-body pb-0">
                                         @if (Auth::user()->level == 'koordinator-yudisium')
                                             <input type="hidden" name="inputBy" value="koor">
                                             <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
                                             <div class="form-group">
-                                                <label class="form-label">Komentar Tata Usaha</label>
-                                                <textarea class="form-control" disabled>
-                                                <?php if (!empty($item->komentar_tu)) {
-                                                    echo $item->komentar_tu;
-                                                } ?>
-                                                </textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Komentar Koordinator Yudisium</label>
+                                                <label class="form-label">Beri Komentar</label>
                                                 <textarea name="inputKomentar" class="form-control" aria-describedby="komentar"
                                                     placeholder="Komentar yang berkaitan dengan hasil akhir pengecekan..." required>
-                                                    <?php if (!empty($item->komentar_koordinator)) {
-                                                        echo $item->komentar_koordinator;
-                                                    } ?>
-                                                    </textarea>
+                                            <?php if (!empty($item->komentar_koordinator)) {
+                                                echo $item->komentar_koordinator;
+                                            } ?>
+                                            </textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">Keputusan</label>
@@ -547,118 +520,41 @@
                                                     </label>
                                                 </div>
                                             </div>
+                                            <input class="w-100 btn btn-primary mb-4" type="submit" value="Simpan">
                                             {{ Form::close() }}
                                         @elseif(Auth::user()->level == 'tu')
                                             <input type="hidden" name="inputBy" value="tu">
                                             <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
                                             <div class="form-group">
-                                                <label class="form-label">Komentar Tata Usaha</label>
+                                                <label class="form-label">Beri Komentar</label>
                                                 <textarea name="inputKomentar" class="form-control"
                                                     aria-describedby="komentar"placeholder="Komentar yang berkaitan dengan hasil akhir pengecekan..." required><?php if (!empty($item->komentar_tu)) {
                                                         echo $item->komentar_tu;
                                                     } ?>
-                                                </textarea>
+                                        </textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label class="form-label">Keputusan</label>
+                                                <label class="form-label">Aksi</label>
                                                 <div class="selectgroup w-100">
                                                     <label class="selectgroup-item">
-                                                        <input type="radio" name="inputKeputusan"
-                                                            value="Dikonfirmasi TU" class="selectgroup-input" checked>
-                                                        <span class="selectgroup-button">Lanjut ke Koordinator</span>
+                                                        <input checked type="radio" name="inputKeputusan"
+                                                            value="Dikonfirmasi TU" class="selectgroup-input">
+                                                        <span class="selectgroup-button">Sah</span>
                                                     </label>
                                                     <label class="selectgroup-item">
                                                         <input type="radio" name="inputKeputusan" value="Mengisi"
                                                             class="selectgroup-input">
-                                                        <span class="selectgroup-button">Tolak</span>
+                                                        <span class="selectgroup-button">Tidak Sah</span>
                                                     </label>
                                                 </div>
                                             </div>
+                                            <input class="w-100 btn btn-primary mb-4" type="submit" value="Simpan">
                                         @endif
                                     </div>
-                                    <input class="card-footer btn btn-primary bg-primary" type="submit" value="Submit"
-                                        onclick="return confirm('Apakah semua berkas sudah anda cek dan benar?')"
-                                        @if ($item->status_yudisium == 'Mengisi') disabled @endif>
-                                </div>
-                            </div>
-                            <div class="col col-12 col-lg-6">
-                                <div class="card card-primary">
-                                    <div class="card-header">
-                                        <i class="fas fa-paper-plane mr-2"></i>
-                                        <h4>Aksi</h4>
-                                    </div>
-                                    <div class="card-body pb-0">
-                                        @if (Auth::user()->level == 'koordinator-yudisium')
-                                            <input type="hidden" name="inputBy" value="koor">
-                                            <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
-                                            <div class="form-group">
-                                                <label class="form-label">Komentar Tata Usaha</label>
-                                                <textarea class="form-control" disabled>
-                                                <?php if (!empty($item->komentar_tu)) {
-                                                    echo $item->komentar_tu;
-                                                } ?>
-                                                </textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Komentar Koordinator Yudisium</label>
-                                                <textarea name="inputKomentar" class="form-control" aria-describedby="komentar"
-                                                    placeholder="Komentar yang berkaitan dengan hasil akhir pengecekan..." required>
-                                                    <?php if (!empty($item->komentar_koordinator)) {
-                                                        echo $item->komentar_koordinator;
-                                                    } ?>
-                                                    </textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Keputusan</label>
-                                                <div class="selectgroup w-100">
-                                                    <label class="selectgroup-item">
-                                                        <input type="radio" name="inputKeputusan" value="Diterima"
-                                                            class="selectgroup-input" checked>
-                                                        <span class="selectgroup-button">Diterima</span>
-                                                    </label>
-                                                    <label class="selectgroup-item">
-                                                        <input type="radio" name="inputKeputusan" value="Mengisi"
-                                                            class="selectgroup-input">
-                                                        <span class="selectgroup-button">Ditolak</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            {{ Form::close() }}
-                                        @elseif(Auth::user()->level == 'tu')
-                                            <input type="hidden" name="inputBy" value="tu">
-                                            <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
-                                            <div class="form-group">
-                                                <label class="form-label">Komentar Tata Usaha</label>
-                                                <textarea name="inputKomentar" class="form-control"
-                                                    aria-describedby="komentar"placeholder="Komentar yang berkaitan dengan hasil akhir pengecekan..." required><?php if (!empty($item->komentar_tu)) {
-                                                        echo $item->komentar_tu;
-                                                    } ?>
-                                                </textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Keputusan</label>
-                                                <div class="selectgroup w-100">
-                                                    <label class="selectgroup-item">
-                                                        <input type="radio" name="inputKeputusan"
-                                                            value="Dikonfirmasi TU" class="selectgroup-input" checked>
-                                                        <span class="selectgroup-button">Lanjut ke Koordinator</span>
-                                                    </label>
-                                                    <label class="selectgroup-item">
-                                                        <input type="radio" name="inputKeputusan" value="Mengisi"
-                                                            class="selectgroup-input">
-                                                        <span class="selectgroup-button">Tolak</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <input class="card-footer btn btn-primary bg-primary" type="submit" value="Submit"
-                                        onclick="return confirm('Apakah semua berkas sudah anda cek dan benar?')"
-                                        @if ($item->status_yudisium == 'Mengisi') disabled @endif>
+                                    {{ Form::close() }}
                                 </div>
                             </div>
                         </div>
-                        {{ Form::close() }}
                     </section>
                 </div>
             @endforeach
