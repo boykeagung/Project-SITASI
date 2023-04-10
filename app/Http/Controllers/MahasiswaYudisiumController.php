@@ -66,7 +66,7 @@ class MahasiswaYudisiumController extends Controller
             'inputTanggalLahir' => 'required|before:today',
             'inputAlamat' => 'required',
             'inputEmail' => 'required|email',
-            'inputTelepon' => 'required|numeric',
+            'inputTelepon' => 'required|max:15',
             'inputIPK' => 'required|numeric|min:0|max:4',
             'inputSKS' => 'required|numeric|min:144',
             'inputToga' => 'required',

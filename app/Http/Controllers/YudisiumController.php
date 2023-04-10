@@ -80,7 +80,7 @@ class YudisiumController extends Controller
                             'notifikasi_icon' => 'fas fa-user-check',
                             'notifikasi_color' => 'success',
                             'notifikasi_message' => 'Anda mengkonfirmasi formulir pendaftaran Yudisium mahasiswa ' . $nrp . '.',
-                            'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
+                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
@@ -115,11 +115,11 @@ class YudisiumController extends Controller
                             'notifikasi_read' => 0
                         ],
                         [
-                            'notifikasi_own' => config('global.id_ky'),
+                            'notifikasi_own' => config('global.id_tu'),
                             'notifikasi_icon' => 'fas fa-times',
                             'notifikasi_color' => 'danger',
-                            'notifikasi_message' => 'Anda menolak formulir pendaftaran Yudisium mahasiswa ' . $nrp,
-                            'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
+                            'notifikasi_message' => 'Koordinator Yudisium menolak formulir pendaftaran Yudisium mahasiswa ' . $nrp,
+                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
@@ -143,8 +143,8 @@ class YudisiumController extends Controller
                             'notifikasi_own' => $nrp,
                             'notifikasi_icon' => 'fas fa-user-graduate',
                             'notifikasi_color' => 'success',
-                            'notifikasi_message' => 'Selamat! formulir pendaftaran Yudisium diterima, lihat detail Yudisium.',
-                            'notifikasi_link' => 'dashboard-mahasiswa-yudisium/tentang-yudisium',
+                            'notifikasi_message' => 'Selamat! formulir pendaftaran Yudisium disetujui, lihat detail Yudisium.',
+                            'notifikasi_link' => 'dashboard-mahasiswa-yudisium',
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
@@ -153,17 +153,17 @@ class YudisiumController extends Controller
                             'notifikasi_own' => config('global.id_ky'),
                             'notifikasi_icon' => 'fas fa-user-graduate',
                             'notifikasi_color' => 'success',
-                            'notifikasi_message' => 'Anda menerima formulir pendaftaran Yudisium mahasiswa ' . $nrp . '.',
+                            'notifikasi_message' => 'Anda menyetujui formulir pendaftaran Yudisium mahasiswa ' . $nrp . '.',
                             'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
                         ],
                         [
-                            'notifikasi_own' => config('global.id_ky'),
+                            'notifikasi_own' => config('global.id_tu'),
                             'notifikasi_icon' => 'fas fa-times',
                             'notifikasi_color' => 'danger',
-                            'notifikasi_message' => 'Anda menolak formulir pendaftaran Yudisium mahasiswa ' . $nrp,
+                            'notifikasi_message' => 'Koordinator Yudisium menyetujui formulir pendaftaran Yudisium mahasiswa ' . $nrp,
                             'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',

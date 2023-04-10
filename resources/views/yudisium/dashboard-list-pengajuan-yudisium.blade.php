@@ -174,7 +174,15 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                {{ $y->status_yudisium }}
+                                                @if ($y->status_yudisium == 'Mengisi')
+                                                    <span class="badge badge-secondary">Tahap Pengisian</span>
+                                                @elseif ($y->status_yudisium == 'Diajukan')
+                                                    <span class="badge badge-warning">Diajukan</span>
+                                                @elseif ($y->status_yudisium == 'Dikonfirmasi TU')
+                                                    <span class="badge badge-primary">Dikonfirmasi TU</span>
+                                                @elseif ($y->status_yudisium == 'Diterima')
+                                                    <span class="badge badge-success">Diterima</span>
+                                                @endif
                                             </td>
                                             <td>
                                                 <a href="<?= url()->current() . '/berkas/' . $y->nrp ?>"
