@@ -1054,99 +1054,15 @@
                                 </form>
                             </div>
                         @else
-                            <div class="card card-primary">
-                                <div class="card-header text-primary">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <h4>Formulir Pengajuan Yudisium Dalam Proses Pengecekan</h4>
-                                    <div class="card-header-action">
-                                        @if ($item->status_yudisium == 'Diajukan')
-                                            <span id="tarik-ajuan"class="btn btn-dark" data-toggle="tooltip"
-                                                data-placement="left"
-                                                data-original-title="Jika anda merasa ada isian yang salah silahkan lakukan edit kembali dengan menarik ajuan.">Tarik
-                                                Kembali Pengajuan</span>
-                                        @else
-                                            <a class="btn btn-primary"
-                                                href="{{ url()->current() . '/tentang-yudisium' }}">Selengkapnya</a>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="card-body p-0">
-                                    <table class="table table-bordered m-0">
-                                        <tbody>
-                                            <tr>
-                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
-                                                    Status
-                                                    Yudisium</td>
-                                                <td>
-                                                    @if ($item->status_yudisium == 'Mengisi')
-                                                        <span class="badge badge-secondary">Tahap Pengisian</span>
-                                                    @elseif ($item->status_yudisium == 'Diajukan')
-                                                        <span class="badge badge-warning">Diajukan</span>
-                                                    @elseif ($item->status_yudisium == 'Dikonfirmasi TU')
-                                                        <span class="badge badge-primary">Dikonfirmasi TU</span>
-                                                    @elseif ($item->status_yudisium == 'Diterima')
-                                                        <span class="badge badge-success">Diterima</span>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
-                                                    Tanggal
-                                                    Modifikasi Mahasiswa
-                                                </td>
-                                                <td>
-                                                    <?= !empty($item->tanggal_modifikasi_mahasiswa) ? date('d-M-Y h:i a', strtotime($item->tanggal_modifikasi_mahasiswa)) : '-' ?>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
-                                                    Tanggal
-                                                    Modifikasi Tata
-                                                    Usaha</td>
-                                                <td>
-                                                    <?= !empty($item->tanggal_modifikasi_tu) ? date('d-M-Y h:i a', strtotime($item->tanggal_modifikasi_tu)) : '-' ?>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="white-space: nowrap;width: 1%;font-weight: bold;">
-                                                    Tanggal
-                                                    Modifikasi
-                                                    Koordinator Yudisium</td>
-                                                <td>
-                                                    <?= !empty($item->tanggal_modifikasi_koordinator) ? date('d-M-Y h:i a', strtotime($item->tanggal_modifikasi_koordinator)) : '-' ?>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
                             <div class="row">
-                                <div class="col col-12 col-lg-6">
-                                    @if (!$detailAjuan->isEmpty())
-                                        <div class="section-title">Timeline Formulir</div>
-                                        <div class="activities">
-                                            @foreach ($detailAjuan as $n)
-                                                <div class="activity">
-                                                    <div
-                                                        class="activity-icon bg-{{ $n->notifikasi_color }} text-white shadow-primary">
-                                                        <i class="{{ $n->notifikasi_icon }}"></i>
-                                                    </div>
-                                                    <div class="activity-detail">
-                                                        <div class="mb-2">
-                                                            <span class="text-job text-primary">
-                                                                {{ date('j F Y - h:i a', strtotime($n->notifikasi_time)) }}
-                                                            </span>
-                                                        </div>
-                                                        <p>{{ $n->notifikasi_message }}</p>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    @endif
-                                </div>
+
                                 <div class="col col-12 col-lg-6">
                                     <div class="section-title">Cek Hasil Upload</div>
-                                    <div class="card">
+                                    <div class="card card-primary">
+                                        <div class="card-header text-primary">
+                                            <i class="fas fa-user mr-2"></i>
+                                            <h4>Biodata</h4>
+                                        </div>
                                         <div class="card-body">
                                             <input type="hidden" name="_token"
                                                 value="iJTPTSrrvhadgB7KklmY2W06Fd4VaAuSrFd4xDy1">
@@ -1192,6 +1108,12 @@
                                                 <label>Ukuran Baju Toga</label>
                                                 <div class="form-control">{{ $item->toga }}</div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="card card-primary">
+                                        <div class="card-header text-primary">
+                                            <i class="fas fa-file mr-2"></i>
+                                            <h4>Dokumen Persyaratan</h4>
                                         </div>
                                     </div>
                                     <div>
@@ -1277,14 +1199,16 @@
                                             ?>
                                             <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
                                                 href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->bebas_pinjam_buku) }}">
-                                                <i class="fas fa-file"></i> Bebas Pinjam Buku & Bukti Penyerahan Buku TA
+                                                <i class="fas fa-file"></i> Bebas Pinjam Buku & Bukti Penyerahan Buku
+                                                TA
                                                 Dari
                                                 Perpustakaan
                                                 <span class="badge badge-transparent">{{ $extension }}</span>
                                             </a>
                                         @else
                                             <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                                <i class="fas fa-file"></i> Bebas Pinjam Buku & Bukti Penyerahan Buku TA
+                                                <i class="fas fa-file"></i> Bebas Pinjam Buku & Bukti Penyerahan Buku
+                                                TA
                                                 Dari
                                                 Perpustakaan
                                             </button>
@@ -1438,6 +1362,100 @@
                                             <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
                                                 <i class="fas fa-file"></i> Jurnal Penelitian
                                             </button>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col col-12 col-lg-6">
+                                    <div class="section-title">Informasi Formulir</div>
+                                    <div class="card card-primary">
+                                        <div class="card-header text-primary">
+                                            <i class="fas fa-spinner mr-2"></i>
+                                            <h4>Waiting for response...</h4>
+                                            <div class="card-header-action">
+                                                @if ($item->status_yudisium == 'Diajukan')
+                                                    <span id="tarik-ajuan"class="btn btn-dark" data-toggle="tooltip"
+                                                        data-placement="left"
+                                                        data-original-title="Jika anda merasa ada isian yang salah silahkan lakukan edit kembali dengan menarik ajuan.">Tarik
+                                                        Kembali Pengajuan</span>
+                                                @else
+                                                    <a class="btn btn-primary"
+                                                        href="{{ url()->current() . '/tentang-yudisium' }}">Selengkapnya</a>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <table class="table table-bordered m-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                            Status
+                                                            Yudisium</td>
+                                                        <td>
+                                                            @if ($item->status_yudisium == 'Mengisi')
+                                                                <span class="badge badge-secondary">Tahap Pengisian</span>
+                                                            @elseif ($item->status_yudisium == 'Diajukan')
+                                                                <span class="badge badge-warning">Diajukan</span>
+                                                            @elseif ($item->status_yudisium == 'Dikonfirmasi TU')
+                                                                <span class="badge badge-primary">Dikonfirmasi TU</span>
+                                                            @elseif ($item->status_yudisium == 'Diterima')
+                                                                <span class="badge badge-success">Diterima</span>
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                            Tanggal
+                                                            Modifikasi Mahasiswa
+                                                        </td>
+                                                        <td>
+                                                            <?= !empty($item->tanggal_modifikasi_mahasiswa) ? date('d-M-Y h:i a', strtotime($item->tanggal_modifikasi_mahasiswa)) : '-' ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                            Tanggal
+                                                            Modifikasi Tata
+                                                            Usaha</td>
+                                                        <td>
+                                                            <?= !empty($item->tanggal_modifikasi_tu) ? date('d-M-Y h:i a', strtotime($item->tanggal_modifikasi_tu)) : '-' ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="white-space: nowrap;width: 1%;font-weight: bold;">
+                                                            Tanggal
+                                                            Modifikasi
+                                                            Koordinator Yudisium</td>
+                                                        <td>
+                                                            <?= !empty($item->tanggal_modifikasi_koordinator) ? date('d-M-Y h:i a', strtotime($item->tanggal_modifikasi_koordinator)) : '-' ?>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="section-title">Timeline Formulir</div>
+                                    <div class="card-body"
+                                        style="height: fit-content;max-height:100vh; overflow-y: scroll; outline: none;">
+                                        @if (!$detailAjuan->isEmpty())
+                                            <div class="activities">
+                                                @foreach ($detailAjuan as $n)
+                                                    <div class="activity">
+                                                        <div
+                                                            class="activity-icon bg-{{ $n->notifikasi_color }} text-white shadow-primary">
+                                                            <i class="{{ $n->notifikasi_icon }}"></i>
+                                                        </div>
+                                                        <div class="activity-detail">
+                                                            <div class="mb-2">
+                                                                <span class="text-job text-primary">
+                                                                    {{ date('j F Y - h:i a', strtotime($n->notifikasi_time)) }}
+                                                                </span>
+                                                            </div>
+                                                            <p>{{ $n->notifikasi_message }}</p>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
