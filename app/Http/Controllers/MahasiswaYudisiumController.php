@@ -124,22 +124,22 @@ class MahasiswaYudisiumController extends Controller
         File::ensureDirectoryExists($path_to_upload);
 
         $rules = [
-            'inputPasFoto' => 'mimes:png,jpg,jpeg',
-            'inputAktaKelahiran' => 'mimes:pdf',
-            'inputIjasahSekolahMenengah' => 'mimes:pdf',
-            'inputJudulTugasAkhirIndonesia' => 'mimes:pdf',
-            'inputJudulTugasAkhirInggris' => 'mimes:pdf',
-            'inputBebasPinjamBuku' => 'mimes:pdf',
-            'inputTranskripDariSikad' => 'mimes:pdf',
-            'inputResumeSkkDanSimskk' => 'mimes:pdf',
-            'inputHasilTestEpt' => 'mimes:pdf',
-            'inputBuktiPembayaran' => 'mimes:pdf',
-            'inputSuratGantiNama' => 'mimes:pdf',
-            'inputFormBiodataPesertaYudisium' => 'mimes:pdf',
-            'inputSertifikatKeahlian' => 'mimes:pdf,rar,zip',
-            'inputPoseterA3' => 'mimes:pdf',
-            'inputBukuTugasAkhirSah' => 'mimes:pdf',
-            'inputJurnalPenelitian' => 'mimes:pdf',
+            'inputPasFoto' => 'file|mimes:png,jpg,jpeg|max:4000',
+            'inputAktaKelahiran' => 'file|mimes:pdf|max:4000',
+            'inputIjasahSekolahMenengah' => 'file|mimes:pdf|max:4000',
+            'inputJudulTugasAkhirIndonesia' => 'file|mimes:pdf|max:4000',
+            'inputJudulTugasAkhirInggris' => 'file|mimes:|max:4000',
+            'inputBebasPinjamBuku' => 'file|mimes:pdf|max:4000',
+            'inputTranskripDariSikad' => 'file|mimes:|max:4000',
+            'inputResumeSkkDanSimskk' => 'file|mimes:|max:4000',
+            'inputHasilTestEpt' => 'file|mimes:pdf|max:4000',
+            'inputBuktiPembayaran' => 'file|mimes:pdf|max:4000',
+            'inputSuratGantiNama' => 'file|mimes:|max:4000',
+            'inputFormBiodataPesertaYudisium' => 'file|mimes:|max:4000',
+            'inputSertifikatKeahlian' => 'file|mimes:pdf,rar,|max:4000',
+            'inputPoseterA3' => 'file|mimes:pdf|max:4000',
+            'inputBukuTugasAkhirSah' => 'file|mimes:pdf|max:4000',
+            'inputJurnalPenelitian' => 'file|mimes:pdf|max:4000',
         ];
         $messages = [
             'inputPasFoto.mimes' => 'Ekstensi file bukan png, jpg, jpeg.',
@@ -157,7 +157,23 @@ class MahasiswaYudisiumController extends Controller
             'inputSertifikatKeahlian.mimes' => 'Ekstensi file bukan pdf,rar,zip.',
             'inputPoseterA3.mimes' => 'Ekstensi file bukan pdf.',
             'inputBukuTugasAkhirSah.mimes' => 'Ekstensi file bukan pdf.',
-            'inputJurnalPenelitian.mimes' => 'Ekstensi file bukan pdf.'
+            'inputJurnalPenelitian.mimes' => 'Ekstensi file bukan pdf.',
+            'inputPasFoto.max' => 'File size terlalu besar',
+            'inputAktaKelahiran.max' => 'File size terlalu besar',
+            'inputIjasahSekolahMenengah.max' => 'File size terlalu besar',
+            'inputJudulTugasAkhirIndonesia.max' => 'File size terlalu besar',
+            'inputJudulTugasAkhirInggris.max' => 'File size terlalu besar',
+            'inputBebasPinjamBuku.max' => 'File size terlalu besar',
+            'inputTranskripDariSikad.max' => 'File size terlalu besar',
+            'inputResumeSkkDanSimskk.max' => 'File size terlalu besar',
+            'inputHasilTestEpt.max' => 'File size terlalu besar',
+            'inputBuktiPembayaran.max' => 'File size terlalu besar',
+            'inputSuratGantiNama.max' => 'File size terlalu besar',
+            'inputFormBiodataPesertaYudisium.max' => 'File size terlalu besar',
+            'inputSertifikatKeahlian.max' => 'File size terlalu besar',
+            'inputPoseterA3.max' => 'File size terlalu besar',
+            'inputBukuTugasAkhirSah.max' => 'File size terlalu besar',
+            'inputJurnalPenelitian.max' => 'File size terlalu besar'
         ];
 
         $validator = Validator::make($req->all(), $rules, $messages);

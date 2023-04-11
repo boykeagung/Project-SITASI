@@ -252,7 +252,7 @@
                                                                             </td>
                                                                             <td>Pas Foto Berwarna</td>
                                                                             <td>-</td>
-                                                                            <td>JPG, JPEG, PNG (400KB)</td>
+                                                                            <td>JPG, JPEG, PNG (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
@@ -296,7 +296,7 @@
                                                                             </td>
                                                                             <td>Akte Kelahiran</td>
                                                                             <td>-</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
@@ -341,7 +341,7 @@
                                                                             </td>
                                                                             <td>Ijasah SMA</td>
                                                                             <td>-</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
@@ -386,7 +386,7 @@
                                                                             </td>
                                                                             <td>Judul Tugas Akhir (Bahasa Indonesia)</td>
                                                                             <td>File sudah disetujui tugas akhir</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
@@ -431,7 +431,7 @@
                                                                             </td>
                                                                             <td>Judul Tugas Akhir (Bahasa Inggris)</td>
                                                                             <td>File sudah disetujui tugas akhir</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
@@ -480,7 +480,7 @@
                                                                                 Buku TA
                                                                             </td>
                                                                             <td>-</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
@@ -526,7 +526,7 @@
                                                                             <td>Transkrip Dari Sikad</td>
                                                                             <td>Harus sudah di tanda tangan oleh dosen wali
                                                                             </td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
@@ -571,7 +571,7 @@
                                                                             </td>
                                                                             <td>Resume SKK Dari Simskk</td>
                                                                             <td>-</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
@@ -616,7 +616,7 @@
                                                                             </td>
                                                                             <td>Hasil Test EPT</td>
                                                                             <td>-</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
@@ -665,7 +665,7 @@
                                                                                 Terakhir
                                                                             </td>
                                                                             <td>Bila ada</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-secondary">Opsional
                                                                                 </div>
@@ -716,7 +716,7 @@
                                                                                 dalam
                                                                                 akte
                                                                                 kelahiran / surat kenal lahir</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-secondary">Opsional
                                                                                 </div>
@@ -762,7 +762,7 @@
                                                                             </td>
                                                                             <td>Form Biodata Peserta Yudisum</td>
                                                                             <td>-</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
@@ -809,7 +809,7 @@
                                                                             <td>Jika lebih dari 1 sertifikat, silahkan
                                                                                 dikirim dalam bentuk rar/zip
                                                                             </td>
-                                                                            <td>PDF/RAR/ZIP (400KB)</td>
+                                                                            <td>PDF/RAR/ZIP (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-secondary">Opsional
                                                                                 </div>
@@ -855,7 +855,7 @@
                                                                             </td>
                                                                             <td>Poster Ukuran A3</td>
                                                                             <td>-</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
@@ -900,7 +900,7 @@
                                                                             </td>
                                                                             <td>Buku Tugas Akhir Yang Telah Disahkan</td>
                                                                             <td>-</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
@@ -945,7 +945,7 @@
                                                                             </td>
                                                                             <td>Jurnal Penelitian</td>
                                                                             <td>-</td>
-                                                                            <td>PDF (400KB)</td>
+                                                                            <td>PDF (Max 4MB)</td>
                                                                             <td>
                                                                                 <div class="badge badge-info">Wajib</div>
                                                                             </td>
