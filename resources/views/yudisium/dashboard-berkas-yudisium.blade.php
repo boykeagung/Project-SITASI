@@ -177,386 +177,393 @@
                                         </a>
                                     </div>
                                 </div>
-
                                 <div class="section-title">Berkas Mahasiswa</div>
-                                @if (!empty($item->pas_foto))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->pas_foto . '/' . $item->pas_foto));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->pas_foto) }}">
-                                        <i class="fas fa-file"></i> Pas Foto Berwarna
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Pas Foto Berwarna
-                                    </button>
-                                @endif
-                                @if (!empty($item->akta_kelahiran))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->akta_kelahiran . '/' . $item->akta_kelahiran));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->akta_kelahiran) }}">
-                                        <i class="fas fa-file"></i> Akte Kelahiran
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Akte Kelahiran
-                                    </button>
-                                @endif
-                                @if (!empty($item->ijasah_sekolah_menengah))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->ijasah_sekolah_menengah . '/' . $item->ijasah_sekolah_menengah));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->ijasah_sekolah_menengah) }}">
-                                        <i class="fas fa-file"></i> Akte Kelahiran
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Akte Kelahiran
-                                    </button>
-                                @endif
-                                @if (!empty($item->judul_ta_id))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->judul_ta_id . '/' . $item->judul_ta_id));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->judul_ta_id) }}">
-                                        <i class="fas fa-file"></i> Judul Tugas Akhir (Bahasa Indonesia)
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Judul Tugas Akhir (Bahasa Indonesia)
-                                    </button>
-                                @endif
-                                @if (!empty($item->judul_ta_en))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->judul_ta_en . '/' . $item->judul_ta_en));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->judul_ta_en) }}">
-                                        <i class="fas fa-file"></i> Judul Tugas Akhir (Bahasa Inggris)
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Judul Tugas Akhir (Bahasa Inggris)
-                                    </button>
-                                @endif
-                                @if (!empty($item->bebas_pinjam_buku))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->bebas_pinjam_buku . '/' . $item->bebas_pinjam_buku));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->bebas_pinjam_buku) }}">
-                                        <i class="fas fa-file"></i> Bebas Pinjam Buku & Bukti Penyerahan Buku TA Dari
-                                        Perpustakaan
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Bebas Pinjam Buku & Bukti Penyerahan Buku TA Dari
-                                        Perpustakaan
-                                    </button>
-                                @endif
-                                @if (!empty($item->transkrip_dari_sikad))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->transkrip_dari_sikad . '/' . $item->transkrip_dari_sikad));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->transkrip_dari_sikad) }}">
-                                        <i class="fas fa-file"></i> Transkrip Dari Sikad
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Transkrip Dari Sikad
-                                    </button>
-                                @endif
-                                @if (!empty($item->resume_skk_dan_simskk))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->resume_skk_dan_simskk . '/' . $item->resume_skk_dan_simskk));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->resume_skk_dan_simskk) }}">
-                                        <i class="fas fa-file"></i> Resume SKK Dari Simskk
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Resume SKK Dari Simskk
-                                    </button>
-                                @endif
-                                @if (!empty($item->hasil_test_ept))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->hasil_test_ept . '/' . $item->hasil_test_ept));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->hasil_test_ept) }}">
-                                        <i class="fas fa-file"></i> Resume SKK Dari Simskk
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Resume SKK Dari Simskk
-                                    </button>
-                                @endif
-                                @if (!empty($item->bukti_pembayaran))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->bukti_pembayaran . '/' . $item->bukti_pembayaran));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->bukti_pembayaran) }}">
-                                        <i class="fas fa-file"></i> Bukti Pembayaran (Opsional)
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Bukti Pembayaran (Opsional)
-                                    </button>
-                                @endif
-                                @if (!empty($item->surat_ganti_nama))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->surat_ganti_nama . '/' . $item->surat_ganti_nama));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->surat_ganti_nama) }}">
-                                        <i class="fas fa-file"></i> Surat Ganti Nama (Opsional)
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Surat Ganti Nama (Opsional)
-                                    </button>
-                                @endif
-                                @if (!empty($item->form_biodata_peserta_yudisium))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->form_biodata_peserta_yudisium . '/' . $item->form_biodata_peserta_yudisium));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->form_biodata_peserta_yudisium) }}">
-                                        <i class="fas fa-file"></i> Form Biodata Peserta Yudisum
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Form Biodata Peserta Yudisum
-                                    </button>
-                                @endif
-                                @if (!empty($item->sertifikat_keahlian))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->sertifikat_keahlian . '/' . $item->sertifikat_keahlian));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->sertifikat_keahlian) }}">
-                                        <i class="fas fa-file"></i> Sertifikat Keahlian (Opsional)
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Sertifikat Keahlian (Opsional)
-                                    </button>
-                                @endif
-                                @if (!empty($item->poster_a3))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->poster_a3 . '/' . $item->poster_a3));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->poster_a3) }}">
-                                        <i class="fas fa-file"></i> Poster Ukuran A3
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Poster Ukuran A3
-                                    </button>
-                                @endif
-                                @if (!empty($item->buku_tugas_akhir_sah))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->buku_tugas_akhir_sah . '/' . $item->buku_tugas_akhir_sah));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->buku_tugas_akhir_sah) }}">
-                                        <i class="fas fa-file"></i> Buku Tugas Akhir Yang Telah Disahkan
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Buku Tugas Akhir Yang Telah Disahkan
-                                    </button>
-                                @endif
-                                @if (!empty($item->jurnal_penelitian))
-                                    <?php
-                                    $infoPath = pathinfo(asset('Yudisium/' . $item->jurnal_penelitian . '/' . $item->jurnal_penelitian));
-                                    $extension = $infoPath['extension'];
-                                    ?>
-                                    <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
-                                        href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->jurnal_penelitian) }}">
-                                        <i class="fas fa-file"></i> Jurnal Penelitian
-                                        <span class="badge badge-transparent">{{ $extension }}</span>
-                                    </a>
-                                @else
-                                    <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
-                                        <i class="fas fa-file"></i> Jurnal Penelitian
-                                    </button>
-                                @endif
-                                @if (!$detailAjuan->isEmpty())
-                                    <div class="section-title">Timeline Formulir</div>
-                                    <div class="activities">
-                                        @foreach ($detailAjuan as $n)
-                                            <div class="activity">
-                                                <div
-                                                    class="activity-icon bg-{{ $n->notifikasi_color }} text-white shadow-primary">
-                                                    <i class="{{ $n->notifikasi_icon }}"></i>
+                                <div class="mb-4">
+                                    @if (!empty($item->pas_foto))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->pas_foto . '/' . $item->pas_foto));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->pas_foto) }}">
+                                            <i class="fas fa-file"></i> Pas Foto Berwarna
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Pas Foto Berwarna
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->akta_kelahiran))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->akta_kelahiran . '/' . $item->akta_kelahiran));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->akta_kelahiran) }}">
+                                            <i class="fas fa-file"></i> Akte Kelahiran
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Akte Kelahiran
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->ijasah_sekolah_menengah))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->ijasah_sekolah_menengah . '/' . $item->ijasah_sekolah_menengah));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->ijasah_sekolah_menengah) }}">
+                                            <i class="fas fa-file"></i> Akte Kelahiran
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Akte Kelahiran
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->judul_ta_id))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->judul_ta_id . '/' . $item->judul_ta_id));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->judul_ta_id) }}">
+                                            <i class="fas fa-file"></i> Judul Tugas Akhir (Bahasa Indonesia)
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Judul Tugas Akhir (Bahasa Indonesia)
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->judul_ta_en))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->judul_ta_en . '/' . $item->judul_ta_en));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->judul_ta_en) }}">
+                                            <i class="fas fa-file"></i> Judul Tugas Akhir (Bahasa Inggris)
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Judul Tugas Akhir (Bahasa Inggris)
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->bebas_pinjam_buku))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->bebas_pinjam_buku . '/' . $item->bebas_pinjam_buku));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->bebas_pinjam_buku) }}">
+                                            <i class="fas fa-file"></i> Bebas Pinjam Buku & Bukti Penyerahan Buku TA Dari
+                                            Perpustakaan
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Bebas Pinjam Buku & Bukti Penyerahan Buku TA Dari
+                                            Perpustakaan
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->transkrip_dari_sikad))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->transkrip_dari_sikad . '/' . $item->transkrip_dari_sikad));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->transkrip_dari_sikad) }}">
+                                            <i class="fas fa-file"></i> Transkrip Dari Sikad
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Transkrip Dari Sikad
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->resume_skk_dan_simskk))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->resume_skk_dan_simskk . '/' . $item->resume_skk_dan_simskk));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->resume_skk_dan_simskk) }}">
+                                            <i class="fas fa-file"></i> Resume SKK Dari Simskk
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Resume SKK Dari Simskk
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->hasil_test_ept))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->hasil_test_ept . '/' . $item->hasil_test_ept));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->hasil_test_ept) }}">
+                                            <i class="fas fa-file"></i> Resume SKK Dari Simskk
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Resume SKK Dari Simskk
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->bukti_pembayaran))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->bukti_pembayaran . '/' . $item->bukti_pembayaran));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->bukti_pembayaran) }}">
+                                            <i class="fas fa-file"></i> Bukti Pembayaran (Opsional)
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Bukti Pembayaran (Opsional)
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->surat_ganti_nama))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->surat_ganti_nama . '/' . $item->surat_ganti_nama));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->surat_ganti_nama) }}">
+                                            <i class="fas fa-file"></i> Surat Ganti Nama (Opsional)
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Surat Ganti Nama (Opsional)
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->form_biodata_peserta_yudisium))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->form_biodata_peserta_yudisium . '/' . $item->form_biodata_peserta_yudisium));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->form_biodata_peserta_yudisium) }}">
+                                            <i class="fas fa-file"></i> Form Biodata Peserta Yudisum
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Form Biodata Peserta Yudisum
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->sertifikat_keahlian))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->sertifikat_keahlian . '/' . $item->sertifikat_keahlian));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->sertifikat_keahlian) }}">
+                                            <i class="fas fa-file"></i> Sertifikat Keahlian (Opsional)
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Sertifikat Keahlian (Opsional)
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->poster_a3))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->poster_a3 . '/' . $item->poster_a3));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->poster_a3) }}">
+                                            <i class="fas fa-file"></i> Poster Ukuran A3
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Poster Ukuran A3
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->buku_tugas_akhir_sah))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->buku_tugas_akhir_sah . '/' . $item->buku_tugas_akhir_sah));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->buku_tugas_akhir_sah) }}">
+                                            <i class="fas fa-file"></i> Buku Tugas Akhir Yang Telah Disahkan
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Buku Tugas Akhir Yang Telah Disahkan
+                                        </button>
+                                    @endif
+                                    @if (!empty($item->jurnal_penelitian))
+                                        <?php
+                                        $infoPath = pathinfo(asset('Yudisium/' . $item->jurnal_penelitian . '/' . $item->jurnal_penelitian));
+                                        $extension = $infoPath['extension'];
+                                        ?>
+                                        <a target="_blank" class="btn btn-primary btn-icon icon-left my-1 mr-1"
+                                            href="{{ asset('Yudisium/' . $item->nrp . '/' . $item->jurnal_penelitian) }}">
+                                            <i class="fas fa-file"></i> Jurnal Penelitian
+                                            <span class="badge badge-transparent">{{ $extension }}</span>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-dark btn-icon disabled icon-left my-1 mr-1">
+                                            <i class="fas fa-file"></i> Jurnal Penelitian
+                                        </button>
+                                    @endif
+                                </div>
+                                <div class="section-title">Komentar Manajemen</div>
+                                <div class="row">
+                                    @if (!empty($item->komentar_tu))
+                                        <div class="col-12 col-lg-6">
+                                            <div class="pricing">
+                                                <div class="pricing-title">
+                                                    Tata Usaha
                                                 </div>
-                                                <div class="activity-detail">
-                                                    <div class="mb-2">
-                                                        <span class="text-job text-primary">
-                                                            {{ date('j F Y - h:i a', strtotime($n->notifikasi_time)) }}
-                                                        </span>
-                                                    </div>
-                                                    <p>{{ $n->notifikasi_message }}</p>
+                                                <div class="pricing-padding">
+                                                    <p class="lead">"{{ $item->komentar_tu }}"</p>
+                                                    <small>{{ date('j F Y, h:i a', strtotime($item->tanggal_modifikasi_tu)) }}</small>
                                                 </div>
                                             </div>
-                                        @endforeach
-                                    </div>
-                                @endif
+                                        </div>
+                                    @endif
+                                    @if (!empty($item->komentar_koordinator))
+                                        <div class="col-12 col-lg-6">
+                                            <div class="pricing">
+                                                <div class="pricing-title">
+                                                    Koordinator Yudisium
+                                                </div>
+                                                <div class="pricing-padding">
+                                                    <p class="lead">"{{ $item->komentar_koordinator }}"</p>
+                                                    <small>{{ date('j F Y, h:i a', strtotime($item->tanggal_modifikasi_koordinator)) }}</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
                             <div class="col col-12 col-lg-4">
-                                <div class="card card-primary">
-                                    <div class="card-header">
-                                        <i class="fas fa-comment mr-2"></i>
-                                        <h4>Hasil</h4>
+                                <div class="card card-info">
+
+                                    <div class="card-header text-info">
+                                        <i class="fas fa-file-alt mr-2"></i>
+                                        <h4>Info Formulir</h4>
+                                        <div class="card-header-action">
+                                            @if ($item->status_yudisium == 'Mengisi')
+                                                <span class="badge badge-secondary">Status: Tahap Pengisian</span>
+                                            @elseif ($item->status_yudisium == 'Diajukan')
+                                                <span class="badge badge-warning">Status: Diajukan</span>
+                                            @elseif ($item->status_yudisium == 'Dikonfirmasi TU')
+                                                <span class="badge badge-primary">Status: Dikonfirmasi TU</span>
+                                            @elseif ($item->status_yudisium == 'Diterima')
+                                                <span class="badge badge-success">Status: Diterima</span>
+                                            @endif
+                                        </div>
                                     </div>
-                                    <div class="card-body p-0">
-                                        <table class="table table-bordered m-0">
-                                            <tbody>
-                                                <tr>
-                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">
-                                                        Status <br>
-                                                        Pendaftaran</td>
-                                                    <td>
-                                                        @if ($item->status_yudisium == 'Mengisi')
-                                                            <span class="badge badge-secondary">Tahap Pengisian</span>
-                                                        @elseif ($item->status_yudisium == 'Diajukan')
-                                                            <span class="badge badge-warning">Diajukan</span>
-                                                        @elseif ($item->status_yudisium == 'Dikonfirmasi TU')
-                                                            <span class="badge badge-primary">Dikonfirmasi TU</span>
-                                                        @elseif ($item->status_yudisium == 'Diterima')
-                                                            <span class="badge badge-success">Diterima</span>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">
-                                                        Komentar <br>
-                                                        Tata Usaha</td>
-                                                    <td>
-                                                        <?= !empty($item->komentar_tu) ? $item->komentar_tu . '<div class="slash"></div>(' . date('j F Y, h:i a', strtotime($item->tanggal_modifikasi_tu)) . ')' : '-' ?>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="white-space: nowrap;width: 1%;font-weight: bold;">
-                                                        Komentar <br>
-                                                        Koordinator</td>
-                                                    <td>
-                                                        <?= !empty($item->komentar_koordinator) ? $item->komentar_koordinator . '<div class="slash"></div>(' . date('j F Y, h:i a', strtotime($item->tanggal_modifikasi_koordinator)) . ')' : '-' ?>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="card card-primary">
-                                    <div class="card-header">
-                                        <i class="fas fa-paper-plane mr-2"></i>
-                                        <h4>Aksi</h4>
-                                    </div>
-                                    {{ Form::open(['url' => url()->current() . '/aksi']) }}
-                                    <div class="card-body pb-0">
-                                        @if (Auth::user()->level == 'koordinator-yudisium')
-                                            <input type="hidden" name="inputBy" value="koor">
-                                            <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
-                                            <div class="form-group">
-                                                <label class="form-label">Beri Komentar</label>
-                                                <textarea name="inputKomentar" class="form-control" aria-describedby="komentar"
-                                                    placeholder="Komentar yang berkaitan dengan hasil akhir pengecekan..." required>
-                                            <?php if (!empty($item->komentar_koordinator)) {
-                                                echo $item->komentar_koordinator;
-                                            } ?>
-                                            </textarea>
+                                    <div class="card-body"
+                                        style="height: fit-content;max-height:500px; overflow-y: scroll; outline: none;">
+                                        @if (!$detailAjuan->isEmpty())
+                                            <div class="activities">
+                                                @foreach ($detailAjuan as $n)
+                                                    <div class="activity">
+                                                        <div
+                                                            class="activity-icon bg-{{ $n->notifikasi_color }} text-white shadow-primary">
+                                                            <i class="{{ $n->notifikasi_icon }}"></i>
+                                                        </div>
+                                                        <div class="activity-detail">
+                                                            <div class="mb-2">
+                                                                <span class="text-job text-primary">
+                                                                    {{ date('j F Y - h:i a', strtotime($n->notifikasi_time)) }}
+                                                                </span>
+                                                            </div>
+                                                            <p>{{ $n->notifikasi_message }}</p>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
                                             </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Keputusan</label>
-                                                <div class="selectgroup w-100">
-                                                    <label class="selectgroup-item">
-                                                        <input type="radio" name="inputKeputusan" value="Diterima"
-                                                            class="selectgroup-input" checked>
-                                                        <span class="selectgroup-button">Diterima</span>
-                                                    </label>
-                                                    <label class="selectgroup-item">
-                                                        <input type="radio" name="inputKeputusan" value="Mengisi"
-                                                            class="selectgroup-input">
-                                                        <span class="selectgroup-button">Ditolak</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <input class="w-100 btn btn-primary mb-4" type="submit" value="Simpan">
-                                            {{ Form::close() }}
-                                        @elseif(Auth::user()->level == 'tu')
-                                            <input type="hidden" name="inputBy" value="tu">
-                                            <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
-                                            <div class="form-group">
-                                                <label class="form-label">Beri Komentar</label>
-                                                <textarea name="inputKomentar" class="form-control"
-                                                    aria-describedby="komentar"placeholder="Komentar yang berkaitan dengan hasil akhir pengecekan..." required><?php if (!empty($item->komentar_tu)) {
-                                                        echo $item->komentar_tu;
-                                                    } ?>
-                                        </textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Aksi</label>
-                                                <div class="selectgroup w-100">
-                                                    <label class="selectgroup-item">
-                                                        <input checked type="radio" name="inputKeputusan"
-                                                            value="Dikonfirmasi TU" class="selectgroup-input">
-                                                        <span class="selectgroup-button">Sah</span>
-                                                    </label>
-                                                    <label class="selectgroup-item">
-                                                        <input type="radio" name="inputKeputusan" value="Mengisi"
-                                                            class="selectgroup-input">
-                                                        <span class="selectgroup-button">Tidak Sah</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <input class="w-100 btn btn-primary mb-4" type="submit" value="Simpan">
                                         @endif
                                     </div>
-                                    {{ Form::close() }}
                                 </div>
+                                @if ($item->status_yudisium != 'Mengisi')
+                                    <div class="card card-primary">
+                                        <div class="card-header text-primary">
+                                            <i class="fas fa-paper-plane mr-2"></i>
+                                            <h4>Aksi</h4>
+                                        </div>
+                                        {{ Form::open(['url' => url()->current() . '/aksi', 'id' => 'form-aksi']) }}
+                                        <div class="card-body pb-0">
+                                            <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
+                                            @if (Auth::user()->level == 'koordinator-yudisium')
+                                                <input type="hidden" name="inputBy" value="koor">
+                                                <div class="form-group">
+                                                    <label class="form-label">Beri Komentar</label>
+                                                    <textarea name="inputKomentar" class="form-control" aria-describedby="komentar"
+                                                        placeholder="Komentar yang berkaitan dengan hasil akhir pengecekan..." required>
+                                                <?php if (!empty($item->komentar_koordinator)) {
+                                                    echo $item->komentar_koordinator;
+                                                } ?>
+                                                </textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Keputusan</label>
+                                                    <div class="selectgroup w-100">
+                                                        <label class="selectgroup-item">
+                                                            <input type="radio" name="inputKeputusan" value="Diterima"
+                                                                class="selectgroup-input" checked>
+                                                            <span class="selectgroup-button">Diterima</span>
+                                                        </label>
+                                                        <label class="selectgroup-item">
+                                                            <input type="radio" name="inputKeputusan" value="Mengisi"
+                                                                class="selectgroup-input">
+                                                            <span class="selectgroup-button">Ditolak</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                {{ Form::close() }}
+                                            @elseif(Auth::user()->level == 'tu')
+                                                <input type="hidden" name="inputBy" value="tu">
+                                                <div class="form-group">
+                                                    <label class="form-label">Beri Komentar</label>
+                                                    <textarea name="inputKomentar" class="form-control"
+                                                        aria-describedby="komentar"placeholder="Komentar yang berkaitan dengan hasil akhir pengecekan..." required><?php if (!empty($item->komentar_tu)) {
+                                                            echo $item->komentar_tu;
+                                                        } ?>
+                                                </textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Aksi</label>
+                                                    <div class="selectgroup w-100">
+                                                        <label class="selectgroup-item">
+                                                            <input checked type="radio" name="inputKeputusan"
+                                                                value="Dikonfirmasi TU" class="selectgroup-input">
+                                                            <span class="selectgroup-button">Sah</span>
+                                                        </label>
+                                                        <label class="selectgroup-item">
+                                                            <input type="radio" name="inputKeputusan" value="Mengisi"
+                                                                class="selectgroup-input">
+                                                            <span class="selectgroup-button">Tidak Sah</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            <span id="kirim-keputusan" class="w-100 btn btn-primary mb-4">Kirim</span>
+                                        </div>
+                                        {{ Form::close() }}
+                                    </div>
+                                @endif
                             </div>
                         </div>
+
                     </section>
                 </div>
             @endforeach
@@ -579,6 +586,23 @@
             $('textarea').each(function() {
                 $(this).val($(this).val().trim());
             });
+        });
+        //
+        $("#kirim-keputusan").click(function() {
+            Swal.fire({
+                title: 'Konfirmasi Aksi',
+                text: "Hindari kesalahan dengan mengecek kembali komentar dan aksi",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#6777ef',
+                cancelButtonColor: '#fc544b',
+                confirmButtonText: 'Konfirmasi',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#form-aksi").submit();
+                }
+            })
         });
     </script>
 @endpush

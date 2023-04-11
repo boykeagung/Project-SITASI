@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Notifikasi;
 
 class NotificationController extends Controller
@@ -18,5 +19,10 @@ class NotificationController extends Controller
 
         Notifikasi::where('notifikasi_id', $notificationID)->update(['notifikasi_read' => 1]);
         return redirect(url($notificationRedirectLink));
+    }
+    public function clearNotifications()
+    {
+        Notifikasi::where('notifikasi_own', Auth::user()->username)->update(['notifikasi_read' => 1]);
+        return redirect()->back();
     }
 }

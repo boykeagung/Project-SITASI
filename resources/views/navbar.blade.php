@@ -21,7 +21,10 @@
                 </a>
             @endif
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
-                <div class="dropdown-header">Notifikasi
+                <div class="dropdown-header">Notifications
+                    <div class="float-right">
+                        <a href="{{ url('/clearNotifications') }}">Mark All As Read</a>
+                    </div>
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons" tabindex="3"
                     style="outline: none; height: fit-content; max-height: 300px;">

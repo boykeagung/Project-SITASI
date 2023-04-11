@@ -340,9 +340,8 @@ class MahasiswaYudisiumController extends Controller
             return redirect(URL::to('/'));
         }
     }
-    public function konfirmasiPersyaratan(Request $req)
+    public function konfirmasiPersyaratan($nrp)
     {
-        $nrp = $req->input('inputNrp');
         if ($nrp == Auth::user()->username) {
             $checkInfoMahasiswa = Mahasiswa::where('nrp', $nrp)
                 ->whereNotNull('nrp')

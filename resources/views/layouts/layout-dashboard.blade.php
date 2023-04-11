@@ -30,6 +30,7 @@
     <script src="{{ URL::asset('assets/modules/tooltip.js') }}"></script>
     <script src="{{ URL::asset('assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ URL::asset('assets/modules/moment.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/stisla.js') }}"></script>
 

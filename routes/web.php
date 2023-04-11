@@ -106,6 +106,7 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('notifikasi', [NotificationController::class, 'index']);
 Route::post('/readNotification', [NotificationController::class, 'readNotification']);
+Route::get('/clearNotifications', [NotificationController::class, 'clearNotifications']);
 
 /* mahasiswa */
 
@@ -116,7 +117,7 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::post('dashboard-mahasiswa-yudisium/update-persyaratan', [MahasiswaYudisiumController::class, 'updatePersyaratan']);
     Route::get('dashboard-mahasiswa-yudisium/tentang-yudisium', [MahasiswaYudisiumController::class, 'tentangYudisium']);
     Route::get('dashboard-mahasiswa-yudisium/reset/{nrp}/{persyaratan}', [MahasiswaYudisiumController::class, 'resetPersyaratan']);
-    Route::post('dashboard-mahasiswa-yudisium/konfirmasi-persyaratan-mahasiswa', [MahasiswaYudisiumController::class, 'konfirmasiPersyaratan']);
+    Route::get('dashboard-mahasiswa-yudisium/konfirmasi-persyaratan-mahasiswa/{nrp}', [MahasiswaYudisiumController::class, 'konfirmasiPersyaratan']);
     Route::get('dashboard-mahasiswa-yudisium/tarikAjuan/{nrp}', [MahasiswaYudisiumController::class, 'tarikAjuan']);
 
     // Route::get('/dashboard-mahasiswa', function () {

@@ -16,25 +16,9 @@
                 <section class="section">
                     <div class="section-header">
                         <h1>Notifikasi</h1>
+
                         <div class="section-header-breadcrumb">
-                            <div class="breadcrumb-item active">
-                                @if (Auth::user()->level == 'koordinator-yudisium')
-                                    <a href="{{ URL::to('/dashboard-koordinator-yudisium') }}">
-                                        Dashboard
-                                    </a>
-                                @elseif(Auth::user()->level == 'user')
-                                    <a href="{{ URL::to('/dashboard-mahasiswa') }}">
-                                        Dashboard
-                                    </a>
-                                @elseif(Auth::user()->level == 'tu')
-                                    <a href="{{ URL::to('/dashboard-tata-usaha') }}">
-                                        Dashboard
-                                    </a>
-                                @endif
-                            </div>
-                            <div class="breadcrumb-item">
-                                Notifikasi
-                            </div>
+                            <a href="{{ url('/clearNotifications') }}">Mark All As Read</a>
                         </div>
                     </div>
                 </section>
@@ -52,12 +36,20 @@
                                 </a>
                             @else
                                 <a href="{{ url($n->notifikasi_link) }}"
-                                    class="list-group-item list-group-item-action flex-column align-items-start">
+                                    class="list-group-item list-group-item-action flex-column align-items-center mb-1">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h6>[{{ $n->notifikasi_context }}]</h6>
-                                        <small>{{ date('j F Y, h:i a', strtotime($n->notifikasi_time)) }}</small>
+                                        <div>
+
+                                            <small
+                                                class="text-muted mr-2">{{ date('j F Y, h:i a', strtotime($n->notifikasi_time)) }}</small>
+                                            <p class="mb-0">{{ $n->notifikasi_message }}</p>
+                                        </div>
+                                        <div>
+                                            <span class="badge badge-{{ $n->notifikasi_color }}">
+                                                {{ $n->notifikasi_context }}
+                                            </span>
+                                        </div>
                                     </div>
-                                    <p class="mb-0">{{ $n->notifikasi_message }}</p>
                                 </a>
                             @endif
                         @endforeach

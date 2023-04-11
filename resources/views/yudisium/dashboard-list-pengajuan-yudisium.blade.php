@@ -61,8 +61,8 @@
                                                     $count_mengisi++;
                                                 }
                                             @endphp
-                                            {{ $count_mengisi }}
                                         @endforeach
+                                        {{ $count_mengisi }}
                                     </div>
                                 </div>
                             </div>
@@ -86,8 +86,8 @@
                                                     $count_diajukan++;
                                                 }
                                             @endphp
-                                            {{ $count_diajukan }}
                                         @endforeach
+                                        {{ $count_diajukan }}
                                     </div>
                                 </div>
                             </div>
@@ -111,8 +111,8 @@
                                                     $count_selesai++;
                                                 }
                                             @endphp
-                                            {{ $count_selesai }}
                                         @endforeach
+                                        {{ $count_selesai }}
                                     </div>
                                 </div>
                             </div>

@@ -79,13 +79,14 @@
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-6">
                                                                     <label>NRP</label>
-                                                                    <div class="form-control">{{ $item->nrp }}</div>
+                                                                    <div class="form-control">
+                                                                        {{ $item->nrp }}</div>
                                                                 </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label for="inputNama">Nama Lengkap</label>
                                                                     <input type="text" class="form-control"
                                                                         id="inputNama" name="inputNama"
-                                                                        value="{{ $item->name }}"
+                                                                        value="{{ $item->nama_lengkap }}"
                                                                         placeholder="Fill with your full name" required>
                                                                     @if ($errors->has('inputPasFoto'))
                                                                         <div class="error text-danger">
@@ -209,8 +210,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <input class="card-footer btn btn-primary bg-primary" type="submit"
-                                                        value="Save Edit">
+                                                    <span id="simpan-biodata"
+                                                        class="card-footer btn btn-primary bg-primary">Simpan
+                                                        Identitas</span>
                                                 </div>
                                             </form>
                                         </div>
@@ -1045,10 +1047,9 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <input class="card-footer btn btn-warning bg-warning" type="submit"
-                                            value="Kirim" onclick="return confirm('Apakah semua berkas sudah benar?')"
+                                        <span id="ajukan-persyaratan" class="card-footer btn btn-warning bg-warning"
                                             data-toggle="tooltip" data-placement="top"
-                                            data-original-title="Bagian tata usaha akan memberikan tanggapan setelah anda mengirim pengajuan.">
+                                            data-original-title="Bagian tata usaha akan memberikan tanggapan setelah anda mengirim pengajuan.">Ajukan</span>
                                     </div>
                                 </form>
                             </div>
@@ -1059,13 +1060,10 @@
                                     <h4>Formulir Pengajuan Yudisium Dalam Proses Pengecekan</h4>
                                     <div class="card-header-action">
                                         @if ($item->status_yudisium == 'Diajukan')
-                                            {{ Form::open(['url' => 'dashboard-mahasiswa-yudisium/tarikAjuan/' . $item->nrp, 'method' => 'get']) }}
-                                            <input type="submit" class="btn btn-dark" data-toggle="tooltip"
+                                            <span id="tarik-ajuan"class="btn btn-dark" data-toggle="tooltip"
                                                 data-placement="left"
-                                                data-original-title="Jika anda merasa ada isian yang salah silahkan lakukan edit kembali dengan menarik ajuan."
-                                                value="Tarik Kembali Pengajuan"
-                                                onclick="return confirm('Apakah anda yakin untuk mengedit kembali ajuan?')">
-                                            {{ Form::close() }}
+                                                data-original-title="Jika anda merasa ada isian yang salah silahkan lakukan edit kembali dengan menarik ajuan.">Tarik
+                                                Kembali Pengajuan</span>
                                         @else
                                             <a class="btn btn-primary"
                                                 href="{{ url()->current() . '/tentang-yudisium' }}">Selengkapnya</a>
@@ -1445,6 +1443,9 @@
                                 </div>
                             </div>
                         @endif
+
+                        {{-- buat sweet alert --}}
+                        <input type="hidden" id="myNrp" value="{{ $item->nrp }}">
                     @endforeach
                 </section>
             </div>
@@ -1468,5 +1469,58 @@
         window.onbeforeunload = function(e) {
             localStorage.setItem('scrollpos', window.scrollY);
         };
+        //
+        $("#simpan-biodata").click(function() {
+            Swal.fire({
+                title: 'Simpan Biodata',
+                text: "Data diri anda akan disimpan, anda masih dapat mengkoreksi nanti.",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#6777ef',
+                cancelButtonColor: '#fc544b',
+                confirmButtonText: 'Simpan',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#form-1").submit();
+                }
+            })
+        });
+        //
+        $("#ajukan-persyaratan").click(function() {
+            Swal.fire({
+                title: 'Data Akan Diajukan',
+                text: "Data yang diajukan akan dicek keabsahannya oleh Tata Usaha, jika terdapat ketidakcocokan akan dikembalikan ke mahasiswa untuk dikoreksi.",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#6777ef',
+                cancelButtonColor: '#fc544b',
+                confirmButtonText: 'Ajukan',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(location).prop('href', window.location.href +
+                        '/konfirmasi-persyaratan-mahasiswa/' + $('#myNrp').val())
+                }
+            })
+        });
+        //
+        $("#tarik-ajuan").click(function() {
+            Swal.fire({
+                title: 'Tarik Formulir?',
+                text: "Formulir dikembalikan secara mandiri ke mahasiswa untuk dikoreksi.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#6777ef',
+                cancelButtonColor: '#fc544b',
+                confirmButtonText: 'Ya, tarik',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(location).prop('href', window.location.href +
+                        '/tarikAjuan/' + $('#myNrp').val())
+                }
+            })
+        });
     </script>
 @endpush
