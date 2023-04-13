@@ -16,7 +16,6 @@
                 <section class="section">
                     <div class="section-header">
                         <h1>Notifikasi</h1>
-
                         <div class="section-header-breadcrumb">
                             <a href="{{ url('/clearNotifications') }}">Mark All As Read</a>
                         </div>
@@ -39,7 +38,6 @@
                                     class="list-group-item list-group-item-action flex-column align-items-center mb-1">
                                     <div class="d-flex w-100 justify-content-between">
                                         <div>
-
                                             <small
                                                 class="text-muted mr-2">{{ date('j F Y, h:i a', strtotime($n->notifikasi_time)) }}</small>
                                             <p class="mb-0">{{ $n->notifikasi_message }}</p>

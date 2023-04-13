@@ -127,6 +127,22 @@
                             </div>
                         </div>
                         <?php } ?>
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h4>Status Formulir</h4>
+                                <div class="card-header-action">
+                                    @if ($item->status_yudisium == 'Mengisi')
+                                        <span class="badge badge-secondary">Status: Tahap Pengisian</span>
+                                    @elseif ($item->status_yudisium == 'Diajukan')
+                                        <span class="badge badge-warning">Status: Diajukan</span>
+                                    @elseif ($item->status_yudisium == 'Dikonfirmasi TU')
+                                        <span class="badge badge-primary">Status: Dikonfirmasi TU</span>
+                                    @elseif ($item->status_yudisium == 'Diterima')
+                                        <span class="badge badge-success">Status: Diterima</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col col-12 col-lg-8">
                                 <div class="section-title mb-5">Informasi Data Mahasiswa</div>
@@ -423,15 +439,15 @@
                                     @endif
                                 </div>
                                 <div class="section-title">Komentar Manajemen</div>
-                                <div class="row">
+                                <div class="row pb-4">
                                     @if (!empty($item->komentar_tu))
                                         <div class="col-12 col-lg-6">
                                             <div class="pricing">
                                                 <div class="pricing-title">
                                                     Tata Usaha
                                                 </div>
-                                                <div class="pricing-padding">
-                                                    <p class="lead">"{{ $item->komentar_tu }}"</p>
+                                                <div class="card-body text-left">
+                                                    <p><em>{{ $item->komentar_tu }}</em></p>
                                                     <small>{{ date('j F Y, h:i a', strtotime($item->tanggal_modifikasi_tu)) }}</small>
                                                 </div>
                                             </div>
@@ -443,8 +459,8 @@
                                                 <div class="pricing-title">
                                                     Koordinator Yudisium
                                                 </div>
-                                                <div class="pricing-padding">
-                                                    <p class="lead">"{{ $item->komentar_koordinator }}"</p>
+                                                <div class="card-body text-left">
+                                                    <p><em>{{ $item->komentar_koordinator }}</em></p>
                                                     <small>{{ date('j F Y, h:i a', strtotime($item->tanggal_modifikasi_koordinator)) }}</small>
                                                 </div>
                                             </div>
@@ -453,117 +469,122 @@
                                 </div>
                             </div>
                             <div class="col col-12 col-lg-4">
-                                <div class="card card-info">
-
-                                    <div class="card-header text-info">
-                                        <i class="fas fa-file-alt mr-2"></i>
-                                        <h4>Info Formulir</h4>
-                                        <div class="card-header-action">
-                                            @if ($item->status_yudisium == 'Mengisi')
-                                                <span class="badge badge-secondary">Status: Tahap Pengisian</span>
-                                            @elseif ($item->status_yudisium == 'Diajukan')
-                                                <span class="badge badge-warning">Status: Diajukan</span>
-                                            @elseif ($item->status_yudisium == 'Dikonfirmasi TU')
-                                                <span class="badge badge-primary">Status: Dikonfirmasi TU</span>
-                                            @elseif ($item->status_yudisium == 'Diterima')
-                                                <span class="badge badge-success">Status: Diterima</span>
+                                <div class="sticky-top py-4">
+                                    <div class="card card-primary">
+                                        <div class="card-header text-info">
+                                            <i class="fas fa-clock mr-2"></i>
+                                            <h4>Timeline</h4>
+                                        </div>
+                                        <div class="card-body"
+                                            style="height: fit-content;max-height:500px; overflow-y: scroll; outline: none;">
+                                            @if (!$detailAjuan->isEmpty())
+                                                <div class="activities">
+                                                    @foreach ($detailAjuan as $n)
+                                                        <div class="activity">
+                                                            <div
+                                                                class="activity-icon bg-{{ $n->notifikasi_color }} text-white shadow-primary">
+                                                                <i class="{{ $n->notifikasi_icon }}"></i>
+                                                            </div>
+                                                            <div class="activity-detail">
+                                                                <div class="mb-2">
+                                                                    <span class="text-job text-primary">
+                                                                        {{ date('j F Y - h:i a', strtotime($n->notifikasi_time)) }}
+                                                                    </span>
+                                                                </div>
+                                                                <p>{{ $n->notifikasi_message }}</p>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="card-body"
-                                        style="height: fit-content;max-height:500px; overflow-y: scroll; outline: none;">
-                                        @if (!$detailAjuan->isEmpty())
-                                            <div class="activities">
-                                                @foreach ($detailAjuan as $n)
-                                                    <div class="activity">
-                                                        <div
-                                                            class="activity-icon bg-{{ $n->notifikasi_color }} text-white shadow-primary">
-                                                            <i class="{{ $n->notifikasi_icon }}"></i>
-                                                        </div>
-                                                        <div class="activity-detail">
-                                                            <div class="mb-2">
-                                                                <span class="text-job text-primary">
-                                                                    {{ date('j F Y - h:i a', strtotime($n->notifikasi_time)) }}
-                                                                </span>
-                                                            </div>
-                                                            <p>{{ $n->notifikasi_message }}</p>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        {{ Form::open(['url' => url()->current() . '/aksi', 'id' => 'form-aksi']) }}
+                        <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
+                        @if (Auth::user()->level == 'tu')
+                            <input type="hidden" name="inputBy" value="tu">
+                        @elseif(Auth::user()->level == 'koordinator-yudisium')
+                            <input type="hidden" name="inputBy" value="koor">
+                        @endif
+                        <div class="row">
+                            <div class="col">
+                                <div class="card card-primary">
+                                    <div class="card-header text-primary">
+                                        <i class="fas fa-user-check mr-2"></i>
+                                        <h4>Hasil Cek Keabsahan</h4>
+                                    </div>
+                                    <div class="card-body pb-0">
+                                        <div class="form-group">
+                                            <textarea id="inputKeabsahan" name="inputKomentar" class="form-control" aria-describedby="komentar"
+                                                placeholder="Berikan komentar..." required>
+                                                <?php if (!empty($item->komentar_tu)) {
+                                                    echo $item->komentar_tu;
+                                                } ?>
+                                            </textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="selectgroup w-100">
+                                                <label class="selectgroup-item">
+                                                    <input checked type="radio" name="inputKeabsahan"
+                                                        value="Dikonfirmasi TU" class="selectgroup-input">
+                                                    <span id="inputKeabsahanTrue" class="selectgroup-button">Sah</span>
+                                                </label>
+                                                <label class="selectgroup-item">
+                                                    <input type="radio" name="inputKeabsahan" value="Mengisi"
+                                                        class="selectgroup-input">
+                                                    <span id="inputKeabsahanFalse" class="selectgroup-button">Tidak
+                                                        Sah</span>
+                                                </label>
                                             </div>
-                                        @endif
+                                        </div>
                                     </div>
                                 </div>
-                                @if ($item->status_yudisium != 'Mengisi')
+                            </div>
+                            @if (Auth::user()->level == 'koordinator-yudisium')
+                                <div class="col">
                                     <div class="card card-primary">
                                         <div class="card-header text-primary">
-                                            <i class="fas fa-paper-plane mr-2"></i>
-                                            <h4>Aksi</h4>
+                                            <i class="fas fa-gavel mr-2"></i>
+                                            <h4>Hasil Keputusan Formulir</h4>
                                         </div>
-                                        {{ Form::open(['url' => url()->current() . '/aksi', 'id' => 'form-aksi']) }}
                                         <div class="card-body pb-0">
-                                            <input type="hidden" name="inputNrp" value="{{ $item->nrp }}">
-                                            @if (Auth::user()->level == 'koordinator-yudisium')
-                                                <input type="hidden" name="inputBy" value="koor">
-                                                <div class="form-group">
-                                                    <label class="form-label">Beri Komentar</label>
-                                                    <textarea name="inputKomentar" class="form-control" aria-describedby="komentar"
-                                                        placeholder="Komentar yang berkaitan dengan hasil akhir pengecekan..." required>
+                                            <div class="form-group">
+                                                <textarea id="inputKeputusan" name="inputKomentar" class="form-control" aria-describedby="komentar"
+                                                    placeholder="Berikan komentar..." required>
                                                 <?php if (!empty($item->komentar_koordinator)) {
                                                     echo $item->komentar_koordinator;
                                                 } ?>
-                                                </textarea>
+                                            </textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="selectgroup w-100">
+                                                    <label class="selectgroup-item">
+                                                        <input type="radio" name="inputKeputusan" value="Diterima"
+                                                            class="selectgroup-input" checked>
+                                                        <span id="inputKeputusanTrue"
+                                                            class="selectgroup-button">Diterima</span>
+                                                    </label>
+                                                    <label class="selectgroup-item">
+                                                        <input type="radio" name="inputKeputusan" value="Mengisi"
+                                                            class="selectgroup-input">
+                                                        <span id="inputKeputusanFalse"
+                                                            class="selectgroup-button">Ditolak</span>
+                                                    </label>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Keputusan</label>
-                                                    <div class="selectgroup w-100">
-                                                        <label class="selectgroup-item">
-                                                            <input type="radio" name="inputKeputusan" value="Diterima"
-                                                                class="selectgroup-input" checked>
-                                                            <span class="selectgroup-button">Diterima</span>
-                                                        </label>
-                                                        <label class="selectgroup-item">
-                                                            <input type="radio" name="inputKeputusan" value="Mengisi"
-                                                                class="selectgroup-input">
-                                                            <span class="selectgroup-button">Ditolak</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                {{ Form::close() }}
-                                            @elseif(Auth::user()->level == 'tu')
-                                                <input type="hidden" name="inputBy" value="tu">
-                                                <div class="form-group">
-                                                    <label class="form-label">Beri Komentar</label>
-                                                    <textarea name="inputKomentar" class="form-control"
-                                                        aria-describedby="komentar"placeholder="Komentar yang berkaitan dengan hasil akhir pengecekan..." required><?php if (!empty($item->komentar_tu)) {
-                                                            echo $item->komentar_tu;
-                                                        } ?>
-                                                </textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Aksi</label>
-                                                    <div class="selectgroup w-100">
-                                                        <label class="selectgroup-item">
-                                                            <input checked type="radio" name="inputKeputusan"
-                                                                value="Dikonfirmasi TU" class="selectgroup-input">
-                                                            <span class="selectgroup-button">Sah</span>
-                                                        </label>
-                                                        <label class="selectgroup-item">
-                                                            <input type="radio" name="inputKeputusan" value="Mengisi"
-                                                                class="selectgroup-input">
-                                                            <span class="selectgroup-button">Tidak Sah</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                            <span id="kirim-keputusan" class="w-100 btn btn-primary mb-4">Kirim</span>
+                                            </div>
                                         </div>
-                                        {{ Form::close() }}
                                     </div>
-                                @endif
-                            </div>
+                                </div>
+                            @endif
                         </div>
+                        <span id="kirim-keputusan" class="btn btn-lg btn-primary w-100 mb-4" data-toggle="tooltip"
+                            data-placement="top"
+                            data-original-title="Pastikan semua persyaratan sudah di cek">Konfirmasi</span>
 
+                        {{ Form::close() }}
                     </section>
                 </div>
             @endforeach
@@ -601,6 +622,83 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $("#form-aksi").submit();
+                }
+            })
+        });
+        //
+        $("#inputKeabsahanTrue").click(function() {
+            Swal.fire({
+                title: 'Apakah Anda Ingin Menggunakan Template?',
+                text: "Hindari pengetikan manual agar efisien :)",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#6777ef',
+                cancelButtonColor: '#fc544b',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#inputKeabsahan').val(
+                        'Kami dari pihak kampus dengan ini menyatakan bahwa kami telah memeriksa dan mengevaluasi formulir pendaftaran yudisium yang telah diajukan oleh calon peserta. Tunggu hasil keputusan koordinator yudisium.'
+                    );
+                }
+            })
+        });
+        //
+        $("#inputKeabsahanFalse").click(function() {
+            Swal.fire({
+                title: 'Apakah Anda Ingin Menggunakan Template?',
+                text: "Hindari pengetikan manual agar efisien :)",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#6777ef',
+                cancelButtonColor: '#fc544b',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#inputKeabsahan').val(
+                        'Kami tidak dapat menyetujui formulir pendaftaran yudisium karena ada berkas yang disertakan tidak sah, yaitu <UBAH_DISINI> Kami memberikan rekomendasi agar calon peserta memperbaiki dan memenuhi seluruh persyaratan dan prosedur yang telah ditetapkan untuk mengikuti yudisium di masa yang akan datang.'
+                    );
+                }
+            })
+        });
+        //
+        $("#inputKeputusanTrue").click(function() {
+            Swal.fire({
+                title: 'Apakah Anda Ingin Menggunakan Template?',
+                text: "Hindari pengetikan manual agar efisien :)",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#6777ef',
+                cancelButtonColor: '#fc544b',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+                111111
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#inputKeputusan').val(
+                        'Kami memberikan persetujuan untuk calon peserta mengikuti yudisium dan kami siap memberikan dukungan dan bantuan yang diperlukan selama proses yudisium berlangsung.'
+                    );
+                }
+            })
+        });
+        //
+        $("#inputKeputusanFalse").click(function() {
+            Swal.fire({
+                title: 'Apakah Anda Ingin Menggunakan Template?',
+                text: "Hindari pengetikan manual agar efisien :)",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#6777ef',
+                cancelButtonColor: '#fc544b',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#inputKeputusan').val(
+                        'Kami dari pihak kampus dengan ini menyatakan bahwa kami tidak dapat menyetujui formulir pendaftaran yudisium yang telah diajukan oleh calon peserta. Hal ini dikarenakan <UBAH_DISINI>'
+                    );
                 }
             })
         });

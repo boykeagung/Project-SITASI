@@ -35,9 +35,10 @@ class YudisiumController extends Controller
         $by = $req->input('inputBy');
         $nrp = $req->input('inputNrp');
         $komentar = $req->input('inputKomentar');
+        $keabsahan = $req->input('inputKeabsahan');
         $keputusan = $req->input('inputKeputusan');
         if ($by == 'tu') {
-            Yudisium::where('nrp', $nrp)->update(['status_yudisium' => $keputusan, 'tanggal_modifikasi_tu' => now(), 'komentar_tu' => $komentar]);
+            Yudisium::where('nrp', $nrp)->update(['status_yudisium' => $keabsahan, 'tanggal_modifikasi_tu' => now(), 'komentar_tu' => $komentar]);
             if ($keputusan == 'Mengisi') {
                 Notifikasi::insert(
                     array(
@@ -70,7 +71,7 @@ class YudisiumController extends Controller
                             'notifikasi_own' => $nrp,
                             'notifikasi_icon' => 'fas fa-check',
                             'notifikasi_color' => 'success',
-                            'notifikasi_message' => 'Formulir pendaftaran anda diterima Tata Usaha, tunggu konfirmasi dari Koordinator Yudisium',
+                            'notifikasi_message' => 'Pengajuan yudisium diverifikasi dan sah. Tunggu proses selanjutnya dari koordinator yudisium.',
                             'notifikasi_link' => 'dashboard-mahasiswa-yudisium',
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
