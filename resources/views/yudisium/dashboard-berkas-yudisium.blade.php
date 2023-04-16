@@ -148,10 +148,17 @@
                                 <div class="section-title mb-5">Informasi Data Mahasiswa</div>
                                 <div class="card profile-widget">
                                     <div class="profile-widget-header">
-                                        <img alt="image"
-                                            src="{{ asset('Yudisium/' . $item->nrp . '/' . $item->pas_foto) }}"
-                                            class="rounded-circle profile-widget-picture"
-                                            style="object-fit: cover;width:100px;height:100px;">
+                                        @if (!empty($item->pas_foto))
+                                            <img alt="image"
+                                                src="{{ asset('Yudisium/' . $item->nrp . '/' . $item->pas_foto) }}"
+                                                class="rounded-circle profile-widget-picture"
+                                                style="object-fit: cover;width:100px;height:100px;">
+                                        @else
+                                            <img alt="image"
+                                                src="https://demo.getstisla.com/assets/img/avatar/avatar-1.png"
+                                                class="rounded-circle profile-widget-picture"
+                                                style="object-fit: cover;width:100px;height:100px;">
+                                        @endif
                                         <div class="profile-widget-items">
                                             <div class="profile-widget-item">
                                                 <div class="profile-widget-item-label">NRP</div>
@@ -475,9 +482,9 @@
                                             <i class="fas fa-clock mr-2"></i>
                                             <h4>Timeline</h4>
                                         </div>
-                                        <div class="card-body"
-                                            style="height: fit-content;max-height:500px; overflow-y: scroll; outline: none;">
-                                            @if (!$detailAjuan->isEmpty())
+                                        @if (!$detailAjuan->isEmpty())
+                                            <div class="card-body"
+                                                style="height: fit-content;max-height:500px; overflow-y: scroll; outline: none;">
                                                 <div class="activities">
                                                     @foreach ($detailAjuan as $n)
                                                         <div class="activity">
@@ -496,8 +503,12 @@
                                                         </div>
                                                     @endforeach
                                                 </div>
-                                            @endif
-                                        </div>
+                                            </div>
+                                        @else
+                                            <div class="card-body text-center text-muted">
+                                                No timeline yet.
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -598,18 +609,13 @@
 @push('template-css')
 @endpush
 
-@push('plugins-css')
-@endpush
-
 @push('specific-js')
-    <script>
-        $(document).ready(function() {
-            $('textarea').each(function() {
-                $(this).val($(this).val().trim());
-            });
+    <script type="text/javascript">
+        $('textarea').each(function() {
+            $(this).val($(this).val().trim());
         });
-        //
-        $("#kirim-keputusan").click(function() {
+
+        $(" #kirim-keputusan").click(function() {
             Swal.fire({
                 title: 'Konfirmasi Aksi',
                 text: "Hindari kesalahan dengan mengecek kembali komentar dan aksi",
@@ -625,10 +631,10 @@
                 }
             })
         });
-        //
+
         $("#inputKeabsahanTrue").click(function() {
             Swal.fire({
-                title: 'Apakah Anda Ingin Menggunakan Template?',
+                title: 'Apakah Anda Yakin Dokumen Sah?',
                 text: "Hindari pengetikan manual agar efisien :)",
                 icon: 'question',
                 showCancelButton: true,
@@ -644,10 +650,10 @@
                 }
             })
         });
-        //
+
         $("#inputKeabsahanFalse").click(function() {
             Swal.fire({
-                title: 'Apakah Anda Ingin Menggunakan Template?',
+                title: 'Apakah Anda Yakin Dokumen Tidak Sah?',
                 text: "Hindari pengetikan manual agar efisien :)",
                 icon: 'question',
                 showCancelButton: true,
@@ -663,10 +669,11 @@
                 }
             })
         });
-        //
+
+
         $("#inputKeputusanTrue").click(function() {
             Swal.fire({
-                title: 'Apakah Anda Ingin Menggunakan Template?',
+                title: 'Apakah Anda Menyetujui Formulir Ini?',
                 text: "Hindari pengetikan manual agar efisien :)",
                 icon: 'question',
                 showCancelButton: true,
@@ -674,7 +681,6 @@
                 cancelButtonColor: '#fc544b',
                 confirmButtonText: 'Ya',
                 cancelButtonText: 'Tidak'
-                111111
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('#inputKeputusan').val(
@@ -683,10 +689,10 @@
                 }
             })
         });
-        //
+
         $("#inputKeputusanFalse").click(function() {
             Swal.fire({
-                title: 'Apakah Anda Ingin Menggunakan Template?',
+                title: 'Apakah Anda Tidak Menyetujui Formulir Ini?',
                 text: "Hindari pengetikan manual agar efisien :)",
                 icon: 'question',
                 showCancelButton: true,
