@@ -44,9 +44,9 @@ class YudisiumController extends Controller
                     array(
                         [
                             'notifikasi_own' => $nrp,
-                            'notifikasi_icon' => 'fas fa-times',
-                            'notifikasi_color' => 'danger',
-                            'notifikasi_message' => 'Formulir pendaftaran Yudisium ditolak oleh Tata Usaha',
+                            'notifikasi_icon' => 'fas fa-edit',
+                            'notifikasi_color' => 'warning',
+                            'notifikasi_message' => 'Formulir yudisium anda perlu revisi!',
                             'notifikasi_link' => 'dashboard-mahasiswa-yudisium',
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
@@ -54,14 +54,24 @@ class YudisiumController extends Controller
                         ],
                         [
                             'notifikasi_own' => config('global.id_tu'),
-                            'notifikasi_icon' => 'fas fa-times',
-                            'notifikasi_color' => 'danger',
-                            'notifikasi_message' => 'Anda menolak formulir pendaftaran Yudisium mahasiswa ' . $nrp,
-                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
+                            'notifikasi_icon' => 'fas fa-edit',
+                            'notifikasi_color' => 'warning',
+                            'notifikasi_message' => 'Mahasiswa ' . $nrp . ' merevisi formulir yudisium',
+                            'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
-                        ]
+                        ],
+                        [
+                            'notifikasi_own' => config('global.id_ky'),
+                            'notifikasi_icon' => 'fas fa-edit',
+                            'notifikasi_color' => 'warning',
+                            'notifikasi_message' => 'Mahasiswa ' . $nrp . ' merevisi formulir yudisium',
+                            'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
+                            'notifikasi_time' => now(),
+                            'notifikasi_context' => 'Yudisium',
+                            'notifikasi_read' => 0
+                        ],
                     )
                 );
             } else if ($keputusan == 'Dikonfirmasi TU') {
@@ -69,9 +79,9 @@ class YudisiumController extends Controller
                     array(
                         [
                             'notifikasi_own' => $nrp,
-                            'notifikasi_icon' => 'fas fa-check',
-                            'notifikasi_color' => 'success',
-                            'notifikasi_message' => 'Pengajuan yudisium diverifikasi dan sah. Tunggu proses selanjutnya dari koordinator yudisium.',
+                            'notifikasi_icon' => 'fas fas fa-user-check',
+                            'notifikasi_color' => 'primary',
+                            'notifikasi_message' => 'Keabsahan formulir yudisium Anda dikonfirmasi sistem',
                             'notifikasi_link' => 'dashboard-mahasiswa-yudisium',
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
@@ -79,24 +89,24 @@ class YudisiumController extends Controller
                         ],
                         [
                             'notifikasi_own' => config('global.id_tu'),
-                            'notifikasi_icon' => 'fas fa-user-check',
-                            'notifikasi_color' => 'success',
-                            'notifikasi_message' => 'Anda mengkonfirmasi formulir pendaftaran Yudisium mahasiswa ' . $nrp . '.',
-                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
+                            'notifikasi_icon' => 'fas fas fa-user-check',
+                            'notifikasi_color' => 'primary',
+                            'notifikasi_message' => 'Keabsahan formulir yudisium mahasiswa ' . $nrp . ' dikonfirmasi',
+                            'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
                         ],
                         [
                             'notifikasi_own' => config('global.id_ky'),
-                            'notifikasi_icon' => 'fas fa-inbox',
-                            'notifikasi_color' => 'info',
-                            'notifikasi_message' => 'Tata Usaha menyerahkan formulir pendaftaran Yudisium mahasiswa ' . $nrp,
+                            'notifikasi_icon' => 'fas fas fa-user-check',
+                            'notifikasi_color' => 'primary',
+                            'notifikasi_message' => 'Keabsahan formulir yudisium mahasiswa ' . $nrp . ' dikonfirmasi',
                             'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
-                        ]
+                        ],
                     )
                 );
             }
@@ -110,7 +120,7 @@ class YudisiumController extends Controller
                             'notifikasi_own' => $nrp,
                             'notifikasi_icon' => 'fas fa-times',
                             'notifikasi_color' => 'danger',
-                            'notifikasi_message' => 'Formulir pendaftaran Yudisium ditolak Koordinator Yudisium',
+                            'notifikasi_message' => 'Formulir yudisium Anda ditolak Koordinator Yudisium',
                             'notifikasi_link' => 'dashboard-mahasiswa-yudisium',
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
@@ -120,8 +130,8 @@ class YudisiumController extends Controller
                             'notifikasi_own' => config('global.id_tu'),
                             'notifikasi_icon' => 'fas fa-times',
                             'notifikasi_color' => 'danger',
-                            'notifikasi_message' => 'Koordinator Yudisium menolak formulir pendaftaran Yudisium mahasiswa ' . $nrp,
-                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
+                            'notifikasi_message' => 'Formulir yudisium ditolak Koordinator Yudisium',
+                            'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
@@ -130,12 +140,12 @@ class YudisiumController extends Controller
                             'notifikasi_own' => config('global.id_ky'),
                             'notifikasi_icon' => 'fas fa-times',
                             'notifikasi_color' => 'danger',
-                            'notifikasi_message' => 'Anda menolak formulir pendaftaran Yudisium mahasiswa ' . $nrp,
+                            'notifikasi_message' => 'Formulir yudisium ditolak Koordinator Yudisium',
                             'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
-                        ]
+                        ],
                     )
                 );
             } else if ($keputusan == 'Diterima') {
@@ -143,34 +153,34 @@ class YudisiumController extends Controller
                     array(
                         [
                             'notifikasi_own' => $nrp,
-                            'notifikasi_icon' => 'fas fa-user-graduate',
+                            'notifikasi_icon' => 'fas fa-check',
                             'notifikasi_color' => 'success',
-                            'notifikasi_message' => 'Selamat! formulir pendaftaran Yudisium disetujui, lihat detail Yudisium.',
+                            'notifikasi_message' => 'Formulir yudisium Anda diterima!',
                             'notifikasi_link' => 'dashboard-mahasiswa-yudisium',
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
                         ],
                         [
-                            'notifikasi_own' => config('global.id_ky'),
-                            'notifikasi_icon' => 'fas fa-user-graduate',
+                            'notifikasi_own' => config('global.id_tu'),
+                            'notifikasi_icon' => 'fas fa-check',
                             'notifikasi_color' => 'success',
-                            'notifikasi_message' => 'Anda menyetujui formulir pendaftaran Yudisium mahasiswa ' . $nrp . '.',
+                            'notifikasi_message' => 'Formulir yudisium diterima!',
                             'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
                         ],
                         [
-                            'notifikasi_own' => config('global.id_tu'),
-                            'notifikasi_icon' => 'fas fa-times',
-                            'notifikasi_color' => 'danger',
-                            'notifikasi_message' => 'Koordinator Yudisium menyetujui formulir pendaftaran Yudisium mahasiswa ' . $nrp,
+                            'notifikasi_own' => config('global.id_ky'),
+                            'notifikasi_icon' => 'fas fa-check',
+                            'notifikasi_color' => 'success',
+                            'notifikasi_message' => 'Formulir yudisium diterima!',
                             'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
-                        ]
+                        ],
                     )
                 );
             }
