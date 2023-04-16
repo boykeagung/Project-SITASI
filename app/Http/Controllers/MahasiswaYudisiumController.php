@@ -39,7 +39,7 @@ class MahasiswaYudisiumController extends Controller
         if (Yudisium::where('nrp', '=', $loggedNrp)->doesntExist()) {
             $userData = array(
                 'nrp' => $loggedNrp,
-                'toga' => 'xs',
+                'toga' => 'XS',
                 'status_yudisium' => 'Mengisi'
             );
             Yudisium::create($userData);
