@@ -57,7 +57,7 @@ class YudisiumController extends Controller
                             'notifikasi_icon' => 'fas fa-edit',
                             'notifikasi_color' => 'warning',
                             'notifikasi_message' => 'Mahasiswa ' . $nrp . ' merevisi formulir yudisium',
-                            'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
+                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
@@ -92,7 +92,7 @@ class YudisiumController extends Controller
                             'notifikasi_icon' => 'fas fas fa-user-check',
                             'notifikasi_color' => 'primary',
                             'notifikasi_message' => 'Keabsahan formulir yudisium mahasiswa ' . $nrp . ' dikonfirmasi',
-                            'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
+                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
@@ -131,7 +131,7 @@ class YudisiumController extends Controller
                             'notifikasi_icon' => 'fas fa-times',
                             'notifikasi_color' => 'danger',
                             'notifikasi_message' => 'Formulir yudisium ditolak Koordinator Yudisium',
-                            'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
+                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
@@ -166,7 +166,7 @@ class YudisiumController extends Controller
                             'notifikasi_icon' => 'fas fa-check',
                             'notifikasi_color' => 'success',
                             'notifikasi_message' => 'Formulir yudisium diterima!',
-                            'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
+                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0

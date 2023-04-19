@@ -406,7 +406,7 @@ class MahasiswaYudisiumController extends Controller
                             'notifikasi_icon' => 'fas fa-user-graduate',
                             'notifikasi_color' => 'primary',
                             'notifikasi_message' => 'Mahasiswa ' . $nrp . ' mengajukan formulir',
-                            'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
+                            'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
                             'notifikasi_time' => now(),
                             'notifikasi_context' => 'Yudisium',
                             'notifikasi_read' => 0
@@ -454,7 +454,7 @@ class MahasiswaYudisiumController extends Controller
                         'notifikasi_icon' => 'fas fa-edit',
                         'notifikasi_color' => 'secondary',
                         'notifikasi_message' => 'Mahasiswa ' . $nrp . ' menarik formulir',
-                        'notifikasi_link' => 'dashboard-koordinator-yudisium/berkas/' . $nrp,
+                        'notifikasi_link' => 'dashboard-tata-usaha-yudisium/berkas/' . $nrp,
                         'notifikasi_time' => now(),
                         'notifikasi_context' => 'Yudisium',
                         'notifikasi_read' => 0
