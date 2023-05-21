@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Database\QueryException;
 use App\Models\Dosen;
 use App\Models\TA;
 use App\Models\Proposal;
@@ -52,25 +53,31 @@ class TAController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'draft' => "mimes:pdf|max:25000",
-            // 'judul' => 'required',
-            'id_ta' => 'required',
-            'username' => 'required',
-        ]);
 
-        $input = $request->all();
+        try {
+            $this->validate($request, [
+                'draft' => "mimes:pdf|max:25000",
+                // 'judul' => 'required',
+                'id_ta' => 'required',
+                'username' => 'required',
+            ]);
 
-        if ($draft = $request->file('draft')) {
-            $destinationPath = 'Draft_TA_Sinopsis/';
-            $draftTA = time() . "_" . $draft->getClientOriginalName();
-            $draft->move($destinationPath, $draftTA);
-            $input['draft'] = "$draftTA";
+            $input = $request->all();
+
+            if ($draft = $request->file('draft')) {
+                $destinationPath = 'Draft_TA_Sinopsis/';
+                $draftTA = time() . "_" . $draft->getClientOriginalName();
+                $draft->move($destinationPath, $draftTA);
+                $input['draft'] = "$draftTA";
+            }
+
+            TA::create($input);
+
+            return redirect('dashboard-mahasiswa-proposal-ta')->with('success', 'Daftar TA created successfully.');
+        } catch (QueryException $e) {
+            abort(403, 'Anda hanya dapat mendaftar Tugas Akhir satu kali!. ');
+            // throw new \Exception('Terjadi kesalahan dalam menjalankan query. Sepertinya Anda belum mendaftar Tugas Akhir  '); 
         }
-
-        TA::create($input);
-
-        return redirect('dashboard-mahasiswa-proposal-ta')->with('success', 'Daftar TA created successfully.');
     }
 
     public function edit($id)

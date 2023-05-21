@@ -10,5 +10,5 @@ class bimbingan_ta extends Model
     use HasFactory;
     // use HasFactory;
     protected $table = "bimbingan_ta";
-    protected $fillable = ['id_bta', 'id_ta', 'tanggal_bimbingan', 'kegiatan', 'status_p1', 'status_p2'];
+    protected $fillable = ['id_bta', 'id_ta', 'tanggal_bimbingan', 'kegiatan', 'status'];
 }

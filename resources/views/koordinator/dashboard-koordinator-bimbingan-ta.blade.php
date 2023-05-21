@@ -16,8 +16,8 @@
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h4>Data Bimbingan Tugas Akhir </h4>
+                            <div class="card-header ">
+                                <h3 class="section-title col-8">Data Bimbingan Tugas Akhir Mahasiswa</h2>
                             </div>
                             <div class="card-body table-responsive">
                                 <a href=<?php echo url('dashboard-koordinator-tambah-bimbingan-ta') ?>
@@ -33,10 +33,9 @@
                                             <th>NRP</th>
                                             <th>Nama Lengkap</th>
                                             <th>Kegiatan</th>
-                                            <th>Paraf Pembimbing 1</th>
-                                            <th>Paraf Pembimbing 2</th>
+                                            <th>Status</th>
+                                            {{-- <th>Paraf Pembimbing 2</th> --}}
                                             <th>Action</th>
-                                            <th>delete</th>
                                         </tr>
                                     </thead>
 
@@ -50,14 +49,12 @@
                                             <td>{{$bta->username}}</td>
                                             <td>{{$bta->name}}</td>
                                             <td>{{$bta->kegiatan}}</td>
-                                            <td>{{$bta->status_p1}}</td>
-                                            <td>{{$bta->status_p2}}</td>
-                                            <td>
-                                                {{link_to('dashboard-koordinator-edit-bimbingan-ta/'.$bta->id,'Edit',['class'=>'btn btn-warning'])}}
-                                            </td>
+                                            <td>{{$bta->status}}</td>
+                                            {{-- <td>{{$bta->status_p2}}</td> --}}
                                             <td>
                                                 {!!
-                                                Form::open(['url'=>'dashboard-koordinator-bimbingan-kp/'.$bta->id,'method'=>'delete'])!!}
+                                                Form::open(['url'=>'dashboard-koordinator-bimbingan-ta/'.$bta->id,'method'=>'delete'])!!}
+                                                {{link_to('dashboard-koordinator-edit-bimbingan-ta/'.$bta->id,'Edit',['class'=>'btn btn-warning'])}}
                                                 {!! Form::submit('Delete',['class'=>'btn
                                                 btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
                                                 {!! Form::close()!!}

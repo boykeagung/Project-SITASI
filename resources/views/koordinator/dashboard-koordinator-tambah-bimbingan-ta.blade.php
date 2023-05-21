@@ -65,21 +65,21 @@
                                                         <label for="inputJudul">Waktu Bimbingan</label><br>
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="date" name="tanggal_bimbingan" placeholder="Judul Tugas Akhir">
+                                                        <input class="form-control" type="date" name="tanggal_bimbingan" placeholder="Judul Tugas Akhir" required>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJudul">Kegiatan Bimbingan</label><br>
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <textarea class="form-control" type="text" name="kegiatan" placeholder="Kegiatan Bimbingan"></textarea>
+                                                        <textarea class="form-control" type="text" name="kegiatan" placeholder="Kegiatan Bimbingan" required></textarea>
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputidta">Status Dosen Pembimbing 1</label>
+                                                        <label for="inputidta">Status </label>
                                                         <br>
                                                         {{-- {!!
                                                         Form::text('id_seminar',null,['placeholder'=>'Kode Seminar Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <select class="form-select" aria-label="Default select example"
-                                                            name="status_p1">
+                                                        <select class="form-select" aria-label="Default select example" required
+                                                            name="status">
                                                             <option value="Diproses">Diproses</option>
                                                             {{-- <option value="Revisi">Revisi</option> --}}
                                                             <option value="Diterima">Diterima</option>
@@ -87,21 +87,6 @@
                                                             <option value="Ditolak">Ditolak</option>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputidta">Status Dosen Pembimbing 2</label>
-                                                        <br>
-                                                        {{-- {!!
-                                                        Form::text('id_seminar',null,['placeholder'=>'Kode Seminar Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <select class="form-select" aria-label="Default select example"
-                                                            name="status_p2">
-                                                            <option value="Diproses">Diproses</option>
-                                                            {{-- <option value="Revisi">Revisi</option> --}}
-                                                            <option value="Diterima">Diterima</option>
-                                                            {{-- <option value="Lulus">Lulus</option> --}}
-                                                            <option value="Ditolak">Ditolak</option>
-                                                        </select>
-                                                    </div>
-                                                    
                                                 </div>
 
                                                 <div class="form-row">

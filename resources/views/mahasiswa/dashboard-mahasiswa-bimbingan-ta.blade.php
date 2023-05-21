@@ -31,8 +31,8 @@
                                             <th>ID TA</th>
                                             <th>Tanggal Bimbingan</th>
                                             <th>Kegiatan Bimbingan</th>
-                                            <th>Paraf Pembimbing 1</th>
-                                            <th>Paraf Pembimbing 2</th>
+                                            <th>Status</th>
+                                            {{-- <th>Paraf Pembimbing 2</th> --}}
                                             <th>Update At</th>
                                             <th>Action</th>
                                             {{-- <th>delete</th> --}}
@@ -46,8 +46,8 @@
                                             <th>{{$bta->id_ta}}</th>
                                             <th>{{$bta->tanggal_bimbingan}}</th>
                                             <th>{{$bta->kegiatan}}</th>
-                                            <th>{{$bta->status_p1}}</th>
-                                            <th>{{$bta->status_p2}}</th>
+                                            <th>{{$bta->status}}</th>
+                                            {{-- <th>{{$bta->status_p2}}</th> --}}
                                             <th>{{$bta->updated_at}}</th>
                                             <th>{{link_to('dashboard-mahasiswa-edit-bimbingan-ta/'.$bta->id,'Edit',['class'=>'btn btn-warning'])}}
                                             </th>
