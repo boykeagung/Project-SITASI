@@ -77,7 +77,7 @@
                                             @endforeach
                                         </tbody>
                                    </table>
-                                   {{$nilaiDospem}}
+                                   {{-- {{$nilaiDospem}} --}}
                             </div>
                         </div>
                     </div>

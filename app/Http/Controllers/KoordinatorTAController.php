@@ -17,18 +17,11 @@ class KoordinatorTAController extends Controller
         $data['ta'] = TA::leftJoin('users', 'users.username', '=', 'ta.username')
             ->select('ta.*', 'users.name')
             ->get();
-        // $data['ta'] = TA::leftJoin('users', 'users.username', '=', 'ta.pembimbing2')->select('ta.*', 'users.name as name2')->get();
-        // $data['ta'] = TA::leftJoin('users', 'users.username', '=', 'ta.penguji1')->select('ta.*', 'users.name as name3')->get();
-        // $data['ta'] = TA::leftJoin('users', 'users.username', '=', 'ta.penguji2')->select('ta.*', 'users.name as name4')->get();
         $data['proposal'] = Proposal::join('ta', 'proposal.id_ta', '=', 'ta.id_ta')
             ->join('users', 'ta.username', '=', 'users.username')
             ->select('proposal.*', 'users.name', 'ta.username')
             ->get();
-        // $data['user'] = User::all();
         return view('koordinator.dashboard-koordinator-proposal-ta', $data);
-        // $data['ta'] = TA::all();
-        // $data['proposal'] = Proposal::all();
-        // return view('koordinator.dashboard-koordinator-proposal-ta', $data);
     }
 
     public function create()

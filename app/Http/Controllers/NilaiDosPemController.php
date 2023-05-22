@@ -19,8 +19,8 @@ class NilaiDosPemController extends Controller
         $data['nilai_dospem'] = NilaiDosPem::all()->where('username', '=', $username);
         $data['nilai_dospem_perusahaan'] = NilaiDosPemPerusahaan::all()->where('username', '=', $username);
 
-        $nilaiDospem = NilaiDosPem::sum(\DB::raw('((kepribadian + penguasaan_materi + keterampilan 
-        + kreatifitas + tanggung_jawab + komunikasi) / 6)'));  
+        $nilaiDospem = NilaiDosPem::sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan 
+        + kreatifitas + tanggung_jawab + komunikasi) / 6'));  
 
         // $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::sum(\DB::raw('((kepribadian + penguasaan_materi + keterampilan 
         // + kreatifitas + tanggung_jawab + komunikasi) / 6)'));
@@ -46,7 +46,7 @@ class NilaiDosPemController extends Controller
             'kreatifitas' => 'required',
             'tanggung_jawab' => 'required',
             'komunikasi' => 'required',
-            'pdf_nilai' => "mimes:pdf|max:25000"
+            'pdf_nilai' => "mimes:pdf|max:25000|"
         ]);
 
         $input = $request->all();
