@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Bimbingan_kp;
+use Illuminate\Database\QueryException;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class BimbinganKPController extends Controller
     public function index()
     {
         $username = Auth::user()->username;
-        $data['bimbingan_kp'] = Bimbingan_kp::all()->where('id_ta', '=', "TA$username");
+        $data['bimbingan_kp'] = Bimbingan_kp::all()->where('id_kp', '=', "KP$username");
         return view('mahasiswa.dashboard-mahasiswa-bimbingan-kp', $data);
     }
 
@@ -25,11 +26,16 @@ class BimbinganKPController extends Controller
 
     public function store(Request $request)
     {
-        $input = $request->all();
-        $input['status_p1'] = "Diproses";
-        // $input['status_p2'] = "Diproses";
-        Bimbingan_kp::create($input);
-        return redirect('dashboard-mahasiswa-bimbingan-kp');
+        try {
+            $input = $request->all();
+            $input['status_p1'] = "Diproses";
+            // $input['status_p2'] = "Diproses";
+            Bimbingan_kp::create($input);
+            return redirect('dashboard-mahasiswa-bimbingan-kp');
+        } catch (QueryException $e) {
+            abort(403, 'ID Kerja Praktik Belum terdaftar.');
+            // throw new \Exception('Terjadi kesalahan dalam menjalankan query. Sepertinya Anda belum mendaftar Tugas Akhir  ');
+        }
     }
 
     public function edit($id)

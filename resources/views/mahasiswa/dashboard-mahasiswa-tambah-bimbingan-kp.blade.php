@@ -44,10 +44,10 @@
                                                         <input class="form-control" type="text" value="BKP{{Auth::user()->username}}" name="id_bkp" readonly>
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputId_ta">ID Tugas Akhir</label><br>
+                                                        <label for="inputId_ta">ID Kerja Praktik</label><br>
                                                         {{-- {!!
                                                         Form::text('id_ta',null,['placeholder'=>'ID Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="text" value="TA{{Auth::user()->username}}" name="id_ta" readonly>
+                                                        <input class="form-control" type="text" value="KP{{Auth::user()->username}}" name="id_kp" readonly>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJudul">Waktu Bimbingan</label><br>
