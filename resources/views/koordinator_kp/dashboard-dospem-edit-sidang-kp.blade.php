@@ -43,17 +43,7 @@
                                                             rows="3"
                                                             placeholder="Komentar">{{$sidang_kp->komentar1}}</textarea>
                                                     </div>
-                                                    {{-- <div class="form-group col-md-6">
-                                                        <label for="inputStatus">Status</label>
-                                                        <select class="form-select" aria-label="Default select example"
-                                                            name="status" id="select2">
-                                                            <option value="Diproses">Diproses</option>
-                                                            <option value="Ditolak">Ditolak</option>
-                                                            <option value="Diterima">Diterima</option>
-                                                        </select>
-                                                    </div> --}}
                                                 </div>
-
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         {!! Form::submit('Save',['class'=>'btn btn-primary mb-5
