@@ -42,7 +42,7 @@
                                             <th>Komentar Penguji</th>
                                             <th>Update at</th>
                                             {{-- <th>Action</th> --}}
-                                            <th>Delete</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
 
@@ -78,14 +78,17 @@
                                             <td>{{$skp->komentar1}}</td>
                                             <td>{{$skp->komentar2}}</td>
                                             <td>{{$skp->updated_at}}</td>
-                                            {{-- <td>
-                                                {{link_to('dashboard-koordinator-edit-sidang-kp/'.$skp->id,'Edit',['class'=>'btn btn-warning'])}}
-                                            </td> --}}
+                                            
+                                                
                                             <td>
                                                 {!!
                                                 Form::open(['url'=>'dashboard-koordinator-sidang-kp/'.$skp->id,'method'=>'delete'])!!}
-                                                {!! Form::submit('Delete',['class'=>'btn
+                                                <div class="btn-group" role="group">
+                                                    {{link_to('dashboard-koordinator-edit-sidang-kp/'.$skp->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                    {!! Form::submit('Delete',['class'=>'btn
                                                 btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
+                                                {!! Form::close()!!}
+                                                </div>
                                                 {!! Form::close()!!}
                                             </td>
                                         </tr>

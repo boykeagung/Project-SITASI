@@ -12,7 +12,7 @@
             <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-kp'); ?>><i
                         class="fas fa-sticky-note"></i> <span>Permohonan Surat
                         Rekomendasi</span></a></li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-kp'); ?>><i
+            <li ><a class="nav-link" href=<?php echo url('dashboard-koordinator-kp'); ?>><i
                         class="fas fa-sticky-note"></i> <span>Daftar Kerja
                         Praktik</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-sidang-kp'); ?>><i

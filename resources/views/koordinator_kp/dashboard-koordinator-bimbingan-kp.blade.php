@@ -9,7 +9,6 @@
         @include('navbar')
 
         @include('sidebar.sidebar-koordinator-kp')
-
         <!-- Main Content -->
         <div class="main-content">
             <div class="col-12">
@@ -20,9 +19,11 @@
                                 <h3 class="section-title col-8">Data Bimbingan Kerja Praktik Mahasiswa</h2>
                             </div>
                             <div class="card-body table-responsive">
-                                <a href=<?php echo url('dashboard-koordinator-tambah-bimbingan-ta') ?>
+                                <a href=<?php echo url('dashboard-koordinator-tambah-bimbingan-kp') ?>
                                     class="btn btn-primary mb-3">
                                     <i class="fas fa-plus"></i> Tambah Data</a>
+                                {{-- <a href=<?php echo url('dashboard-mahasiswa-tambah-ta') ?> class="btn btn-warning mb-3">
+                                    <i class="fas fa-plus"></i> Print</a> --}}
                                 <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
@@ -49,12 +50,12 @@
                                             <td>{{$bkp->username}}</td>
                                             <td>{{$bkp->name}}</td>
                                             <td>{{$bkp->kegiatan}}</td>
-                                            <td>{{$bkp->status}}</td>
+                                            <td>{{$bkp->status_p1}}</td>
                                             {{-- <td>{{$bkp->status_p2}}</td> --}}
                                             <td>
                                                 {!!
-                                                Form::open(['url'=>'dashboard-koordinator-bimbingan-ta/'.$bkp->id,'method'=>'delete'])!!}
-                                                {{link_to('dashboard-koordinator-edit-bimbingan-ta/'.$bkp->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                Form::open(['url'=>'dashboard-koordinator-bimbingan-kp/'.$bkp->id,'method'=>'delete'])!!}
+                                                {{link_to('dashboard-koordinator-edit-bimbingan-kp/'.$bkp->id,'Edit',['class'=>'btn btn-warning'])}}
                                                 {!! Form::submit('Delete',['class'=>'btn
                                                 btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
                                                 {!! Form::close()!!}

@@ -20,41 +20,41 @@
                                 <h4>Data Mahasiswa Bimbingan Tugas Akhir</h4>
                             </div>
                             <div class="card-body table-responsive">
-                                <table class="table table-bordered table-striped" id="table1">
+                                <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>NRP</th>
-                                            <th>Nama Mahasiswa</th>
+                                            <th>ID Bimbingan TA</th>
+                                            <th>ID TA</th>
                                             <th>Waktu Bimbingan</th>
-                                            <th>Kegiatan Bimbingan</th>
+                                            <th>NRP</th>
+                                            <th>Nama Lengkap</th>
+                                            <th>Kegiatan</th>
                                             <th>Status</th>
-                                            <th>Update At</th>
-                                            {{-- <th>Action</th> --}}
+                                            {{-- <th>Paraf Pembimbing 2</th> --}}
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
+                                        @foreach ($bimbingan_ta as $no => $bta)
                                         <tr>
-                                            <th>No</th>
-                                            <th>NRP</th>
-                                            <th>Nama Mahasiswa</th>
-                                            <th>Waktu Bimbingan</th>
-                                            <th>Kegiatan Bimbingan</th>
-                                            <th>
-                                                <select class="form-select" aria-label="Default select example"
-                                                    name="status">
-                                                    <option value="Diproses">Proses</option>
-                                                    <option value="Lulus">Disetujui</option>
-                                                    <option value="Tidak Lulus">Tidak Disetujui</option>
-                                                </select>
-                                            </th>
-                                            <th>Update At</th>
-                                            {{-- <th><Button>Save</Button></th> --}}
+                                            <td>{{1+$no++}}</td>
+                                            <td>{{$bta->id_bta}}</td>
+                                            <td>{{$bta->id_ta}}</td>
+                                            <td>{{$bta->tanggal_bimbingan}}</td>
+                                            <td>{{$bta->username}}</td>
+                                            <td>{{$bta->name}}</td>
+                                            <td>{{$bta->kegiatan}}</td>
+                                            <td>{{$bta->status}}</td>
+                                            {{-- <td>{{$bta->status_p2}}</td> --}}
+                                            <td>
+                                                {{link_to('dashboard-dospem-edit-bimbingan-ta/'.$bta->id,'Edit',['class'=>'btn btn-warning'])}}
+                                            </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
-                                <Button>Save</Button>
                             </div>
                         </div>
                     </div>

@@ -21,15 +21,15 @@ class KoordinatorBimbinganKP extends Controller
 
     public function create()
     {
-        $data['ta'] = TA::join('users', 'users.username', '=', 'ta.username')->select('ta.*', 'users.name')
+        $data['bimbingan_kp'] = KP::join('users', 'users.username', '=', 'kp.username')->select('kp.*', 'users.name')
             ->get();
-        return view('koordinator.dashboard-koordinator-tambah-bimbingan-kp', $data);
+        return view('koordinator_kp.dashboard-koordinator-tambah-bimbingan-kp', $data);
     }
 
     public function store(Request $request)
     {
         $input = $request->all();
-        $id_kp = $request->input('id_ta');
+        $id_kp = $request->input('id_kp');
         // $input['id_seminar'] = "$id_ta";
         $input['id_bkp'] = "B$id_kp";
         Bimbingan_kp::create($input);
@@ -38,23 +38,23 @@ class KoordinatorBimbinganKP extends Controller
 
     public function edit($id)
     {
-        $data['bimbingan_ta'] = Bimbingan_kp::find($id);
-        $data['ta'] = TA::join('users', 'users.username', '=', 'ta.username')->select('ta.*', 'users.name')
+        $data['bimbingan_kp'] = Bimbingan_kp::find($id);
+        $data['ta'] = KP::join('users', 'users.username', '=', 'kp.username')->select('kp.*', 'users.name')
             ->get();
-        return view('koordinator.dashboard-koordinator-edit-bimbingan-ta', $data);
+        return view('koordinator_kp.dashboard-koordinator-edit-bimbingan-kp', $data);
     }
 
     public function update($id, Request $request)
     {
         $input = $request->all();
         Bimbingan_kp::find($id)->update($input);
-        return redirect('dashboard-koordinator-bimbingan-ta');
+        return redirect('dashboard-koordinator-bimbingan-kp');
     }
 
     public function delete($id, Request $request)
     {
         $ta = Bimbingan_kp::find($id);
         $ta->delete($request->all());
-        return redirect('dashboard-koordinator-bimbingan-ta');
+        return redirect('dashboard-koordinator-bimbingan-kp');
     }
 }

@@ -15,10 +15,11 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="dashboard-mahasiswa-proposal-ta" method="POST" enctype="multipart/form-data"> 
+                <form class="needs-validation" action="dashboard-mahasiswa-proposal-ta" method="POST"
+                    enctype="multipart/form-data" novalidate>
                     {{-- PDF^ --}}
                     {{ csrf_field() }}
-                    <input type="hidden" name="user_id" value="" required>
+                    {{-- <input type="hidden" name="user_id" value="" required> --}}
                     <div class="card-header row">
                         <h3 class="section-title col-8">Daftar Tugas Akhir</h2>
                     </div>
@@ -62,7 +63,10 @@
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
                                                         <input type="text" class="form-control" name="judul"
-                                                            placeholder="Judul Tugas Akhir">
+                                                            placeholder="Judul Tugas Akhir" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Judul Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Draft Proposal/Sinopsis Tugas
@@ -70,16 +74,19 @@
                                                         {{-- <br> --}}
                                                         {{-- {!!
                                                         Form::file('draft',null)!!} --}}
-                                                        <input class="form-control" type="file" name="draft">
+                                                        <input class="form-control" type="file" name="draft" required>
                                                         {{-- <br> --}}
                                                         <span>*File Upload yang diupload berupa pdf maksimal sebesar
                                                             25MB</span>
+                                                        <div class="invalid-feedback">
+                                                            Masukan File Draft Proposal/Sinopsis Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        
+
                                                         {!! Form::submit('Save',['class'=>'btn btn-primary mb-5
                                                         mt-3'])!!}
                                                     </div>

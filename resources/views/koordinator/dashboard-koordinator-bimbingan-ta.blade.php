@@ -23,6 +23,8 @@
                                 <a href=<?php echo url('dashboard-koordinator-tambah-bimbingan-ta') ?>
                                     class="btn btn-primary mb-3">
                                     <i class="fas fa-plus"></i> Tambah Data</a>
+                                {{-- <a href=<?php echo url('dashboard-mahasiswa-tambah-ta') ?> class="btn btn-warning mb-3">
+                                    <i class="fas fa-plus"></i> Print</a> --}}
                                 <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
