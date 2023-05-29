@@ -19,14 +19,17 @@ class NilaiDosPemController extends Controller
         $data['nilai_dospem'] = NilaiDosPem::all()->where('username', '=', $username);
         $data['nilai_dospem_perusahaan'] = NilaiDosPemPerusahaan::all()->where('username', '=', $username);
 
+        //Nilai rata-rata
         $nilaiDospem = NilaiDosPem::sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan 
         + kreatifitas + tanggung_jawab + komunikasi) / 6'));  
+        $rataDospem = round($nilaiDospem, 2);
 
-        // $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::sum(\DB::raw('((kepribadian + penguasaan_materi + keterampilan 
-        // + kreatifitas + tanggung_jawab + komunikasi) / 6)'));
+        $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan 
+        + kreatifitas + tanggung_jawab + komunikasi) / 6'));
+        $rataDospemPerusahaan = round($nilaiDospemPerusahaan, 2);
         
 
-        return view('mahasiswa.dashboard-mahasiswa-penilaian-kp', $data, ['nilaiDospem'=>$nilaiDospem]);
+        return view('mahasiswa.dashboard-mahasiswa-penilaian-kp', $data, ['rataDospem'=>$rataDospem,'rataDospemPerusahaan'=>$rataDospemPerusahaan]);
     }
 
     public function create()
@@ -105,10 +108,10 @@ class NilaiDosPemController extends Controller
     }
 
 
-    public function rataDospem(){
+    // public function rataDospem(){
 
-        $rataDospem = NilaiDosPem::avg('nilai_dospem');
-    }
+    //     $rataDospem = NilaiDosPem::avg('nilai_dospem');
+    // }
 
 
     public function generateNilai($id)

@@ -19,7 +19,6 @@ class Form001Controller extends Controller
 
         $username = Auth::user()->username;
         $data['kp_form001'] = Form001::all()->where('username', '=', $username);
-        $data['file_pdf'] = Form001::all()->where('username', '=', $username);
 
         return view('mahasiswa.dashboard-mahasiswa-form-001', $data);
     }
@@ -106,8 +105,6 @@ class Form001Controller extends Controller
 
     public function generateForm001($id)
     {
-
-
         $data['kp_form001'] = Form001::findOrFail($id)
             ->select('username', 'nama' ,'perusahaan1', 'alamat_perusahaan1', 'bidang_perusahaan1','perusahaan2', 'alamat_perusahaan2', 'bidang_perusahaan2')
             ->where('id', '=', $id)
@@ -129,26 +126,26 @@ class Form001Controller extends Controller
     }
 
 
-    public function storePdf(Request $request){
+    // public function storePdf(Request $request){
          
-        $validatedData = $request->validate([
-         'file' => 'required|csv,txt,xlx,xls,pdf|max:2048',
+    //     $validatedData = $request->validate([
+    //      'file' => 'required|csv,txt,xlx,xls,pdf|max:2048',
  
-        ]);
+    //     ]);
  
-        $name = $request->file('file')->getClientOriginalName();
+    //     $name = $request->file('file')->getClientOriginalName();
  
-        $path = $request->file('file')->store('public/files');
+    //     $path = $request->file('file')->store('public/files');
  
  
-        $save = new File;
+    //     $save = new File;
  
-        $save->name = $name;
-        $save->path = $path;
+    //     $save->name = $name;
+    //     $save->path = $path;
  
-        return redirect('file-upload')->with('status', 'File Has been uploaded successfully in laravel 8');
+    //     return redirect('file-upload')->with('status', 'File Has been uploaded successfully in laravel 8');
  
-    }
+    // }
 
 
     public function tanggal(Request $request){
@@ -156,10 +153,10 @@ class Form001Controller extends Controller
         $date = date('Y-m-d H:i:s');
     }
 
-    public function generateNilaiKP()
-    {
-        // $data['kp_form001'] = Form001::findOrFail();
-        $pdf = PDF::loadView('mahasiswa.generate_nilai_kp');
-        return $pdf->stream();
-    }
+    // public function generateNilaiKP()
+    // {
+    //     // $data['kp_form001'] = Form001::findOrFail();
+    //     $pdf = PDF::loadView('mahasiswa.generate_nilai_kp');
+    //     return $pdf->stream();
+    // }
 }

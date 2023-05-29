@@ -65,6 +65,33 @@
             });
 
         </script>
+        <script>
+            $('#table3').css('display', 'table');
+            $('#table3').DataTable(
+                paging: false,
+                ordering: false,
+                info: false,
+            );
+
+            $(".treeview").click(function () {
+                $('.media').collapse('show');
+            });
+
+        </script>
+
+        <script>
+            $('#table4').css('display', 'table');
+            $('#table4').DataTable(
+                paging: false,
+                ordering: false,
+                info: false,
+            );
+
+            $(".treeview").click(function () {
+                $('.media').collapse('show');
+            });
+
+        </script>
 
         <script> 
 
