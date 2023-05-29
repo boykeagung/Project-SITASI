@@ -52,6 +52,15 @@
 /* 1. Variable */
 /* 2. Mixin */
 /* 3. Bootstrap Override */
+.dt-notification-button {
+  cursor: pointer;
+  background-color:#fffae5;
+  outline: none;
+}
+.dt-notification-button:active {
+  color: #191d21;
+  outline: none;
+}
 /* 3.1 Misc */
 .btn:focus,
 .btn:active,

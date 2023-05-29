@@ -57,7 +57,7 @@
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Draft Proposal/ Sinopsis Tugas
                                                             Akhir</label><br>
-                                                        <input class="form-control" type="file" name="draft">
+                                                        <input class="form-control" type="file" name="draft" >
                                                         <span>*File Upload yang diupload berupa pdf maksimal sebesar
                                                             25MB</span>
                                                     </div>

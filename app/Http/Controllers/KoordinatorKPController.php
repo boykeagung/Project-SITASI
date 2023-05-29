@@ -48,14 +48,14 @@ class KoordinatorKPController extends Controller
         $data['kp'] = KP::find($id);
         $data['user'] = User::all()->where('level', 'user');
         $data['user1'] = User::all()->whereIn('level', ['koordinator', 'dosen']);
-        return view('koordinator_kp.dashboard-koordinator-edit-sidang-kp', $data);
+        return view('koordinator_kp.dashboard-koordinator-edit-kp', $data);
     }
 
     public function update($id, Request $request)
     {
         $this->validate($request, [
             // 'id_kp' => 'required',
-            'username' => 'required',
+            // 'username' => 'required',
         ]);
 
         $input = $request->all();
@@ -64,7 +64,7 @@ class KoordinatorKPController extends Controller
         $input['id_kp'] = "KP$username";
 
         KP::find($id)->update($input);
-        return redirect('koordinator_kp.dashboard-koordinator-kp');
+        return redirect('dashboard-koordinator-kp');
     }
 
     public function delete($id, Request $request)

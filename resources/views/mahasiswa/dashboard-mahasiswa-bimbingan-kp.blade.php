@@ -28,10 +28,10 @@
                                     <thead>
                                         <tr>
                                             <th>ID Bimbingan KP</th>
-                                            <th>ID TA</th>
+                                            <th>ID KP</th>
                                             <th>Waktu Bimbingan</th>
                                             <th>Kegiatan Bimbingan</th>
-                                            <th>Paraf Pembimbing</th>
+                                            <th>Status</th>
                                             {{-- <th>Paraf Pembimbing 2</th> --}}
                                             <th>Update At</th>
                                             <th>Action</th>
@@ -43,7 +43,7 @@
                                         @foreach ($bimbingan_kp as $bkp)
                                         <tr>
                                             <th>{{$bkp->id_bkp}}</th>
-                                            <th>{{$bkp->id_ta}}</th>
+                                            <th>{{$bkp->id_kp}}</th>
                                             <th>{{$bkp->tanggal_bimbingan}}</th>
                                             <th>{{$bkp->kegiatan}}</th>
                                             <th>{{$bkp->status_p1}}</th>

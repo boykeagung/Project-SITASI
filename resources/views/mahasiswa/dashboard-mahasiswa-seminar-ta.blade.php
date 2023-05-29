@@ -17,7 +17,7 @@
                     <div class="col-12 col-md-6 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Daftar Seminar Tugas Akhir Mahasiswa</h4>
+                                <h3>Seminar Tugas Akhir Mahasiswa</h3>
                             </div>
                             <div class="card-body table-responsive">
                                 <a href=<?php echo url('dashboard-mahasiswa-tambah-seminar-ta') ?>

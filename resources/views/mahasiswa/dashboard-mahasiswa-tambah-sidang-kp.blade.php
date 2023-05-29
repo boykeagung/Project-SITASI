@@ -15,7 +15,8 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="dashboard-mahasiswa-sidang-kp" method="POST" enctype="multipart/form-data">
+                <form class="needs-validation" action="dashboard-mahasiswa-sidang-kp" method="POST"
+                    enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     <input type="hidden" name="user_id" value="" required>
                     <div class="card-header row">
@@ -54,27 +55,39 @@
                                                         <br>
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <input type="file" class="form-control" name="laporan">
+                                                        <input type="file" class="form-control" name="laporan" required>
                                                         <span>*File Upload yang diupload berupa pdf maksimal sebesar
                                                             25MB</span>
+                                                        <div class="invalid-feedback">
+                                                            Isi file Laporan Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Ruangan Sidang</label>
                                                         <br>
-                                                        <input type="text" class="form-control" name="ruangan"
-                                                            placeholder="Ruangan ">
+                                                        <input type="number" class="form-control" name="ruangan"
+                                                            placeholder="Ruangan " required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Ruangan Sidang Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Jam Sidang</label>
                                                         <br>
                                                         <input type="time" class="form-control" name="jam_sidang"
-                                                            placeholder="Jam Sidang">
+                                                            placeholder="Jam Sidang" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Jam Sidang Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Tanggal Sidang</label>
                                                         <br>
                                                         <input type="date" class="form-control" name="tanggal_sidang"
-                                                            placeholder="Tanggal Sidang">
+                                                            placeholder="Tanggal Sidang" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Tanggal Sidang Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                 </div>
 

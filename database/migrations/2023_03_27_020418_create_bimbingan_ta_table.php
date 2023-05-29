@@ -20,8 +20,9 @@ return new class extends Migration
             $table->string('tanggal_bimbingan')->nullable();
             $table->longText('kegiatan')->nullable();
             // $table->string('id_ta')->nullable();
-            $table->string('status_p1')->nullable();
-            $table->string('status_p2')->nullable();
+            $table->string('status')->nullable();
+            // $table->string('status_p1')->nullable();
+            // $table->string('status_p2')->nullable();
             $table->timestamps();
             $table->foreign('id_ta')->references('id_ta')->on('ta')->onDelete('cascade');
         });
