@@ -15,7 +15,7 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="dashboard-mahasiswa-seminar-ta" method="POST" enctype="multipart/form-data">
+                <form class="needs-validation" action="dashboard-mahasiswa-seminar-ta" method="POST" enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     <input type="hidden" name="user_id" value="" required>
                     <div class="card-header row">
@@ -57,7 +57,10 @@
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas
                                                         Akhir','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="text" name="judul" placeholder="Judul Tugas Akhir">
+                                                        <input class="form-control" type="text" name="judul" placeholder="Judul Tugas Akhir" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Judul Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJurnal">Jurnal Tugas Akhir</label><br>
@@ -65,8 +68,11 @@
                                                         {!!
                                                         Form::file('jurnal')!!}
                                                         <br> --}}
-                                                        <input type="file" class="form-control" name="jurnal">
+                                                        <input type="file" class="form-control" name="jurnal" required>
                                                         <span>*File Upload yang diupload berupa pdf maksimal sebesar 5MB</span>
+                                                        <div class="invalid-feedback">
+                                                            Isi File Jurnal Tugas Akhir Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Draft Tugas Akhir</label><br>
@@ -74,29 +80,41 @@
                                                         {!!
                                                         Form::file('draft')!!}
                                                         <br> --}}
-                                                        <input type="file" class="form-control" name="draft">
+                                                        <input type="file" class="form-control" name="draft" required>
                                                         <span>*File Upload yang diupload berupa pdf maksimal sebesar
                                                             25MB</span>
+                                                            <div class="invalid-feedback">
+                                                                Isi File Draft Tugas Akhir.
+                                                            </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputRuangan">Ruangan </label><br>
                                                         {{-- {!!
                                                         Form::text('ruangan',null,['placeholder'=>'Ruangan','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="text" name="ruangan" placeholder="Ruangan Seminar TA">
+                                                        <input class="form-control" type="number" name="ruangan" placeholder="Ruangan Seminar TA" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Ruangan Seminar Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJamseminar">Jam Seminar</label><br>
                                                         {{-- {!!
                                                         Form::time('jam_seminar',null,['placeholder'=>'NIP
                                                         Dosen','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="time" name="jam_seminar" placeholder="Jam Seminar TA">
+                                                        <input class="form-control" type="time" name="jam_seminar" placeholder="Jam Seminar TA" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Jam Seminar Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputTanggal">Tanggal Seminar</label><br>
                                                         {{-- {!!
                                                         Form::date('tanggal_seminar',null,['placeholder'=>'Tanggal
                                                         Sidang','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="date" name="tanggal_seminar" placeholder="Tanggal Seminar TA">
+                                                        <input class="form-control" type="date" name="tanggal_seminar" placeholder="Tanggal Seminar TA" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Tanggal Seminar Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                 </div>
 

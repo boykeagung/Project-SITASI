@@ -15,7 +15,7 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="dashboard-mahasiswa-bimbingan-kp" method="POST" enctype="multipart/form-data">
+                <form class="needs-validation" action="dashboard-mahasiswa-bimbingan-kp" method="POST" enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     {{-- <input type="hidden" name="user_id" value="" required> --}}
                     <div class="card-header row">
@@ -53,13 +53,19 @@
                                                         <label for="inputJudul">Waktu Bimbingan</label><br>
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="date" name="tanggal_bimbingan" placeholder="Judul Tugas Akhir">
+                                                        <input class="form-control" type="date" name="tanggal_bimbingan" placeholder="Judul Tugas Akhir" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Waktu Bimbingan Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJudul">Kegiatan Bimbingan</label><br>
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <textarea class="form-control" type="text" name="kegiatan" placeholder="Judul Tugas Akhir"></textarea>
+                                                        <textarea class="form-control" type="text" name="kegiatan" placeholder="Judul Tugas Akhir" required></textarea>
+                                                        <div class="invalid-feedback">
+                                                            Isi Kegiatan Bimbingan Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                 </div>
 
