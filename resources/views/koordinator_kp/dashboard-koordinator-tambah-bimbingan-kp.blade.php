@@ -16,11 +16,11 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="dashboard-koordinator-bimbingan-ta" method="POST" enctype="multipart/form-data">
+                <form action="dashboard-koordinator-bimbingan-kp" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="hidden" name="user_id" value="" required>
                     <div class="card-header row">
-                        <h3 class="section-title col-8">Tambah Bimbingan Tugas Akhir Mahasiswa</h2>
+                        <h3 class="section-title col-8">Tambah Bimbingan Kerja Praktik Mahasiswa</h2>
                     </div>
                     @if(count($errors) > 0)
                     <div class="alert alert-danger">
@@ -44,10 +44,10 @@
                                                         <br>
                                                         {{-- {!!
                                                         Form::text('id_seminar',null,['placeholder'=>'Kode Seminar Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <select class="form-select" name="id_ta" id="select1" required>
-                                                            <option selected disabled value="">Kode TA</option>
-                                                            @foreach($ta as $ta)
-                                                            <option value="{{$ta->id_ta}}">{{$ta->id_ta}} {{$ta->name}}
+                                                        <select class="form-select" name="id_kp" id="select1" required>
+                                                            <option selected disabled value="">Kode KP</option>
+                                                            @foreach($bimbingan_kp as $kp)
+                                                            <option value="{{$kp->id_kp}}">{{$kp->id_kp}} {{$kp->name}}
                                                             </option>
                                                             @endforeach
                                                         </select>
@@ -79,7 +79,7 @@
                                                         {{-- {!!
                                                         Form::text('id_seminar',null,['placeholder'=>'Kode Seminar Tugas Akhir','class'=>'form-control'])!!} --}}
                                                         <select class="form-select" aria-label="Default select example" required
-                                                            name="status">
+                                                            name="status_p1">
                                                             <option value="Diproses">Diproses</option>
                                                             {{-- <option value="Revisi">Revisi</option> --}}
                                                             <option value="Diterima">Diterima</option>

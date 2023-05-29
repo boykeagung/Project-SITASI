@@ -17,11 +17,11 @@
                     <div class="col-12 col-md-6 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Daftar Tugas Akhir Mahasiswa</h4>
+                                <h3>Tugas Akhir Mahasiswa</h3>
                             </div>
                             <div class="card-body table-responsive">
                                 <a href=<?php echo url('dashboard-mahasiswa-tambah-ta') ?> class="btn btn-primary mb-3">
-                                    <i class="fas fa-plus"></i> Tambah Data</a>
+                                    <i class="fas fa-plus"></i> Daftar</a>
                                 <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
@@ -77,12 +77,12 @@
                     <div class="col-12 col-md-6 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Daftar Proposal TA Mahasiswa</h4>
+                                <h3>Sidang Proposal TA Mahasiswa</h3>
                             </div>
                             <div class="card-body table-responsive">
                                 <a href=<?php echo url('dashboard-mahasiswa-tambah-proposal-ta') ?>
                                     class="btn btn-primary mb-3">
-                                    <i class="fas fa-plus"></i> Tambah Data</a>
+                                    <i class="fas fa-plus"></i> Daftar</a>
                                 <table class="table table-bordered" id="table2">
                                     <thead>
                                         <tr>
@@ -107,9 +107,10 @@
                                             <td>{{$pro->judul}}</td>
                                             <td>
                                                 @if($pro->proposal == null)
-                                                {{link_to('Form_001/'.$pro->proposal,'Lihat',['class'=>'btn btn-info disabled','target'=>'_blank'])}}
+                                                {{link_to('Draft_Proposal_TA/'.$pro->proposal,'Lihat',['class'=>'btn btn-info disabled','target'=>'_blank'])}}
                                                 @else
-                                                {{link_to('Form_001/'.$pro->proposal,'Lihat',['class'=>'btn btn-info','target'=>'_blank'])}}
+                                                {{-- {{link_to('Draft_Proposal_TA/'.$pro->proposal,'Lihat',['class'=>'btn btn-info','target'=>'_blank'])}} --}}
+                                                <a href= "{{'Draft_Proposal_TA/'.$pro->proposal}}" class="btn btn-info" target="_blank"><i class="fas fa-file"></i></a>
                                                 @endif
                                             </td>
                                             <td>{{$pro->ruangan}}</td>

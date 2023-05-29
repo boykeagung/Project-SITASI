@@ -8,7 +8,7 @@
 
         @include('navbar')
 
-        @include('sidebar.sidebar-koordinator-ta')
+        @include('sidebar.sidebar-dospem-dospenguji-ta')
 
         {{-- {!! Form::Open(['url'=>'dashboard-mahasiswa-proposal-ta/proposal'])!!} --}}
 
@@ -16,7 +16,7 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="{{ url('dashboard-koordinator-bimbingan-ta',$bimbingan_ta->id)}}" method="POST"
+                <form action="{{ url('dashboard-dospem-bimbingan-ta',$bimbingan_ta->id)}}" method="POST"
                     enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
@@ -64,13 +64,13 @@
 
                                                         <input class="form-control" type="date" name="tanggal_bimbingan"
                                                             placeholder="Judul Tugas Akhir"
-                                                            value="{{$bimbingan_ta->tanggal_bimbingan}}">
+                                                            value="{{$bimbingan_ta->tanggal_bimbingan}}" disabled>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJudul">Kegiatan Bimbingan</label><br>
 
                                                         <textarea class="form-control" type="text" name="kegiatan"
-                                                            placeholder="Kegiatan Bimbingan">{{$bimbingan_ta->kegiatan}}</textarea>
+                                                            placeholder="Kegiatan Bimbingan" disabled>{{$bimbingan_ta->kegiatan}}</textarea>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputidta">Status</label>

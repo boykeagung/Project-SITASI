@@ -45,11 +45,7 @@ class KoordinatorBimbinganTA extends Controller
 
     public function update($id, Request $request)
     {
-
         $input = $request->all();
-        $id_ta = $request->input('id_ta');
-        $input['id_bta'] = "B$id_ta";
-
         bimbingan_ta::find($id)->update($input);
         return redirect('dashboard-koordinator-bimbingan-ta');
     }

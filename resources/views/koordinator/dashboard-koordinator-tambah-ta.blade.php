@@ -14,9 +14,9 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form class="needs-validation"  action="dashboard-koordinator-proposal-ta" method="POST" enctype="multipart/form-data" novalidate>
+                <form class="needs-validation" action="dashboard-koordinator-proposal-ta" method="POST" enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
-                    <input type="hidden" name="user_id" value="" required>
+                    {{-- <input type="hidden" name="user_id" value="" required> --}}
                     <div class="card-header row">
                         <h3 class="section-title col-8">Daftar Tugas Akhir</h2>
                     </div>

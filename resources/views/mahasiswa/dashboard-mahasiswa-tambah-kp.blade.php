@@ -15,7 +15,8 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="dashboard-mahasiswa-kp" method="POST" enctype="multipart/form-data">
+                <form class="needs-validation" action="dashboard-mahasiswa-kp" method="POST"
+                    enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     <input type="hidden" name="user_id" value="" required>
                     <div class="card-header row">
@@ -53,77 +54,94 @@
                                                             <option selected>NRP Mahasiswa</option>
                                                             @foreach($user as $user)
                                                             <option value="{{$user->username}}">{{$user->username}},
-                                                                {{$user->name}}</option>
-                                                            @endforeach
+                                                        {{$user->name}}</option>
+                                                        @endforeach
                                                         </select> --}}
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputNrp">NRP</label><br>
                                                         {{-- {!!
                                                         Form::text('nrp',null,['placeholder'=>'NRP Mahasiswa','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="text" value="{{Auth::user()->username}}" name="username" readonly>
+                                                        <input class="form-control" type="text"
+                                                            value="{{Auth::user()->username}}" name="username" readonly>
                                                     </div>
                                                     {{-- <div class="form-group col-md-6">
                                                         <label for="inputPembimbing1">Pembimbing KP<span
                                                                 style="color: red;">*</span></label>
                                                         <br> --}}
-                                                        {{-- {!!
+                                                    {{-- {!!
                                                         Form::text('pembimbing1',null,['placeholder'=>'NIP Dosen','class'=>'form-control'])!!} --}}
-                                                        {{-- <select class="form-select" name="pembimbing_kp" id="select2">
+                                                    {{-- <select class="form-select" name="pembimbing_kp" id="select2">
                                                             <option selected>NIP Dosen</option>
                                                             @foreach($user1 as $user)
                                                             <option value="{{$user->username}}_{{$user->name}}">
-                                                                {{$user->username}},
-                                                                {{$user->name}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div> --}}
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputJudul">Nama Perusahaan</label>
-                                                        <br>
-                                                        {{-- {!!
+                                                    {{$user->username}},
+                                                    {{$user->name}}</option>
+                                                    @endforeach
+                                                    </select>
+                                                </div> --}}
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputJudul">Nama Perusahaan</label>
+                                                    <br>
+                                                    {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <input type="text" class="form-control" name="perusahaan"
-                                                            placeholder="Nama Perusahaan">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputDraft">Alamat Perusahaan</label>
-                                                        <br>
-                                                        <input type="text" class="form-control" name="alamat_perusahaan"
-                                                            placeholder="alamat Perusahaan">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputDraft">Bidang Perusahaan</label>
-                                                        <br>
-                                                        <input type="text" class="form-control" name="bidang_perusahaan"
-                                                            placeholder="Bidang Perusahaan">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputDraft">Pembimbing Perusahaan</label>
-                                                        <br>
-                                                        <input type="text" class="form-control"
-                                                            name="pembimbing_perusahaan"
-                                                            placeholder="Pembimbing Perusahaan">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputDraft">Tanggal Mulai KP</label>
-                                                        <br>
-                                                        <input type="date" class="form-control" name="mulai_kp"
-                                                            placeholder="tanggal Mulai KP">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputDraft">Tanggal Selesai KP</label>
-                                                        <br>
-                                                        <input type="date" class="form-control" name="selesai_kp"
-                                                            placeholder="tanggal selesai KP">
+                                                    <input type="text" class="form-control" name="perusahaan"
+                                                        placeholder="Nama Perusahaan" required>
+                                                    <div class="invalid-feedback">
+                                                        Isi Nama Perusahaan Kerja Praktik.
                                                     </div>
                                                 </div>
-
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        {!! Form::submit('Save',['class'=>'btn btn-primary mb-5
-                                                        mt-3'])!!}
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputDraft">Alamat Perusahaan</label>
+                                                    <br>
+                                                    <input type="text" class="form-control" name="alamat_perusahaan"
+                                                        placeholder="alamat Perusahaan" required>
+                                                    <div class="invalid-feedback">
+                                                        Isi Alamat perusahaan Kerja Praktik.
                                                     </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputDraft">Bidang Perusahaan</label>
+                                                    <br>
+                                                    <input type="text" class="form-control" name="bidang_perusahaan"
+                                                        placeholder="Bidang Perusahaan" required>
+                                                    <div class="invalid-feedback">
+                                                        Isi Bidang Perusahaan Kerja Praktik.
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputDraft">Pembimbing Perusahaan</label>
+                                                    <br>
+                                                    <input type="text" class="form-control" name="pembimbing_perusahaan"
+                                                        placeholder="Pembimbing Perusahaan" required>
+                                                    <div class="invalid-feedback">
+                                                        Isi Nama Pembimbing Perusahaan Kerja Praktik.
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputDraft">Tanggal Mulai KP</label>
+                                                    <br>
+                                                    <input type="date" class="form-control" name="mulai_kp"
+                                                        placeholder="tanggal Mulai KP" required>
+                                                    <div class="invalid-feedback">
+                                                        Isi Tanggal Mulai Kerja Praktik.
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputDraft">Tanggal Selesai KP</label>
+                                                    <br>
+                                                    <input type="date" class="form-control" name="selesai_kp"
+                                                        placeholder="tanggal selesai KP" required>
+                                                    <div class="invalid-feedback">
+                                                        Isi tanggal Selesai Kerja Praktik.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    {!! Form::submit('Save',['class'=>'btn btn-primary mb-5
+                                                    mt-3'])!!}
                                                 </div>
                                             </div>
                                         </div>
@@ -132,11 +150,12 @@
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
-            @include('footer')
+            </form>
         </div>
-        {{-- {!! Form::close()!!} --}}
+        @include('footer')
     </div>
+    {{-- {!! Form::close()!!} --}}
+</div>
 </div>
 @endsection

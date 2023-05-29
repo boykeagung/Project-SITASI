@@ -1,4 +1,4 @@
-@extends('layout.layout-dospem-dospenguji-ta')
+@extends('layout.layout-koordinator-ta')
 
 @section('content')
 
@@ -8,18 +8,22 @@
 
         @include('navbar')
 
-        @include('sidebar.sidebar-dospem-dospenguji-ta')
-
+        @include('sidebar.sidebar-koordinator-kp')
         <!-- Main Content -->
         <div class="main-content">
             <div class="col-12">
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h4>Data Mahasiswa Bimbingan Tugas Akhir</h4>
+                            <div class="card-header ">
+                                <h3 class="section-title col-8">Data Bimbingan Kerja Praktik Mahasiswa</h2>
                             </div>
                             <div class="card-body table-responsive">
+                                <a href=<?php echo url('dashboard-koordinator-tambah-bimbingan-kp') ?>
+                                    class="btn btn-primary mb-3">
+                                    <i class="fas fa-plus"></i> Tambah Data</a>
+                                {{-- <a href=<?php echo url('dashboard-mahasiswa-tambah-ta') ?> class="btn btn-warning mb-3">
+                                    <i class="fas fa-plus"></i> Print</a> --}}
                                 <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
@@ -37,19 +41,24 @@
                                     </thead>
 
                                     <tbody>
-                                        @foreach ($bimbingan_ta as $no => $bta)
+                                        @foreach ($bimbingan_kp as $no => $bkp)
                                         <tr>
                                             <td>{{1+$no++}}</td>
-                                            <td>{{$bta->id_bta}}</td>
-                                            <td>{{$bta->id_ta}}</td>
-                                            <td>{{$bta->tanggal_bimbingan}}</td>
-                                            <td>{{$bta->username}}</td>
-                                            <td>{{$bta->name}}</td>
-                                            <td>{{$bta->kegiatan}}</td>
-                                            <td>{{$bta->status}}</td>
-                                            {{-- <td>{{$bta->status_p2}}</td> --}}
+                                            <td>{{$bkp->id_bkp}}</td>
+                                            <td>{{$bkp->id_kp}}</td>
+                                            <td>{{$bkp->tanggal_bimbingan}}</td>
+                                            <td>{{$bkp->username}}</td>
+                                            <td>{{$bkp->name}}</td>
+                                            <td>{{$bkp->kegiatan}}</td>
+                                            <td>{{$bkp->status_p1}}</td>
+                                            {{-- <td>{{$bkp->status_p2}}</td> --}}
                                             <td>
-                                                {{link_to('dashboard-dospem-edit-bimbingan-ta/'.$bta->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                {!!
+                                                Form::open(['url'=>'dashboard-koordinator-bimbingan-kp/'.$bkp->id,'method'=>'delete'])!!}
+                                                {{link_to('dashboard-koordinator-edit-bimbingan-kp/'.$bkp->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                {!! Form::submit('Delete',['class'=>'btn
+                                                btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
+                                                {!! Form::close()!!}
                                             </td>
                                         </tr>
                                         @endforeach
@@ -60,7 +69,9 @@
                     </div>
                 </div>
             </div>
+
             @include('footer')
+
         </div>
     </div>
 </div>

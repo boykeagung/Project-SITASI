@@ -8,7 +8,7 @@
 
         @include('navbar')
 
-        @include('sidebar.sidebar-koordinator-ta')
+        @include('sidebar.sidebar-dospem-dospenguji-ta')
 
         {{-- {!! Form::Open(['url'=>'dashboard-mahasiswa-proposal-ta/proposal'])!!} --}}
 
@@ -16,13 +16,13 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="{{ url('dashboard-koordinator-bimbingan-ta',$bimbingan_ta->id)}}" method="POST"
+                <form action="{{ url('dashboard-dospem-bimbingan-kp',$bimbingan_kp->id)}}" method="POST"
                     enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <input type="hidden" name="user_id" value="" required>
                     <div class="card-header row">
-                        <h3 class="section-title col-8">Edit Bimbingan Tugas Akhir Mahasiswa</h2>
+                        <h3 class="section-title col-8">Edit Bimbingan Kerja Praktik Mahasiswa</h2>
                     </div>
                     @if(count($errors) > 0)
                     <div class="alert alert-danger">
@@ -41,21 +41,23 @@
                                             <div class="form-group">
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputidta">kode Bimbingan Tugas Akhir<span
+                                                        <label for="inputidta">kode Bimbingan Kerja Praktik<span
                                                                 style="color: red;">*</span>
                                                         </label>
                                                         <br>
+
                                                         <input class="form-control" type="text" name="id_bta"
-                                                            placeholder="ID BTA" value="{{$bimbingan_ta->id_bta}}"
+                                                            placeholder="ID BTA" value="{{$bimbingan_kp->id_bkp}}"
                                                             disabled>
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputidta">kode Tugas Akhir<span
+                                                        <label for="inputidta">kode Kerja Praktik<span
                                                                 style="color: red;">*</span>
                                                         </label>
                                                         <br>
+
                                                         <input class="form-control" type="text" name="id_ta"
-                                                            placeholder="ID TA" value="{{$bimbingan_ta->id_ta}}"
+                                                            placeholder="ID TA" value="{{$bimbingan_kp->id_kp}}"
                                                             disabled>
                                                     </div>
 
@@ -64,31 +66,31 @@
 
                                                         <input class="form-control" type="date" name="tanggal_bimbingan"
                                                             placeholder="Judul Tugas Akhir"
-                                                            value="{{$bimbingan_ta->tanggal_bimbingan}}">
+                                                            value="{{$bimbingan_kp->tanggal_bimbingan}}" disabled>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJudul">Kegiatan Bimbingan</label><br>
-
+                                                       
                                                         <textarea class="form-control" type="text" name="kegiatan"
-                                                            placeholder="Kegiatan Bimbingan">{{$bimbingan_ta->kegiatan}}</textarea>
+                                                            placeholder="Kegiatan Bimbingan" disabled>{{$bimbingan_kp->kegiatan}}</textarea>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputidta">Status</label>
                                                         <br>
 
                                                         <select class="form-select" aria-label="Default select example"
-                                                            name="status">
+                                                            name="status_p1">
 
                                                             <option value="Diproses"
-                                                                {{ $bimbingan_ta->status=="Diproses" ? 'selected': ''}}>
+                                                                {{ $bimbingan_kp->status_p1=="Diproses" ? 'selected': ''}}>
                                                                 Diproses</option>
 
                                                             <option value="Diterima"
-                                                                {{ $bimbingan_ta->status=="Diterima" ? 'selected': ''}}>
+                                                                {{ $bimbingan_kp->status_p1=="Diterima" ? 'selected': ''}}>
                                                                 Diterima</option>
 
                                                             <option value="Ditolak"
-                                                                {{ $bimbingan_ta->status=="Ditolak" ? 'selected': ''}}>
+                                                                {{ $bimbingan_kp->status_p1=="Ditolak" ? 'selected': ''}}>
                                                                 Ditolak</option>
                                                         </select>
                                                     </div>

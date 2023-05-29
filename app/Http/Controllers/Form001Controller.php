@@ -26,7 +26,6 @@ class Form001Controller extends Controller
     public function create()
     {
         return view('mahasiswa.dashboard-mahasiswa-tambah-form-001');
-       
     }
 
     public function store(Request $request)
@@ -53,7 +52,7 @@ class Form001Controller extends Controller
 
     public function update($id, Request $request)
     {
-    
+
         $this->validate($request, [
             'pdf_form001' => "mimes:pdf|max:5000",
 
@@ -106,19 +105,17 @@ class Form001Controller extends Controller
     public function generateForm001($id)
     {
         $data['kp_form001'] = Form001::findOrFail($id)
-            ->select('username', 'nama' ,'perusahaan1', 'alamat_perusahaan1', 'bidang_perusahaan1','perusahaan2', 'alamat_perusahaan2', 'bidang_perusahaan2')
+            ->select('username', 'nama', 'perusahaan1', 'alamat_perusahaan1', 'bidang_perusahaan1', 'perusahaan2', 'alamat_perusahaan2', 'bidang_perusahaan2')
             ->where('id', '=', $id)
             ->get($id);
         $pdf = PDF::loadView('mahasiswa.mahasiswa-generate-form-001', $data);
         return $pdf->stream();
-
-             
     }
 
     public function generateForm001TU($id)
     {
         $data['kp_form001'] = Form001::findOrFail($id)
-            ->select('username', 'nama' ,'perusahaan1', 'alamat_perusahaan1', 'bidang_perusahaan1','perusahaan2', 'alamat_perusahaan2', 'bidang_perusahaan2')
+            ->select('username', 'nama', 'perusahaan1', 'alamat_perusahaan1', 'bidang_perusahaan1', 'perusahaan2', 'alamat_perusahaan2', 'bidang_perusahaan2')
             ->where('id', '=', $id)
             ->get($id);
         $pdf = PDF::loadView('tata-usaha.generate-form-001', $data);
@@ -126,29 +123,32 @@ class Form001Controller extends Controller
     }
 
 
-    // public function storePdf(Request $request){
-         
-    //     $validatedData = $request->validate([
-    //      'file' => 'required|csv,txt,xlx,xls,pdf|max:2048',
- 
-    //     ]);
- 
-    //     $name = $request->file('file')->getClientOriginalName();
- 
-    //     $path = $request->file('file')->store('public/files');
- 
- 
-    //     $save = new File;
- 
-    //     $save->name = $name;
-    //     $save->path = $path;
- 
-    //     return redirect('file-upload')->with('status', 'File Has been uploaded successfully in laravel 8');
- 
-    // }
+
+    public function storePdf(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'file' => 'required|csv,txt,xlx,xls,pdf|max:2048',
+
+        ]);
+
+        $name = $request->file('file')->getClientOriginalName();
+
+        $path = $request->file('file')->store('public/files');
 
 
-    public function tanggal(Request $request){
+        $save = new File;
+
+        $save->name = $name;
+        $save->path = $path;
+
+        return redirect('file-upload')->with('status', 'File Has been uploaded successfully in laravel 8');
+    }
+
+
+
+    public function tanggal(Request $request)
+    {
 
         $date = date('Y-m-d H:i:s');
     }
