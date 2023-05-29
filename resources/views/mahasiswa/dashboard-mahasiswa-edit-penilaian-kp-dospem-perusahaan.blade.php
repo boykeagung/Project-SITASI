@@ -66,35 +66,35 @@
                                                         <label for="inputDraft">Penguasaan Materi<span
                                                                 style="color: red;">*</span></label>
                                                         <br>
-                                                        <input type="text" class="form-control" name="penguasaan_materi" value="{{$nilai_dospem_perusahaan->kepribadian}}"
+                                                        <input type="text" class="form-control" name="penguasaan_materi" value="{{$nilai_dospem_perusahaan->penguasaan_materi}}"
                                                             placeholder=" ">
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Keterampilan<span
                                                                 style="color: red;">*</span></label>
                                                         <br>
-                                                        <input type="text" class="form-control" name="keterampilan" value="{{$nilai_dospem_perusahaan->kepribadian}}"
+                                                        <input type="text" class="form-control" name="keterampilan" value="{{$nilai_dospem_perusahaan->keterampilan}}"
                                                             placeholder=" ">
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Kreatifitas<span
                                                                 style="color: red;">*</span></label>
                                                         <br>
-                                                        <input type="text" class="form-control" name="kreatifitas" value="{{$nilai_dospem_perusahaan->kepribadian}}"
+                                                        <input type="text" class="form-control" name="kreatifitas" value="{{$nilai_dospem_perusahaan->kreatifitas}}"
                                                             placeholder=" ">
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Tanggung Jawab<span
                                                                 style="color: red;">*</span></label>
                                                         <br>
-                                                        <input type="text" class="form-control" name="tanggung_jawab" value="{{$nilai_dospem_perusahaan->kepribadian}}"
+                                                        <input type="text" class="form-control" name="tanggung_jawab" value="{{$nilai_dospem_perusahaan->tanggung_jawab}}"
                                                             placeholder=" ">
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Komunikasi<span
                                                                 style="color: red;">*</span></label>
                                                         <br>
-                                                        <input type="text" class="form-control" name="komunikasi" value="{{$nilai_dospem_perusahaan->kepribadian}}"
+                                                        <input type="text" class="form-control" name="komunikasi" value="{{$nilai_dospem_perusahaan->komunikasi}}"
                                                             placeholder=" ">
                                                     </div>
 
