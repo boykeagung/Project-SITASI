@@ -87,22 +87,22 @@ Route::get('/welcome', function () {
 // Route::post('/login', 'AuthController@postLogin');
 
 // Login mahasiswa
-Route::get('/login-mahasiswa', [AuthController::class, 'LoginMahasiswa']);
+Route::get('/login-mahasiswa', [AuthController::class, 'LoginMahasiswa'])->middleware('guest');
 Route::post('/post-login-mahasiswa', [AuthController::class, 'PostLoginMahasiswa']);
 // login koordinator ta
-Route::get('/login-koordinator', [AuthController::class, 'Loginkoordinator']);
+Route::get('/login-koordinator', [AuthController::class, 'Loginkoordinator'])->middleware('guest');
 Route::post('/post-login-koordinator', [AuthController::class, 'PostLoginKoordinator']);
 // login koordinator kp
-Route::get('/login-koordinator-kp', [AuthController::class, 'LoginkoordinatorKP']);
+Route::get('/login-koordinator-kp', [AuthController::class, 'LoginkoordinatorKP'])->middleware('guest');
 Route::post('/post-login-koordinator-kp', [AuthController::class, 'PostLoginKoordinatorKP']);
 // login koordinator yudisium
-Route::get('/login-koordinator-yudisium', [AuthController::class, 'LoginKoordinatorYudisium']);
+Route::get('/login-koordinator-yudisium', [AuthController::class, 'LoginKoordinatorYudisium'])->middleware('guest');
 Route::post('/post-login-koordinator-yudisium', [AuthController::class, 'PostLoginKoordinatorYudisium']);
 // dosen
-Route::get('/login-dosen', [AuthController::class, 'LoginDosen']);
+Route::get('/login-dosen', [AuthController::class, 'LoginDosen'])->middleware('guest');
 Route::post('/post-login-dosen', [AuthController::class, 'PostLoginDosen']);
 // Login TU
-Route::get('/login-tu', [AuthController::class, 'LoginTU']);
+Route::get('/login-tu', [AuthController::class, 'LoginTU'])->middleware('guest');
 Route::post('/post-login-tu', [AuthController::class, 'PostLoginTU']);
 // Logout
 Route::get('/logout', [AuthController::class, 'logout']);
