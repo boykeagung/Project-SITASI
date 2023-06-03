@@ -70,8 +70,7 @@
                                                 {{link_to('dashboard-koordinator-edit-data-dosen/'.$user->id,'Edit',['class'=>'btn btn-warning'])}}
                                             </td>
                                             <td>
-                                                {!!
-                                                Form::open(['url'=>'dashboard-koordinator-ta-dosen/'.$user->id,'method'=>'delete'])!!}
+                                                {!! Form::open(['url'=>'dashboard-koordinator-ta-dosen/'.$user->id,'method'=>'delete'])!!}
                                                 {!! Form::submit('Delete',['class'=>'btn
                                                 btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
                                                 {!! Form::close()!!}

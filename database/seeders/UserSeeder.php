@@ -16,6 +16,34 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+
+        User::create([
+            'name' => 'Haikal Sucipto',
+            'level' => 'tu',
+            'username' => '162019035',
+            'email' => 'rizkyfeb20@gmail.com',
+            'password' => bcrypt('123'),
+        ]);
+        User::create([
+            'name' => 'Yusman',
+            'level' => 'koordinator-yudisium',
+            'username' => '202020',
+            'email' => 'yusmandoank@gmail.com',
+            'password' => bcrypt('123'),
+        ]);
+        User::create([
+            'name' => 'Mohammad Dete',
+            'level' => 'user',
+            'username' => '162019017',
+            'email' => 'adeteyah@gmail.com',
+            'password' => bcrypt('123'),
+            'no_hp' => '085156012239',
+            'no_wa' => '085156012239',
+            'alamat' => 'Jl. Manisi no.123 Cibiru Cipadung RT6 RW9',
+            'ipk' => '3.2',
+            'sks' => '146'
+            // 'remember_token' => Str::random(60),
+        ]);
         // Mahasiswa::truncate();
         // Mahasiswa::create([
         //     'nrp' => '162019029',
@@ -30,14 +58,6 @@ class UserSeeder extends Seeder
             'level' => 'user',
             'username' => '162019028',
             'email' => 'daff@gmail.com',
-            'password' => bcrypt('123'),
-            // 'remember_token' => Str::random(60),
-        ]);
-        User::create([
-            'name' => 'Yusman',
-            'level' => 'koordinator-yudisium',
-            'username' => '11',
-            'email' => 'yusmandoank@gmail.com',
             'password' => bcrypt('123'),
             // 'remember_token' => Str::random(60),
         ]);
@@ -86,14 +106,6 @@ class UserSeeder extends Seeder
             'level' => 'dosen',
             'username' => '162019034',
             'email' => 'budi@gmail.com',
-            'password' => bcrypt('123'),
-            // 'remember_token' => Str::random(60),
-        ]);
-        User::create([
-            'name' => 'haikal',
-            'level' => 'tu',
-            'username' => '162019035',
-            'email' => 'haikal@gmail.com',
             'password' => bcrypt('123'),
             // 'remember_token' => Str::random(60),
         ]);

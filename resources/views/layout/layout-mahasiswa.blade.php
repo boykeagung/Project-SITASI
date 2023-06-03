@@ -25,7 +25,7 @@
     <script src="{{asset('https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js')}}"></script>
 
 </head>
-
+    
 <body>
     <div class="container-fluid">
 
@@ -50,6 +50,27 @@
             $('#table1').css('display', 'table');
             $('#table1').DataTable();
 
+            $(".treeview").click(function() {
+                $('.media').collapse('show');
+            });
+        </script>
+
+        <script>
+            $('#table2').css('display', 'table');
+            $('#table2').DataTable();
+
+            $(".treeview").click(function() {
+                $('.media').collapse('show');
+            });
+        </script>
+        <script>
+            $('#table3').css('display', 'table');
+            $('#table3').DataTable(
+                paging: false,
+                ordering: false,
+                info: false,
+            );
+
             $(".treeview").click(function () {
                 $('.media').collapse('show');
             });
@@ -57,8 +78,12 @@
         </script>
 
         <script>
-            $('#table2').css('display', 'table');
-            $('#table2').DataTable();
+            $('#table4').css('display', 'table');
+            $('#table4').DataTable(
+                paging: false,
+                ordering: false,
+                info: false,
+            );
 
             $(".treeview").click(function () {
                 $('.media').collapse('show');
@@ -66,15 +91,15 @@
 
         </script>
 
-        <script> 
-
-            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        <script>
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+                "November", "December"
+            ];
             var n = new Date();
             var y = n.getFullYear();
             var m = n.getMonth();
             var d = n.getDate();
             document.getElementById("date").innerHTML = d + " " + months[m] + " " + y;
-
         </script>
 
         <!-- Template JS File -->

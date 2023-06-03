@@ -15,11 +15,12 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="dashboard-mahasiswa-proposal-ta/proposal" method="POST" enctype="multipart/form-data">
+                <form class="needs-validation" action="dashboard-mahasiswa-proposal-ta/proposal" method="POST"
+                    enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     <input type="hidden" name="user_id" value="" required>
                     <div class="card-header row">
-                        <h3 class="section-title col-8">Form-001 dan Surat Pengantar</h2>
+                        <h3 class="section-title col-8">Daftar Sidang Proposal Tugas Akhir</h2>
                     </div>
                     @if(count($errors) > 0)
                     <div class="alert alert-danger">
@@ -57,7 +58,10 @@
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
                                                         <input class="form-control" type="text" name="judul"
-                                                            placeholder="Judul Tugas Akhir">
+                                                            placeholder="Judul Tugas Akhir" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Judul Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputProposal">Upload Proposal Tugas
@@ -66,30 +70,45 @@
                                                         {!!
                                                         Form::file('proposal')!!}
                                                         <br> --}}
-                                                        <input class="form-control" type="file" name="proposal">
+                                                        <input class="form-control" type="file" name="proposal"
+                                                            required>
                                                         <span>*File Upload yang diupload berupa pdf maksimal sebesar
                                                             25MB</span>
+                                                        <div class="invalid-feedback">
+                                                            Isi File Proposal Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputRuangan">Ruangan </label><br>
                                                         {{-- {!!
                                                         Form::text('ruangan',null,['placeholder'=>'Ruangan','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="text" name="ruangan"
-                                                            placeholder="Ruangan Sidang Proposal">
+                                                        <input class="form-control" type="number" name="ruangan"
+                                                            placeholder="Ruangan Sidang Proposal" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Judul Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJamSidang">Jam Sidang</label><br>
                                                         {{-- {!!
                                                         Form::time('jam_sidang',null,['placeholder'=>'NIP
                                                         Dosen','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="time" name="jam_sidang">
+                                                        <input class="form-control" type="time" name="jam_sidang"
+                                                            required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Jam Sidang Proposal Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputTanggal">Tanggal Sidang</label><br>
                                                         {{-- {!!
                                                         Form::date('tanggal_sidang',null,['placeholder'=>'Tanggal
                                                         Sidang','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="date" name="tanggal_sidang">
+                                                        <input class="form-control" type="date" name="tanggal_sidang"
+                                                            required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Tanggal Sidang Proposal Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                 </div>
 

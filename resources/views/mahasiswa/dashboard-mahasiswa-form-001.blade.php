@@ -37,10 +37,12 @@
                                             {{-- <th>Perusahaan 2 </th>
                                             <th>Alamat Perusahaan 2</th>
                                             <th>Bidang Perusahaan 2</th> --}}
+                                            <th>Status</th>
                                             <th>Hasil Form-001</th>
                                             <th>Re-submit Form-001</th>
                                             <th>Surat Pengantar</th>
                                             <th>Action</th>
+
                                     
                                             
                                         </tr>
@@ -59,6 +61,7 @@
                                             {{-- <td>{{$kp_form001->perusahaan2}}</td>
                                             <td>{{$kp_form001->alamat_perusahaan2}}</td>
                                             <td>{{$kp_form001->bidang_perusahaan2}}</td> --}}
+                                            <td>{{$kp_form001->status}}</td>
                                             <td>{{link_to('mahasiswa-generate-form-001/'.$kp_form001->id,'Download',['class'=>'btn btn-success', 'target'=>'_blank'])}}</td>
                                             <td>
                                                 @if($kp_form001->pdf_form001 == null)
@@ -72,7 +75,7 @@
                                             <td>
                                 
                                                 @if($kp_form001->surat == null)
-                                                {{link_to('Surat_Pengantar/'.$kp_form001->surat,'On-Progress',['class'=>'btn btn-warning disabled','target'=>'_blank'])}}
+                                                {{link_to('Surat_Pengantar/'.$kp_form001->surat,'Diproses',['class'=>'btn btn-warning disabled','target'=>'_blank'])}}
                                                 <br>
                                                 <span>*File belum di upload oleh TU*</span>
                                                 @else
@@ -82,7 +85,9 @@
                                             </td>
                             
                                             <td>{{link_to('dashboard-mahasiswa-edit-form-001/'.$kp_form001->id,'Edit',['class'=>'btn btn-outline-warning'])}}</td>
-                                        
+                                            
+                                            {{-- <td>{{link_to('generate_nilai_kp','Download',['class'=>'btn btn-success', 'target'=>'_blank'])}}</td> --}}
+                                            
                                         </tr>
                                         @endforeach
                                     </tbody>

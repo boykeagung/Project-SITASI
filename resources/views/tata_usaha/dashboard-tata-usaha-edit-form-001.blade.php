@@ -39,6 +39,19 @@
                                             <div class="form-group">
 
                                                 <div class="form-row"> 
+
+                                                    <div class="form-group col-md-6">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputStatus">Status</label>
+                                                            <br>
+                                                            <select class="form-select" aria-label="Default select example"
+                                                                name="status">
+                                                                <option value="Diproses">Diproses</option>
+                                                                {{-- <option value="Revisi">Revisi</option> --}}
+                                                                <option value="Selesai">Selesai</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                     
                                                     <div class="form-group col-md-6">
                                                         <label for="inputProposal"></label><br>

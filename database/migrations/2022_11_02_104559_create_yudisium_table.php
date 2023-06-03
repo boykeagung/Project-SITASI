@@ -15,24 +15,29 @@ return new class extends Migration {
                 ->references('username')
                 ->on('users');
             $table->string('toga');
+            $table->string('status_yudisium')->nullable();
+            $table->datetime('tanggal_modifikasi_mahasiswa')->nullable();
+            $table->datetime('tanggal_modifikasi_tu')->nullable();
+            $table->datetime('tanggal_modifikasi_koordinator')->nullable();
+            $table->string('komentar_tu')->nullable();
+            $table->string('komentar_koordinator')->nullable();
+            $table->string('pas_foto')->nullable();
+            $table->string('akta_kelahiran')->nullable();
+            $table->string('ijasah_sekolah_menengah')->nullable();
+            $table->string('judul_ta_id')->nullable();
+            $table->string('judul_ta_en')->nullable();
+            $table->string('bebas_pinjam_buku')->nullable();
+            $table->string('transkrip_dari_sikad')->nullable();
+            $table->string('resume_skk_dan_simskk')->nullable();
+            $table->string('hasil_test_ept')->nullable();
+            $table->string('bukti_pembayaran')->nullable();
+            $table->string('surat_ganti_nama')->nullable();
+            $table->string('form_biodata_peserta_yudisium')->nullable();
+            $table->string('sertifikat_keahlian')->nullable();
+            $table->string('poster_a3')->nullable();
+            $table->string('buku_tugas_akhir_sah')->nullable();
+            $table->string('jurnal_penelitian')->nullable();
         });
-
-        DB::statement('ALTER TABLE yudisium ADD pas_foto MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD akta_kelahiran MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD ijasah_sekolah_menengah MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD judul_ta_id MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD judul_ta_en MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD bebas_pinjam_buku MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD transkrip_dari_sikad MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD resume_skk_dan_simskk MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD hasil_test_ept MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD bukti_pembayaran MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD surat_ganti_nama MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD form_biodata_peserta_yudisium MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD sertifikat_keahlian MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD poster_a3 MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD buku_tugas_akhir_sah MEDIUMBLOB');
-        DB::statement('ALTER TABLE yudisium ADD jurnal_penelitian MEDIUMBLOB');
     }
     public function down()
     {

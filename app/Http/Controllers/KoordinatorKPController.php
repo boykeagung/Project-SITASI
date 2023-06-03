@@ -55,7 +55,7 @@ class KoordinatorKPController extends Controller
     {
         $this->validate($request, [
             // 'id_kp' => 'required',
-            'username' => 'required',
+            // 'username' => 'required',
         ]);
 
         $input = $request->all();
@@ -64,7 +64,7 @@ class KoordinatorKPController extends Controller
         $input['id_kp'] = "KP$username";
 
         KP::find($id)->update($input);
-        return redirect('koordinator_kp.dashboard-koordinator-kp');
+        return redirect('dashboard-koordinator-kp');
     }
 
     public function delete($id, Request $request)
