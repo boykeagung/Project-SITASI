@@ -37,6 +37,7 @@ use App\Http\Controllers\DospemNilaiKPController;
 use App\Http\Controllers\NilaiDosPemController;
 use App\Http\Controllers\NilaiDosPemPerusahaanController;
 use App\Models\Bimbingan_kp;
+use App\Http\Controllers\ProfileController;
 use App\Models\bimbingan_ta;
 use App\Http\Controllers\DospemYudisiumController;
 use App\Http\Controllers\DospengYudisiumController;
@@ -69,6 +70,10 @@ Route::get('/', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::middleware(['auth'])->group(function () {
+});
+
 
 // Route Beta
 // Route::get('/bimbingan', function () {
@@ -216,6 +221,9 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::post('dashboard-mahasiswa-bimbingan-kp', [BimbinganKPController::class, 'store']);
     Route::get('dashboard-mahasiswa-edit-bimbingan-kp/{id}', [BimbinganKPController::class, 'edit']); //select
     Route::put('dashboard-mahasiswa-bimbingan-kp/{id}', [BimbinganKPController::class, 'update']); //update
+
+    #profil
+    Route::get('profile-mahasiswa', [ProfileController::class, 'index']);
 });
 
 // Route::get('/index', function () {
@@ -288,6 +296,9 @@ Route::group(['middleware' => ['auth', 'rolecek:koordinator-yudisium']], functio
     // Route::get('dashboard-koordinator-edit-sidang-kp/{id}', [KoordinatorSidangKPController::class, 'edit']);
     // Route::put('dashboard-koordinator-sidang-kp/{id}', [KoordinatorSidangKPController::class, 'update']);
     // Route::delete('dashboard-koordinator-sidang-kp/{id}', [KoordinatorSidangKPController::class, 'delete']); //delete
+
+    #profile
+    Route::get('profile-koordinator-yudisium', [ProfileController::class, 'index']);
 });
 
 /* koordinator ta */
@@ -355,8 +366,9 @@ Route::group(['middleware' => ['auth', 'rolecek:koordinator']], function () {
     Route::put('dashboard-koordinator-bimbingan-ta/{id}', [KoordinatorBimbinganTA::class, 'update']);
     Route::delete('dashboard-koordinator-bimbingan-ta/{id}', [KoordinatorBimbinganTA::class, 'delete']); //delete
 
+    #profile
+    Route::get('profile-koordinator', [ProfileController::class, 'index']);
 });
-
 
 
 Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator,koordinator_kp']], function () {
@@ -397,6 +409,9 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator,koordinator_kp
     Route::get('dashboard-dospem-bimbingan-kp', [DospemBimbinganKPController::class, 'index']);
     Route::get('dashboard-dospem-edit-bimbingan-kp/{id}', [DospemBimbinganKPController::class, 'edit']);
     Route::put('dashboard-dospem-bimbingan-kp/{id}', [DospemBimbinganKPController::class, 'update']);
+
+    #profile
+    Route::get('profile-dosen', [ProfileController::class, 'index']);
 });
 
 Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
@@ -421,6 +436,9 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
     Route::get('dashboard-tata-usaha-yudisium', [YudisiumController::class, 'index']);
     Route::get('dashboard-tata-usaha-yudisium/berkas/{id}', [YudisiumController::class, 'lihatBerkasMahasiswa']);
     Route::post('dashboard-tata-usaha-yudisium/berkas/{id}/aksi', [YudisiumController::class, 'aksiBerkasMahasiswa']);
+
+    #profile
+    Route::get('profile-tu', [ProfileController::class, 'index']);
 });
 
 
@@ -479,6 +497,9 @@ Route::group(['middleware' => ['auth', 'rolecek:koordinator-kp']], function () {
     Route::get('dashboard-koordinator-edit-bimbingan-kp/{id}', [KoordinatorBimbinganKP::class, 'edit']);
     Route::put('dashboard-koordinator-bimbingan-kp/{id}', [KoordinatorBimbinganKP::class, 'update']);
     Route::delete('dashboard-koordinator-bimbingan-kp/{id}', [KoordinatorBimbinganKP::class, 'delete']); //delete
+
+    //profile
+    Route::get('profile-koordinator-kp', [ProfileController::class, 'index']);
 });
 
 // TA

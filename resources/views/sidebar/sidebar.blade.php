@@ -59,6 +59,10 @@
                     class="nav-link" href=<?php echo url('dashboard-mahasiswa-yudisium/tentang-yudisium'); ?>><i
                         class="fas fa-graduation-cap"></i>
                     <span>Tata Cara Yudisium</span></a></li>
+            <li class="menu-header">Informasi</li>
+            <li class="{{ Request::is('profile-mahasiswa') ? 'active' : '' }}"><a class="nav-link"
+                    href=<?php echo url('profile-mahasiswa'); ?>><i class="fas fa-graduation-cap"></i>
+                    <span>Profile</span></a></li>
             <!--<li class="menu-header">Pengguna</li>
 <li><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Pengguna Admin</span></a></li>
 <li><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Pengguna Mahasiswa</span></a></li>

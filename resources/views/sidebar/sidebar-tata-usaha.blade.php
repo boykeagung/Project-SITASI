@@ -39,6 +39,10 @@
                     href=<?php echo url('dashboard-tata-usaha-yudisium'); ?>><i class="fas fa-graduation-cap"></i>
                     <span>Manajemen
                         Yudisium</span></a></li>
+            <li class="menu-header">Informasi</li>
+            <li class="{{ Request::is('profile-tu') ? 'active' : '' }}"><a class="nav-link"
+                    href=<?php echo url('profile-tu'); ?>><i class="fas fa-graduation-cap"></i>
+                    <span>Profile</span></a></li>
         </ul>
     </aside>
 </div>
