@@ -1,5 +1,4 @@
 @extends('layout.layout-mahasiswa')
-
 @section('content')
 
 <div id="app">
@@ -53,22 +52,18 @@
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputTanggal">Tanggal Residensi</label><br>
-                                                        <input class="form-control" type="date" name="tanggal" placeholder="Tanggal Residensi" required>
-                                                        <div class="invalid-feedback">
-                                                            Isi Tanggal Residensi.
-                                                        </div>
+                                                        <input class="form-control" type="date" 
+                                                            value="<?php echo date("Y-m-d"); ?>" name="tanggal" readonly>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJamMasuk">Jam Masuk </label><br>
-                                                        <input class="form-control" type="time" name="jam_masuk" placeholder="Jam Masuk Residensi" required>
-                                                        <div class="invalid-feedback">
-                                                            Isi Jam Masuk Residensi.
-                                                        </div>
+                                                        <input class="form-control" type="time" 
+                                                        value="<?php echo date('G:i:s'); ?>" name="jam_masuk" readonly>
                                                     </div>
-                                                    <div class="form-group col-md-6">
+                                                    {{-- <div class="form-group col-md-6">
                                                         <label for="inputJamKeluar">Jam Keluar</label><br>
                                                         <input class="form-control" type="time" name="jam_keluar" placeholder="Jam Keluar Residensi">
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
 
                                                 <div class="form-row">

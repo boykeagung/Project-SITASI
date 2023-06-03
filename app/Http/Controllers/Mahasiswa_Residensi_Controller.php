@@ -45,10 +45,6 @@ class Mahasiswa_Residensi_Controller extends Controller
 
     public function update($id, Request $request)
     {
-        $this->validate($request, [
-            'tanggal' => 'required',
-            'jam_masuk' => 'required'
-        ]);
 
         $input = $request->all();
 
