@@ -36,6 +36,7 @@ use App\Http\Controllers\YudisiumController;
 use App\Http\Controllers\DospemNilaiKPController;
 use App\Http\Controllers\NilaiDosPemController;
 use App\Http\Controllers\NilaiDosPemPerusahaanController;
+use App\Http\Controllers\NilaiKoordinatorKPController;
 use App\Models\Bimbingan_kp;
 use App\Models\bimbingan_ta;
 use App\Http\Controllers\DospemYudisiumController;
@@ -386,7 +387,21 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator,koordinator_kp
     Route::put('dashboard-dospenguji-sidang-kp/{id}', [DospengSidangKPController::class, 'update']);
 
     // Nilai
-    Route::get('dosen.penilaian_dospem_kp', [DospengSidangKPController::class, 'generateNilai']);
+    Route::get('dashboard-koordinator-penilaian-kp', [NilaiDosPemController::class, 'index']);
+    Route::get('dashboard-koordinator-tambah-penilaian-kp-dospem', [NilaiDosPemController::class, 'create']);
+    Route::post('dashboard-koordinator-penilaian-kp', [NilaiDosPemController::class, 'store']);
+    Route::get('dashboard-koordinator-edit-penilaian-kp-dospem/{id}', [NilaiDosPemController::class, 'edit']); //select
+    Route::put('dashboard-koordinator-penilaian-kp/{id}', [NilaiDosPemController::class, 'update']);
+    Route::delete('dashboard-koordinator-penilaian-kp/{id}', [NilaiDosPemController::class, 'delete']); //delete
+
+    //Form001
+    Route::get('dashboard-koordinator-form001', [KoordinatorKPController::class, 'index2']);
+    // Route::get('dashboard-koordinator-tambah-kp', [KoordinatorKPController::class, 'create']);
+    // Route::post('dashboard-koordinator-tambah-kp', [KoordinatorKPController::class, 'store']);
+    // Route::get('dashboard-koordinator-edit-kp/{id}', [KoordinatorKPController::class, 'edit']);
+    // Route::put('dashboard-koordinator-kp/{id}', [KoordinatorKPController::class, 'update']);
+    // Route::delete('dashboard-koordinator-kp/{id}', [KoordinatorKPController::class, 'delete']); //delete
+    
 
     // Bimbingan Tugas Akhir
     Route::get('dashboard-dospem-bimbingan-ta', [DospemBimbinganTAController::class, 'index']);

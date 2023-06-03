@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Form001;
 use App\Models\KP;
 
 class KoordinatorKPController extends Controller
@@ -17,6 +18,13 @@ class KoordinatorKPController extends Controller
             ->select('kp.*', 'users.name')
             ->get();
         return view('koordinator_kp.dashboard-koordinator-kp', $data);
+    }
+
+    public function index2()
+    {
+        $data['kp_form001'] = Form001::all();
+
+        return view('koordinator_kp.dashboard-koordinator-form-001', $data);
     }
 
     public function create()

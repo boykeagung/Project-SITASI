@@ -39,7 +39,7 @@
                         class="fas fa-book-open"></i> <span>Sidang Kerja
                         Praktik</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-penilaian-kp'); ?>><i
-                        class="fas fa-book-open"></i> <span>Input Nilai Kerja
+                        class="fas fa-book-open"></i> <span>Nilai Kerja
                         Praktik</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-bimbingan-kp'); ?>><i
                         class="fas fa-book-open"></i>

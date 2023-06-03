@@ -1,4 +1,4 @@
-@extends('layout.layout-mahasiswa')
+@extends('layout.layout-koordinator-kp')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 
         @include('navbar')
 
-        @include('sidebar.sidebar')
+        @include('sidebar.sidebar-koordinator-kp')
 
         <!-- Main Content -->
         <div class="main-content">
@@ -157,7 +157,7 @@
                                 <div class="col ml px-5">
                                     <div class="row">
                                         <div class="row card-header mb-3">
-                                            <h4 class="col">Nilai Kerja Praktik Dosen Pembimbing Perusahaan</h4>
+                                            <h4 class="col">Nilai Kerja Praktik Dosen Pembimbing</h4>
                                         </div>
                                         <div class="col">
                                             
@@ -315,7 +315,7 @@
                     </div>
                 </div>
             </div>
-{{-- 
+
             <div class="col-12">
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-12">
@@ -383,7 +383,7 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
 
             
 
