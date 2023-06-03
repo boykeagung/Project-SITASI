@@ -41,6 +41,7 @@ use App\Models\bimbingan_ta;
 use App\Http\Controllers\DospemYudisiumController;
 use App\Http\Controllers\DospengYudisiumController;
 use App\Http\Controllers\KoordinatorBimbinganKP;
+use App\Http\Controllers\Mahasiswa_Residensi_Controller;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
 use App\Models\TA;
@@ -129,9 +130,12 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::get('dashboard-mahasiswa', [TAController::class, 'index1']);
 
     #Residensi TA Mahasiswa
-    Route::get('/dashboard-mahasiswa-residensi-ta', function () {
-        return view('mahasiswa.dashboard-mahasiswa-residensi-ta');
-    });
+    Route::get('dashboard-mahasiswa-residensi-ta', [Mahasiswa_Residensi_Controller::class, 'index']);
+    Route::get('dashboard-mahasiswa-tambah-residensi-ta', [Mahasiswa_Residensi_Controller::class, 'create']);
+    Route::post('dashboard-mahasiswa-residensi-ta', [Mahasiswa_Residensi_Controller::class, 'store']);
+    Route::get('dashboard-mahasiswa-edit-residensi-ta/{id}', [Mahasiswa_Residensi_Controller::class, 'edit']); //select
+    Route::put('dashboard-mahasiswa-residensi-ta/{id}', [Mahasiswa_Residensi_Controller::class, 'update']); //update
+    Route::delete('dashboard-mahasiswa-residensi-ta/{id}', [Mahasiswa_Residensi_Controller::class, 'delete']); //delete
 
     #TA Mahasiswa
     Route::get('dashboard-mahasiswa-proposal-ta', [TAController::class, 'index']);
