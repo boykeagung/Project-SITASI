@@ -21,6 +21,8 @@
                         Akhir</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-dospem-bimbingan-ta') ?>><i
                         class="fas fa-sticky-note"></i> <span>Bimbingan Tugas Akhir</span></a></li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-dospem-residensi-ta'); ?>>
+                        <i class="fa-solid fa-bars"></i> <span>Residensi Tugas Akhir</span></a></li>
                         <li class="menu-header">Menu Dosen Pembimbinga Kerja Praktik</li>
             <li><a class="nav-link" href=<?php echo url('dashboard-dospem-sidang-kp'); ?>><i
                         class="fas fa-sticky-note"></i> <span>Sidang Kerja
@@ -40,6 +42,8 @@
             <li><a class="nav-link" href=<?php echo url('dashboard-dospenguji-sidang-ta'); ?>><i
                         class="fas fa-book-reader"></i> <span>Sidang Tugas
                         Akhir</span></a></li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-dospenguji-residensi-ta'); ?>>
+                <i class="fa-solid fa-bars"></i> <span>Residensi Tugas Akhir</span></a></li>
                         <li class="menu-header ">Menu Dosen Penguji Kerja Praktik</li>
             <li><a class="nav-link" href=<?php echo url('dashboard-dospenguji-sidang-kp') ?>><i
                         class="fas fa-sticky-note"></i> <span>Sidang Kerja Praktik</span></a></li>

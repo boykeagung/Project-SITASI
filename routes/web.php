@@ -35,6 +35,7 @@ use App\Http\Controllers\MahasiswaYudisiumController;
 use App\Http\Controllers\YudisiumController;
 use App\Http\Controllers\DospemNilaiKPController;
 use App\Http\Controllers\NilaiDosPemController;
+use App\Http\Controllers\Dosen_Residensi;
 use App\Http\Controllers\NilaiDosPemPerusahaanController;
 use App\Models\Bimbingan_kp;
 use App\Models\bimbingan_ta;
@@ -380,6 +381,10 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator,koordinator_kp
     Route::get('dashboard-dospenguji-seminar-ta', [DospengSeminarController::class, 'index']);
     Route::get('dashboard-dospenguji-edit-seminar-ta/{id}', [DospengSeminarController::class, 'edit']);
     Route::put('dashboard-dospenguji-seminar-ta/{id}', [DospengSeminarController::class, 'update']);
+
+    // REsidensi
+    Route::get('dashboard-dospem-residensi-ta', [Dosen_Residensi::class, 'indexDospem']);
+    Route::get('dashboard-dospenguji-residensi-ta', [Dosen_Residensi::class, 'indexDospeng']);
 
     // Sidang KP
     Route::get('dashboard-dospem-sidang-kp', [DospemSidangKPController::class, 'index']);
