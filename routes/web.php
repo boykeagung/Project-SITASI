@@ -35,6 +35,7 @@ use App\Http\Controllers\MahasiswaYudisiumController;
 use App\Http\Controllers\YudisiumController;
 use App\Http\Controllers\DospemNilaiKPController;
 use App\Http\Controllers\NilaiDosPemController;
+use App\Http\Controllers\Dosen_Residensi;
 use App\Http\Controllers\NilaiDosPemPerusahaanController;
 use App\Http\Controllers\NilaiKoordinatorKPController;
 use App\Models\Bimbingan_kp;
@@ -42,6 +43,8 @@ use App\Models\bimbingan_ta;
 use App\Http\Controllers\DospemYudisiumController;
 use App\Http\Controllers\DospengYudisiumController;
 use App\Http\Controllers\KoordinatorBimbinganKP;
+use App\Http\Controllers\KoordinatorResidensi;
+use App\Http\Controllers\Mahasiswa_Residensi_Controller;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
 use App\Models\TA;
@@ -130,9 +133,12 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::get('dashboard-mahasiswa', [TAController::class, 'index1']);
 
     #Residensi TA Mahasiswa
-    Route::get('/dashboard-mahasiswa-residensi-ta', function () {
-        return view('mahasiswa.dashboard-mahasiswa-residensi-ta');
-    });
+    Route::get('dashboard-mahasiswa-residensi-ta', [Mahasiswa_Residensi_Controller::class, 'index']);
+    Route::get('dashboard-mahasiswa-tambah-residensi-ta', [Mahasiswa_Residensi_Controller::class, 'create']);
+    Route::post('dashboard-mahasiswa-residensi-ta', [Mahasiswa_Residensi_Controller::class, 'store']);
+    Route::get('dashboard-mahasiswa-edit-residensi-ta/{id}', [Mahasiswa_Residensi_Controller::class, 'edit']); //select
+    Route::put('dashboard-mahasiswa-residensi-ta/{id}', [Mahasiswa_Residensi_Controller::class, 'update']); //update
+    Route::delete('dashboard-mahasiswa-residensi-ta/{id}', [Mahasiswa_Residensi_Controller::class, 'delete']); //delete
 
     #TA Mahasiswa
     Route::get('dashboard-mahasiswa-proposal-ta', [TAController::class, 'index']);
@@ -308,6 +314,14 @@ Route::group(['middleware' => ['auth', 'rolecek:koordinator']], function () {
     Route::put('dashboard-koordinator-proposal-ta/proposal/{id}', [KoordinatorProposalController::class, 'update']); //update
     Route::delete('dashboard-koordinator-proposal-ta/proposal/{id}', [KoordinatorProposalController::class, 'delete']); //delete
 
+    #Residensi TA Koordinator
+    Route::get('dashboard-koordinator-residensi-ta', [KoordinatorResidensi::class, 'index']);
+    //Route::get('dashboard-koordinator-tambah-residensi-ta', [Koordinator_Residensi_Controller::class, 'create']);
+    //Route::post('dashboard-koordinator-residensi-ta', [Koordinator_Residensi_Controller::class, 'store']);
+    //Route::get('dashboard-koordinator-edit-residensi-ta/{id}', [Koordinator_Residensi_Controller::class, 'edit']); //select
+    //Route::put('dashboard-koordinator-residensi-ta/{id}', [Koordinator_Residensi_Controller::class, 'update']); //update
+    //Route::delete('dashboard-koordinator-residensi-ta/{id}', [Koordinator_Residensi_Controller::class, 'delete']); //delete
+
     // Seminar TA
     Route::get('dashboard-koordinator-seminar-ta', [KoordinatorSeminarController::class, 'index']);
     Route::get('dashboard-koordinator-tambah-seminar-ta', [KoordinatorSeminarController::class, 'create']);
@@ -377,6 +391,10 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator,koordinator_kp
     Route::get('dashboard-dospenguji-seminar-ta', [DospengSeminarController::class, 'index']);
     Route::get('dashboard-dospenguji-edit-seminar-ta/{id}', [DospengSeminarController::class, 'edit']);
     Route::put('dashboard-dospenguji-seminar-ta/{id}', [DospengSeminarController::class, 'update']);
+
+    // REsidensi
+    Route::get('dashboard-dospem-residensi-ta', [Dosen_Residensi::class, 'indexDospem']);
+    Route::get('dashboard-dospenguji-residensi-ta', [Dosen_Residensi::class, 'indexDospeng']);
 
     // Sidang KP
     Route::get('dashboard-dospem-sidang-kp', [DospemSidangKPController::class, 'index']);
