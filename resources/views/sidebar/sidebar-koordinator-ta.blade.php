@@ -15,6 +15,9 @@
                         class="fas fa-th-large"></i>
                     <span>Daftar Dosen</span></a></li>
             <li class="menu-header">Management Pendaftaran Tugas Akhir</li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-residensi-ta'); ?>><i
+                class="fas fa-camera"></i> <span>Residensi Tugas
+                Akhir</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-proposal-ta') ?>><i
                         class="fas fa-sticky-note"></i> <span>Proposal Tugas
                         Akhir</span></a></li>
