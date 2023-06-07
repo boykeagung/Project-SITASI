@@ -20,12 +20,12 @@ class KoordinatorKPController extends Controller
         return view('koordinator_kp.dashboard-koordinator-kp', $data);
     }
 
-    public function index2()
-    {
-        $data['kp_form001'] = Form001::all();
+    // public function index2()
+    // {
+    //     $data['kp_form001'] = Form001::all();
 
-        return view('koordinator_kp.dashboard-koordinator-form-001', $data);
-    }
+    //     return view('koordinator_kp.dashboard-koordinator-form-001', $data);
+    // }
 
     public function create()
     {
