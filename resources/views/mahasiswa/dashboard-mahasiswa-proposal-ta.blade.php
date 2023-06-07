@@ -17,7 +17,7 @@
                     <div class="col-12 col-md-6 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3>Tugas Akhir Mahasiswa</h3>
+                                <h3>Daftar Tugas Akhir</h3>
                             </div>
                             <div class="card-body table-responsive">
                                 <a href=<?php echo url('dashboard-mahasiswa-tambah-ta') ?> class="btn btn-primary mb-3">
@@ -77,7 +77,7 @@
                     <div class="col-12 col-md-6 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3>Sidang Proposal TA Mahasiswa</h3>
+                                <h3>Sidang Proposal Tugas Akhir</h3>
                             </div>
                             <div class="card-body table-responsive">
                                 <a href=<?php echo url('dashboard-mahasiswa-tambah-proposal-ta') ?>
