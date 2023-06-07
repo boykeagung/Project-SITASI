@@ -443,8 +443,6 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
     Route::get('profile-tu', [ProfileController::class, 'index']);
 });
 
-
-
 // Route::get('/dashboard-koordinator-ta', function () {
 //     return view('koordinator.dashboard-koordinator-ta');
 // });
