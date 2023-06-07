@@ -24,8 +24,8 @@
                                     <thead>
                                         <tr>    
                                             <th>No</th>                             
-                                            <th class="col-md-3">NRP</th>
-                                            <th class="col-md-3">Nama Lengkap</th>
+                                            <th>NRP</th>
+                                            <th>Nama Lengkap</th>
                                             <th>Judul TA</th>
                                             <th>Buku TA</th>
                                             <th>Ruangan</th>

@@ -31,7 +31,6 @@
                     href=<?php echo url('dashboard-dospem-sidang-kp'); ?>><i class="fas fa-sticky-note"></i>
                     <span>Sidang Kerja
                         Praktik</span></a></li>
-
             <li class="{{ Request::is('dashboard-dospem-bimbingan-kp') ? 'active' : '' }}"><a class="nav-link"
                     href=<?php echo url('dashboard-dospem-bimbingan-kp') ?>><i class="fas fa-book-open"></i>
                     <span>Bimbingan Kerja Praktik</span></a></li>

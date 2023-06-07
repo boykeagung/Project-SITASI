@@ -40,8 +40,8 @@
                                             <th>Status</th>
                                             <th>komentar Pembimbing</th>
                                             <th>komentar Penguji</th>
+                                            <th>Update At</th>
                                             <th>Action</th>
-                                            <th>delete</th>
                                         </tr>
                                     </thead>
 
@@ -74,14 +74,15 @@
                                             <td>{{$sem->status}}</td>
                                             <td>{{$sem->komentar1}}</td>
                                             <td>{{$sem->komentar2}}</td>
-                                            <td>
-                                                {{link_to('dashboard-koordinator-edit-seminar-ta/'.$sem->id,'Edit',['class'=>'btn btn-warning'])}}
-                                            </td>
+                                            <td>{{$sem->updated_at}}</td>
                                             <td>
                                                 {!!
                                                 Form::open(['url'=>'dashboard-koordinator-seminar-ta/'.$sem->id,'method'=>'delete'])!!}
-                                                {!! Form::submit('Delete',['class'=>'btn
-                                                btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    {{link_to('dashboard-koordinator-edit-seminar-ta/'.$sem->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                    {!! Form::submit('Delete',['class'=>'btn
+                                                    btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
+                                                </div>
                                                 {!! Form::close()!!}
                                             </td>
                                         </tr>
