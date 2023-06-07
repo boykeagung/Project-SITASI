@@ -39,7 +39,7 @@
                         class="fas fa-book-open"></i>
                     <span>Seminar Tugas
                         Akhir</span></a></li>
-            <li class="{{ Request::is('dashboard-dospenguji-sidang-ta') ? 'active' : '' }}"><a class="nav-link" href=<?php echo url('dashboard-dospenguji-sidang-ta'); ?>><i
+            <li class="{{ Request::is('dashboard-dospeng-sidang-ta') ? 'active' : '' }}"><a class="nav-link" href=<?php echo url('dashboard-dospeng-sidang-ta'); ?>><i
                         class="fas fa-book-reader"></i> <span>Sidang Tugas
                         Akhir</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-dospenguji-residensi-ta'); ?>>
