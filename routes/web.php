@@ -245,9 +245,9 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
 //     return view('mahasiswa.dashboard-mahasiswa-proposal-ta');
 // })
 
-Route::get('/dashboard-mahasiswa-sidang-ta', function () {
-    return view('mahasiswa.dashboard-mahasiswa-sidang-ta');
-});
+// Route::get('/dashboard-mahasiswa-sidang-ta', function () {
+//     return view('mahasiswa.dashboard-mahasiswa-sidang-ta');
+// });
 
 
 /* koordinator ta */
