@@ -43,7 +43,10 @@ use App\Http\Controllers\DospemYudisiumController;
 use App\Http\Controllers\DospengYudisiumController;
 use App\Http\Controllers\KoordinatorBimbinganKP;
 use App\Http\Controllers\KoordinatorResidensi;
+use App\Http\Controllers\KoordinatorSidangTAController;
 use App\Http\Controllers\MahasiswaSidangTAController;
+use App\Http\Controllers\DospengSidangTAController;
+use App\Http\Controllers\DospemSidangTAController;
 use App\Http\Controllers\Mahasiswa_Residensi_Controller;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
@@ -433,12 +436,12 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator,koordinator_kp
     Route::put('dashboard-dospem-bimbingan-kp/{id}', [DospemBimbinganKPController::class, 'update']);
 
     //Sidang TA
-    Route::get('dashboard-dospem-sidang-ta', [Dospem_Sidang_TA_Controller::class, 'index']);
-    Route::get('dashboard-dospem-sidang-ta-edit-data/{id}', [Dospem_Sidang_TA_Controller::class, 'edit']); //select
-    Route::PUT('dashboard-dospem-sidang-ta/{id}', [Dospem_Sidang_TA_Controller::class, 'update']); //update
-    Route::get('dashboard-dospeng-sidang-ta', [Dospeng_Sidang_TA_Controller::class, 'index']);
-    Route::get('dashboard-dospeng-sidang-ta-edit-data/{id}', [Dospeng_Sidang_TA_Controller::class, 'edit']); //select
-    Route::PUT('dashboard-dospeng-sidang-ta/{id}', [Dospeng_Sidang_TA_Controller::class, 'update']); //update
+    Route::get('dashboard-dospem-sidang-ta', [DospemSidangTAController::class, 'index']);
+    Route::get('dashboard-dospem-sidang-ta-edit-data/{id}', [DospemSidangTAController::class, 'edit']); //select
+    Route::PUT('dashboard-dospem-sidang-ta/{id}', [DospemSidangTAController::class, 'update']); //update
+    Route::get('dashboard-dospeng-sidang-ta', [DospengSidangTAController::class, 'index']);
+    Route::get('dashboard-dospeng-sidang-ta-edit-data/{id}', [DospengSidangTAController::class, 'edit']); //select
+    Route::PUT('dashboard-dospeng-sidang-ta/{id}', [DospengSidangTAController::class, 'update']); //update
 });
 
 Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
@@ -474,9 +477,9 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
 //     return view('koordinator.dashboard-koordinator-ta');
 // });
 
-Route::get('/dashboard-koordinator-sidang-ta', function () {
-    return view('koordinator.dashboard-koordinator-sidang-ta');
-});
+// Route::get('/dashboard-koordinator-sidang-ta', function () {
+//     return view('koordinator.dashboard-koordinator-sidang-ta');
+// });
 
 // Route::get('/generate-form-001', function () {
 //     return view('tata_usaha.generate-form-001');
@@ -555,9 +558,9 @@ Route::group(['middleware' => ['auth', 'rolecek:koordinator-kp']], function () {
 //     return view('dosen_pembimbing_penguji.dashboard-dospem-seminar-ta');
 // });
 
-Route::get('/dashboard-dospem-sidang-ta', function () {
-    return view('dosen_pembimbing_penguji.dashboard-dospem-sidang-ta');
-});
+// Route::get('/dashboard-dospem-sidang-ta', function () {
+//     return view('dosen_pembimbing_penguji.dashboard-dospem-sidang-ta');
+// });
 
 // Route::get('/dashboard-dospenguji-proposal-ta', function () {
 //     return view('dosen_pembimbing_penguji.dashboard-dospenguji-proposal-ta');
@@ -567,13 +570,13 @@ Route::get('/dashboard-dospem-sidang-ta', function () {
 //     return view('dosen_pembimbing_penguji.dashboard-dospenguji-seminar-ta');
 // });
 
-Route::get('/dashboard-dospenguji-sidang-ta', function () {
-    return view('dosen_pembimbing_penguji.dashboard-dospenguji-sidang-ta');
-});
+// Route::get('/dashboard-dospenguji-sidang-ta', function () {
+//     return view('dosen_pembimbing_penguji.dashboard-dospenguji-sidang-ta');
+// });
 
-Route::get('/dashboard-koordinator-form001', function () {
-    return view('dashboard.dashboard-koordinator-form001');
-});
+// Route::get('/dashboard-koordinator-form001', function () {
+//     return view('dashboard.dashboard-koordinator-form001');
+// });
 
 /* Tata Usaha */
 // // Route::get('/dashboard-tata-usaha', function () {
@@ -588,9 +591,9 @@ Route::get('/dashboard-koordinator-form001', function () {
 //     return view('tata_usaha.dashboard-tata-usaha-seminar-ta');
 // });
 
-Route::get('/dashboard-tata-usaha-sidang-ta', function () {
-    return view('tata_usaha.dashboard-tata-usaha-sidang-ta');
-});
+// Route::get('/dashboard-tata-usaha-sidang-ta', function () {
+//     return view('tata_usaha.dashboard-tata-usaha-sidang-ta');
+// });
 
 // Route::get('/dashboard-tata-usaha-tambah-data-mahasiswa', function () {
 //     return view('tata_usaha.dashboard-tata-usaha-tambah-data-mahasiswa');

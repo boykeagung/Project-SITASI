@@ -83,11 +83,11 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <h5>Komentar Dosen Penguji : </h5>
+                                    <h5>Komentar Dosen Pembimbing : </h5>
                                     <p>{{$sta->komentar1}}</p>
                                 </div>
                                 <div class="col">
-                                    <h5>Komentar Dosen Pembimbing : </h5>
+                                    <h5>Komentar Dosen Penguji : </h5>
                                     <p>{{$sta->komentar2}}</p>
                                 </div>
                             </div>

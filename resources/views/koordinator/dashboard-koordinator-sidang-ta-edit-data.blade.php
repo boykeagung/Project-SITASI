@@ -1,4 +1,4 @@
-@extends('layout-koordinator-ta')
+@extends('layout.layout-koordinator-ta')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 
         @include('navbar')
 
-        @include('sidebar-koordinator-ta')
+        @include('sidebar.sidebar-koordinator-ta')
 
         <!-- Main Content -->
         <div class="main-content">
@@ -127,3 +127,4 @@
         </div>
     </div>
 </div>
+@endsection

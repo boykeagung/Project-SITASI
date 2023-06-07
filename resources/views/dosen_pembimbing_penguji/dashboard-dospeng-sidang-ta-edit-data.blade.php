@@ -1,4 +1,4 @@
-@extends('layout-dospem-dospenguji-ta')
+@extends('layout.layout-dospem-dospenguji-ta')
 
 @section('content')
 
@@ -8,12 +8,12 @@
 
         @include('navbar')
 
-        @include('sidebar-dospem-dospenguji-ta')
+        @include('sidebar.sidebar-dospem-dospenguji-ta')
 
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="{{ url('dashboard-dospem-sidang-ta',$sidang_ta->id)}}" method="POST"
+                <form action="{{ url('dashboard-dospeng-sidang-ta',$sidang_ta->id)}}" method="POST"
                     enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
@@ -38,10 +38,10 @@
                                             <div class="form-group">
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <label for="inputTanggal">Komentar Pembimbing</label><br>
-                                                        <textarea type="text" class="form-control" name="komentar1"
+                                                        <label for="inputTanggal">Komentar Penguji</label><br>
+                                                        <textarea type="text" class="form-control" name="komentar2"
                                                             rows="3"
-                                                            placeholder="Komentar">{{$sidang_ta->komentar1}}</textarea>
+                                                            placeholder="Komentar">{{$sidang_ta->komentar2}}</textarea>
                                                     </div>
                                                     {{-- <div class="form-group col-md-6">
                                                         <label for="inputStatus">Status</label>
@@ -52,8 +52,19 @@
                                                             <option value="Diterima">Diterima</option>
                                                         </select>
                                                     </div> --}}
+                                                    @if($sidang_ta->penguji1 == Auth::user()->username."_".Auth::user()->name)
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputStatus">Status</label><br>
+                                                        <select class="form-select" aria-label="Default select example"
+                                                            name="status">
+                                                            <option value="Diproses">Diproses</option>
+                                                            <option value="Lulus">Lulus</option>
+                                                            <option value="Tidak Lulus">Tidak Lulus</option>
+                                                        </select>
+                                                    </div>
+                                                    @else
+                                                    @endif
                                                 </div>
-
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         {!! Form::submit('Save',['class'=>'btn btn-primary mb-5
@@ -73,3 +84,4 @@
         </div>
     </div>
 </div>
+@endsection

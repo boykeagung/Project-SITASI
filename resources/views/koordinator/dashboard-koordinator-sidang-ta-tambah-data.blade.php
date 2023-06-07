@@ -1,4 +1,4 @@
-@extends('layout-koordinator-ta')
+@extends('layout.layout-koordinator-ta')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 
         @include('navbar')
 
-        @include('sidebar')
+        @include('sidebar.sidebar-koordinator-ta')
         
         <div class="main-content">
             <div class="card card-primary mb-0">
@@ -150,3 +150,4 @@
     </div>
     {!! Form::close()!!}
 </div>
+@endsection

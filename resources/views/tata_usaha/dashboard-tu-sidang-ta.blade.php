@@ -1,4 +1,4 @@
-@extends('layout-tata-usaha')
+@extends('layout.layout-tata-usaha')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 
         @include('navbar')
 
-        @include('sidebar-tata-usaha')
+        @include('sidebar.sidebar-tata-usaha')
         
         <!-- Main Content -->
         <div class="main-content">
@@ -85,3 +85,4 @@
         </div>
     </div>
 </div>
+@endsection

@@ -1,4 +1,4 @@
-@extends('layout-dospem-dospenguji-ta')
+@extends('layout.layout-dospem-dospenguji-ta')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 
         @include('navbar')
 
-        @include('sidebar-dospem-dospenguji-ta')
+        @include('sidebar.sidebar-dospem-dospenguji-ta')
         
         <!-- Main Content -->
         <div class="main-content">
@@ -39,9 +39,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $no = 0
-                                        ?>
+                                        <?php $no = 0?>
                                         @foreach ($sidang_ta as $no => $sta)
+                                        <tr>
                                         <tr>    
                                             <td>{{1+$no++}}</td>                                                         
                                             <td>{{$sta->username}}</td>
@@ -64,7 +64,7 @@
                                             <td class="text-center" width="160px">
                                                 <div class="row">
                                                     <div class="col">
-                                                       {{link_to('dashboard-dospem-sidang-ta-edit-data/'.$sta->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                       {{link_to('dashboard-dospeng-sidang-ta-edit-data/'.$sta->id,'Edit',['class'=>'btn btn-warning'])}}
                                                    </div>
                                                </div>             
                                             </td>
@@ -93,3 +93,4 @@
         </div>
     </div>
 </div>
+@endsection
