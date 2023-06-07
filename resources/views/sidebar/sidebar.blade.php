@@ -32,6 +32,9 @@
             <li class="{{ Request::is('dashboard-mahasiswa-bimbingan-ta') ? 'active' : '' }}"><a class="nav-link"
                     href=<?php echo url('dashboard-mahasiswa-bimbingan-ta'); ?>><i class="fas fa-book-open"></i>
                     <span>Bimbingan Tugas Akhir</span></a></li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-residensi-ta'); ?>>
+                <i class="fa-solid fa-bars"></i>
+                        <span>Residensi Tugas Akhir</span></a></li>
             <li class="menu-header">Management Pendaftaran Kerja Praktik</li>
             <li class="{{ Request::is('dashboard-mahasiswa-form-001') ? 'active' : '' }}"><a class="nav-link"
                     href=<?php echo url('dashboard-mahasiswa-form-001'); ?>><i class="fas fa-sticky-note"></i>
