@@ -2,7 +2,7 @@
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
             <h4> </h4>
-            <a href="/"; ?>><img width="120" src="/assets/img/logo-v2.png"></a>
+            <a href="/"; ?><img width="120" src="/assets/img/logo-v2.png"></a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="/"><img src="/assets/img/logo.png" width="70"></a>
