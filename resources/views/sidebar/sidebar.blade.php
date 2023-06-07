@@ -12,9 +12,6 @@
             <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa'); ?>></i>
                     <span>Progress Tugas Akhir</span></a></li>
             <li class="menu-header">Management Pendaftaran Tugas Akhir</li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-residensi-ta'); ?>><i
-                        class="fas fa-camera"></i> <span>Residensi Tugas
-                        Akhir</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-proposal-ta'); ?>><i
                         class="fas fa-sticky-note"></i> <span>Proposal Tugas
                         Akhir</span></a></li>
@@ -29,6 +26,9 @@
             <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-bimbingan-ta'); ?>><i
                         class="fas fa-book-open"></i>
                     <span>Bimbingan Tugas Akhir</span></a></li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-residensi-ta'); ?>>
+                <i class="fa-solid fa-bars"></i>
+                        <span>Residensi Tugas Akhir</span></a></li>
             <li class="menu-header">Management Pendaftaran Kerja Praktik</li>
             <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-form-001'); ?>><i
                         class="fas fa-sticky-note"></i> <span>Pengajuan Kerja
@@ -39,7 +39,7 @@
                         class="fas fa-book-open"></i> <span>Sidang Kerja
                         Praktik</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-penilaian-kp'); ?>><i
-                        class="fas fa-book-open"></i> <span>Input Nilai Kerja
+                        class="fas fa-book-open"></i> <span>Nilai Kerja
                         Praktik</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-mahasiswa-bimbingan-kp'); ?>><i
                         class="fas fa-book-open"></i>

@@ -9,19 +9,22 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Management Kerja Praktik</li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-kp'); ?>><i
+            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-form-001'); ?>><i
                         class="fas fa-sticky-note"></i> <span>Permohonan Surat
                         Rekomendasi</span></a></li>
             <li ><a class="nav-link" href=<?php echo url('dashboard-koordinator-kp'); ?>><i
                         class="fas fa-sticky-note"></i> <span>Daftar Kerja
                         Praktik</span></a></li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-bimbingan-kp'); ?>><i
+                class="fas fa-book-open"></i> <span>Bimbingan Kerja Praktik</span></a></li>
+            </li>
             <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-sidang-kp'); ?>><i
                         class="fas fa-book-open"></i> <span>Sidang Kerja
                         Praktik</span></a></li>
             </li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-bimbingan-kp'); ?>><i
-                        class="fas fa-book-open"></i> <span>Bimbingan Kerja Praktik</span></a></li>
-            </li>
+            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-penilaian-kp'); ?>><i
+                class="fas fa-book-open"></i> <span>Nilai Kerja
+                Praktik</span></a></li>
         </ul>
     </aside>
 </div>
