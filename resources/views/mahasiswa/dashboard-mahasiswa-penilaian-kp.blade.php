@@ -16,6 +16,10 @@
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-12">
                         <div class=" card">
+                            {{-- <div class="row card-header">
+                                <h4 class="col">Nilai Kerja Praktik Dosen Pembimbing</h4>
+                                <h4 class="col">Nilai Kerja Praktik Dosen Pembimbing Perusahaan</h4>
+                            </div> --}}
                             <div class="row card-body table-responsive">  
                                 <div class="col ml px-5">
 
@@ -157,7 +161,7 @@
                                 <div class="col ml px-5">
                                     <div class="row">
                                         <div class="row card-header mb-3">
-                                            <h4 class="col">Nilai Kerja Praktik Dosen Pembimbing Perusahaan</h4>
+                                            <h4 class="col">Nilai Kerja Praktik Dosen Pembimbing</h4>
                                         </div>
                                         <div class="col">
                                             
@@ -315,7 +319,7 @@
                     </div>
                 </div>
             </div>
-{{-- 
+
             <div class="col-12">
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-12">
@@ -383,7 +387,7 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
 
             
 

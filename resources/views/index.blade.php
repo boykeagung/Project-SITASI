@@ -38,11 +38,15 @@
                     <li class="nav-item"><a class="nav-link" href="#poster-tugas-akhir">Poster Tugas Akhir</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Draft_Proposal_TA/sample.pdf"
                             target="_blank">Download</a></li>
+                    @if (auth()->check())
+                    <li class="nav-item"><a class="nav-link" href="{{ URL::to('/logout') }}">Logout</a></li>
+                    @else
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Login
                         </a>
+
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="login-mahasiswa">Mahasiswa</a></li>
                             <li><a class="dropdown-item" href="login-dosen">Dosen</a></li>
@@ -50,13 +54,9 @@
                             <li><a class="dropdown-item" href="login-koordinator">Koordinator TA</a></li>
                             <li><a class="dropdown-item" href="login-koordinator-kp">Koordinator KP</a></li>
                             <li><a class="dropdown-item" href="login-koordinator-yudisium">Koordinator Yudisium</a></li>
-
-                            {{-- <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
                         </ul>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -228,8 +228,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets_index/assets/img/portfolio/sidang-ta-1.png"
-                                alt="..." />
+                            <img class="img-fluid" src="assets_index/assets/img/portfolio/sidang-ta-1.png" alt="..." />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Sidang Tugas Akhir</div>
@@ -254,8 +253,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets_index/assets/img/portfolio/poster-ta-1.jpg"
-                                alt="..." />
+                            <img class="img-fluid" src="assets_index/assets/img/portfolio/poster-ta-1.jpg" alt="..." />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Perbandingan Metode Diphone Concatenation Dan
@@ -271,8 +269,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets_index/assets/img/portfolio/poster-ta-2.jpg"
-                                alt="..." />
+                            <img class="img-fluid" src="assets_index/assets/img/portfolio/poster-ta-2.jpg" alt="..." />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Implementasi Optical Character Recognition Dengan
@@ -288,8 +285,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets_index/assets/img/portfolio/poster-ta-3.jpg"
-                                alt="..." />
+                            <img class="img-fluid" src="assets_index/assets/img/portfolio/poster-ta-3.jpg" alt="..." />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Pengujian Load Balancing Pada Cluster Server
@@ -485,8 +481,7 @@
                                 <!-- Project details-->
                                 <h2 class="text-uppercase">Seminar Tugas Akhir</h2>
                                 <img class="img-fluid d-block mx-auto"
-                                    src="assets_index/assets/img/portfolio/seminar-tugas-akhir-1.png"
-                                    alt="..." />
+                                    src="assets_index/assets/img/portfolio/seminar-tugas-akhir-1.png" alt="..." />
                                 <p>1. Melakukan bimbingan dengan dospem</p>
                                 <p>2. Mendapatkan rekomendasi untuk melaksanakan seminar</p>
                                 <p>3. Mengisi formulir pengajuan seminar</p>

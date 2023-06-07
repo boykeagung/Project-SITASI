@@ -9,7 +9,7 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li>
+            <li class="{{ Request::is('dashboard-koordinator-yudisium') ? 'active' : '' }}">
                 <a class="nav-link" href=<?= url('dashboard-koordinator-yudisium') ?>>
                     <i class="fas fa-graduation-cap"></i>
                     <span>Yudisium</span>
