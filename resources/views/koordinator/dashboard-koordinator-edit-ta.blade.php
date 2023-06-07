@@ -43,12 +43,14 @@
                                                             style="color: red;">*</span></label><br>
                                                         {{-- {!!
                                                         Form::text('nrp',null,['placeholder'=>'NRP Mahasiswa','class'=>'form-control'])!!} --}}
-                                                        <select class="form-select" name="username" id="select1" required>
+                                                        <input type="text" class="form-control" name="username" value="{{$ta->username}}"
+                                                            placeholder="Judul Tugas Akhir" readonly>
+                                                        {{-- <select class="form-select" name="username" id="select1" required>
                                                             <option selected>{{$ta->username}}</option>
                                                             @foreach($user as $user)
                                                             <option value="{{$user->username}}">{{$user->username}}, {{$user->name}}</option>
                                                             @endforeach
-                                                        </select>
+                                                        </select> --}}
                                                         <div class="invalid-feedback">
                                                             Pilih NRP Mahasiswa.
                                                         </div>
@@ -106,16 +108,16 @@
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
                                                         <input type="text" class="form-control" name="judul" value="{{$ta->judul}}"
-                                                            placeholder="Judul Tugas Akhir">
+                                                            placeholder="Judul Tugas Akhir" readonly>
                                                     </div>
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-6" hidden>
                                                         <label for="inputDraft">Draft Proposal/ Sinopsis Tugas
                                                             Akhir</label><br>
                                                         {{-- <br>
                                                         {!!
                                                         Form::file('draft')!!}
                                                         <br> --}}
-                                                        <input type="file" class="form-control" name="draft" value="{{$ta->draft}}" placeholder="adjawi">
+                                                        <input type="file" class="form-control" name="draft" value="{{$ta->draft}}" placeholder="wth" >
                                                         <span>*File Upload yang diupload berupa pdf maksimal sebesar
                                                             25MB</span>
                                                     </div>

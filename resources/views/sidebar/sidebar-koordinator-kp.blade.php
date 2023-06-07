@@ -26,6 +26,7 @@
                     href=<?php echo url('dashboard-koordinator-bimbingan-kp'); ?>><i class="fas fa-book-open"></i>
                     <span>Bimbingan Kerja Praktik</span></a></li>
             </li>
+            <li class="menu-header">Informasi</li>
             <li class="{{ Request::is('profile-tu') ? 'active' : '' }}"><a class="nav-link"
                 href=<?php echo url('profile-tu'); ?>><i class="fas fa-user-alt"></i>
                 <span>Profile</span></a></li>

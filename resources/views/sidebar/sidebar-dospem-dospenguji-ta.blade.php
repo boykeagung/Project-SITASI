@@ -50,13 +50,7 @@
             <li class="{{ Request::is('dashboard-dospenguji-sidang-kp') ? 'active' : '' }}"><a class="nav-link"
                     href=<?php echo url('dashboard-dospenguji-sidang-kp') ?>><i class="fas fa-sticky-note"></i>
                     <span>Sidang Kerja Praktik</span></a></li>
-            {{-- <li class="menu-header">Daftar Mahasiswa Bimbingan</li> --}}
-            <!--<li class="menu-header">Pengguna</li>
-<li><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Pengguna Admin</span></a></li>
-<li><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Pengguna Mahasiswa</span></a></li>
-
-<li class="menu-header">Management Tugas Akhir</li>
-<li><a class="nav-link" href=""><i class="fas fa-file"></i> <span>Data Tugas Akhir</span></a></li>-->
+            <li class="menu-header">Informasi</li>
             <li class="{{ Request::is('profile-tu') ? 'active' : '' }}"><a class="nav-link"
                     href=<?php echo url('profile-tu'); ?>><i class="fas fa-user-alt"></i>
                     <span>Profile</span></a></li>
