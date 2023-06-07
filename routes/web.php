@@ -43,6 +43,7 @@ use App\Http\Controllers\DospemYudisiumController;
 use App\Http\Controllers\DospengYudisiumController;
 use App\Http\Controllers\KoordinatorBimbinganKP;
 use App\Http\Controllers\KoordinatorResidensi;
+use App\Http\Controllers\MahasiswaSidangTAController;
 use App\Http\Controllers\Mahasiswa_Residensi_Controller;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
@@ -162,6 +163,14 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::get('dashboard-mahasiswa-edit-seminar-ta/{id}', [SeminarController::class, 'edit']); //select
     Route::put('dashboard-mahasiswa-seminar-ta/{id}', [SeminarController::class, 'update']); //update
     Route::delete('dashboard-mahasiswa-seminar-ta/{id}', [SeminarController::class, 'delete']); //delete
+
+    // Sidang TA
+    Route::get('dashboard-mahasiswa-sidang-ta', [MahasiswaSidangTAController::class, 'index']);
+    Route::get('dashboard-mahasiswa-sidang-ta-tambah-data', [MahasiswaSidangTAController::class, 'create']); //create 
+    Route::post('dashboard-mahasiswa-sidang-ta', [MahasiswaSidangTAController::class, 'storee']); //store
+    Route::get('dashboard-mahasiswa-sidang-ta-edit-data/{id}', [MahasiswaSidangTAController::class, 'edit']); //select
+    Route::PUT('dashboard-mahasiswa-sidang-ta/{id}', [MahasiswaSidangTAController::class, 'update']); //update
+    Route::delete('dashboard-mahasiswa-sidang-ta/{id}', [MahasiswaSidangTAController::class, 'delete']); //delete
 
     #kp
     Route::get('dashboard-mahasiswa-kp', [KPController::class, 'index']);
@@ -369,6 +378,13 @@ Route::group(['middleware' => ['auth', 'rolecek:koordinator']], function () {
     Route::put('dashboard-koordinator-bimbingan-ta/{id}', [KoordinatorBimbinganTA::class, 'update']);
     Route::delete('dashboard-koordinator-bimbingan-ta/{id}', [KoordinatorBimbinganTA::class, 'delete']); //delete
 
+    //Sidang TA
+    Route::get('dashboard-koordinator-sidang-ta', [KoordinatorSidangTAController::class, 'index']);
+    Route::get('dashboard-koordinator-sidang-ta-tambah-data', [KoordinatorSidangTAController::class, 'create']); //create 
+    Route::post('dashboard-koordinator-sidang-ta', [KoordinatorSidangTAController::class, 'storee']); //store
+    Route::get('dashboard-koordinator-sidang-ta-edit-data/{id}', [KoordinatorSidangTAController::class, 'edit']); //select
+    Route::PUT('dashboard-koordinator-sidang-ta/{id}', [KoordinatorSidangTAController::class, 'update']); //update
+    Route::delete('dashboard-koordinator-sidang-ta/{id}', [KoordinatorSidangTAController::class, 'delete']); //delete
 });
 
 
@@ -415,6 +431,14 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator,koordinator_kp
     Route::get('dashboard-dospem-bimbingan-kp', [DospemBimbinganKPController::class, 'index']);
     Route::get('dashboard-dospem-edit-bimbingan-kp/{id}', [DospemBimbinganKPController::class, 'edit']);
     Route::put('dashboard-dospem-bimbingan-kp/{id}', [DospemBimbinganKPController::class, 'update']);
+
+    //Sidang TA
+    Route::get('dashboard-dospem-sidang-ta', [Dospem_Sidang_TA_Controller::class, 'index']);
+    Route::get('dashboard-dospem-sidang-ta-edit-data/{id}', [Dospem_Sidang_TA_Controller::class, 'edit']); //select
+    Route::PUT('dashboard-dospem-sidang-ta/{id}', [Dospem_Sidang_TA_Controller::class, 'update']); //update
+    Route::get('dashboard-dospeng-sidang-ta', [Dospeng_Sidang_TA_Controller::class, 'index']);
+    Route::get('dashboard-dospeng-sidang-ta-edit-data/{id}', [Dospeng_Sidang_TA_Controller::class, 'edit']); //select
+    Route::PUT('dashboard-dospeng-sidang-ta/{id}', [Dospeng_Sidang_TA_Controller::class, 'update']); //update
 });
 
 Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
@@ -439,6 +463,9 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
     Route::get('dashboard-tata-usaha-yudisium', [YudisiumController::class, 'index']);
     Route::get('dashboard-tata-usaha-yudisium/berkas/{id}', [YudisiumController::class, 'lihatBerkasMahasiswa']);
     Route::post('dashboard-tata-usaha-yudisium/berkas/{id}/aksi', [YudisiumController::class, 'aksiBerkasMahasiswa']);
+
+    //Sidang TA
+    Route::get('dashboard-tu-sidang-ta', [TUProposalSeminarSidangController::class, 'indexSidangTA']);
 });
 
 

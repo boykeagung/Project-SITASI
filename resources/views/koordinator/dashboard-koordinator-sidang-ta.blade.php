@@ -1,4 +1,4 @@
-@extends('layout.layout-koordinator-ta')
+@extends('layout-koordinator-ta')
 
 @section('content')
 
@@ -8,74 +8,85 @@
 
         @include('navbar')
 
-        @include('sidebar.sidebar-koordinator-ta')
+        @include('sidebar-koordinator-ta')
 
         <!-- Main Content -->
         <div class="main-content">
-            <div class="col-12">
+            <div class="card card-primary mb-0">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-12">
-                        <div class="card">
+                    <div class="col-12">
+                        <div class="card card-primary mb-0">
                             <div class="card-header">
-                                <h4>Data Pendaftar Sidang Tugas Akhir</h4>
+                                <h3>Data Pendaftar Sidang Tugas Akhir</h3>
                             </div>
                             <div class="card-body table-responsive">
-                                <table class="table table-bordered table-striped" id="table1">
+                                <a href=<?php echo url('dashboard-koordinator-sidang-ta-tambah-data') ?>
+                                    class="btn btn-primary mb-3">
+                                    <i class="fas fa-plus"></i> Tambah Data</a>
+                                <table class="table table-bordered" id="table1">
                                     <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>NRP</th>
-                                            <th>Nama Lengkap</th>
+                                        <tr>                                 
+                                            <th class="col-md-3">ID Sidang TA</th>
+                                            <th class="col-md-3">ID TA</th>
                                             <th>Judul TA</th>
-                                            <th>Files</th>
-                                            <th>Status Approval</th>
+                                            <th>Buku TA</th>
+                                            <th>Ruangan</th>
+                                            <th>Jam Sidang</th>
                                             <th>Jadwal Sidang</th>
-                                            <th>Dosen Penguji 1</th>
-                                            <th>Dosen Penguji 2</th>
-                                            <th>Changes</th>
-                                            <th>Timestamp Penyimpanan</th>
+                                            <th>Status</th>
+                                            <th>Komentar Pembimbing</th>
+                                            <th>Komentar Penguji</th>
+                                            <th>Update at</th>
+                                            <th>Action</th>                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td style="width:5%">1</td>
-                                            <td>162018003</td>
-                                            <td>Muhammad Fasha Patria</td>
-                                            <td>Pembuatan Website Manajemen Tugas Akhir</td>
-                                            <td><a href="#" class="btn btn-primary" target="_blank"><i
-                                                        class="fas fa-eye"></i> Lihat Draft</a>
-                                                <a href="#" class="btn btn-primary mt-2" target="_blank"><i
-                                                        class="fas fa-eye"></i> Lihat Form Pengajuan Sidang</a>
-                                            </td>
-                                            <td class="text-center" width="160px">
-                                                <select name="status_approval" class="form-control" required>
-                                                    <option value="">- Pilih -</option>
-                                                    <option value="">Approved</option>
-                                                    <option value="">Ditolak</option>
-                                                </select>
-                                            </td>
+                                        @foreach ($sidang_ta as $sta)
+                                        <tr>                                                             
+                                            <td>{{$sta->id_sidang_ta}}</td>
+                                            <td>{{$sta->id_ta}}</td>
+                                            <td>{{$sta->judul}}</td>
                                             <td>
-                                                <input type="datetime-local" class="form-control">
-                                            </td>
+                                                @if($sta->buku_ta == null)
+                                                {{link_to('Draft_Buku_TA/'.$sta->buku_ta,'Lihat',['class'=>'btn btn-info disabled','target'=>'_blank'])}}
+                                                @else
+                                                {{link_to('Draft_Buku_TA/'.$sta->buku_ta,'Lihat',['class'=>'btn btn-info','target'=>'_blank'])}}
+                                                @endif
+                                            </td>                                                   
+                                            <td>{{$sta->ruangan}}</td>
+                                            <td>{{$sta->jam_sidang}}</td>
+                                            <td>{{$sta->jadwal_sidang}}</td>
+                                            <td>{{$sta->status}}</td>
+                                            <td>{{$sta->komentar1}}</td>
+                                            <td>{{$sta->komentar2}}</td>
+                                            <td>{{$sta->updated_at}}</td>
                                             <td class="text-center" width="160px">
-                                                <select name="status_approval" class="form-control" required>
-                                                    <option value="">- Pilih -</option>
-                                                    <option value="">Dosen 1</option>
-                                                    <option value="">Dosen 2</option>
-                                                </select>
+                                                <div class="row">
+                                                    <div class="col">
+                                                       {{link_to('dashboard-koordinator-sidang-ta-edit-data/'.$sta->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                   </div>
+                                               </div> 
+                                               <h1></h1>
+                                               <div class="row">
+                                                    <div class="col">
+                                                        {!! Form::open(['url'=>'dashboard-koordinator-sidang-ta/'.$sta->id,'method'=>'delete'])!!}
+                                                        {!! Form::submit('Delete',['class'=>'btn btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
+                                                        {!! Form::close()!!}
+                                                    </div>
+                                                </div>                       
                                             </td>
-                                            <td class="text-center" width="160px">
-                                                <select name="status_approval" class="form-control" required>
-                                                    <option value="">- Pilih -</option>
-                                                    <option value="">Dosen 1</option>
-                                                    <option value="">Dosen 2</option>
-                                                </select>
-                                            </td>
-                                            <td><button type="submit" name="save-data"
-                                                    class="btn btn-primary">Save</button>
-                                            </td>
-                                            <td>DD/MM/YYYY</td>
+                                            {{-- <td class="text-center" width="160px">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        {!! Form::open(['url'=>'dashboard-koordinator-sidang-ta/'.$sta->id,'method'=>'delete'])!!}
+                                                        {!! Form::submit('Delete',['class'=>'btn btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
+                                                        {!! Form::close()!!}
+                                                    </div>
+                                                </div>
+                                            </td> --}}
+                                            
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -89,4 +100,3 @@
         </div>
     </div>
 </div>
-@endsection

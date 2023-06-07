@@ -16,7 +16,7 @@
                         Akhir</span></a></li>
             <li><a class="nav-link" href=<?php echo url('dashboard-tata-usaha-seminar-ta'); ?>><i class="fas fa-book-open"></i> <span>Seminar Tugas
                         Akhir</span></a></li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-tata-usaha-sidang-ta'); ?>><i class="fas fa-book-reader"></i> <span>Sidang Tugas
+            <li><a class="nav-link" href=<?php echo url('dashboard-tu-sidang-ta'); ?>><i class="fas fa-book-reader"></i> <span>Sidang Tugas
                         Akhir</span></a></li>
             <li class="menu-header">Management Kerja Praktik</li>
             <li><a class="nav-link" href=<?php echo url('dashboard-tata-usaha-form-001'); ?>><i class="fas fa-sticky-note"></i> <span>Pengajuan Kerja

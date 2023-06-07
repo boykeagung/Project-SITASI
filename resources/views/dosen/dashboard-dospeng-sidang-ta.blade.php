@@ -64,7 +64,7 @@
                                             <td class="text-center" width="160px">
                                                 <div class="row">
                                                     <div class="col">
-                                                       {{link_to('dashboard-dospem-sidang-ta-edit-data/'.$sta->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                       {{link_to('dashboard-dospeng-sidang-ta-edit-data/'.$sta->id,'Edit',['class'=>'btn btn-warning'])}}
                                                    </div>
                                                </div>             
                                             </td>
