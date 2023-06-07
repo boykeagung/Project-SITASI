@@ -1,4 +1,4 @@
-@extends('layout.layout-dospem-dospenguji-ta')
+@extends('layout.layout-tata-usaha')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 
         @include('navbar')
 
-        @include('sidebar.sidebar-dospem-dospenguji-ta')
+        @include('sidebar.sidebar-tata-usaha')
         
         <!-- Main Content -->
         <div class="main-content">
@@ -17,7 +17,7 @@
                     <div class="col-12">
                         <div class="card card-primary mb-0">
                             <div class="card-header">
-                                <h4>Data Sidang Tugas Akhir</h4>
+                                <h4>Data Pendaftar Sidang Tugas Akhir</h4>
                             </div>
                             <div class="card-body table-responsive">
                                 <table class="table table-bordered" id="table1">
@@ -34,8 +34,7 @@
                                             <th>Status</th>
                                             <th>Komentar Pembimbing</th>
                                             <th>Komentar Penguji</th>
-                                            <th>Update at</th>
-                                            <th>Action</th>                                            
+                                            <th>Update at</th>                                          
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -61,13 +60,6 @@
                                             <td>{{$sta->komentar1}}</td>
                                             <td>{{$sta->komentar2}}</td>
                                             <td>{{$sta->updated_at}}</td>
-                                            <td class="text-center" width="160px">
-                                                <div class="row">
-                                                    <div class="col">
-                                                       {{link_to('dashboard-dospem-sidang-ta-edit-data/'.$sta->id,'Edit',['class'=>'btn btn-warning'])}}
-                                                   </div>
-                                               </div>             
-                                            </td>
                                             {{-- <td class="text-center" width="160px">
                                                 <div class="row">
                                                     <div class="col">

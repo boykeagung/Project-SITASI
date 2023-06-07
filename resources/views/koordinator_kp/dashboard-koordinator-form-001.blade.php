@@ -21,9 +21,9 @@
                             </div>
                             <div class="card-body table-responsive">
                                 
-                                <a href=<?php echo url('dashboard-mahasiswa-tambah-form-001') ?>
+                                {{-- <a href=<?php echo url('dashboard-mahasiswa-tambah-form-001') ?>
                                     class="btn btn-primary mb-3">
-                                    {{-- <i class="fas fa-plus"></i> Tambah Data </a> --}}
+                                    <i class="fas fa-plus"></i> Tambah Data </a> --}}
                                 <table class="table table-bordered table-striped" id="table1">
                                     <thead>
                                         <tr style="overflow: hidden;
@@ -41,7 +41,7 @@
                                             <th>Hasil Form-001</th>
                                             <th>Re-submit Form-001</th>
                                             <th>Surat Pengantar</th>
-                                            <th>Action</th>
+                                            {{-- <th>Action</th> --}}
 
                                     
                                             
@@ -84,7 +84,7 @@
                                                 
                                             </td>
                             
-                                            <td>{{link_to('dashboard-mahasiswa-edit-form-001/'.$kp_form001->id,'Edit',['class'=>'btn btn-outline-warning'])}}</td>
+                                            {{-- <td>{{link_to('dashboard-mahasiswa-edit-form-001/'.$kp_form001->id,'Edit',['class'=>'btn btn-outline-warning'])}}</td> --}}
                                             
                                             {{-- <td>{{link_to('generate_nilai_kp','Download',['class'=>'btn btn-success', 'target'=>'_blank'])}}</td> --}}
                                             

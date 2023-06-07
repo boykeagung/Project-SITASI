@@ -116,9 +116,11 @@
                             <h4 class="subheading">Sidang Proposal Tugas Akhir</h4>
                         </div>
                         <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                                unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            <p class="text-muted">Sidang proposal tugas akhir adalah proses di mana seorang mahasiswa
+                                menyajikan rencana penelitian dan metodologi yang akan digunakan dalam penyelesaian
+                                tugas akhir mereka kepada dosen pembimbing dan panel sidang. Singkatnya, sidang proposal
+                                tugas akhir adalah pertemuan di mana mahasiswa menjelaskan secara ringkas ide utama,
+                                tujuan, dan rencana kerja mereka dalam penelitian yang akan mereka lakukan.</p>
                         </div>
                     </div>
                 </li>
@@ -131,9 +133,11 @@
                             <h4 class="subheading">Seminar Tugas Akhir</h4>
                         </div>
                         <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                                unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            <p class="text-muted">Seminar tugas akhir adalah acara di mana seorang mahasiswa
+                                mempresentasikan hasil penelitian mereka kepada audiens, yang terdiri dari dosen
+                                pembimbing, panel sidang, dan mungkin juga mahasiswa dan dosen lainnya. Singkatnya,
+                                seminar tugas akhir adalah kesempatan bagi mahasiswa untuk berbagi pengetahuan dan
+                                temuan mereka setelah menyelesaikan tugas akhir mereka.</p>
                         </div>
                     </div>
                 </li>
@@ -146,9 +150,11 @@
                             <h4 class="subheading">Sidang Tugas Akhir</h4>
                         </div>
                         <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                                unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            <p class="text-muted">Sidang tugas akhir adalah tahap akhir dalam proses perkuliahan di mana
+                                seorang mahasiswa mempresentasikan dan membela hasil penelitian atau proyek mereka
+                                kepada dosen pembimbing dan panel sidang. Singkatnya, sidang tugas akhir adalah
+                                pertemuan di mana mahasiswa memaparkan dan membahas temuan, kesimpulan, dan kontribusi
+                                penelitian mereka.</p>
                         </div>
                     </div>
                 </li>
@@ -161,9 +167,10 @@
                             <h4 class="subheading">Yudisium</h4>
                         </div>
                         <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                                unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            <p class="text-muted">Yudisium adalah proses penilaian akhir yang dilakukan oleh lembaga
+                                pendidikan untuk menentukan apakah seorang mahasiswa telah memenuhi persyaratan yang
+                                ditetapkan untuk mendapatkan gelar atau ijazah tertentu. Singkatnya, yudisium adalah
+                                tahap penentuan kelulusan bagi seorang mahasiswa.!</p>
                         </div>
                     </div>
                 </li>

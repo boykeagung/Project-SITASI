@@ -18,7 +18,6 @@ class KoordinatorKPController extends Controller
             ->get();
         return view('koordinator_kp.dashboard-koordinator-kp', $data);
     }
-
     public function create()
     {
         // $data['ta'] = TA::all();

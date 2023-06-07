@@ -21,8 +21,8 @@
                     href=<?php echo url('dashboard-tata-usaha-seminar-ta'); ?>><i class="fas fa-book-open"></i>
                     <span>Seminar Tugas
                         Akhir</span></a></li>
-            <li class="{{ Request::is('dashboard-tata-usaha-sidang-ta') ? 'active' : '' }}"><a class="nav-link"
-                    href=<?php echo url('dashboard-tata-usaha-sidang-ta'); ?>><i class="fas fa-book-reader"></i>
+            <li class="{{ Request::is('dashboard-tu-sidang-ta') ? 'active' : '' }}"><a class="nav-link"
+                    href=<?php echo url('dashboard-tu-sidang-ta'); ?>><i class="fas fa-book-reader"></i>
                     <span>Sidang Tugas
                         Akhir</span></a></li>
             <li class="menu-header">Management Kerja Praktik</li>

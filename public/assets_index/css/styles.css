@@ -11410,10 +11410,11 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../assets/img/header-bg-2.jpg");
+  background-image: url("../assets/img/header-bg-3.png");
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: center center;
+  /* background-position: center center; */
+  background-position: top;
   background-size: cover;
 }
 header.masthead .masthead-subheading {

@@ -30,17 +30,13 @@ class BimbinganTAController extends Controller
     {
 
         try {
-            // Kode query Anda
-            // ...
             $input = $request->all();
             $input['status'] = "Diproses";
-            // $input['status_p2'] = "Diproses";
             bimbingan_ta::create($input);
 
             return redirect('dashboard-mahasiswa-bimbingan-ta');
         } catch (QueryException $e) {
             abort(403, 'ID Tugas Akhir Belum terdaftar.');
-            // throw new \Exception('Terjadi kesalahan dalam menjalankan query. Sepertinya Anda belum mendaftar Tugas Akhir  '); 
         }
     }
 
