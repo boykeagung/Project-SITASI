@@ -38,11 +38,15 @@
                     <li class="nav-item"><a class="nav-link" href="#poster-tugas-akhir">Poster Tugas Akhir</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Draft_Proposal_TA/sample.pdf"
                             target="_blank">Download</a></li>
+                    @if (auth()->check())
+                    <li class="nav-item"><a class="nav-link" href="{{ URL::to('/logout') }}">Logout</a></li>
+                    @else
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Login
                         </a>
+
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="login-mahasiswa">Mahasiswa</a></li>
                             <li><a class="dropdown-item" href="login-dosen">Dosen</a></li>
@@ -50,13 +54,9 @@
                             <li><a class="dropdown-item" href="login-koordinator">Koordinator TA</a></li>
                             <li><a class="dropdown-item" href="login-koordinator-kp">Koordinator KP</a></li>
                             <li><a class="dropdown-item" href="login-koordinator-yudisium">Koordinator Yudisium</a></li>
-
-                            {{-- <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
                         </ul>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -116,9 +116,11 @@
                             <h4 class="subheading">Sidang Proposal Tugas Akhir</h4>
                         </div>
                         <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                                unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            <p class="text-muted">Sidang proposal tugas akhir adalah proses di mana seorang mahasiswa
+                                menyajikan rencana penelitian dan metodologi yang akan digunakan dalam penyelesaian
+                                tugas akhir mereka kepada dosen pembimbing dan panel sidang. Singkatnya, sidang proposal
+                                tugas akhir adalah pertemuan di mana mahasiswa menjelaskan secara ringkas ide utama,
+                                tujuan, dan rencana kerja mereka dalam penelitian yang akan mereka lakukan.</p>
                         </div>
                     </div>
                 </li>
@@ -131,9 +133,11 @@
                             <h4 class="subheading">Seminar Tugas Akhir</h4>
                         </div>
                         <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                                unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            <p class="text-muted">Seminar tugas akhir adalah acara di mana seorang mahasiswa
+                                mempresentasikan hasil penelitian mereka kepada audiens, yang terdiri dari dosen
+                                pembimbing, panel sidang, dan mungkin juga mahasiswa dan dosen lainnya. Singkatnya,
+                                seminar tugas akhir adalah kesempatan bagi mahasiswa untuk berbagi pengetahuan dan
+                                temuan mereka setelah menyelesaikan tugas akhir mereka.</p>
                         </div>
                     </div>
                 </li>
@@ -146,9 +150,11 @@
                             <h4 class="subheading">Sidang Tugas Akhir</h4>
                         </div>
                         <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                                unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            <p class="text-muted">Sidang tugas akhir adalah tahap akhir dalam proses perkuliahan di mana
+                                seorang mahasiswa mempresentasikan dan membela hasil penelitian atau proyek mereka
+                                kepada dosen pembimbing dan panel sidang. Singkatnya, sidang tugas akhir adalah
+                                pertemuan di mana mahasiswa memaparkan dan membahas temuan, kesimpulan, dan kontribusi
+                                penelitian mereka.</p>
                         </div>
                     </div>
                 </li>
@@ -161,9 +167,10 @@
                             <h4 class="subheading">Yudisium</h4>
                         </div>
                         <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                                unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            <p class="text-muted">Yudisium adalah proses penilaian akhir yang dilakukan oleh lembaga
+                                pendidikan untuk menentukan apakah seorang mahasiswa telah memenuhi persyaratan yang
+                                ditetapkan untuk mendapatkan gelar atau ijazah tertentu. Singkatnya, yudisium adalah
+                                tahap penentuan kelulusan bagi seorang mahasiswa.!</p>
                         </div>
                     </div>
                 </li>
@@ -228,8 +235,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets_index/assets/img/portfolio/sidang-ta-1.png"
-                                alt="..." />
+                            <img class="img-fluid" src="assets_index/assets/img/portfolio/sidang-ta-1.png" alt="..." />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Sidang Tugas Akhir</div>
@@ -254,8 +260,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets_index/assets/img/portfolio/poster-ta-1.jpg"
-                                alt="..." />
+                            <img class="img-fluid" src="assets_index/assets/img/portfolio/poster-ta-1.jpg" alt="..." />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Perbandingan Metode Diphone Concatenation Dan
@@ -271,8 +276,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets_index/assets/img/portfolio/poster-ta-2.jpg"
-                                alt="..." />
+                            <img class="img-fluid" src="assets_index/assets/img/portfolio/poster-ta-2.jpg" alt="..." />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Implementasi Optical Character Recognition Dengan
@@ -288,8 +292,7 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets_index/assets/img/portfolio/poster-ta-3.jpg"
-                                alt="..." />
+                            <img class="img-fluid" src="assets_index/assets/img/portfolio/poster-ta-3.jpg" alt="..." />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Pengujian Load Balancing Pada Cluster Server
@@ -485,8 +488,7 @@
                                 <!-- Project details-->
                                 <h2 class="text-uppercase">Seminar Tugas Akhir</h2>
                                 <img class="img-fluid d-block mx-auto"
-                                    src="assets_index/assets/img/portfolio/seminar-tugas-akhir-1.png"
-                                    alt="..." />
+                                    src="assets_index/assets/img/portfolio/seminar-tugas-akhir-1.png" alt="..." />
                                 <p>1. Melakukan bimbingan dengan dospem</p>
                                 <p>2. Mendapatkan rekomendasi untuk melaksanakan seminar</p>
                                 <p>3. Mengisi formulir pengajuan seminar</p>

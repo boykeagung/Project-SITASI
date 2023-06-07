@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\bimbingan_ta;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
+// use App\Http\Controllers\PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 use Illuminate\Http\Request;
 
@@ -28,17 +30,13 @@ class BimbinganTAController extends Controller
     {
 
         try {
-            // Kode query Anda
-            // ...
             $input = $request->all();
             $input['status'] = "Diproses";
-            // $input['status_p2'] = "Diproses";
             bimbingan_ta::create($input);
 
             return redirect('dashboard-mahasiswa-bimbingan-ta');
         } catch (QueryException $e) {
             abort(403, 'ID Tugas Akhir Belum terdaftar.');
-            // throw new \Exception('Terjadi kesalahan dalam menjalankan query. Sepertinya Anda belum mendaftar Tugas Akhir  '); 
         }
     }
 
@@ -56,5 +54,13 @@ class BimbinganTAController extends Controller
         $input['status_p2'] = "Diproses";
         bimbingan_ta::find($id)->update($input);
         return redirect('dashboard-mahasiswa-bimbingan-ta');
+    }
+    
+    public function generate()
+    {
+        $username = Auth::user()->username;
+        $data['bimbingan_ta'] = bimbingan_ta::all()->where('id_ta', '=', "TA$username");
+        $pdf = PDF::loadView('mahasiswa.dashboard-mahasiswa-bimbingan-ta-print', $data);
+        return $pdf->stream();
     }
 }

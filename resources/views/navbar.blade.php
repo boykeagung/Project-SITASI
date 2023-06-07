@@ -69,9 +69,6 @@
                 <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{ URL::to('/profile') }}" class="dropdown-item">
-                    <i class=""></i> Profile
-                </a>
                 <a href="{{ URL::to('/logout') }}" class="dropdown-item has-icon text-danger">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
