@@ -10,7 +10,7 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Progress Tugas Akhir</li>
             <li class="{{ Request::is('dashboard-mahasiswa') ? 'active' : '' }}"><a class="nav-link"
-                    href=<?php echo url('dashboard-mahasiswa'); ?>></i>
+                    href=<?php echo url('dashboard-mahasiswa'); ?>><i class="	fa fa-line-chart"></i></i>
                     <span>Progress Tugas Akhir</span></a></li>
             <li class="menu-header">Management Pendaftaran Tugas Akhir</li>
             <li class="{{ Request::is('dashboard-mahasiswa-residensi-ta') ? 'active' : '' }}"><a class="nav-link"

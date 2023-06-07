@@ -15,8 +15,8 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="{{ url('dashboard-mahasiswa-sidang-kp',$sidang_kp->id)}}" method="POST"
-                    enctype="multipart/form-data">
+                <form class="needs-validation" action="{{ url('dashboard-mahasiswa-sidang-kp',$sidang_kp->id)}}"
+                    method="POST" enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <input type="hidden" name="user_id" value="" required>
@@ -54,14 +54,22 @@
                                                                 style="color: red;">*</span></label>
                                                         <br>
                                                         <input type="text" class="form-control" name="ruangan"
-                                                            value="{{$sidang_kp->ruangan}}" placeholder="Ruangan ">
+                                                            value="{{$sidang_kp->ruangan}}" placeholder="Ruangan "
+                                                            required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Ruangan Sidang Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Jam Sidang<span
                                                                 style="color: red;">*</span></label>
                                                         <br>
                                                         <input type="time" class="form-control" name="jam_sidang"
-                                                            value="{{$sidang_kp->jam_sidang}}" placeholder="Jam Sidang">
+                                                            value="{{$sidang_kp->jam_sidang}}" placeholder="Jam Sidang"
+                                                            required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Jam Sidang Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Tanggal Sidang<span
@@ -69,7 +77,10 @@
                                                         <br>
                                                         <input type="date" class="form-control" name="tanggal_sidang"
                                                             value="{{$sidang_kp->tanggal_sidang}}"
-                                                            placeholder="Tanggal Sidang">
+                                                            placeholder="Tanggal Sidang" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Tanggal Sidang Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                 </div>
 

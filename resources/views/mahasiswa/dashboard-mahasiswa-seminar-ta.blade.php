@@ -35,6 +35,7 @@
                                             <th>Jam Seminar</th>
                                             <th>Tanggal Seminar</th>
                                             <th>Status</th>
+                                            <th>Update At</th>
                                             <th>Action</th>
                                             {{-- <th>delete</th> --}}
                                         </tr>
@@ -50,27 +51,34 @@
                                                 @if($sem->jurnal == null)
                                                 {{link_to('Jurnal_TA/'.$sem->jurnal,'Lihat',['class'=>'btn btn-info disabled','target'=>'_blank'])}}
                                                 @else
-                                                {{link_to('Jurnal_TA/'.$sem->jurnal,'Lihat',['class'=>'btn btn-info','target'=>'_blank'])}}
+                                                {{-- {{link_to('Jurnal_TA/'.$sem->jurnal,'Lihat',['class'=>'btn btn-info','target'=>'_blank'])}} --}}
+                                                <a href="{{'Jurnal_TA/'.$sem->jurnal}}" class="btn btn-info"
+                                                    target="_blank"><i class="fas fa-eye"></i></a>
                                                 @endif
                                             </td>
                                             <td>
                                                 @if($sem->draft == null)
                                                 {{link_to('Draft_TA_Seminar/'.$sem->draft,'Lihat',['class'=>'btn btn-info disabled','target'=>'_blank'])}}
                                                 @else
-                                                {{link_to('Draft_TA_Seminar/'.$sem->draft,'Lihat',['class'=>'btn btn-info','target'=>'_blank'])}}
+                                                <a href="{{'Draft_TA_Seminar/'.$sem->draft}}" class="btn btn-info"
+                                                    target="_blank"><i class="fas fa-eye"></i></a>
+                                                {{-- {{link_to('Draft_TA_Seminar/'.$sem->draft,'Lihat',['class'=>'btn btn-info','target'=>'_blank'])}} --}}
                                                 @endif
                                             </td>
                                             <td>{{$sem->ruangan}}</td>
                                             <td>{{$sem->jam_seminar}}</td>
                                             <td>{{$sem->tanggal_seminar}}</td>
                                             <td>{{$sem->status}}</td>
+                                            <td>{{$sem->updated_at}}</td>
                                             <td>
                                                 @if($sem->status == 'Lulus')
-                                                {{link_to('dashboard-mahasiswa-edit-seminar-ta/'.$sem->id,'Edit',['class'=>'btn btn-warning disabled'])}}
-                                                @elseif($sem->status == 'Tidak Lulus')
-                                                {{link_to('dashboard-mahasiswa-edit-seminar-ta/'.$sem->id,'Edit',['class'=>'btn btn-warning disabled'])}}
+                                                {{-- {{link_to('dashboard-mahasiswa-edit-seminar-ta/'.$sem->id,'Edit',['class'=>'btn btn-warning disabled'])}} --}}
+                                                <a href="{{'dashboard-mahasiswa-edit-seminar-ta/'.$sem->id}}" class="btn btn-secondary disabled"><i class="far fa-edit"></i></a>
+                                                {{-- @elseif($sem->status == 'Tidak Lulus') --}}
+                                                {{-- {{link_to('dashboard-mahasiswa-edit-seminar-ta/'.$sem->id,'Edit',['class'=>'btn btn-warning disabled'])}} --}}
                                                 @else
-                                                {{link_to('dashboard-mahasiswa-edit-seminar-ta/'.$sem->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                <a href="{{'dashboard-mahasiswa-edit-seminar-ta/'.$sem->id}}" class="btn btn-warning"><i class="far fa-edit"></i></a>
+                                                {{-- {{link_to('dashboard-mahasiswa-edit-seminar-ta/'.$sem->id,'Edit',['class'=>'btn btn-warning'])}} --}}
                                                 @endif
                                             </td>
                                             {{-- <td>

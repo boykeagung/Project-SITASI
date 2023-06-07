@@ -17,15 +17,15 @@
                     <div class="col-12">
                         <div class="card card-primary mb-0">
                             <div class="card-header">
-                                <h4>Kegiatan Tugas Akhir</h4>
+                                <h3>Sidang Tugas Akhir</h3>
                             </div>
                             <div class="card-body table-responsive">
                                 <a href=<?php echo url('dashboard-mahasiswa-sidang-ta-tambah-data') ?>
                                     class="btn btn-primary mb-3"> <i class="fas fa-plus"></i> Tambah Data</a>
                                 <table class="table table-bordered" id="table1">
                                     <thead>
-                                        <tr>   
-                                            <th>No</th>                              
+                                        <tr>
+                                            <th>No</th>
                                             <th>ID Sidang TA</th>
                                             <th>ID TA</th>
                                             <th>Judul TA</th>
@@ -34,31 +34,42 @@
                                             <th>Jam Sidang</th>
                                             <th>Jadwal Sidang</th>
                                             <th>Status</th>
-                                            <th colspan="1" class="text-center">Action</th>                                            
+                                            <th>Update At</th>
+                                            <th colspan="1" class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $no = 0?>
                                         @foreach ($sidang_ta as $no => $sta)
-                                        <tr>    
-                                            <td>{{1+$no++}}</td>                                                            
+                                        <tr>
+                                            <td>{{1+$no++}}</td>
                                             <td>{{$sta->id_sidang_ta}}</td>
                                             <td>{{$sta->id_ta}}</td>
                                             <td>{{$sta->judul}}</td>
                                             <td>
-                                                <a href= "{{'Draft_Buku_TA/'.$sta->buku_ta}}" class="btn btn-info" target="_blank"><i class="fas fa-eye"></i>   Lihat File</a>
-                                            </td>                                                   
+                                                <a href="{{'Draft_Buku_TA/'.$sta->buku_ta}}" class="btn btn-info"
+                                                    target="_blank"><i class="fas fa-eye"></i></a>
+                                            </td>
                                             <td>{{$sta->ruangan}}</td>
                                             <td>{{$sta->jam_sidang}}</td>
                                             <td>{{$sta->jadwal_sidang}}</td>
                                             <td>{{$sta->status}}</td>
+                                            <td>{{$sta->updated_at}}</td>
                                             <td class="text-center" width="160px">
                                                 <div class="row">
-                                                   <div class="col">
-                                                       {{link_to('dashboard-mahasiswa-sidang-ta-edit-data/'.$sta->id,'Edit',['class'=>'btn btn-warning'])}}
-                                                   </div>                                                  
-                                               </div>
-                                            </td> 
+                                                    <div class="col">
+                                                        @if($sta->status == 'Lulus')
+                                                        <a href="{{'dashboard-mahasiswa-sidang-ta-edit-data/'.$sta->id}}"
+                                                            class="btn btn-secondary disabled"><i class="far fa-edit"></i></a>
+                                                        {{-- {{link_to('dashboard-mahasiswa-sidang-ta-edit-data/'.$sta->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                        --}}
+                                                        @else
+                                                        <a href="{{'dashboard-mahasiswa-sidang-ta-edit-data/'.$sta->id}}"
+                                                            class="btn btn-warning"><i class="far fa-edit"></i></a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

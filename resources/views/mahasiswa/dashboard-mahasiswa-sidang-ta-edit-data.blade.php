@@ -12,8 +12,8 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="{{ url('dashboard-mahasiswa-sidang-ta',$sidang_ta->id) }}" method="POST"
-                    enctype="multipart/form-data">
+                <form class="needs-validation" action="{{ url('dashboard-mahasiswa-sidang-ta',$sidang_ta->id) }}" method="POST"
+                    enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <input type="hidden" name="user_id" value="" required>
@@ -38,7 +38,10 @@
                                                             <label for="inputJudul" class="form-label">Judul</label>
 
                                                             <input type="text" name="judul" placeholder="Judul"
-                                                                class="form-control" value="{{$sidang_ta->judul}}">
+                                                                class="form-control" value="{{$sidang_ta->judul}}" required>
+                                                                <div class="invalid-feedback">
+                                                                    Isi Judul Tugas Akhir.
+                                                                </div>
                                                         </div>
 
                                                         <div class="form-group col-md-6">
@@ -53,21 +56,30 @@
                                                         <div class="form-group col-md-6">
                                                             <label for="inputRuangan" class="form-label">Ruangan</label>
                                                             <input type="text" name="ruangan" placeholder="Ruangan"
-                                                                class="form-control" value="{{$sidang_ta->ruangan}}">
+                                                                class="form-control" value="{{$sidang_ta->ruangan}}" required>
+                                                                <div class="invalid-feedback">
+                                                                    Isi Ruangan Sidang Tugas Akhir.
+                                                                </div>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="inputJam_Sidang" class="form-label">Jam
                                                                 Sidang</label>
                                                             <input type="time" name="jam_sidang"
                                                                 placeholder="Jam Sidang" class="form-control"
-                                                                value="{{$sidang_ta->jam_sidang}}">
+                                                                value="{{$sidang_ta->jam_sidang}}" required>
+                                                                <div class="invalid-feedback">
+                                                                    Isi Jam Sidang Tugas Akhir.
+                                                                </div>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="inputJadwal_Sidang" class="form-label">Jadwal
                                                                 Sidang</label>
                                                             <input type="date" name="jadwal_sidang"
                                                                 placeholder="Jadwal Sidang" class="form-control"
-                                                                value="{{$sidang_ta->jadwal_sidang}}">
+                                                                value="{{$sidang_ta->jadwal_sidang}}" required>
+                                                                <div class="invalid-feedback">
+                                                                    Isi Tanggal Sidang Tugas Akhir.
+                                                                </div>
                                                         </div>
                                                         <div class="form-group col-md-6"></div>
                                                         <div class="form-group col-md-6">

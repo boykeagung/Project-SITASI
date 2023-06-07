@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SidangTA;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use Illuminate\Database\QueryException;
 
 class MahasiswaSidangTAController extends Controller
 {
@@ -25,28 +25,33 @@ class MahasiswaSidangTAController extends Controller
 
     public function storee(Request $req)
     {
-        $this->validate($req, [
-            // 'id_sidang_ta' => "required",
-            // 'id_ta' => 'required',
-            'judul' => 'required',
-            //'buku_ta' => 'required|mimes:pdf|max:10000',
-            'ruangan' => 'required',
-            'jam_sidang' => 'required',
-            'jadwal_sidang' => 'required',
-            // 'status' => 'required'
-        ]);
-        $input = $req->all();
-        $input['status'] = "Diproses";
-        if ($buku_ta = $req->file('buku_ta')) {
-            $destinationPath = 'Draft_Buku_TA/';
-            $buku_ta_name = $buku_ta->getClientOriginalName();
-            $buku_ta->move($destinationPath, $buku_ta_name);
-            $input['buku_ta'] = "$buku_ta_name";
+        try {
+            $this->validate($req, [
+                // 'id_sidang_ta' => "required",
+                // 'id_ta' => 'required',
+                'judul' => 'required',
+                'buku_ta' => 'required|mimes:pdf|max:25000',
+                'ruangan' => 'required',
+                'jam_sidang' => 'required',
+                'jadwal_sidang' => 'required',
+                // 'status' => 'required'
+            ]);
+            $input = $req->all();
+            $input['status'] = "Diproses";
+            if ($buku_ta = $req->file('buku_ta')) {
+                $destinationPath = 'Draft_Buku_TA/';
+                $buku_ta_name = $buku_ta->getClientOriginalName();
+                $buku_ta->move($destinationPath, $buku_ta_name);
+                $input['buku_ta'] = "$buku_ta_name";
+            }
+
+            SidangTA::create($input);
+
+            return redirect('dashboard-mahasiswa-sidang-ta')->with('success', 'Sidang TA created successfully.');
+        } catch (QueryException $e) {
+            abort(403, 'ANDA BELUM MENDAFTAR TUGAS AKHIR/DAFTAR SIDANG HANYA DAPAT SATU KALI!!!.');
+            // throw new \Exception('Terjadi kesalahan dalam menjalankan query. Sepertinya Anda belum mendaftar Tugas Akhir  ');
         }
-
-        SidangTA::create($input);
-
-        return redirect('dashboard-mahasiswa-sidang-ta')->with('success', 'Sidang TA created successfully.');
     }
 
     public function edit($id)
@@ -65,7 +70,7 @@ class MahasiswaSidangTAController extends Controller
             // 'id_sidang_ta' => "required",
             // 'id_ta' => 'required',
             'judul' => 'required',
-            'buku_ta' => "mimes:pdf|max:5000"
+            'buku_ta' => "mimes:pdf|max:25000"
             // 'ruangan' => 'required',
             // 'jam_sidang' => 'required',
             // 'jadwal_sidang' => 'required',

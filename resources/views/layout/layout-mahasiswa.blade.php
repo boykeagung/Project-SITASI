@@ -25,6 +25,7 @@
     <script src="{{asset('https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js')}}"></script>
 
     <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.ui.timepicker.addon/1.4.5/jquery-ui-timepicker-addon.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
     
 <body>

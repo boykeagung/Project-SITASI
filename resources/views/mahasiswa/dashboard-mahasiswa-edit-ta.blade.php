@@ -14,8 +14,8 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="{{ url('dashboard-mahasiswa-proposal-ta',$ta->id)}}" method="POST"
-                    enctype="multipart/form-data">
+                <form class="needs-validation" action="{{ url('dashboard-mahasiswa-proposal-ta',$ta->id)}}" method="POST"
+                    enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <div class="card-header row">
@@ -52,7 +52,10 @@
                                                         {{-- {!!
                                                         Form::text('judul',$ta->judul,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
                                                         <input type="text" name="judul" class="form-control"
-                                                            value="{{$ta->judul}}">
+                                                            value="{{$ta->judul}}" required>
+                                                            <div class="invalid-feedback">
+                                                                Isi Judul Tugas Akhir.
+                                                            </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Draft Proposal/ Sinopsis Tugas

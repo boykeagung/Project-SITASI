@@ -12,7 +12,8 @@
         {{-- {!! Form::Open(['url'=>'dashboard-mahasiswa-sidang-ta'])!!} --}}
         <div class="main-content">
             <div class="card card-primary mb-0">
-                <form action="dashboard-mahasiswa-sidang-ta" method="POST" enctype="multipart/form-data">
+                <form class="needs-validation" action="dashboard-mahasiswa-sidang-ta" method="POST"
+                    enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     <input type="hidden" name="user_id" value="" required>
                     <div class="card-header row">
@@ -52,31 +53,48 @@
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJudul">Judul</label>
                                                         <input class="form-control" type="text" name="judul"
-                                                            placeholder="Judul">
+                                                            placeholder="Judul" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Judul Tugas Akhir.
+                                                        </div>
                                                     </div>
 
                                                     <div class="form-group col-md-6">
                                                         <label for="inputBukuTA" class="form-label">Buku TA</label>
-                                                        <input type="file" class="form-control" name="buku_ta">
+                                                        <input type="file" class="form-control" name="buku_ta" required>
                                                         <span class="text-red"> *File Upload yang diperbolehkan nya
                                                             .PDF </span>
+                                                        <div class="invalid-feedback">
+                                                            Isi File Buku Tugas Akhir.
+                                                        </div>
                                                     </div>
 
                                                     <div class="form-group col-md-6">
                                                         <label for="inputRuangan">Ruangan</label>
                                                         {!!
-                                                        Form::text('ruangan',null,['placeholder'=>'Ruangan','class'=>'form-control'])
+                                                        Form::text('ruangan',null,['placeholder'=>'Ruangan','class'=>'form-control'
+                                                        ,'required' => 'required'] )
                                                         !!}
+                                                        <div class="invalid-feedback">
+                                                            Isi Ruangan Sidang Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJam_Sidang">Jam Sidang</label>
                                                         {!! Form::time('jam_sidang',null,['placeholder'=>'Jam
-                                                        Sidang','class'=>'form-control']) !!}
+                                                        Sidang','class'=>'form-control', 'required' => 'required'] ) !!}
+                                                        <div class="invalid-feedback">
+                                                            Isi Jam Sidang Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJadwal_Sidang">Jadwal Sidang</label>
                                                         {!! Form::date('jadwal_sidang',null,['placeholder'=>'Jadwal
-                                                        Sidang','class'=>'form-control']) !!}
+                                                        Sidang','class'=>'form-control' ,'required' => 'required'] ,)
+                                                        !!}
+                                                        <div class="invalid-feedback">
+                                                            Isi Tanggal Sidang Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     {{-- <div class="form-group col-md-6">
                                                         <label for="inputStatus">Status</label> --}}
