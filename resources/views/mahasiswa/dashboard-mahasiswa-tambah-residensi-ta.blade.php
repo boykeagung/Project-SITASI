@@ -58,7 +58,7 @@
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJamMasuk">Jam Masuk </label><br>
                                                         <input class="form-control" type="time" 
-                                                        value="<?php echo date('G:i:s'); ?>" name="jam_masuk" readonly>
+                                                        value="<?php echo date('H:i:s'); ?>" name="jam_masuk" readonly>
                                                     </div>
                                                     {{-- <div class="form-group col-md-6">
                                                         <label for="inputJamKeluar">Jam Keluar</label><br>
