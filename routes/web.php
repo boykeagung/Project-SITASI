@@ -214,6 +214,8 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::post('dashboard-mahasiswa-bimbingan-ta', [BimbinganTAController::class, 'store']);
     Route::get('dashboard-mahasiswa-edit-bimbingan-ta/{id}', [BimbinganTAController::class, 'edit']); //select
     Route::put('dashboard-mahasiswa-bimbingan-ta/{id}', [BimbinganTAController::class, 'update']); //update
+    Route::get('dashboard-mahasiswa-bimbingan-ta-print', [BimbinganTAController::class, 'generate']);
+    
 
     #bimbingan_kp
     Route::get('dashboard-mahasiswa-bimbingan-kp', [BimbinganKPController::class, 'index']);
