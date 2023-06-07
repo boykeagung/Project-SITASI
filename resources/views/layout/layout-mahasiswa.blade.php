@@ -24,6 +24,7 @@
 
     <script src="{{asset('https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js')}}"></script>
 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.ui.timepicker.addon/1.4.5/jquery-ui-timepicker-addon.min.css"> 
 </head>
     
 <body>
@@ -106,7 +107,14 @@
         <script src="/assets/js/scripts.js"></script>
         <script src="/assets/js/custom.js"></script>
         <script src="/js/qr-code-scanner.js"></script>
+
+        <script>
+            $(function() {
+              $('#timepicker').timepicker();
+            });
+            </script>
+
+        <script src="//cdn.jsdelivr.net/jquery.ui.timepicker.addon/1.4.5/jquery-ui-timepicker-addon.min.js"></script>
     </div>
 </body>
-
 </html>

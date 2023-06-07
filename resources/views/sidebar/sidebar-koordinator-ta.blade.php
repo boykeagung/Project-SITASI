@@ -9,22 +9,22 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Fitur tambah data user </li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-ta') ?>><i class="fas fa-th-large"></i>
+            <li class="{{ Request::is('dashboard-koordinator-ta') ? 'active' : '' }}"><a class="nav-link" href=<?php echo url('dashboard-koordinator-ta') ?>><i class="fas fa-th-large"></i>
                     <span>Daftar Mahasiswa</span></a></li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-ta-dosen') ?>><i
+            <li class="{{ Request::is('dashboard-koordinator-ta-dosen') ? 'active' : '' }}"><a class="nav-link" href=<?php echo url('dashboard-koordinator-ta-dosen') ?>><i
                         class="fas fa-th-large"></i>
                     <span>Daftar Dosen</span></a></li>
             <li class="menu-header">Management Pendaftaran Tugas Akhir</li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-proposal-ta') ?>><i
+            <li class="{{ Request::is('dashboard-koordinator-proposal-ta') ? 'active' : '' }}"><a class="nav-link" href=<?php echo url('dashboard-koordinator-proposal-ta') ?>><i
                         class="fas fa-sticky-note"></i> <span>Proposal Tugas
                         Akhir</span></a></li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-seminar-ta') ?>><i
+            <li class="{{ Request::is('dashboard-koordinator-seminar-ta') ? 'active' : '' }}"><a class="nav-link" href=<?php echo url('dashboard-koordinator-seminar-ta') ?>><i
                         class="fas fa-book-open"></i> <span>Seminar Tugas
                         Akhir</span></a></li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-sidang-ta') ?>><i
+            <li class="{{ Request::is('dashboard-koordinator-sidang-ta') ? 'active' : '' }}"><a class="nav-link" href=<?php echo url('dashboard-koordinator-sidang-ta') ?>><i
                         class="fas fa-book-reader"></i> <span>Sidang Tugas
                         Akhir</span></a></li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-bimbingan-ta') ?>><i
+            <li class="{{ Request::is('dashboard-koordinator-bimbingan-ta') ? 'active' : '' }}"><a class="nav-link" href=<?php echo url('dashboard-koordinator-bimbingan-ta') ?>><i
                         class="fas fa-book-reader"></i> <span>Bimbingan Tugas Akhir</span></a></li>
             {{-- <li><a class="nav-link" href="#"><i class="fas fa-sticky-note"></i> <span>Yudisium</span></a>
             <li class="menu-header">Management Pendaftaran Kerja Praktik</li>

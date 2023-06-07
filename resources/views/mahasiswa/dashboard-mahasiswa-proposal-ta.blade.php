@@ -17,7 +17,7 @@
                     <div class="col-12 col-md-6 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3>Tugas Akhir Mahasiswa</h3>
+                                <h3>Daftar Tugas Akhir</h3>
                             </div>
                             <div class="card-body table-responsive">
                                 <a href=<?php echo url('dashboard-mahasiswa-tambah-ta') ?> class="btn btn-primary mb-3">
@@ -77,7 +77,7 @@
                     <div class="col-12 col-md-6 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3>Sidang Proposal TA Mahasiswa</h3>
+                                <h3>Sidang Proposal Tugas Akhir</h3>
                             </div>
                             <div class="card-body table-responsive">
                                 <a href=<?php echo url('dashboard-mahasiswa-tambah-proposal-ta') ?>
@@ -107,7 +107,7 @@
                                             <td>{{$pro->judul}}</td>
                                             <td>
                                                 @if($pro->proposal == null)
-                                                {{link_to('Draft_Proposal_TA/'.$pro->proposal,'Lihat',['class'=>'btn btn-info disabled','target'=>'_blank'])}}
+                                                {{link_to('Draft_Proposal_TA/'.$pro->proposal,'Lihat',['class'=>'btn btn-secondary disabled','target'=>'_blank'])}}
                                                 @else
                                                 {{-- {{link_to('Draft_Proposal_TA/'.$pro->proposal,'Lihat',['class'=>'btn btn-info','target'=>'_blank'])}} --}}
                                                 <a href= "{{'Draft_Proposal_TA/'.$pro->proposal}}" class="btn btn-info" target="_blank"><i class="fas fa-file"></i></a>
@@ -119,9 +119,9 @@
                                             <td>{{$pro->status}}</td>
                                             <td>
                                                 @if($pro->status == 'Lulus')
-                                                {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-warning disabled'])}}
+                                                {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-secondary disabled'])}}
                                                 @elseif($pro->status == 'Tidak Lulus')
-                                                {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-warning disabled'])}}
+                                                {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-warning '])}}
                                                 @else
                                                 {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-warning'])}}
                                                 @endif

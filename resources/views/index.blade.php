@@ -38,11 +38,15 @@
                     <li class="nav-item"><a class="nav-link" href="#poster-tugas-akhir">Poster Tugas Akhir</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Draft_Proposal_TA/sample.pdf"
                             target="_blank">Download</a></li>
+                    @if (auth()->check())
+                    <li class="nav-item"><a class="nav-link" href="{{ URL::to('/logout') }}">Logout</a></li>
+                    @else
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Login
                         </a>
+
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="login-mahasiswa">Mahasiswa</a></li>
                             <li><a class="dropdown-item" href="login-dosen">Dosen</a></li>
@@ -50,13 +54,9 @@
                             <li><a class="dropdown-item" href="login-koordinator">Koordinator TA</a></li>
                             <li><a class="dropdown-item" href="login-koordinator-kp">Koordinator KP</a></li>
                             <li><a class="dropdown-item" href="login-koordinator-yudisium">Koordinator Yudisium</a></li>
-
-                            {{-- <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
                         </ul>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>
