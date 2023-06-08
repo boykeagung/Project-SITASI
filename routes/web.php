@@ -36,6 +36,8 @@ use App\Http\Controllers\MahasiswaYudisiumController;
 use App\Http\Controllers\YudisiumController;
 use App\Http\Controllers\DospemNilaiKPController;
 use App\Http\Controllers\NilaiDosPemController;
+use App\Http\Controllers\NilaiKoordinatorKPController;
+use App\Http\Controllers\NilaiSidangKPController;
 use App\Http\Controllers\Dosen_Residensi;
 use App\Http\Controllers\NilaiDosPemPerusahaanController;
 use App\Models\Bimbingan_kp;
@@ -225,7 +227,11 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::post('dashboard-mahasiswa-penilaian-kp/perusahaan', [NilaiDosPemPerusahaanController::class, 'store']);
     Route::get('dashboard-mahasiswa-edit-penilaian-kp-dospem-perusahaan/{id}', [NilaiDosPemPerusahaanController::class, 'edit']); //select
     Route::put('dashboard-mahasiswa-penilaian-kp/perusahaan/{id}', [NilaiDosPemPerusahaanController::class, 'update']);
-    Route::delete('dashboard-mahasiswa-penilaian-kp/perusahaan/{id}', [NilaiDosPemPerusahaanController::class, 'delete']); //delete
+    Route::delete('dashboard-mahasiswa-penilaian-kp/perusahaan/{id}', [NilaiDosPemPerusahaanController::class, 'delete']); //delete 
+
+    Route::get('dashboard-mahasiswa-tambah-penilaian-sidang-kp', [NilaiSidangKPController::class, 'create']);
+    Route::post('dashboard-mahasiswa-penilaian-kp/sidang', [NilaiSidangKPController::class, 'store']);
+
 
     #bimbingan_ta
     Route::get('dashboard-mahasiswa-bimbingan-ta', [BimbinganTAController::class, 'index']);
@@ -562,14 +568,14 @@ Route::group(['middleware' => ['auth', 'rolecek:koordinator-kp']], function () {
     Route::put('dashboard-koordinator-bimbingan-kp/{id}', [KoordinatorBimbinganKP::class, 'update']);
     Route::delete('dashboard-koordinator-bimbingan-kp/{id}', [KoordinatorBimbinganKP::class, 'delete']); //delete
 
-
     // Nilai
-    Route::get('dashboard-koordinator-penilaian-kp', [NilaiDosPemController::class, 'index']);
-    Route::get('dashboard-koordinator-tambah-penilaian-kp-dospem', [NilaiDosPemController::class, 'create']);
-    Route::post('dashboard-koordinator-penilaian-kp', [NilaiDosPemController::class, 'store']);
-    Route::get('dashboard-koordinator-edit-penilaian-kp-dospem/{id}', [NilaiDosPemController::class, 'edit']); //select
-    Route::put('dashboard-koordinator-penilaian-kp/{id}', [NilaiDosPemController::class, 'update']);
-    Route::delete('dashboard-koordinator-penilaian-kp/{id}', [NilaiDosPemController::class, 'delete']); //delete
+    Route::get('dashboard-koordinator-penilaian-kp', [NilaiKoordinatorKPController::class, 'index']);
+    Route::get('dashboard-koordinator-tambah-penilaian-kp', [NilaiKoordinatorKPController::class, 'create']);
+    Route::post('dashboard-koordinator-penilaian-kp', [NilaiKoordinatorKPController::class, 'store']);
+    Route::get('dashboard-koordinator-edit-penilaian-kp-dospem/{id}', [NilaiKoordinatorKPController::class, 'edit']); //select
+    Route::put('dashboard-koordinator-penilaian-kp/{id}', [NilaiKoordinatorKPController::class, 'update']);
+    Route::delete('dashboard-koordinator-penilaian-kp/{id}', [NilaiKoordinatorKPController::class, 'delete']); //delete
+
     //Form001
     Route::get('dashboard-koordinator-form-001', [KoordinatorKPForm001Controller::class, 'index']);
   
