@@ -342,7 +342,7 @@
                                                 <th>Nilai Akhir</th>
                                                 <th>Bukti Nilai</th>
                                                 <th>Edit</th>
-                                                <th>Delete</th>
+                                                {{-- <th>Delete</th> --}}
                                             </tr>
                                         </thead>
     
@@ -368,13 +368,13 @@
                                                 <td>
                                                     {{link_to('dashboard-mahasiswa-edit-penilaian-kp-dospem-perusahaan/'.$nilai->id,'Edit',['class'=>'btn btn-warning'])}}
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     {!!
                                                     Form::open(['url'=>'dashboard-mahasiswa-penilaian-kp/perusahaan/'.$nilai->id,'method'=>'delete'])!!}
                                                     {!! Form::submit('Delete',['class'=>'btn
                                                     btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
                                                     {!! Form::close()!!}
-                                                </td>
+                                                </td> --}}
                                             </tr>
                                             @endforeach
                                         </tbody>
