@@ -17,7 +17,7 @@
                     <div class="col-12 col-md-6 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Residensi Mahasiswa Tugas Akhir</h4>
+                                <h3>Residensi Mahasiswa Tugas Akhir</h3>
                             </div>
                             <div class="card-body table-responsive">
                                 <a href=<?php echo url('dashboard-mahasiswa-tambah-residensi-ta') ?>
@@ -46,7 +46,14 @@
                                             <td>{{$res->jam_masuk}}</td>
                                             <td>{{$res->jam_keluar}}</td>
                                             <td>
-                                                {{link_to('dashboard-mahasiswa-edit-residensi-ta/'.$res->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                @if($res->jam_keluar == null)
+                                                {{-- {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-secondary disabled'])}} --}}
+                                                <a href="{{'dashboard-mahasiswa-edit-residensi-ta/'.$res->id}}" class="btn btn-warning "><i class="far fa-edit"></i></a>
+                                                @else
+                                                {{-- {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-warning'])}} --}}
+                                                <a href="{{'dashboard-mahasiswa-edit-residensi-ta/'.$res->id}}" class="btn btn-secondary disabled"><i class="far fa-edit"></i></a>
+                                                @endif
+                                                {{-- {{link_to('dashboard-mahasiswa-edit-residensi-ta/'.$res->id,'Edit',['class'=>'btn btn-warning'])}} --}}
                                             </td>
                                             {{-- <td>
                                                 {!!

@@ -74,9 +74,8 @@ class TAController extends Controller
             TA::create($input);
 
             return redirect('dashboard-mahasiswa-proposal-ta')->with('success', 'Daftar TA created successfully.');
-            
         } catch (QueryException $e) {
-            abort(403, 'Anda hanya dapat mendaftar Tugas Akhir satu kali!. ');
+            abort(403, 'ANDA HANYA DAPAT MENDAFTAR TUGAS AKHIR SATU KALI!!!. ');
             // throw new \Exception('Terjadi kesalahan dalam menjalankan query. Sepertinya Anda belum mendaftar Tugas Akhir  '); 
         }
     }

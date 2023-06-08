@@ -38,7 +38,7 @@
                                             <th>Sinopsis/Draft Proposal Tugas Akhir</th>
                                             <th>Update At</th>
                                             <th>Action</th>
-                                            <th>Delete</th>
+                                            {{-- <th>Delete</th> --}}
                                         </tr>
                                     </thead>
 
@@ -55,7 +55,7 @@
                                             <td>{{$ta->penguji2}}</td>
                                             <td>{{$ta->judul}}</td>
                                             {{-- <td><a href="/Draft_TA_Sinopsis/{{ $ta->draft }}"
-                                                    target="_blank">{{$ta->draft}}</td> --}}
+                                            target="_blank">{{$ta->draft}}</td> --}}
                                             <td>
                                                 @if($ta->draft == null)
                                                 {{link_to('Draft_TA_Sinopsis/'.$ta->draft,'Lihat',['class'=>'btn btn-info disabled','target'=>'_blank'])}}
@@ -65,13 +65,19 @@
                                             </td>
                                             <td>{{$ta->updated_at}}</td>
                                             <td>
-                                                {{link_to('dashboard-koordinator-edit-ta/'.$ta->id,'Edit',['class'=>'btn btn-warning'])}}
-                                            </td>
-                                            <td>
                                                 {!!
                                                 Form::open(['url'=>'dashboard-koordinator-proposal-ta/'.$ta->id,'method'=>'delete'])!!}
-                                                {!! Form::submit('Delete',['class'=>'btn
-                                                btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a href="{{'dashboard-koordinator-edit-ta/'.$ta->id}}"
+                                                        class="btn btn-warning"><i class="far fa-edit"></i></a>
+                                                    {{-- {{link_to('dashboard-koordinator-edit-ta/'.$ta->id,'Edit ',['class'=>'btn btn-warning'])}}
+                                                    --}}
+                                                    {{-- <a class="btn btn-danger" type="submit" onclick="return confirm('Are you sure?')"><i
+                                                            class="fas fa-trash"></i></a> --}}
+
+                                                    {!! Form::submit('Delete',['class'=>'btn
+                                                    btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
+                                                </div>
                                                 {!! Form::close()!!}
                                             </td>
                                         </tr>
@@ -111,7 +117,7 @@
                                             <th>Komentar Penguji</th>
                                             <th>Update At</th>
                                             <th>Action</th>
-                                            <th>Delete</th>
+                                            {{-- <th>Delete</th> --}}
                                         </tr>
                                     </thead>
 
@@ -139,13 +145,14 @@
                                             <td>{{$pro->komentar2}}</td>
                                             <td>{{$pro->updated_at}}</td>
                                             <td>
-                                                {{link_to('dashboard-koordinator-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-warning'])}}
-                                            </td>
-                                            <td>
                                                 {!!
                                                 Form::open(['url'=>'dashboard-koordinator-proposal-ta/proposal/'.$pro->id,'method'=>'delete'])!!}
-                                                {!! Form::submit('Delete',['class'=>'btn
-                                                btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
+                                                <div class="btn-group" role="group"
+                                                    aria-label="Basic mixed styles example">
+                                                    {{link_to('dashboard-koordinator-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                    {!! Form::submit('Delete',['class'=>'btn
+                                                    btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
+                                                </div>
                                                 {!! Form::close()!!}
                                             </td>
                                         </tr>

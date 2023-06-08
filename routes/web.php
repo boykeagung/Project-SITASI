@@ -240,7 +240,7 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::get('dashboard-mahasiswa-edit-bimbingan-ta/{id}', [BimbinganTAController::class, 'edit']); //select
     Route::put('dashboard-mahasiswa-bimbingan-ta/{id}', [BimbinganTAController::class, 'update']); //update
     Route::get('dashboard-mahasiswa-bimbingan-ta-print', [BimbinganTAController::class, 'generate']);
-    
+
 
     #bimbingan_kp
     Route::get('dashboard-mahasiswa-bimbingan-kp', [BimbinganKPController::class, 'index']);
@@ -408,8 +408,8 @@ Route::group(['middleware' => ['auth', 'rolecek:koordinator']], function () {
     Route::get('dashboard-koordinator-sidang-ta-edit-data/{id}', [KoordinatorSidangTAController::class, 'edit']); //select
     Route::PUT('dashboard-koordinator-sidang-ta/{id}', [KoordinatorSidangTAController::class, 'update']); //update
     Route::delete('dashboard-koordinator-sidang-ta/{id}', [KoordinatorSidangTAController::class, 'delete']); //delete
-  
-  #profile
+
+    #profile
     Route::get('profile-koordinator', [ProfileController::class, 'index']);
 });
 
@@ -477,7 +477,7 @@ Route::group(['middleware' => ['auth', 'rolecek:dosen,koordinator,koordinator_kp
     Route::get('dashboard-dospeng-sidang-ta', [DospengSidangTAController::class, 'index']);
     Route::get('dashboard-dospeng-sidang-ta-edit-data/{id}', [DospengSidangTAController::class, 'edit']); //select
     Route::PUT('dashboard-dospeng-sidang-ta/{id}', [DospengSidangTAController::class, 'update']); //update
-  
+
     #profile
     Route::get('profile-dosen', [ProfileController::class, 'index']);
 });
@@ -507,8 +507,8 @@ Route::group(['middleware' => ['auth', 'rolecek:tu']], function () {
 
     //Sidang TA
     Route::get('dashboard-tu-sidang-ta', [TUProposalSeminarSidangController::class, 'indexSidangTA']);
-  
-  #profile
+
+    #profile
     Route::get('profile-tu', [ProfileController::class, 'index']);
 });
 
@@ -578,8 +578,8 @@ Route::group(['middleware' => ['auth', 'rolecek:koordinator-kp']], function () {
 
     //Form001
     Route::get('dashboard-koordinator-form-001', [KoordinatorKPForm001Controller::class, 'index']);
-  
-  //profile
+
+    //profile
     Route::get('profile-koordinator-kp', [ProfileController::class, 'index']);
 });
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa_Residensi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class Mahasiswa_Residensi_Controller extends Controller
 {
@@ -25,16 +26,22 @@ class Mahasiswa_Residensi_Controller extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'tanggal' => 'required',
-            'jam_masuk' => 'required'
-        ]);
+        try {
+            $this->validate($request, [
+                'tanggal' => 'required',
+                'jam_masuk' => 'required'
+            ]);
 
-        $input = $request->all();
+            $input = $request->all();
 
-        Mahasiswa_Residensi::create($input);
+            Mahasiswa_Residensi::create($input);
 
-        return redirect('dashboard-mahasiswa-residensi-ta')->with('success', 'Residensi Berhasil.');
+            return redirect('dashboard-mahasiswa-residensi-ta')->with('success', 'Residensi Berhasil.');
+        } catch (QueryException $e) {
+
+            abort(403, 'ANDA BELUM MENDAFTAR TUGAS AKHIR!!!.');
+            // throw new \Exception('Terjadi kesalahan dalam menjalankan query. Sepertinya Anda belum mendaftar Tugas Akhir  ');
+        }
     }
 
     public function edit($id)

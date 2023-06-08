@@ -49,7 +49,15 @@
                                             <th>{{$bkp->status_p1}}</th>
                                             {{-- <th>{{$bkp->status_p2}}</th> --}}
                                             <th>{{$bkp->updated_at}}</th>
-                                            <th>{{link_to('dashboard-mahasiswa-edit-bimbingan-kp/'.$bkp->id,'Edit',['class'=>'btn btn-warning'])}}
+                                            <th>
+                                                @if($bkp->status_p1 == 'Diterima')
+                                                {{-- {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-secondary disabled'])}} --}}
+                                                <a href="{{'dashboard-mahasiswa-edit-bimbingan-kp/'.$bkp->id}}" class="btn btn-secondary disabled"><i class="far fa-edit"></i></a>
+                                                @else
+                                                {{-- {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-warning'])}} --}}
+                                                <a href="{{'dashboard-mahasiswa-edit-bimbingan-kp/'.$bkp->id}}" class="btn btn-warning"><i class="far fa-edit"></i></a>
+                                                @endif
+                                                {{-- {{link_to('dashboard-mahasiswa-edit-bimbingan-kp/'.$bkp->id,'Edit',['class'=>'btn btn-warning'])}} --}}
                                             </th>
                                         </tr>
                                         @endforeach

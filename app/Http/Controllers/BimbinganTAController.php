@@ -55,7 +55,7 @@ class BimbinganTAController extends Controller
         bimbingan_ta::find($id)->update($input);
         return redirect('dashboard-mahasiswa-bimbingan-ta');
     }
-    
+
     public function generate()
     {
         $username = Auth::user()->username;

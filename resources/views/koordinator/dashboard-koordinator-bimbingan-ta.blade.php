@@ -36,6 +36,7 @@
                                             <th>Nama Lengkap</th>
                                             <th>Kegiatan</th>
                                             <th>Status</th>
+                                            <th>Update At</th>
                                             {{-- <th>Paraf Pembimbing 2</th> --}}
                                             <th>Action</th>
                                         </tr>
@@ -52,13 +53,16 @@
                                             <td>{{$bta->name}}</td>
                                             <td>{{$bta->kegiatan}}</td>
                                             <td>{{$bta->status}}</td>
+                                            <td>{{$bta->updated_at}}</td>
                                             {{-- <td>{{$bta->status_p2}}</td> --}}
                                             <td>
                                                 {!!
                                                 Form::open(['url'=>'dashboard-koordinator-bimbingan-ta/'.$bta->id,'method'=>'delete'])!!}
-                                                {{link_to('dashboard-koordinator-edit-bimbingan-ta/'.$bta->id,'Edit',['class'=>'btn btn-warning'])}}
-                                                {!! Form::submit('Delete',['class'=>'btn
-                                                btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    {{link_to('dashboard-koordinator-edit-bimbingan-ta/'.$bta->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                    {!! Form::submit('Delete',['class'=>'btn
+                                                    btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
+                                                </div>
                                                 {!! Form::close()!!}
                                             </td>
                                         </tr>

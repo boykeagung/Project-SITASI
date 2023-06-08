@@ -15,8 +15,9 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="{{ url('dashboard-mahasiswa-proposal-ta/proposal',$proposal->id) }}" method="POST"
-                    enctype="multipart/form-data">
+                <form class="needs-validation"
+                    action="{{ url('dashboard-mahasiswa-proposal-ta/proposal',$proposal->id) }}" method="POST"
+                    enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <input type="hidden" name="user_id" value="" required>
@@ -49,7 +50,10 @@
                                                     {{-- {!!
                                                                 Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
                                                     <input type="text" name="judul" placeholder="judul Tugas Akhir"
-                                                        class="form-control" value="{{$proposal->judul}}">
+                                                        class="form-control" value="{{$proposal->judul}}" required>
+                                                    <div class="invalid-feedback">
+                                                        Isi Judul Tugas Akhir.
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="inputProposal">Upload Proposal Tugas Akhir</label><br>
@@ -68,21 +72,30 @@
                                                                 Form::text('ruangan',null,['placeholder'=>'Ruangan','class'=>'form-control'])!!} --}}
                                                     <input type="text" name="ruangan"
                                                         placeholder="Ruangan Sidang Proposal Tugas Akhir"
-                                                        class="form-control" value="{{$proposal->ruangan}}">
+                                                        class="form-control" value="{{$proposal->ruangan}}" required>
+                                                    <div class="invalid-feedback">
+                                                        Isi Judul Tugas Akhir.
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="inputJamSidang">Jam Sidang</label><br>
                                                     {{-- {!!
                                                                 Form::time('jam_sidang',null,['placeholder'=>'NIP Dosen','class'=>'form-control'])!!} --}}
                                                     <input type="time" name="jam_sidang" class="form-control"
-                                                        value="{{$proposal->jam_sidang}}">
+                                                        value="{{$proposal->jam_sidang}}" required>
+                                                    <div class="invalid-feedback">
+                                                        Isi Jam Sidang Proposal Tugas Akhir.
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="inputTanggal">Tanggal Sidang</label><br>
                                                     {{-- {!!
                                                                 Form::date('tanggal_sidang',null,['placeholder'=>'Tanggal Sidang','class'=>'form-control'])!!} --}}
                                                     <input type="date" name="tanggal_sidang" class="form-control"
-                                                        value="{{$proposal->tanggal_sidang}}">
+                                                        value="{{$proposal->tanggal_sidang}}" required>
+                                                    <div class="invalid-feedback">
+                                                        Isi Tanggal Sidang Proposal Tugas Akhir.
+                                                    </div>
                                                 </div>
                                             </div>
 

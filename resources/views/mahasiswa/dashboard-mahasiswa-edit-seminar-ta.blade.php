@@ -15,8 +15,8 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="{{ url('dashboard-mahasiswa-seminar-ta',$seminar->id)}}" method="POST"
-                    enctype="multipart/form-data">
+                <form class="needs-validation" action="{{ url('dashboard-mahasiswa-seminar-ta',$seminar->id)}}"
+                    method="POST" enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <input type="hidden" name="user_id" value="" required>
@@ -54,7 +54,10 @@
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
                                                         <input type="text" value="{{$seminar->judul}}"
-                                                            class="form-control" name="judul">
+                                                            class="form-control" name="judul" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Judul Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJurnal">Jurnal Tugas Akhir</label><br>
@@ -83,21 +86,30 @@
                                                         {{-- {!!
                                                         Form::text('ruangan',null,['placeholder'=>'Ruangan','class'=>'form-control'])!!} --}}
                                                         <input type="text" value="{{$seminar->ruangan}}"
-                                                            class="form-control" name="ruangan">
+                                                            class="form-control" name="ruangan" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Ruangan Seminar Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJamseminar">Jam Seminar</label><br>
                                                         {{-- {!!
                                                         Form::time('jam_seminar',null,['placeholder'=>'NIP Dosen','class'=>'form-control'])!!} --}}
                                                         <input type="time" value="{{$seminar->jam_seminar}}"
-                                                            class="form-control" name="jam_seminar">
+                                                            class="form-control" name="jam_seminar" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Jam Seminar Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputTanggal">Tanggal Seminar</label><br>
                                                         {{-- {!!
                                                         Form::date('tanggal_seminar',null,['placeholder'=>'Tanggal Sidang','class'=>'form-control'])!!} --}}
                                                         <input type="date" value="{{$seminar->tanggal_seminar}}"
-                                                            class="form-control" name="tanggal_seminar">
+                                                            class="form-control" name="tanggal_seminar" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Tanggal Seminar Tugas Akhir.
+                                                        </div>
                                                     </div>
                                                 </div>
 

@@ -58,7 +58,8 @@
                                             <td>{{$kp->selesai_kp}}</td>
                                             <td>{{$kp->updated_at}}</td>
                                             <td>
-                                                {{link_to('dashboard-mahasiswa-edit-kp/'.$kp->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                {{-- {{link_to('dashboard-mahasiswa-edit-kp/'.$kp->id,'Edit',['class'=>'btn btn-warning'])}} --}}
+                                                <a href="{{'dashboard-mahasiswa-edit-kp/'.$kp->id}}" class="btn btn-warning "><i class="far fa-edit"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
