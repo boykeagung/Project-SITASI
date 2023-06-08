@@ -42,8 +42,8 @@
             <li class="{{ Request::is('dashboard-dospeng-sidang-ta') ? 'active' : '' }}"><a class="nav-link" href=<?php echo url('dashboard-dospeng-sidang-ta'); ?>><i
                         class="fas fa-book-reader"></i> <span>Sidang Tugas
                         Akhir</span></a></li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-dospenguji-residensi-ta'); ?>>
-                <i class="fa-solid fa-bars"></i> <span>Residensi Tugas Akhir</span></a></li>
+            {{-- <li><a class="nav-link" href=<?php echo url('dashboard-dospenguji-residensi-ta'); ?>>
+                <i class="fa-solid fa-bars"></i> <span>Residensi Tugas Akhir</span></a></li> --}}
                         <li class="menu-header ">Menu Dosen Penguji Kerja Praktik</li>
             <li class="{{ Request::is('dashboard-dospenguji-sidang-kp') ? 'active' : '' }}"><a class="nav-link" href=<?php echo url('dashboard-dospenguji-sidang-kp') ?>><i
                         class="fas fa-sticky-note"></i> <span>Sidang Kerja Praktik</span></a></li>
