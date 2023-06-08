@@ -66,6 +66,19 @@
             });
 
         </script>
+        <script>
+            $('#table3').css('display', 'table');
+            $('#table3').DataTable(
+                // paging: false,
+                // ordering: false,
+                // info: false,
+            );
+
+            $(".treeview").click(function () {
+                $('.media').collapse('show');
+            });
+
+        </script>
 
         <!-- Template JS File -->
         <script src="/assets/js/scripts.js"></script>

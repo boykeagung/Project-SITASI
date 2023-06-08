@@ -13,7 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('nilai_koordinator_kp', function (Blueprint $table) {
+            $table->id();
+            $table->string('username');
+            $table->string('name');
+            $table->string('sidang_penguji');
+            $table->string('sidang_pembimbing')->nullable();
+            $table->timestamps();
+            $table->foreign('username')->references('username')->on('users')->onDelete('cascade');
+            // $table->foreign('name')->references('name')->on('users')->onDelete('cascade');
+        });
     }
 
     /**

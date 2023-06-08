@@ -9,16 +9,17 @@
         @include('navbar')
 
         @include('sidebar.sidebar')
+        {{-- {!! Form::Open(['url'=>'dashboard-mahasiswa-seminar-ta'])!!} --}}
 
 
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="dashboard-mahasiswa-penilaian-kp/perusahaan" method="POST" enctype="multipart/form-data">
+                <form action="dashboard-mahasiswa-penilaian-kp/sidang" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="hidden" name="user_id" value="" required>
                     <div class="card-header row">
-                        <h3 class="section-title col-8">Input Nilai Kerja Praktik Dosen Perusahaan</h3>
+                        <h3 class="section-title col-8">Input Nilai Sidang Kerja Praktik</h3>
                     </div>
                     @if(count($errors) > 0)
                     <div class="alert alert-danger">
@@ -47,59 +48,20 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputDraft">Kepribdian</label>
+                                                        <label for="inputDraft">Nilai Sidang Penguji</label>
                                                         <br>
-                                                        <input type="text" class="form-control" name="kepribadian"
+                                                        <input type="text" class="form-control"
+                                                            name="sidang_penguji"
                                                             placeholder=" ">
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label for="inputDraft">Penguasaan Materi</label>
+                                                        <label for="inputDraft">Nilai Sidang Pembimbing</label>
                                                         <br>
                                                         <input type="text" class="form-control"
-                                                            name="penguasaan_materi"
+                                                            name="sidang_pembimbing"
                                                             placeholder=" ">
                                                     </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputDraft">Keterampilan</label>
-                                                        <br>
-                                                        <input type="text" class="form-control"
-                                                            name="keterampilan"
-                                                            placeholder=" ">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputDraft">Kreatifitas</label>
-                                                        <br>
-                                                        <input type="text" class="form-control"
-                                                            name="kreatifitas"
-                                                            placeholder=" ">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputDraft">Tanggung Jawab</label>
-                                                        <br>
-                                                        <input type="text" class="form-control"
-                                                            name="tanggung_jawab"
-                                                            placeholder=" ">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputDraft">Komunikasi</label>
-                                                        <br>
-                                                        <input type="text" class="form-control"
-                                                            name="komunikasi"
-                                                            placeholder=" ">
-                                                    </div>    
                                                 </div>
-
-                                                <div class="form-row"> 
-                                                    
-                                                    <div class="form-group col-md-6">
-                                                        <label for="">Upload Upload Nilai Kerja Praktik Oleh Dosen Pembimbing Perusahaan</label><br>
-                                                        <input class="form-control" type="file" name="pdf_nilai">
-                                                        <span>*File Upload yang diupload berupa pdf maksimal sebesar
-                                                            25MB</span>
-                                                    </div>
-                                                    
-                                                </div>
-
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         {!! Form::submit('Save',['class'=>'btn btn-primary mb-5
