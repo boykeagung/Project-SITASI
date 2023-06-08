@@ -325,41 +325,38 @@
                     <div class="col-12 col-md-6 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Nilai Kerja Praktik Dosen Pembimbing Persusahaan</h4>
+                                <h4>Nilai Sidang Kerja Praktik</h4>
                             </div>
                             <div class="card-body table-responsive">  
-                                <a href=<?php echo url('dashboard-mahasiswa-tambah-penilaian-kp-dospem-perusahaan') ?>
+                                <a href=<?php echo url('dashboard-mahasiswa-tambah-penilaian-sidang-kp') ?>
                                     class="btn btn-primary mb-3">
                                     <i class="fas fa-plus"></i> Tambah Nilai</a>
                                     <table class="table table-bordered table-striped" id="table2">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Kepribdian</th>
-                                                <th>Penguasaan Materi</th>
-                                                <th>Keterampilan</th>
-                                                <th>Kreatifitas</th>
-                                                <th>Tanggung Jawab</th>
-                                                <th>Komunikasi</th>
-                                                <th>Rata-rata</th>
-                                                <th>Nilai</th>
-                                                <th>Action</th>
+                                                <th>Nilai Dosen Pembimbing</th>
+                                                <th>Dosen Pembimbing Perusahaan</th>
+                                                <th>Sidang Penguji</th>
+                                                <th>Sidang Pembimbing</th>
+                                                <th>Bukti Nilai</th>
+                                                <th>Nilai Akhir</th>
+                                                <th>Edit</th>
                                                 <th>Delete</th>
                                             </tr>
                                         </thead>
     
                                         <tbody>
                                             <?php $no = 0?>
-                                            @foreach ($nilai_dospem_perusahaan as $nilai)
+                                            @foreach ($nilai_koordinator_kp as $nilai)
                                             <tr>
                                                 <td>{{1+$no++}}</td>
-                                                <td>{{$nilai->kepribadian}}</td>
-                                                <td>{{$nilai->penguasaan_materi}}</td>
-                                                <td>{{$nilai->keterampilan}}</td>
-                                                <td>{{$nilai->kreatifitas}}</td>
-                                                <td>{{$nilai->tanggung_jawab}}</td>
-                                                <td>{{$nilai->komunikasi}}</td>
+                                                <td>{{$rataDospem}}</td>
                                                 <td>{{$rataDospemPerusahaan}}</td>
+                                                <td>{{$nilai->sidang_penguji}}</td>
+                                                <td>{{$nilai->sidang_pembimbing}}</td>
+                                                <td>{{$temp}}</td>
+
                                                 <td>
                                                     @if($nilai->pdf_nilai == null)
                                                     {{link_to('Nilai_KP_Dospem_Perusahaan/'.$nilai->pdf_nilai,'File Belum Di Upload',['class'=>'btn btn-danger disabled','target'=>'_blank'])}}

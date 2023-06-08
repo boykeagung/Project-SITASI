@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\File;
 use Barryvdh\DomPDF\Facade\Pdf; 
 use App\Models\NilaiDosPem;
 use App\Models\NilaiDosPemPerusahaan;
+use App\Models\NilaiKoordinatorKP;
+
 
 class NilaiDosPemController extends Controller
 {
@@ -18,18 +20,40 @@ class NilaiDosPemController extends Controller
         $username = Auth::user()->username;
         $data['nilai_dospem'] = NilaiDosPem::all()->where('username', '=', $username);
         $data['nilai_dospem_perusahaan'] = NilaiDosPemPerusahaan::all()->where('username', '=', $username);
+        $data['nilai_koordinator_kp'] = NilaiKoordinatorKP::all()->where('username', '=', $username);
 
         //Nilai rata-rata
-        $nilaiDospem = NilaiDosPem::sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan 
-        + kreatifitas + tanggung_jawab + komunikasi) / 6'));  
+        $nilaiDospem = NilaiDosPem::
+        where('username', '=', $username)
+        ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6')); 
         $rataDospem = round($nilaiDospem, 2);
 
-        $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan 
-        + kreatifitas + tanggung_jawab + komunikasi) / 6'));
+        $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::where('username', '=', $username)
+        ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6'));
         $rataDospemPerusahaan = round($nilaiDospemPerusahaan, 2);
+
+        $akhir = ($rataDospemPerusahaan + $rataDospem) / 2;
+
+        if ($akhir <= 39 ) {
+			$temp = 'E';
+		} else if ($akhir <= 49) {
+			$temp = 'D';
+		} else if ($akhir <= 59) {
+			$temp = 'C';
+		} else if ($akhir <= 64) {
+			$temp = 'BC';
+		} else if ($akhir <= 73) {
+            $temp = 'B';
+        }
+        else if ($akhir <= 79) {
+			$temp = 'AB';
+        }
+        else if ($akhir <= 80) {
+			$temp = 'A';
+        }
         
 
-        return view('mahasiswa.dashboard-mahasiswa-penilaian-kp', $data, ['rataDospem'=>$rataDospem,'rataDospemPerusahaan'=>$rataDospemPerusahaan]);
+        return view('mahasiswa.dashboard-mahasiswa-penilaian-kp', $data, ['rataDospem'=>$rataDospem,'rataDospemPerusahaan'=>$rataDospemPerusahaan, 'temp'=>$temp]);
     }
 
     public function create()

@@ -6,6 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form Bimbingan Tugas Akhir</title>
     <style>
+
+        @font-face {
+            font-family: Gothic; src: url('public/Fonts/century_gothic.ttf');
+            font-family: Calibri; src: url('../Fonts/calibri_regular.ttf');
+            font-family: TNR; src: url('../Fonts/times new roman.ttf');
+        }
+        
         .center {
             margin: auto;
             width: 50%;
@@ -182,7 +189,7 @@
                 <tr>
                     <td>
                         <table  style="width:100% border: 1px solid white; ">
-                            <tr>
+                            <tr style="padding">
                                 <td class="padding p4 shrink td-border">Nama:</td>
                             </tr>
                             <tr>
@@ -205,95 +212,73 @@
             </table>
         </div>
 
-        {{-- <div style="margin:5px" >
+        <div style="margin-top:25">
+            <table class="table table-bordered" id="table1" style="width:100%">
+                <thead>
+                    <tr style="font-size:13">
+                        <th class="table-title">No</th>
+                        <th >Waktu Bimbingan</th>
+                        <th>Kegiatan Bimbingan</th>
+                        <th>Paraf Pembimbing</th>
+
+                    </tr>
+ 
+                </thead>
         
-            <table style="width:100% " >
-                <tr>
-                  <th class="No">No.</th>
-                  <th style="width:70%">Jenis Penilaian</th>
-                  <th style="width: 35%">Nilai*</th>
-                </tr>
-                <tr>
-                  <td class="No" style="text-align: center;">1.</td>
-                  <td>KEPRIBADIAN</td>
-                  <td style="text-align: center;">80</td>
-                </tr>
-                <tr>
-                  <td class="No" style="text-align: center;">2.</td>
-                  <td> PENGUASAAN MATERI</td>
-                  <td></td>
-                </tr>
-                <tr>
-                    <td class="No" style="text-align: center;">3.</td>
-                    <td>KETERAMPILAN</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="No" style="text-align: center;">4.</td>
-                    <td>KREATIFITAS MAHASISWA</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="No" style="text-align: center;">5.</td>
-                    <td>TANGGUNG JAWAB DALAM KERJA PRAKTIK</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="No" style="text-align: center;">6.</td>
-                    <td>KOMUNIKASI</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="No" style="text-align: center;">7.</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="No" style="text-align: center;">8.</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="No" style="text-align: center;">9.</td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <tbody>
+                    <?php $no = 0?>
+                    @foreach ($bimbingan_ta as $bta)
+                    <tr>
+                        <td style="text-align: center">{{1+$no++}}</td>
+                        <td style="text-align: center">{{$bta->tanggal_bimbingan}}</td>
+                        <td style="text-align: center">{{$bta->kegiatan}}</td>
+                        <td style="text-align: center"></td>
+                        {{-- <td>{{$bta->status}}</td> --}}
+                    </tr>
+                    @endforeach
+        
+                </tbody>
+            </table>
+        </div>
 
-              </table>
-
+        {{-- <div>
+            <table style="width: 100%; margin-top: 10px; font-size: 0.8em;" border="1px" id="table1" >
+                <thead>
+                    <tr align ="center" >
+                        <th style="padding:2.5px; width: 10%;" rowspan="2">No</th>
+                        <th style="padding:2.5px;" rowspan="2">Waktu Bimbingan</th>
+                        <th style="padding:2.5px; width: 55%;" rowspan="2">Kegiatan Bimbingan</th>
+                        <th style="padding:2.5px;" colspan="2">RParaf Bimbingan</th>
+                    </tr>
+                    <tr>
+                        <th>Rs.</th>
+                        <th>P.</th>
+                    </tr>
+                </thead>
+                
+    
+                <tbody>
+                    <?php $no = 0?>
+                    @foreach ($bimbingan_ta as $bta)
+                    <tr> 
+                        <td style="text-align: center">{{1+$no++}}</td>
+                        <td style="text-align: center">{{$bta->tanggal_bimbingan}}</td>
+                        <td style="text-align: center">{{$bta->kegiatan}}</td>
+                        <td style="text-align: center">.</td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+    
         </div> --}}
 
-    <table class="table table-bordered" id="table1">
-        <thead>
-            <tr>
-                <th>ID Bimbingan TA</th>
-                <th>ID TA</th>
-                <th>Tanggal Bimbingan</th>
-                <th>Kegiatan Bimbingan</th>
-                <th>Status</th>
-                {{-- <th>Paraf Pembimbing 2</th> --}}
-                <th>Update At</th>
-                {{-- <th>Action</th> --}}
-                {{-- <th>delete</th> --}}
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach ($bimbingan_ta as $bta)
-            <tr>
-                <th>{{$bta->id_bta}}</th>
-                <th>{{$bta->id_ta}}</th>
-                <th>{{$bta->tanggal_bimbingan}}</th>
-                <th>{{$bta->kegiatan}}</th>
-                <th>{{$bta->status}}</th>
-                {{-- <th>{{$bta->status_p2}}</th> --}}
-                <th>{{$bta->updated_at}}</th>
-                {{-- <th>{{link_to('dashboard-mahasiswa-edit-bimbingan-ta/'.$bta->id,'Edit',['class'=>'btn btn-warning'])}} --}}
-                </th>
-            </tr>
-            @endforeach
-
-        </tbody>
-    </table>
+        
+        <div>
+            <p style="font-size:11">
+                Catatan: <br>
+                1. Minimum bimbingan untuk bimbingan Tugas Akhir adalah 8x untuk setiap dosen pembimbing
+            </p>
+        </div>
+    
 </body>
 </html>

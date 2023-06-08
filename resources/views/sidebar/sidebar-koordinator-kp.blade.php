@@ -9,10 +9,6 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Management Kerja Praktik</li>
-            <li><a class="nav-link" href=<?php echo url('dashboard-koordinator-kp'); ?>><i
-                        class="fas fa-sticky-note"></i>
-                    <span>Permohonan Surat
-                        Rekomendasi</span></a></li>
             <li class="{{ Request::is('dashboard-koordinator-kp') ? 'active' : '' }}"><a class="nav-link"
                     href=<?php echo url('dashboard-koordinator-kp'); ?>><i class="fas fa-sticky-note"></i> <span>Daftar
                         Kerja
@@ -26,6 +22,11 @@
                     href=<?php echo url('dashboard-koordinator-bimbingan-kp'); ?>><i class="fas fa-book-open"></i>
                     <span>Bimbingan Kerja Praktik</span></a></li>
             </li>
+            
+            <li class="{{ Request::is('dashboard-koordinator-penilaian-kp') ? 'active' : '' }}"><a class="nav-link"
+                href=<?php echo url('dashboard-koordinator-penilaian-kp'); ?>><i class="fas fa-book-open"></i>
+                <span>Nilai Kerja Praktik</span></a></li>
+        </li>
             <li class="menu-header">Informasi</li>
             <li class="{{ Request::is('profile-tu') ? 'active' : '' }}"><a class="nav-link"
                 href=<?php echo url('profile-tu'); ?>><i class="fas fa-user-alt"></i>
