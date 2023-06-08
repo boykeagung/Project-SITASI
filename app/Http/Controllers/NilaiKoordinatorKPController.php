@@ -71,25 +71,5 @@ class NilaiKoordinatorKPController extends Controller
         return view('koordinator_kp.dashboard-koordinator-tambah-penilaian-kp');
     }
 
-    public function nilai() {
-        if ($nilai <= 39 ) {
-			$temp = 'E';
-		} else if ($nilai <= 49) {
-			$temp = 'D';
-		} else if ($nilai <= 59) {
-			$temp = 'C';
-		} else if ($nilai <= 64) {
-			$temp = 'BC';
-		} else if ($nilai <= 73) {
-            $temp = 'B';
-        }
-        else if ($nilai <= 79) {
-			$temp = 'AB';
-        }
-        else if ($nilai <= 80) {
-			$temp = 'A';
-        }
-        
-		return $temp;
-	}
+    
 }

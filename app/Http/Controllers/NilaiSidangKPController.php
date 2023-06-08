@@ -12,27 +12,6 @@ use App\Models\NilaiKoordinatorKP;
 
 class NilaiSidangKPController extends Controller
 {
-    // public function index()
-    // {
-
-    //     $username = Auth::user()->username;
-    //     $data['nilai_dospem'] = NilaiDosPem::all()->where('username', '=', $username);
-    //     $data['nilai_dospem_perusahaan'] = NilaiDosPemPerusahaan::all()->where('username', '=', $username);
-    //     $data['nilai_koordinator_kp'] = NilaiKoordinatorKP::all()->where('username', '=', $username);
-
-    //     //Nilai rata-rata
-    //     $nilaiDospem = NilaiDosPem::
-    //     where('username', '=', $username)
-    //     ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6')); 
-    //     $rataDospem = round($nilaiDospem, 2);
-
-    //     $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::where('username', '=', $username)
-    //     ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6'));
-    //     $rataDospemPerusahaan = round($nilaiDospemPerusahaan, 2);
-        
-
-    //     return view('mahasiswa.dashboard-mahasiswa-penilaian-kp', $data, ['rataDospem'=>$rataDospem,'rataDospemPerusahaan'=>$rataDospemPerusahaan]);
-    // }
 
     public function create()
     {
