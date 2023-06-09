@@ -23,8 +23,7 @@ class NilaiDosPemController extends Controller
         $data['nilai_koordinator_kp'] = NilaiKoordinatorKP::all()->where('username', '=', $username);
 
         //Nilai rata-rata Dosen Pembimbing
-        $nilaiDospem = NilaiDosPem::
-        where('username', '=', $username)
+        $nilaiDospem = NilaiDosPem::where('username', '=', $username)
         ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6')); 
         $rataDospem = round($nilaiDospem, 2);
 
@@ -33,14 +32,15 @@ class NilaiDosPemController extends Controller
         ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6'));
         $rataDospemPerusahaan = round($nilaiDospemPerusahaan, 2);
 
-        //Nilai Dosen Pembimbing Perusahaan + Dosen Pembimbing Perusahaan
+        //Nilai (Dosen Pembimbing Perusahaan + Dosen Pembimbing Perusahaan) / 2
         $akhirPem = ($rataDospemPerusahaan + $rataDospem) / 2;
 
         //Nilai rata-rata Sidang
         $rataSidang = NilaiKoordinatorKP::where('username', '=', $username)
         ->sum(\DB::raw('(sidang_penguji + sidang_pembimbing) / 2'));
 
-        $nilaiAkhir = ($akhirPem + $rataSidang) /2;
+        //Nilai Akhir
+        $nilaiAkhir = ($akhirPem + $rataSidang) / 2;
 
 
         //Convert Nilai
