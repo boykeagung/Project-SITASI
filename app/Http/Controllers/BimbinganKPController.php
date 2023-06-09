@@ -58,8 +58,15 @@ class BimbinganKPController extends Controller
     public function generate()
     {
         $username = Auth::user()->username;
+<<<<<<< HEAD
         $data['bimbingan_kp'] = Bimbingan_kp::all()->Bimbingan_kp::all()->where('id_kp', '=', "KP$username");
         $pdf = PDF::loadView('mahasiswa.dashboard-mahasiswa-bimbingan-kp-print', $data);
+=======
+
+        $data['bimbingan_kp'] = Bimbingan_kp::all()->where('id_kp', '=', "KP$username");
+        $pdf = PDF::loadView('mahasiswa.dashboard-mahasiswa-bimbingan-kp-print', $data);
+      
+>>>>>>> 02b584aed4682e50bc816187403c45023eea9839
         return $pdf->stream();
     }
 }

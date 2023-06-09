@@ -22,7 +22,11 @@
                             <div class="card-body table-responsive">
                                 <a href=<?php echo url('dashboard-mahasiswa-tambah-bimbingan-kp') ?> class="btn btn-primary mb-3">
                                     <i class="fas fa-plus"></i> Tambah Data</a>
+<<<<<<< HEAD
                                 <a href=<?php echo url('dashboard-mahasiswa-bimbingan-kp-print') ?> class="btn btn-warning mb-3">
+=======
+                                <a href=<?php echo url('dashboard-mahasiswa-bimbingan-kp-print') ?> class="btn btn-warning mb-3" target='_blank'>
+>>>>>>> 02b584aed4682e50bc816187403c45023eea9839
                                     <i class="fas fa-plus"></i> Print</a>
                                 <table class="table table-bordered" id="table1">
                                     <thead>
