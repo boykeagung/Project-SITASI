@@ -40,17 +40,17 @@
             <li class="{{ Request::is('dashboard-mahasiswa-kp') ? 'active' : '' }}"><a class="nav-link"
                     href=<?php echo url('dashboard-mahasiswa-kp'); ?>><i class="fas fa-sticky-note"></i>
                     <span>Daftar Kerja Praktik</span></a></li>
-            <li class="{{ Request::is('dashboard-mahasiswa-sidang-kp') ? 'active' : '' }}"><a class="nav-link"
-                    href=<?php echo url('dashboard-mahasiswa-sidang-kp'); ?>><i class="fas fa-book-open"></i>
-                    <span>Sidang Kerja
-                        Praktik</span></a></li>
-            <li class="{{ Request::is('dashboard-mahasiswa-penilaian-kp') ? 'active' : '' }}"><a class="nav-link"
-                    href=<?php echo url('dashboard-mahasiswa-penilaian-kp'); ?>><i class="fas fa-book-open"></i>
-                    <span>Input Nilai Kerja
-                        Praktik</span></a></li>
             <li class="{{ Request::is('dashboard-mahasiswa-bimbingan-kp') ? 'active' : '' }}"><a class="nav-link"
                     href=<?php echo url('dashboard-mahasiswa-bimbingan-kp'); ?>><i class="fas fa-book-open"></i>
                     <span>Bimbingan Kerja Praktik</span></a></li>
+            <li class="{{ Request::is('dashboard-mahasiswa-sidang-kp') ? 'active' : '' }}"><a class="nav-link"
+                href=<?php echo url('dashboard-mahasiswa-sidang-kp'); ?>><i class="fas fa-book-open"></i>
+                <span>Sidang Kerja
+                        Praktik</span></a></li>
+            <li class="{{ Request::is('dashboard-mahasiswa-penilaian-kp') ? 'active' : '' }}"><a class="nav-link"
+                href=<?php echo url('dashboard-mahasiswa-penilaian-kp'); ?>><i class="fas fa-book-open"></i>
+                <span>Input Nilai Kerja
+                        Praktik</span></a></li>
             <li class="menu-header">Yudisium</li>
             <li class="{{ Request::is('dashboard-mahasiswa-yudisium') ? 'active' : '' }}"><a class="nav-link"
                     href=<?php echo url('dashboard-mahasiswa-yudisium'); ?>><i class="fas fa-graduation-cap"></i>
