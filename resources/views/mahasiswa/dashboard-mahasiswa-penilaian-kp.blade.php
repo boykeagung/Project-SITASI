@@ -161,7 +161,7 @@
                                 <div class="col ml px-5">
                                     <div class="row">
                                         <div class="row card-header mb-3">
-                                            <h4 class="col">Nilai Kerja Praktik Dosen Pembimbing</h4>
+                                            <h4 class="col">Nilai Kerja Praktik Dosen Pembimbing Perusahaan</h4>
                                         </div>
                                         <div class="col">
                                             
