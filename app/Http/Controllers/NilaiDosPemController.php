@@ -148,17 +148,17 @@ class NilaiDosPemController extends Controller
     // }
 
 
-    public function generateNilai($id)
-    {
-        $data['kp_form001'] = Form001::findOrFail($id)
-            ->select('username', 'nama' ,'perusahaan1', 'alamat_perusahaan1', 'bidang_perusahaan1','perusahaan2', 'alamat_perusahaan2', 'bidang_perusahaan2')
-            ->where('id', '=', $id)
-            ->get($id);
-        $pdf = PDF::loadView('mahasiswa.generate_nilai_kp', $data);
-        return $pdf->stream();
+    // public function generateNilai($id)
+    // {
+    //     $data['kp_form001'] = Form001::findOrFail($id)
+    //         ->select('username', 'nama' ,'perusahaan1', 'alamat_perusahaan1', 'bidang_perusahaan1','perusahaan2', 'alamat_perusahaan2', 'bidang_perusahaan2')
+    //         ->where('id', '=', $id)
+    //         ->get($id);
+    //     $pdf = PDF::loadView('mahasiswa.generate_nilai_kp', $data);
+    //     return $pdf->stream();
 
              
-    }
+    // }
 
    
 
