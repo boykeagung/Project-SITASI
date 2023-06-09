@@ -86,13 +86,13 @@
             /* padding-top: 0.1in; */
         }
 
-        .tab-I {
-            display: inline-block;
-            margin-left: 32px;
-        }
-        .tab-II {
+        .tab-nama {
             display: inline-block;
             margin-left: 27px;
+        }
+        .tab-nrp {
+            display: inline-block;
+            margin-left: 32px;
         }
         .tab-III {
             display: inline-block;
@@ -158,6 +158,26 @@
         display: table;
         clear: both;
         }
+        .col {
+        float: left;
+        width: 50%;
+        }
+
+        .col-left {
+        float: left;
+        width: 40%;
+        }
+        .col-right {
+        float: left;
+        width: 60%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
     
         </style>
 </head>
@@ -180,46 +200,34 @@
         
         <hr style="margin-left: 10px; margin-right: 10px">
 
-        <h4 style=" margin-top:2; text-align:center; font-weight: normal; font-size: 85%; text-decoration: underline;  ">
-            ABSENSI BIMBINGAN PELAKSANAAN TUGAS AKHIR (TA) *
-        </h4>
+        <h2 style=" margin-top:2; text-align:center; font-weight: normal; font-size: 100%; text-decoration: underline;  ">
+            DAFTAR HADIR BIMBINGAN PELAKSANAN KERJA PRAKTEK (KP) DI   {{}} <br>
+            PROGRAM STUDI SISTEM INFORMASI ITENAS BANDUNG <br>
+            
+        </h2>
 
-        <div>
-            <table style="width:100% ">
-                <tr>
-                    <td>
-                        <table  style="width:100% border: 1px solid white; ">
-                            <tr style="padding">
-                                <td class="padding p4 shrink td-border">Nama:</td>
-                            </tr>
-                            <tr>
-                                <td class="padding p4 shrink td-border">NRP:</td>
-                            </tr>
-                            <tr>
-                                <td class="padding p4 shrink td-border">Judul Tugas Akhir:</td>
-                            </tr>
-                            <tr>
-                                <td class="padding p4 shrink td-border">Nama Dosen Pembimbing:</td>
-                            </tr>
-                            <tr>
-                                <td class="padding p4 shrink td-border">Ko.Pembimbing:</td>
-                            </tr>
-                        </table>  
-                    </td>
-                    <td style=" border-left: 1px solid; border-top: 1px solid;border-bottom: 1px solid;">
-                    </td>
-                </tr>
-            </table>
+        <div class="row">
+            <div class="col-left">
+                <p>Nama <span class="tab-nama"></span>      :</td> </p>
+                <p>NRP <span class="tab-nrp"></span>       :</td> </p>
+            </div>
+            <div class="col-right">
+                <p>Nama Dosen Pembimbing : </p>
+                <p>Bidang Kompetensi : </p>
+
+            </div>
+            
+
         </div>
 
         <div style="margin-top:25">
             <table class="table table-bordered" id="table1" style="width:100%">
                 <thead>
                     <tr style="font-size:13">
-                        <th class="table-title">No</th>
-                        <th >Waktu Bimbingan</th>
-                        <th>Kegiatan Bimbingan</th>
-                        <th>Paraf Pembimbing</th>
+                        <th class="width:1%">No</th>
+                        <th style="padding:10px;">Waktu Bimbingan</th>
+                        <th style="padding:10px; width: 55%">Kegiatan Bimbingan</th>
+                        <th style="padding:10px;">Tanda Tangan Pembimbing</th>
 
                     </tr>
  
@@ -227,13 +235,12 @@
         
                 <tbody>
                     <?php $no = 0?>
-                    @foreach ($bimbingan_ta as $bta)
+                    @foreach ($bimbingan_kp as $bkp)
                     <tr>
-                        <td style="text-align: center">{{1+$no++}}</td>
-                        <td style="text-align: center">{{$bta->tanggal_bimbingan}}</td>
-                        <td style="text-align: center">{{$bta->kegiatan}}</td>
+                        <td style="text-align: center;">{{1+$no++}}</td>
+                        <td style="text-align: center; padding:15">{{$bkp->tanggal_bimbingan}}</td>
+                        <td style="text-align: center">{{$bkp->kegiatan}}</td>
                         <td style="text-align: center"></td>
-                        {{-- <td>{{$bta->status}}</td> --}}
                     </tr>
                     @endforeach
         
@@ -241,42 +248,13 @@
             </table>
         </div>
 
-        {{-- <div>
-            <table style="width: 100%; margin-top: 10px; font-size: 0.8em;" border="1px" id="table1" >
-                <thead>
-                    <tr align ="center" >
-                        <th style="padding:2.5px; width: 10%;" rowspan="2">No</th>
-                        <th style="padding:2.5px;" rowspan="2">Waktu Bimbingan</th>
-                        <th style="padding:2.5px; width: 55%;" rowspan="2">Kegiatan Bimbingan</th>
-                        <th style="padding:2.5px;" colspan="2">RParaf Bimbingan</th>
-                    </tr>
-                    <tr>
-                        <th>Rs.</th>
-                        <th>P.</th>
-                    </tr>
-                </thead>
-                
-    
-                <tbody>
-                    <?php $no = 0?>
-                    @foreach ($bimbingan_ta as $bta)
-                    <tr> 
-                        <td style="text-align: center">{{1+$no++}}</td>
-                        <td style="text-align: center">{{$bta->tanggal_bimbingan}}</td>
-                        <td style="text-align: center">{{$bta->kegiatan}}</td>
-                        <td style="text-align: center">.</td>
-                    </tr>
-                   
-                </tbody>
-            </table>
-    
-        </div> --}}
-
-        
         <div>
             <p style="font-size:11">
                 Catatan: <br>
-                1. Minimum bimbingan untuk bimbingan Tugas Akhir adalah 8x untuk setiap dosen pembimbing
+                1. Minimum bimbingan untuk Kerja Praktek adalah 4x dan untuk bimbingan Tugas Akhir adalah 6x untuk setiap dosen pembimbing <br>
+                2. Absensi bimbingan ini menentukan tingkat keabsahan Kerja Praktik. <br>
+                Keterangan: *) Coret yang tidak perlu
+
             </p>
         </div>
     
