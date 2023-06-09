@@ -355,7 +355,7 @@
                                                 <td>{{$rataDospemPerusahaan}}</td>
                                                 <td>{{$nilai->sidang_penguji}}</td>
                                                 <td>{{$nilai->sidang_pembimbing}}</td>
-                                                <td>{{$temp}}</td>
+                                                <td>{{$}}</td>
                                                 <td>
                                                     @if($nilai->pdf_nilai == null)
                                                     {{link_to('Nilai_KP_Dospem_Perusahaan/'.$nilai->pdf_nilai,'File Belum Di Upload',['class'=>'btn btn-danger disabled','target'=>'_blank'])}}

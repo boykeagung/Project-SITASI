@@ -9,7 +9,8 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\NilaiDosPem;
 use App\Models\NilaiDosPemPerusahaan;
 use App\Models\NilaiKoordinatorKP;
-
+// use Illuminate\Support\Facades\DB;
+use DB;
 
 class NilaiDosPemController extends Controller
 {
@@ -62,9 +63,7 @@ class NilaiDosPemController extends Controller
 			$temp = 'A';
         }
         
-
-        return view('mahasiswa.dashboard-mahasiswa-penilaian-kp', $data, ['rataDospem'=>$rataDospem,'rataDospemPerusahaan'=>$rataDospemPerusahaan, 
-        'temp'=>$temp, 'nilaiAkhir'=>$nilaiAkhir]);
+        return view('mahasiswa.dashboard-mahasiswa-penilaian-kp', $data, ['rataDospem'=>$rataDospem,'rataDospemPerusahaan'=>$rataDospemPerusahaan, 'temp'=>$temp, 'nilaiAkhir'=>$nilaiAkhir]);
     }
 
     public function create()
@@ -151,43 +150,19 @@ class NilaiDosPemController extends Controller
 
     public function generateNilai($id)
     {
-        // $data['kp_form001'] = Form001::findOrFail($id)
-        //     ->select('username', 'nama' ,'perusahaan1', 'alamat_perusahaan1', 'bidang_perusahaan1','perusahaan2', 'alamat_perusahaan2', 'bidang_perusahaan2')
-        //     ->where('id', '=', $id)
-        //     ->get($id);
+        $data['kp_form001'] = Form001::findOrFail($id)
+            ->select('username', 'nama' ,'perusahaan1', 'alamat_perusahaan1', 'bidang_perusahaan1','perusahaan2', 'alamat_perusahaan2', 'bidang_perusahaan2')
+            ->where('id', '=', $id)
+            ->get($id);
         $pdf = PDF::loadView('mahasiswa.generate_nilai_kp', $data);
         return $pdf->stream();
 
              
     }
 
-    public function sum(Request $request){
-        $request["sum"] = $request->a + $request->b;
-        SumTable::store($request->all());
-
-        //OR
-        
-        $number_one = $request->a;
-        $number_two = $request->b;
-        $sum = $number_one + $number_two;
-        DB::table('yourtable')->insert(
-            ['one' => $number_one, 'two' => $number_two,'sum' => $sum]
-        );
-        
-        //OR
-        $table = new table; //modelname
-
-        $table->one = $number_one;
-        $table->two = $number_two;
-        $table->sum = $sum;
-
-        $table->save();
-        if(!$table)
-        return 0;   
-        else return 1;
+   
 
 
-     }
 
 
     
