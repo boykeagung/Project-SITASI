@@ -15,8 +15,8 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="{{ url('dashboard-mahasiswa-kp',$kp->id)}}" method="POST"
-                    enctype="multipart/form-data">
+                <form class="needs-validation" action="{{ url('dashboard-mahasiswa-kp',$kp->id)}}" method="POST"
+                    enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <input type="hidden" name="user_id" value="" required>
@@ -43,44 +43,68 @@
                                                         <label for="inputJudul">Nama Perusahaan<span
                                                                 style="color: red;">*</span></label>
                                                         <br>
-                                                        <input type="text" class="form-control" name="perusahaan" value="{{$kp->perusahaan}}"
-                                                            placeholder="Nama Perusahaan">
+                                                        <input type="text" class="form-control" name="perusahaan"
+                                                            value="{{$kp->perusahaan}}" placeholder="Nama Perusahaan"
+                                                            required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Nama Perusahaan Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Alamat Perusahaan<span
                                                                 style="color: red;">*</span></label>
                                                         <br>
-                                                        <input type="text" class="form-control" name="alamat_perusahaan" value="{{$kp->alamat_perusahaan}}"
-                                                            placeholder="alamat Perusahaan">
+                                                        <input type="text" class="form-control" name="alamat_perusahaan"
+                                                            value="{{$kp->alamat_perusahaan}}"
+                                                            placeholder="alamat Perusahaan" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Alamat perusahaan Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Bidang Perusahaan<span
                                                                 style="color: red;">*</span></label>
                                                         <br>
-                                                        <input type="text" class="form-control" name="bidang_perusahaan" value="{{$kp->bidang_perusahaan}}"
-                                                            placeholder="Bidang Perusahaan">
+                                                        <input type="text" class="form-control" name="bidang_perusahaan"
+                                                            value="{{$kp->bidang_perusahaan}}"
+                                                            placeholder="Bidang Perusahaan" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Bidang Perusahaan Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Pembimbing Perusahaan<span
                                                                 style="color: red;">*</span></label>
                                                         <br>
                                                         <input type="text" class="form-control"
-                                                            name="pembimbing_perusahaan" value="{{$kp->pembimbing_perusahaan}}"
-                                                            placeholder="Pembimbing Perusahaan">
+                                                            name="pembimbing_perusahaan"
+                                                            value="{{$kp->pembimbing_perusahaan}}"
+                                                            placeholder="Pembimbing Perusahaan" required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Nama Pembimbing Perusahaan Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Tanggal Mulai KP<span
                                                                 style="color: red;">*</span></label>
                                                         <br>
-                                                        <input type="date" class="form-control" name="mulai_kp" value="{{$kp->mulai_kp}}"
-                                                            placeholder="tanggal Mulai KP">
+                                                        <input type="date" class="form-control" name="mulai_kp"
+                                                            value="{{$kp->mulai_kp}}" placeholder="tanggal Mulai KP"
+                                                            required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Tanggal Mulai Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputDraft">Tanggal Selesai KP<span
                                                                 style="color: red;">*</span></label>
                                                         <br>
-                                                        <input type="date" class="form-control" name="selesai_kp" value="{{$kp->selesai_kp}}"
-                                                            placeholder="tanggal selesai KP">
+                                                        <input type="date" class="form-control" name="selesai_kp"
+                                                            value="{{$kp->selesai_kp}}" placeholder="tanggal selesai KP"
+                                                            required>
+                                                        <div class="invalid-feedback">
+                                                            Isi tanggal Selesai Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                 </div>
 

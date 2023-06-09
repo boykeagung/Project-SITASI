@@ -48,13 +48,14 @@
                                                                 style="color: red;">*</span></label><br>
                                                         {{-- {!!
                                                         Form::text('id_ta',null,['placeholder'=>'Kode Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <select class="form-select" name="id_ta" id="select1" required>
+                                                        <input type="text" class="form-control" name="id_ta" value="{{$proposal->id_ta}}" readonly>
+                                                        {{-- <select class="form-select" name="id_ta" id="select1" required>
                                                             <option selected>{{$proposal->id_ta}}</option>
                                                             @foreach($ta as $ta)
                                                             <option value="{{$ta->id_ta}}">{{$ta->id_ta}} {{$ta->name}}
                                                             </option>
                                                             @endforeach
-                                                        </select>
+                                                        </select> --}}
                                                         <div class="invalid-feedback">
                                                             Pilih ID TA Mahasiswa.
                                                         </div>

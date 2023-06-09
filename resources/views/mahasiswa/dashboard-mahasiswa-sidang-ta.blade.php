@@ -13,132 +13,65 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary mb-0">
-                <form action="#" method="POST">
-                    <input type="hidden" name="user_id" value="" required>
-                    <div class="card-header row">
-                        <h3 class="section-title col-8">Daftar Sidang Tugas Akhir</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="accordion-pendaftaran">
-                            <div class="accordion-pendaftaran-item">
-                                <div class="accordion-pendaftaran-header card-header p-0">
-                                    <h4>Input Data Mahasiswa</h4>
-                                </div>
-                                <div class="accordion-pendaftaran-item-body">
-                                    <div class="accordion-pendaftaran-item-content">
-                                        <div class="data-mahasiswa">
-                                            <div class="form-group">
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputID_Sidang_TA">ID Sidang Tugas Akhir</label>
-                                                        <input type="text" class="form-control" id="inputID_Sidang_TA" 
-                                                        placeholder="ID Sidang Tugas Akhir" value="">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputID_TA">ID Tugas Akhir</label>
-                                                        <input type="text" class="form-control" id="inputID_TA"
-                                                        placeholder="ID Tugas Akhir" value="">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputJudul">Judul</label>
-                                                        <input type="text" class="form-control" id="inputJudul"
-                                                        placeholder="Judul" value="">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputFile" class="form-label">Buku TA</label>
-                                                        <br>
-                                                        {!!
-                                                        Form::File('Buku TA')!!}
-                                                        <br>
-                                                        <span class="text-red"> *File Upload yang diperbolehkan nya .PDF </span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <button type="submit" class="btn btn-primary mb-5 mt-3">Tambah Data</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-primary mb-0">
                             <div class="card-header">
-                                <h4>Kegiatan Tugas Akhir</h4>
+                                <h3>Sidang Tugas Akhir</h3>
                             </div>
                             <div class="card-body table-responsive">
-                                <table class="table table-bordered table-responsive table-striped" id="table1">
+                                <a href=<?php echo url('dashboard-mahasiswa-sidang-ta-tambah-data') ?>
+                                    class="btn btn-primary mb-3"> <i class="fas fa-plus"></i> Tambah Data</a>
+                                <table class="table table-bordered" id="table1">
                                     <thead>
                                         <tr>
-                                            <th>Tahap TA</th>
-                                            <th class="col-md-3">Judul TA</th>
-                                            <th class="col-md-2">Files</th>
-                                            <th>Status Approval</th>
+                                            <th>No</th>
+                                            <th>ID Sidang TA</th>
+                                            <th>ID TA</th>
+                                            <th>Judul TA</th>
+                                            <th>Buku TA</th>
+                                            <th>Ruangan</th>
+                                            <th>Jam Sidang</th>
                                             <th>Jadwal Sidang</th>
-                                            <th>Dosen Penguji 1</th>
-                                            <th>Dosen Penguji 2</th>
-                                            <th>Action</th>
-                                            <th>Timestamp Penyimpanan</th>
+                                            <th>Status</th>
+                                            <th>Update At</th>
+                                            <th colspan="1" class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $no = 0?>
+                                        @foreach ($sidang_ta as $no => $sta)
                                         <tr>
-                                            <td style="width:5%">Sidang Tugas Akhir</td>
-                                            <td>JUDUL TA</td>
+                                            <td>{{1+$no++}}</td>
+                                            <td>{{$sta->id_sidang_ta}}</td>
+                                            <td>{{$sta->id_ta}}</td>
+                                            <td>{{$sta->judul}}</td>
                                             <td>
-                                                <!--DIPAKAI KALO BELUM UPLOAD DRAFT, PERLU KONDISI-->
-                                                <a href="#" class="btn btn-primary"><i class="fas fa-plus"></i>
-                                                    Upload Draft</a>
-                                                <!--DIPAKAI KALO UDAH UPLOAD DRAFT, PERLU KONDISI-->
-                                                <!---<a href="#" class="btn btn-primary" target="_blank"><i class="fas fa-eye"></i> Lihat Draf</a>-->
-                                                <!--DIPAKAI KALO BELUM UPLOAD FILE PENGAJUAN SIDANG, PERLU KONDISI-->
-                                                <a href="upload-form-pengajuan-sidang.html"
-                                                    class="btn btn-primary mt-2"><i class="fas fa-plus"></i>
-                                                    Upload Form Pengajuan Sidang</a>
-                                                <!--DIPAKAI KALO UDAH UPLOAD FILE PENGAJUAN SIDANG, PERLU KONDISI-->
-                                                <!---<a href="#" class="btn btn-primary" target="_blank"><i class="fas fa-eye"></i> Lihat Form Pengajuan Sidang</a>-->
-
+                                                <a href="{{'Draft_Buku_TA/'.$sta->buku_ta}}" class="btn btn-info"
+                                                    target="_blank"><i class="fas fa-eye"></i></a>
                                             </td>
-                                            <td>
-                                                <!--BAGIAN INI SESUAIKAN DENGAN APPROVAL DARI KOORDINATOR TA-->
-                                                <button class="btn btn-secondary" disabled>Belum Ada File</button>
-                                                <!-- <button class="btn btn-warning" disabled>Menunggu</button> -->
-                                                <!--<button class="btn btn-success" disabled>Approved</button>-->
-                                                <!--<button class="btn btn-danger" disabled>Di Tolak</button>-->
-                                            </td>
-                                            <td>
-                                                <!--GUNAKAN INI JIKA BELUM ADA DATA JADWAL-->
-                                                Belum ada tanggal
-                                                <!--GUNAKAN INI JIKA ADA DATA JADWAL-->
-                                                <!--<p>JADWAL SIDANG</p>-->
-                                            </td>
-                                            <td>
-                                                <!--GUNAKAN INI JIKA BELUM ADA DATA DOSEN PENGUJI 1-->
-                                                Belum ada Dosen Penguji 1
-                                                <!--GUNAKAN INI JIKA ADA DATA DOSEN PENGUJI 1-->
-                                                <!--<p>DOSEN PENGUJI 1</p>-->
-                                            </td>
-                                            <td>
-                                                <!--GUNAKAN INI JIKA BELUM ADA DATA DOSEN PENGUJI 2-->
-                                                Belum ada Dosen Penguji 2
-                                                <!--GUNAKAN INI JIKA ADA DATA DOSEN PENGUJI 2-->
-                                                <!--<p>DOSEN PENGUJI 2</p>-->
-                                            </td>
-                                            <td>
-                                                <button type="submit" name="save-data"
-                                                    class="btn btn-primary">Save</button>
-                                                <div class="invalid-feedback">
-                                                    File Belum Lengkap!
+                                            <td>{{$sta->ruangan}}</td>
+                                            <td>{{$sta->jam_sidang}}</td>
+                                            <td>{{$sta->jadwal_sidang}}</td>
+                                            <td>{{$sta->status}}</td>
+                                            <td>{{$sta->updated_at}}</td>
+                                            <td class="text-center" width="160px">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        @if($sta->status == 'Lulus')
+                                                        <a href="{{'dashboard-mahasiswa-sidang-ta-edit-data/'.$sta->id}}"
+                                                            class="btn btn-secondary disabled"><i class="far fa-edit"></i></a>
+                                                        {{-- {{link_to('dashboard-mahasiswa-sidang-ta-edit-data/'.$sta->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                        --}}
+                                                        @else
+                                                        <a href="{{'dashboard-mahasiswa-sidang-ta-edit-data/'.$sta->id}}"
+                                                            class="btn btn-warning"><i class="far fa-edit"></i></a>
+                                                        @endif
+                                                    </div>
                                                 </div>
                                             </td>
-                                            <td>DD/MM/YYYY</td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -147,6 +80,7 @@
                 </div>
             </div>
             <div class="row">
+                @foreach ($sidang_ta as $sta)
                 <div class="col-12">
                     <div class="komentar-dosen card card-primary">
                         <div class="card-header">
@@ -156,31 +90,25 @@
                         </div>
                         <div class="card-body">
                             <div class="tanggal-komentar fw-bold fs-6 mb-4">
-                                <h5>Tanggal : DD/MM/YYYY</h5>
+                                <h5>Tanggal : {{$sta->updated_at}}</h5>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <h5>Komentar Dosen Penguji : </h5>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat aut eius
-                                        nostrum ut quaerat illum cupiditate repellendus perspiciatis quibusdam,
-                                        voluptate commodi illo? Sit expedita odit molestiae commodi laborum fuga ad.
-                                    </p>
+                                    <h5>Komentar Dosen Pembimbing : </h5>
+                                    <p>{{$sta->komentar1}}</p>
                                 </div>
                                 <div class="col">
-                                    <h5>Komentar Dosen Pembimbing : </h5>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat aut eius
-                                        nostrum ut quaerat illum cupiditate repellendus perspiciatis quibusdam,
-                                        voluptate commodi illo? Sit expedita odit molestiae commodi laborum fuga ad.
-                                    </p>
+                                    <h5>Komentar Dosen Penguji : </h5>
+                                    <p>{{$sta->komentar2}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
         @include('footer')
-
     </div>
 </div>
 @endsection

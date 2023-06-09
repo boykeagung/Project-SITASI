@@ -15,7 +15,8 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="card card-primary">
-                <form action="{{ url('dashboard-mahasiswa-bimbingan-kp',$bimbingan_kp->id) }}" method="POST" enctype="multipart/form-data">
+                <form class="needs-validation" action="{{ url('dashboard-mahasiswa-bimbingan-kp',$bimbingan_kp->id) }}"
+                    method="POST" enctype="multipart/form-data" novalidate>
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <input type="hidden" name="user_id" value="" required>
@@ -42,25 +43,37 @@
                                                         <label for="inputId_ta">ID Bimbingan TA</label><br>
                                                         {{-- {!!
                                                         Form::text('id_ta',null,['placeholder'=>'ID Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="text" value="{{$bimbingan_kp->id_bkp}}" name="id_bkp" readonly>
+                                                        <input class="form-control" type="text"
+                                                            value="{{$bimbingan_kp->id_bkp}}" name="id_bkp" readonly>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputId_ta">ID Kerja Praktik</label><br>
                                                         {{-- {!!
                                                         Form::text('id_ta',null,['placeholder'=>'ID Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="text" value="{{$bimbingan_kp->id_kp}}" name="id_kp" readonly>
+                                                        <input class="form-control" type="text"
+                                                            value="{{$bimbingan_kp->id_kp}}" name="id_kp" readonly>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJudul">Waktu Bimbingan</label><br>
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <input class="form-control" type="date" name="tanggal_bimbingan" placeholder="Judul Tugas Akhir" value='{{$bimbingan_kp->tanggal_bimbingan}}'>
+                                                        <input class="form-control" type="date" name="tanggal_bimbingan"
+                                                            placeholder="Judul Tugas Akhir"
+                                                            value='{{$bimbingan_kp->tanggal_bimbingan}}' required>
+                                                        <div class="invalid-feedback">
+                                                            Isi Waktu Bimbingan Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputJudul">Kegiatan Bimbingan</label><br>
                                                         {{-- {!!
                                                         Form::text('judul',null,['placeholder'=>'Judul Tugas Akhir','class'=>'form-control'])!!} --}}
-                                                        <textarea class="form-control" type="text" name="kegiatan" placeholder="Judul Tugas Akhir" >{{$bimbingan_kp->kegiatan}}</textarea>
+                                                        <textarea class="form-control" type="text" name="kegiatan"
+                                                            placeholder="Judul Tugas Akhir"
+                                                            required>{{$bimbingan_kp->kegiatan}}</textarea>
+                                                        <div class="invalid-feedback">
+                                                            Isi Kegiatan Bimbingan Kerja Praktik.
+                                                        </div>
                                                     </div>
                                                 </div>
 

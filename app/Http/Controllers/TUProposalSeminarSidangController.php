@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Seminar;
 use App\Models\sidang_kp;
 use App\Models\Proposal;
+use App\Models\SidangTA;
 
 class TUProposalSeminarSidangController extends Controller
 {
@@ -35,6 +36,15 @@ class TUProposalSeminarSidangController extends Controller
             ->select('sidang_kp.*', 'kp.username', 'users.name')
             ->get();
         return view('tata_usaha.dashboard-tata-usaha-sidang-kp', $data);
+    }
+
+    public function indexSidanGTA()
+    {
+        $data['sidang_ta'] = SidangTA::join('ta', 'sidang_ta.id_ta', '=', 'ta.id_ta')
+            ->join('users', 'ta.username', '=', 'users.username')
+            ->select('sidang_ta.*', 'ta.username', 'users.name')
+            ->get();
+        return view('tata_usaha.dashboard-tata-usaha-sidang-ta', $data);
     }
 
     //test

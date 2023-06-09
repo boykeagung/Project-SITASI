@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Proposal;
 use App\Models\TA;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class ProposalController extends Controller
 {
@@ -33,20 +34,26 @@ class ProposalController extends Controller
             // 'ruangan' => 'required',
         ]);
 
-        $input = $request->all();
-        // $status = $request->input('status');
-        $input['status'] = "Diproses";
+        try {
+            $input = $request->all();
+            // $status = $request->input('status');
+            $input['status'] = "Diproses";
 
-        if ($proposal = $request->file('proposal')) {
-            $destinationPath = 'Draft_Proposal_TA/';
-            $proposalName = time() . "_" . $proposal->getClientOriginalName();
-            $proposal->move($destinationPath, $proposalName);
-            $input['proposal'] = "$proposalName";
+            if ($proposal = $request->file('proposal')) {
+                $destinationPath = 'Draft_Proposal_TA/';
+                $proposalName = time() . "_" . $proposal->getClientOriginalName();
+                $proposal->move($destinationPath, $proposalName);
+                $input['proposal'] = "$proposalName";
+            }
+
+            Proposal::create($input);
+
+            return redirect('dashboard-mahasiswa-proposal-ta')->with('success', 'Daftar Proposal created successfully.');
+        } catch (QueryException $e) {
+            abort(403, 'ANDA BELUM MENDAFTAR TUGAS AKHIR/DAFTAR SIDANG HANYA DAPAT SATU KALI!!!.');
+            // throw new \Exception('Terjadi kesalahan dalam menjalankan query. Sepertinya Anda belum mendaftar Tugas Akhir  ');
         }
 
-        Proposal::create($input);
-
-        return redirect('dashboard-mahasiswa-proposal-ta')->with('success', 'Daftar Proposal created successfully.');
 
 
         // Proposal::create($request->all());

@@ -32,7 +32,7 @@
                                             <th>penguji 1</th>
                                             <th>penguji 2</th>
                                             <th>Judul</th>
-                                            <th>Sinopsis/Draft Proposal Tugas Akhir</th>
+                                            <th>Sinopsis/Draft <br>Proposal Tugas Akhir</th>
                                             <th>Update At</th>
                                             <th>Action</th>
                                             {{-- <th>delete</th> --}}
@@ -53,11 +53,18 @@
                                                 @if($ta->draft == null)
                                                 {{link_to('Draft_TA_Sinopsis/'.$ta->draft,'Lihat',['class'=>'btn btn-info disabled','target'=>'_blank'])}}
                                                 @else
-                                                {{link_to('Draft_TA_Sinopsis/'.$ta->draft,'Lihat',['class'=>'btn btn-info ','target'=>'_blank'])}}
+                                                <a href="{{'Draft_TA_Sinopsis/'.$ta->draft}}" class="btn btn-info"
+                                                    target="_blank"><i class="fas fa-eye"></i></a>
+                                                {{-- {{link_to('Draft_TA_Sinopsis/'.$ta->draft,'Lihat',['class'=>'btn btn-info ','target'=>'_blank'])}}
+                                                --}}
                                                 @endif
                                             <td>{{$ta->updated_at}}</td>
                                             <td>
-                                                {{link_to('dashboard-mahasiswa-edit-ta/'.$ta->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                <a href="{{'dashboard-mahasiswa-edit-ta/'.$ta->id}}"
+                                                    class="btn btn-warning"><i
+                                                        class="far fa-edit"></i></a>
+                                                {{-- {{link_to('dashboard-mahasiswa-edit-ta/'.$ta->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                --}}
                                             </td>
                                             {{-- <td>
                                                 {!! Form::open(['url'=>'dashboard-mahasiswa-proposal-ta/'.$ta->id,'method'=>'delete'])!!}
@@ -94,6 +101,7 @@
                                             <th>Jam Sidang</th>
                                             <th>Tanggal Sidang</th>
                                             <th>Status</th>
+                                            <th>Update At</th>
                                             <th>Action</th>
                                             {{-- <th>Delete</th> --}}
                                         </tr>
@@ -109,21 +117,24 @@
                                                 @if($pro->proposal == null)
                                                 {{link_to('Draft_Proposal_TA/'.$pro->proposal,'Lihat',['class'=>'btn btn-secondary disabled','target'=>'_blank'])}}
                                                 @else
-                                                {{-- {{link_to('Draft_Proposal_TA/'.$pro->proposal,'Lihat',['class'=>'btn btn-info','target'=>'_blank'])}} --}}
-                                                <a href= "{{'Draft_Proposal_TA/'.$pro->proposal}}" class="btn btn-info" target="_blank"><i class="fas fa-file"></i></a>
+                                                {{-- {{link_to('Draft_Proposal_TA/'.$pro->proposal,'Lihat',['class'=>'btn btn-info','target'=>'_blank'])}}
+                                                --}}
+                                                <a href="{{'Draft_Proposal_TA/'.$pro->proposal}}" class="btn btn-info"
+                                                    target="_blank"><i class="fas fa-eye"></i></a>
                                                 @endif
                                             </td>
                                             <td>{{$pro->ruangan}}</td>
                                             <td>{{$pro->jam_sidang}}</td>
                                             <td>{{$pro->tanggal_sidang}}</td>
                                             <td>{{$pro->status}}</td>
+                                            <td>{{$pro->updated_at}}</td>
                                             <td>
                                                 @if($pro->status == 'Lulus')
-                                                {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-secondary disabled'])}}
-                                                @elseif($pro->status == 'Tidak Lulus')
-                                                {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-warning '])}}
+                                                {{-- {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-secondary disabled'])}} --}}
+                                                <a href="{{'dashboard-mahasiswa-edit-proposal-ta/'.$pro->id}}" class="btn btn-secondary disabled"><i class="far fa-edit"></i></a>
                                                 @else
-                                                {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                {{-- {{link_to('dashboard-mahasiswa-edit-proposal-ta/'.$pro->id,'Edit',['class'=>'btn btn-warning'])}} --}}
+                                                <a href="{{'dashboard-mahasiswa-edit-proposal-ta/'.$pro->id}}" class="btn btn-warning"><i class="far fa-edit"></i></a>
                                                 @endif
                                             </td>
                                             {{-- <td>

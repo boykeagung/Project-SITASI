@@ -8,6 +8,7 @@ use App\Models\KP;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class KPController extends Controller
 {
@@ -29,17 +30,23 @@ class KPController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
 
-            'id_kp' => 'required',
-            'username' => 'required',
-        ]);
+        try {
+            $this->validate($request, [
 
-        $input = $request->all();
+                'id_kp' => 'required',
+                'username' => 'required',
+            ]);
 
-        KP::create($input);
+            $input = $request->all();
 
-        return redirect('dashboard-mahasiswa-kp')->with('success', 'Daftar KP created successfully.');
+            KP::create($input);
+
+            return redirect('dashboard-mahasiswa-kp')->with('success', 'Daftar KP created successfully.');
+        } catch (QueryException $e) {
+            abort(403, 'ANDA HANYA DAPAT MENDAFTAR KERJA PRAKTIK SATU KALI!!!.');
+            // throw new \Exception('Terjadi kesalahan dalam menjalankan query. Sepertinya Anda belum mendaftar Tugas Akhir  ');
+        }
     }
 
     public function edit($id)

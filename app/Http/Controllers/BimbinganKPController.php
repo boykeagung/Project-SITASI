@@ -7,7 +7,6 @@ use App\Models\Bimbingan_kp;
 use Illuminate\Database\QueryException;
 use Barryvdh\DomPDF\Facade\Pdf;
 
-
 use Illuminate\Http\Request;
 
 class BimbinganKPController extends Controller
@@ -35,7 +34,7 @@ class BimbinganKPController extends Controller
             Bimbingan_kp::create($input);
             return redirect('dashboard-mahasiswa-bimbingan-kp');
         } catch (QueryException $e) {
-            abort(403, 'ID Kerja Praktik Belum terdaftar.');
+            abort(403, 'ANDA BELUM MENDAFTAR KERJA PRAKTIK!!!.');
             // throw new \Exception('Terjadi kesalahan dalam menjalankan query. Sepertinya Anda belum mendaftar Tugas Akhir  ');
         }
     }
@@ -59,8 +58,10 @@ class BimbinganKPController extends Controller
     public function generate()
     {
         $username = Auth::user()->username;
+
         $data['bimbingan_kp'] = Bimbingan_kp::all()->where('id_kp', '=', "KP$username");
         $pdf = PDF::loadView('mahasiswa.dashboard-mahasiswa-bimbingan-kp-print', $data);
+      
         return $pdf->stream();
     }
 }

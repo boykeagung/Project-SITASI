@@ -9,7 +9,7 @@
         @include('navbar')
 
         @include('sidebar.sidebar-dospem-dospenguji-ta')
-        
+
         <!-- Main Content -->
         <div class="main-content">
             <div class="col-12">
@@ -28,10 +28,10 @@
                                             <th>Nama Lengkap</th>
                                             <th>Judul TA</th>
                                             <th>Files</th>
-                                            <th class="col-md-1">Status Approval</th>
+                                            <th>Status Approval</th>
                                             <th>Jadwal Sidang</th>
-                                            <th class="col-md-1">Komentar</th>
-                                            <th width="60px">Nilai</th>
+                                            <th>Komentar</th>
+                                            <th>Nilai</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -58,19 +58,18 @@
                                             </td>
                                             <td>
                                                 <div class="komentar-ta">
-                                                    <a href="dospenguji-tulis-komentar.html"
-                                                        class="btn btn-primary"><i class="fas fa-plus"></i>
+                                                    <a href="dospenguji-tulis-komentar.html" class="btn btn-primary"><i
+                                                            class="fas fa-plus"></i>
                                                         Tulis Komentar</a>
                                                 </div>
                                             </td>
                                             <!-- LIMIT DARI 1-100 -->
                                             <td>
                                                 <div class="nilai-ta">
-                                                    <a href="dospenguji-tambah-nilai.html"
-                                                        class="btn btn-primary"><i class="fas fa-plus"></i>
+                                                    <a href="dospenguji-tambah-nilai.html" class="btn btn-primary"><i
+                                                            class="fas fa-plus"></i>
                                                         Tambah Nilai</a>
-                                                    <a href="#" class="btn btn-primary mt-2"><i
-                                                            class="fas fa-eye"></i>
+                                                    <a href="#" class="btn btn-primary mt-2"><i class="fas fa-eye"></i>
                                                         Lihat Nilai</a>
                                                 </div>
                                             </td>
@@ -100,16 +99,16 @@
                                             </td>
                                             <td>
                                                 <div class="komentar-ta">
-                                                    <a href="dospenguji-tulis-komentar.html"
-                                                        class="btn btn-primary"><i class="fas fa-plus"></i>
+                                                    <a href="dospenguji-tulis-komentar.html" class="btn btn-primary"><i
+                                                            class="fas fa-plus"></i>
                                                         Tulis Komentar</a>
                                                 </div>
                                             </td>
                                             <!-- LIMIT DARI 1-100 -->
                                             <td>
                                                 <div class="nilai-ta">
-                                                    <a href="dospenguji-tambah-nilai.html"
-                                                        class="btn btn-primary"><i class="fas fa-plus"></i>
+                                                    <a href="dospenguji-tambah-nilai.html" class="btn btn-primary"><i
+                                                            class="fas fa-plus"></i>
                                                         Tambah Nilai</a>
                                                 </div>
                                             </td>

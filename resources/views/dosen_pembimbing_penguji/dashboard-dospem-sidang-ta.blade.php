@@ -12,79 +12,74 @@
         
         <!-- Main Content -->
         <div class="main-content">
-            <div class="col-12">
+            <div class="card card-primary mb-0">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-12">
-                        <div class="card">
+                    <div class="col-12">
+                        <div class="card card-primary mb-0">
                             <div class="card-header">
-                                <h4>Data Mahasiswa Sidang Tugas Akhir</h4>
+                                <h4>Data Sidang Tugas Akhir</h4>
                             </div>
                             <div class="card-body table-responsive">
-                                <table class="table table-bordered table-striped" id="table1">
+                                <table class="table table-bordered" id="table1">
                                     <thead>
-                                        <tr>
-                                            <th style="width:5%">No.</th>
+                                        <tr>    
+                                            <th>No</th>                             
                                             <th>NRP</th>
                                             <th>Nama Lengkap</th>
                                             <th>Judul TA</th>
-                                            <th>Files</th>
-                                            <th width="160px">Status Approval</th>
+                                            <th>Buku TA</th>
+                                            <th>Ruangan</th>
+                                            <th>Jam Sidang</th>
                                             <th>Jadwal Sidang</th>
-                                            <th>Dosen Penguji 1</th>
-                                            <th>Dosen Penguji 2</th>
-                                            <th>Nilai</th>
-                                            <th class="col-md-3">Komentar</th>
-                                            <th>Action</th>
+                                            <th>Status</th>
+                                            <th>Komentar Pembimbing</th>
+                                            <th>Komentar Penguji</th>
+                                            <th>Update at</th>
+                                            <th>Action</th>                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>162018006</td>
-                                            <td>Alam Verdiansyah</td>
-                                            <td>Pembuatan Website Manajemen Perpustakaan</td>
+                                        <?php $no = 0
+                                        ?>
+                                        @foreach ($sidang_ta as $no => $sta)
+                                        <tr>    
+                                            <td>{{1+$no++}}</td>                                                         
+                                            <td>{{$sta->username}}</td>
+                                            <td>{{$sta->name}}</td>
+                                            <td>{{$sta->judul}}</td>
                                             <td>
-                                                <a href="#" class="btn btn-primary mb-2" target="_blank"><i
-                                                        class="fas fa-eye"></i> Lihat Draft</a>
-                                                <a href="#" class="btn btn-primary mb-2" target="_blank"><i
-                                                        class="fas fa-eye"></i> Lihat Berita Acara</a>
-                                                <a href="upload-bap-nilai.html" class="btn btn-primary"><i
-                                                        class="fas fa-plus"></i>
-                                                    Upload BAP Dengan Nilai</a>
+                                                @if($sta->buku_ta == null)
+                                                {{link_to('Draft_Buku_TA/'.$sta->buku_ta,'Lihat',['class'=>'btn btn-info disabled','target'=>'_blank'])}}
+                                                @else
+                                                {{link_to('Draft_Buku_TA/'.$sta->buku_ta,'Lihat',['class'=>'btn btn-info','target'=>'_blank'])}}
+                                                @endif
+                                            </td>                                                   
+                                            <td>{{$sta->ruangan}}</td>
+                                            <td>{{$sta->jam_sidang}}</td>
+                                            <td>{{$sta->jadwal_sidang}}</td>
+                                            <td>{{$sta->status}}</td>
+                                            <td>{{$sta->komentar1}}</td>
+                                            <td>{{$sta->komentar2}}</td>
+                                            <td>{{$sta->updated_at}}</td>
+                                            <td class="text-center" width="160px">
+                                                <div class="row">
+                                                    <div class="col">
+                                                       {{link_to('dashboard-dospem-sidang-ta-edit-data/'.$sta->id,'Edit',['class'=>'btn btn-warning'])}}
+                                                   </div>
+                                               </div>             
                                             </td>
-                                            <td>
-                                                <!--BAGIAN INI SESUAIKAN DENGAN APPROVAL DARI KOORDINATOR TA-->
-                                                <!-- <button class="btn btn-warning" disabled>Menunggu</button> -->
-                                                <button class="btn btn-success" disabled>Approved</button>
-                                                <!--<button class="btn btn-danger" disabled>Di Tolak</button>-->
-                                            </td>
-                                            <td>
-                                                DD-MM-YYYY
-                                            </td>
-                                            <td>Dosen Penguji 1</td>
-                                            <td>Dosen Penguji 2</td>
-                                            <td>
-                                                <div class="nilai-ta">
-                                                    <a href="dospem-tambah-nilai.html" class="btn btn-primary"><i
-                                                            class="fas fa-plus"></i>
-                                                        Tambah Nilai</a>
-                                                    <a href="#" class="btn btn-primary mt-2"><i
-                                                            class="fas fa-eye"></i>
-                                                        Lihat Nilai</a>
+                                            {{-- <td class="text-center" width="160px">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        {!! Form::open(['url'=>'dashboard-koordinator-sidang-ta/'.$sta->id,'method'=>'delete'])!!}
+                                                        {!! Form::submit('Delete',['class'=>'btn btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
+                                                        {!! Form::close()!!}
+                                                    </div>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <div class="komentar-ta">
-                                                    <a href="dospem-tulis-komentar.html" class="btn btn-primary"><i
-                                                            class="fas fa-plus"></i>
-                                                        Tulis Komentar</a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <button type="submit" name="save-data"
-                                                    class="btn btn-primary">Save</button>
-                                            </td>
+                                            </td> --}}
+                                            
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -92,7 +87,9 @@
                     </div>
                 </div>
             </div>
+        
             @include('footer')
+
         </div>
     </div>
 </div>

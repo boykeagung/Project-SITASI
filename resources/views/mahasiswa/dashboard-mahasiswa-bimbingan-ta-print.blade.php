@@ -190,87 +190,61 @@
                     <td>
                         <table  style="width:100% border: 1px solid white; ">
                             <tr style="padding">
-                                <td class="padding p4 shrink td-border">Nama:</td>
+                                <td style="padding:10px" class="padding p4 shrink td-border">Nama <span class="tab-I"></span>      :</td>
                             </tr>
                             <tr>
-                                <td class="padding p4 shrink td-border">NRP:</td>
+                                <td style="padding:10px" class="padding p4 shrink td-border">NRP  <span class="tab-I"></span>      :</td>
                             </tr>
                             <tr>
-                                <td class="padding p4 shrink td-border">Judul Tugas Akhir:</td>
+                                <td style="padding:10px" class="padding p4 shrink td-border">Judul Tugas Akhir</td>
                             </tr>
                             <tr>
-                                <td class="padding p4 shrink td-border">Nama Dosen Pembimbing:</td>
+                                <td style="padding:10px" class="padding p4 shrink td-border">Nama Dosen Pembimbing <span class="tab-I"></span>      :</td>
                             </tr>
                             <tr>
-                                <td class="padding p4 shrink td-border">Ko.Pembimbing:</td>
+                                <td style="padding:10px" class="padding p4 shrink td-border">Ko. Pembimbing <span class="tab-I"></span>      :</td>
                             </tr>
                         </table>  
                     </td>
-                    <td style=" border-left: 1px solid; border-top: 1px solid;border-bottom: 1px solid;">
+                    
+                    <td style="width: 20%;" class="p4">
+                        <ins>Photo 3*4</ins>
                     </td>
                 </tr>
             </table>
         </div>
 
-        <div style="margin-top:25">
-            <table class="table table-bordered" id="table1" style="width:100%">
+        <div style="margin-top:20;">
+            <table style="width: 100%; margin-top: 10px; font-size: 0.8em; border: 1px;" id="table1" >
                 <thead>
-                    <tr style="font-size:13">
-                        <th class="table-title">No</th>
-                        <th >Waktu Bimbingan</th>
-                        <th>Kegiatan Bimbingan</th>
-                        <th>Paraf Pembimbing</th>
-
-                    </tr>
- 
-                </thead>
-        
-                <tbody>
-                    <?php $no = 0?>
-                    @foreach ($bimbingan_ta as $bta)
-                    <tr>
-                        <td style="text-align: center">{{1+$no++}}</td>
-                        <td style="text-align: center">{{$bta->tanggal_bimbingan}}</td>
-                        <td style="text-align: center">{{$bta->kegiatan}}</td>
-                        <td style="text-align: center"></td>
-                        {{-- <td>{{$bta->status}}</td> --}}
-                    </tr>
-                    @endforeach
-        
-                </tbody>
-            </table>
-        </div>
-
-        {{-- <div>
-            <table style="width: 100%; margin-top: 10px; font-size: 0.8em;" border="1px" id="table1" >
-                <thead>
-                    <tr align ="center" >
-                        <th style="padding:2.5px; width: 10%;" rowspan="2">No</th>
-                        <th style="padding:2.5px;" rowspan="2">Waktu Bimbingan</th>
-                        <th style="padding:2.5px; width: 55%;" rowspan="2">Kegiatan Bimbingan</th>
-                        <th style="padding:2.5px;" colspan="2">RParaf Bimbingan</th>
+                    <tr style="align:center">
+                        <th style="width:5% " rowspan="2">No</th>
+                        <th style="padding:10px; width:20%  " rowspan="2">Waktu <br> Bimbingan</th>
+                        <th style="padding:15px; width: 40%;" rowspan="2">Kegiatan Bimbingan</th>
+                        <th style="padding:15px; width:30% " colspan="2">Paraf Bimbingan</th>
                     </tr>
                     <tr>
-                        <th>Rs.</th>
-                        <th>P.</th>
+                        <th>1</th>
+                        <th>2</th>
                     </tr>
                 </thead>
-                
-    
+
                 <tbody>
                     <?php $no = 0?>
                     @foreach ($bimbingan_ta as $bta)
                     <tr> 
-                        <td style="text-align: center">{{1+$no++}}</td>
+                        <td style="text-align: center; padding:18px;">{{1+$no++}}</td>
                         <td style="text-align: center">{{$bta->tanggal_bimbingan}}</td>
                         <td style="text-align: center">{{$bta->kegiatan}}</td>
-                        <td style="text-align: center">.</td>
+                        <td style="text-align: center"></td>
+                        <td style="text-align: center"></td>
                     </tr>
                    
                 </tbody>
+                @endforeach
             </table>
     
-        </div> --}}
+        </div>
 
         
         <div>

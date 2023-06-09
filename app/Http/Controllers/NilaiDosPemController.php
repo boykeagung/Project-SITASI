@@ -22,38 +22,49 @@ class NilaiDosPemController extends Controller
         $data['nilai_dospem_perusahaan'] = NilaiDosPemPerusahaan::all()->where('username', '=', $username);
         $data['nilai_koordinator_kp'] = NilaiKoordinatorKP::all()->where('username', '=', $username);
 
-        //Nilai rata-rata
-        $nilaiDospem = NilaiDosPem::
-        where('username', '=', $username)
+        //Nilai rata-rata Dosen Pembimbing
+        $nilaiDospem = NilaiDosPem::where('username', '=', $username)
         ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6')); 
         $rataDospem = round($nilaiDospem, 2);
 
+        //Nilai rata-rata Dosen Pembimbing Perusahaan
         $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::where('username', '=', $username)
         ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6'));
         $rataDospemPerusahaan = round($nilaiDospemPerusahaan, 2);
 
-        $akhir = ($rataDospemPerusahaan + $rataDospem) / 2;
+        //Nilai (Dosen Pembimbing Perusahaan + Dosen Pembimbing Perusahaan) / 2
+        $akhirPem = ($rataDospemPerusahaan + $rataDospem) / 2;
 
-        if ($akhir <= 39 ) {
+        //Nilai rata-rata Sidang
+        $rataSidang = NilaiKoordinatorKP::where('username', '=', $username)
+        ->sum(\DB::raw('(sidang_penguji + sidang_pembimbing) / 2'));
+
+        //Nilai Akhir
+        $nilaiAkhir = ($akhirPem + $rataSidang) / 2;
+
+
+        //Convert Nilai
+        if ($nilaiAkhir <= 39 ) {
 			$temp = 'E';
-		} else if ($akhir <= 49) {
+		} else if ($nilaiAkhir <= 49) {
 			$temp = 'D';
-		} else if ($akhir <= 59) {
+		} else if ($nilaiAkhir <= 59) {
 			$temp = 'C';
-		} else if ($akhir <= 64) {
+		} else if ($nilaiAkhir <= 64) {
 			$temp = 'BC';
-		} else if ($akhir <= 73) {
+		} else if ($nilaiAkhir <= 73) {
             $temp = 'B';
         }
-        else if ($akhir <= 79) {
+        else if ($nilaiAkhir <= 79) {
 			$temp = 'AB';
         }
-        else if ($akhir <= 80) {
+        else if ($nilaiAkhir <= 80) {
 			$temp = 'A';
         }
         
 
-        return view('mahasiswa.dashboard-mahasiswa-penilaian-kp', $data, ['rataDospem'=>$rataDospem,'rataDospemPerusahaan'=>$rataDospemPerusahaan, 'temp'=>$temp]);
+        return view('mahasiswa.dashboard-mahasiswa-penilaian-kp', $data, ['rataDospem'=>$rataDospem,'rataDospemPerusahaan'=>$rataDospemPerusahaan, 
+        'temp'=>$temp, 'nilaiAkhir'=>$nilaiAkhir]);
     }
 
     public function create()
