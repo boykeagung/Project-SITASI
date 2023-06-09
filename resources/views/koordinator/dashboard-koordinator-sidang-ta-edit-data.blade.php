@@ -61,7 +61,7 @@
                                     {{-- {!!Form::text('judul',null,['placeholder'=>'Judul','class'=>'form-control'])!!} --}}
                                     <input type="text" name="judul" placeholder="Judul" class="form-control" value="{{$sidang_ta->judul}}">
                                   </div>
-                                  <div>
+                                  <div hidden>
                                     <div class="form-group md-3">
                                       <label for="inputBukuTA" class="form-label">Buku TA</label>
                                       {{-- <br>{!! Form::file('buku_ta',null,['placeholder'=>'Buku TA','class'=>'form-control']) !!}<br>--}}
