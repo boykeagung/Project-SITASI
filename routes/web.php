@@ -248,6 +248,8 @@ Route::group(['middleware' => ['auth', 'rolecek:user']], function () {
     Route::post('dashboard-mahasiswa-bimbingan-kp', [BimbinganKPController::class, 'store']);
     Route::get('dashboard-mahasiswa-edit-bimbingan-kp/{id}', [BimbinganKPController::class, 'edit']); //select
     Route::put('dashboard-mahasiswa-bimbingan-kp/{id}', [BimbinganKPController::class, 'update']); //update
+    Route::get('dashboard-mahasiswa-bimbingan-kp-print', [BimbinganKPController::class, 'generate']);
+
 
     #profil
     Route::get('profile-mahasiswa', [ProfileController::class, 'index']);
