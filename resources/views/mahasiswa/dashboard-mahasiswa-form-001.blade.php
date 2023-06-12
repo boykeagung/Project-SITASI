@@ -63,16 +63,20 @@
                                             <td>{{$kp_form001->bidang_perusahaan2}}</td> --}}
                                             <td>{{$kp_form001->status}}</td>
                                             <td>{{link_to('mahasiswa-generate-form-001/'.$kp_form001->id,'Download',['class'=>'btn btn-success', 'target'=>'_blank'])}}</td>
-                                            <td>
+                                            <td style="text-align: center">
                                                 @if($kp_form001->pdf_form001 == null)
-                                                {{link_to('Form_001/'.$kp_form001->pdf_form001,'File Belum Di Upload',['class'=>'btn btn-danger disabled','target'=>'_blank'])}}
+                                                {{-- {{link_to('Form_001/'.$kp_form001->pdf_form001,'File Belum Di Upload',['class'=>'btn btn-danger disabled','target'=>'_blank'])}} --}}
+                                                <a href="{{'Form_001/'.$kp_form001->pdf_form001}}" class="btn btn-danger disabled "><i class="fas fa-eye-slash"></i></a>
+
                                                 <br>
                                                 <span>*tekan edit untuk upload file*</span>
                                                 @else
                                                 {{link_to('Form_001/'.$kp_form001->pdf_form001,'Lihat',['class'=>'btn btn-info ','target'=>'_blank'])}}
+                                                <a href="{{'Form_001/'.$kp_form001->pdf_form001}}" class="btn btn-warning "><i class="fas fa-eye"></i></a>
+
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td style="text-align: center">
                                 
                                                 @if($kp_form001->surat == null)
                                                 {{link_to('Surat_Pengantar/'.$kp_form001->surat,'Diproses',['class'=>'btn btn-warning disabled','target'=>'_blank'])}}
@@ -84,7 +88,9 @@
                                                 
                                             </td>
                             
-                                            <td>{{link_to('dashboard-mahasiswa-edit-form-001/'.$kp_form001->id,'Edit',['class'=>'btn btn-outline-warning'])}}</td>
+                                            <td style="text-align: center">
+                                                <a href="{{'dashboard-mahasiswa-edit-form-001/'.$kp_form001->id}}" class="btn btn-warning "><i class="fas fa-edit"></i></a>
+                                            </td>
                                             
                                             {{-- <td>{{link_to('generate_nilai_kp','Download',['class'=>'btn btn-success', 'target'=>'_blank'])}}</td> --}}
                                             

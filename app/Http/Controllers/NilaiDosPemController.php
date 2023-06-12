@@ -26,7 +26,7 @@ class NilaiDosPemController extends Controller
         //Nilai rata-rata Dosen Pembimbing
         $nilaiDospem = NilaiDosPem::where('username', '=', $username)
         ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6')); 
-        $rataDospem = round($nilaiDospem, 2);
+        $rataDospem = round($nilaiDospem, 2 );
 
         //Nilai rata-rata Dosen Pembimbing Perusahaan
         $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::where('username', '=', $username)
@@ -42,7 +42,6 @@ class NilaiDosPemController extends Controller
 
         //Nilai Akhir
         $nilaiAkhir = ($akhirPem + $rataSidang) / 2;
-
 
         //Convert Nilai
         if ($nilaiAkhir <= 39 ) {
@@ -61,9 +60,11 @@ class NilaiDosPemController extends Controller
         }
         else if ($nilaiAkhir <= 80) {
 			$temp = 'A';
-        }
+        } else $temp = 'A';
         
-        return view('mahasiswa.dashboard-mahasiswa-penilaian-kp', $data, ['rataDospem'=>$rataDospem,'rataDospemPerusahaan'=>$rataDospemPerusahaan, 'temp'=>$temp, 'nilaiAkhir'=>$nilaiAkhir]);
+
+        return view('mahasiswa.dashboard-mahasiswa-penilaian-kp', $data, ['rataDospem'=>$rataDospem,'rataDospemPerusahaan'=>$rataDospemPerusahaan, 
+        'temp'=> $temp, 'nilaiAkhir'=>$nilaiAkhir, 'akhirPem'=> $akhirPem]);
     }
 
     public function create()
@@ -79,7 +80,7 @@ class NilaiDosPemController extends Controller
             'name' => 'required',
             'kepribadian' => 'required',
             'penguasaan_materi' => 'required',
-            'keterampilan' => 'required',
+            'keterampilan' => 'required', 
             'kreatifitas' => 'required',
             'tanggung_jawab' => 'required',
             'komunikasi' => 'required',

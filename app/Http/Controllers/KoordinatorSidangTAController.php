@@ -76,7 +76,7 @@ class KoordinatorSidangTAController extends Controller
             // 'id_sidang_ta' => "required",
             'id_ta' => 'required',
             'judul' => 'required',
-            'buku_ta' => 'required|mimes:pdf|max:10000',
+            // 'buku_ta' => 'required|mimes:pdf|max:10000',
             'ruangan' => 'required',
             'jam_sidang' => 'required',
             'jadwal_sidang' => 'required',

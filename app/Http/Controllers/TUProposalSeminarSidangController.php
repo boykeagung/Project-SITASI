@@ -44,7 +44,7 @@ class TUProposalSeminarSidangController extends Controller
             ->join('users', 'ta.username', '=', 'users.username')
             ->select('sidang_ta.*', 'ta.username', 'users.name')
             ->get();
-        return view('tata_usaha.dashboard-tata-usaha-sidang-ta', $data);
+        return view('tata_usaha.dashboard-tu-sidang-ta', $data);
     }
 
     //test
