@@ -24,15 +24,24 @@ class NilaiKoordinatorKPController extends Controller
 
 
         //Nilai rata-rata
-        // $name['user'] = user::select('username');
-        $name = Auth::user()->username;
+        $name['user'] = User::select();
+        // $name = User::select()->username;
 
-        $nilaiDospem = NilaiDosPem::select('username')
+        $nilaiDospem = NilaiDosPem::groupBy('id')
         ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6')); 
         $rataDospem = round($nilaiDospem, 2);
 
-        $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::
-        sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6'));
+        // $data['bimbingan_kp'] = Bimbingan_kp::all()->where('id_kp', '=', "KP$username");
+        
+        // where('th_comp_code', auth()->user()->company)
+        // ->groupBy('th_exp_cat_id')
+        // where('th_comp_code', auth()->user()->company)
+        // ->groupBy('th_exp_cat_id')
+        
+
+        $nilaiDospemPerusahaan = NilaiDosPemPerusahaan:: groupBy(\DB::raw('username'))
+        ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6'))
+        ;
         $rataDospemPerusahaan = round($nilaiDospemPerusahaan, 2);
 
         $akhir = ($rataDospemPerusahaan + $rataDospem) / 2;
@@ -53,7 +62,9 @@ class NilaiKoordinatorKPController extends Controller
         }
         else if ($akhir <= 80) {
 			$temp = 'A';
-        }
+        }else
+			$temp = 'A';
+
 
         
 
