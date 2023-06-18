@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('nilai_dospem', function (Blueprint $table) {
             $table->id();
+            $table->string('id_nilai_dospem')->unique();
             $table->string('username');
             $table->string('name');
             $table->string('kepribadian');
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->string('kreatifitas')->nullable();
             $table->string('tanggung_jawab')->nullable();
             $table->string('komunikasi')->nullable();
+            $table->string('rata_rata')->nullable();
             $table->string('pdf_nilai')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();

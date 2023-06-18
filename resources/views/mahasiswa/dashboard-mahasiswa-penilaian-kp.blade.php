@@ -118,39 +118,8 @@
                                                     <td style="display: none">{{1+$no++}}</td>
                                                     <td></td>
                                                     <td>RATA-RATA</td>
-                                                    <td class="text-center">{{$rataDospem}}</td>
+                                                    <td class="text-center">{{$nilai->rata_rata}}</td>
                                                 </tr>
-                                                
-    
-                                                {{-- <tr>
-                                                    <td>{{1+$no++}}</td>
-                                                    <td>{{$nilai->kepribadian}}</td>
-                                                    <td>{{$nilai->penguasaan_materi}}</td>
-                                                    <td>{{$nilai->keterampilan}}</td>
-                                                    <td>{{$nilai->kreatifitas}}</td>
-                                                    <td>{{$nilai->tanggung_jawab}}</td>
-                                                    <td>{{$nilai->komunikasi}}</td>
-                                                    <td>
-                                                        @if($nilai->pdf_nilai == null)
-                                                        {{link_to('Nilai_KP_Dospem/'.$nilai->pdf_nilai,'File Belum Di Upload',['class'=>'btn btn-danger disabled','target'=>'_blank'])}}
-                                                        <br>
-                                                    
-                                                        @else
-                                                        {{link_to('Nilai_KP_Dospem/'.$nilai->pdf_nilai,'Lihat',['class'=>'btn btn-info ','target'=>'_blank'])}}
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        {{link_to('dashboard-mahasiswa-edit-penilaian-kp-dospem/'.$nilai->id,'Edit',['class'=>'btn btn-warning'])}}
-                                                    </td>
-                                                    <td>
-                                                        {!!
-                                                        Form::open(['url'=>'dashboard-mahasiswa-penilaian-kp/'.$nilai->id,'method'=>'delete'])!!}
-                                                        {!! Form::submit('Delete',['class'=>'btn
-                                                        btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
-                                                        {!! Form::close()!!}
-                                                    </td>
-                                                    
-                                                </tr> --}}
                                                 @endforeach
                                             </tbody>
                                        </table>
@@ -273,40 +242,8 @@
                                                         <td style="display: none">{{1+$no++}}</td>
                                                         <td></td>
                                                         <td>RATA-RATA</td>
-                                                        <td class="text-center">{{$rataDospemPerusahaan}}</td>
+                                                        <td class="text-center">{{$nilai->rata_rata}}</td>
                                                     </tr>
-                                                
-                                                    
-        
-                                                    {{-- <tr>
-                                                        <td>{{1+$no++}}</td>
-                                                        <td>{{$nilai->kepribadian}}</td>
-                                                        <td>{{$nilai->penguasaan_materi}}</td>
-                                                        <td>{{$nilai->keterampilan}}</td>
-                                                        <td>{{$nilai->kreatifitas}}</td>
-                                                        <td>{{$nilai->tanggung_jawab}}</td>
-                                                        <td>{{$nilai->komunikasi}}</td>
-                                                        <td>
-                                                            @if($nilai->pdf_nilai == null)
-                                                            {{link_to('Nilai_KP_Dospem/'.$nilai->pdf_nilai,'File Belum Di Upload',['class'=>'btn btn-danger disabled','target'=>'_blank'])}}
-                                                            <br>
-                                                        
-                                                            @else
-                                                            {{link_to('Nilai_KP_Dospem/'.$nilai->pdf_nilai,'Lihat',['class'=>'btn btn-info ','target'=>'_blank'])}}
-                                                            @endif
-                                                        </td>
-                                                        <td>
-                                                            {{link_to('dashboard-mahasiswa-edit-penilaian-kp-dospem/'.$nilai->id,'Edit',['class'=>'btn btn-warning'])}}
-                                                        </td>
-                                                        <td>
-                                                            {!!
-                                                            Form::open(['url'=>'dashboard-mahasiswa-penilaian-kp/'.$nilai->id,'method'=>'delete'])!!}
-                                                            {!! Form::submit('Delete',['class'=>'btn
-                                                            btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
-                                                            {!! Form::close()!!}
-                                                        </td>
-                                                        
-                                                    </tr> --}}
                                                     @endforeach
                                                 </tbody>
                                            </table>

@@ -33,17 +33,28 @@ class NilaiDospemPerusahaanController extends Controller
             'pdf_nilai' => "mimes:pdf|max:25000"
         ]);
 
-        $input = $request->all();
-        
-
-        $input['status'] = "Diproses";
-
+        // Local PDF
         if ($nilai = $request->file('pdf_nilai')) {
             $destinationPath = 'Nilai_KP_Dospem_Perusahaan/';
             $dospemPer = time() . "_" . $nilai->getClientOriginalName();
             $nilai->move($destinationPath, $dospemPer);
             $input['pdf_nilai'] = "$dospemPer";
         }
+
+        //Calculate
+        $nilaiDospemPer = round(( $request->kepribadian + $request->penguasaan_materi + 
+        $request->keterampilan + $request->kreatifitas + 
+        $request->tanggung_jawab + $request->komunikasi ) / 6 ,2);
+
+         // Insert
+         $input = $request->all();
+
+         $username = $request->input('username'); //set username
+         $input['username'] = "$username"; 
+ 
+         $input['id_nilai_dospem_per'] = "NDPP$username"; //unique ID
+ 
+         $input['rata_rata'] = "$nilaiDospemPer"; //hasil rata rata
 
         NilaiDosPemPerusahaan::create($input);
         return redirect('dashboard-mahasiswa-penilaian-kp');
@@ -95,11 +106,6 @@ class NilaiDospemPerusahaanController extends Controller
         //     ->where('id', '=', $id)
         //     ->get($id);
         $pdf = PDF::loadView('mahasiswa.generate_nilai_kp', $data);
-        return $pdf->stream();
-
-             
+        return $pdf->stream();        
     }
-
-
-    // ========================================================================== //
 }

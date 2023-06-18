@@ -17,6 +17,7 @@ class KoordinatorTAController extends Controller
         $data['ta'] = TA::leftJoin('users', 'users.username', '=', 'ta.username')
             ->select('ta.*', 'users.name')
             ->get();
+            
         $data['proposal'] = Proposal::join('ta', 'proposal.id_ta', '=', 'ta.id_ta')
             ->join('users', 'ta.username', '=', 'users.username')
             ->select('proposal.*', 'users.name', 'ta.username')

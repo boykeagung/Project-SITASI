@@ -9,5 +9,5 @@ class NilaiKoordinatorKP extends Model
 {
     use HasFactory;
     protected $table = "nilai_koordinator_kp";
-    protected $fillable = ['username','name','sidang_penguji','sidang_pembimbing'];
+    protected $fillable = ['id_nilai_koor','id_nilai_dospem','id_nilai_dospem_per','username','name','rataDospem', 'rataDospemPer','sidang_penguji','sidang_pembimbing'];
 }

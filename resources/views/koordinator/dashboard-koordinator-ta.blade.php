@@ -28,15 +28,15 @@
                                             <th>No</th>
                                             <th>NRP</th>
                                             <th>Nama Lengkap</th>
-                                            <th>Email</th>
-                                            <th>Password</th>
+                                            {{-- <th>Email</th> --}}
+                                            {{-- <th>Password</th> --}}
                                             <th>Foto</th>
                                             <th>Alamat</th>
                                             <th>No Telefon</th>
                                             <th>No Whatsapp</th>
                                             <th>IPK</th>
                                             <th>Total SKS</th>
-                                            <th>Update At</th>
+                                            {{-- <th>Update At</th> --}}
                                             <th>Action</th>
                                             <th>Delete</th>
                                         </tr>
@@ -49,8 +49,8 @@
                                             <td>{{1+$no++}}</td>
                                             <td>{{$user->username}}</td>
                                             <td>{{$user->name}}</td>
-                                            <td>{{$user->email}}</td>
-                                            <td>{{$user->password}}</td>
+                                            {{-- <td>{{$user->email}}</td> --}}
+                                            {{-- <td>{{$user->password}}</td> --}}
                                             <td>
                                                 @if($user->foto == null)
                                                 {{link_to('Foto_Mahasiswa/'.$user->foto,'Lihat',['class'=>'btn btn-info disabled','target'=>'_blank'])}}
@@ -63,7 +63,7 @@
                                             <td>{{$user->no_wa}}</td>
                                             <td>{{$user->ipk}}</td>
                                             <td>{{$user->sks}}</td>
-                                            <td>{{$user->updated_at}}</td>
+                                            {{-- <td>{{$user->updated_at}}</td> --}}
                                             <td>
                                                 {{link_to('dashboard-koordinator-edit-data-mahasiswa/'.$user->id,'Edit',['class'=>'btn btn-warning'])}}
                                             </td>

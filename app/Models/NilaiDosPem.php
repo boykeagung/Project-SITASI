@@ -9,6 +9,6 @@ class NilaiDospem extends Model
 {
     use HasFactory;
     protected $table = "nilai_dospem";
-    protected $fillable = ['username','name','kepribadian', 'penguasaan_materi', 'keterampilan', 
-                            'kreatifitas', 'tanggung_jawab', 'komunikasi', 'pdf_nilai'];
+    protected $fillable = ['id_nilai_dospem','username','name','kepribadian', 'penguasaan_materi', 'keterampilan', 
+                            'kreatifitas', 'tanggung_jawab', 'komunikasi', 'pdf_nilai','rata_rata'];
 }

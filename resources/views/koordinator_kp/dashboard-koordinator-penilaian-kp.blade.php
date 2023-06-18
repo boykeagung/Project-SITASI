@@ -160,9 +160,9 @@
                                 <h4>Nilai Kerja Praktik</h4>
                             </div>
                             <div class="card-body table-responsive">  
-                                {{-- <a href=<?php echo url('dashboard-koordinator-tambah-penilaian-kp') ?>
+                                <a href=<?php echo url('dashboard-koordinator-tambah-penilaian-kp') ?>
                                     class="btn btn-primary mb-3">
-                                    <i class="fas fa-plus"></i> Tambah Nilai</a> --}}
+                                    <i class="fas fa-plus"></i> Tambah Nilai</a>
                                     <table class="table table-bordered table-striped" style="width: 100%" id="table3">
                                         <thead>
                                             <tr>
@@ -173,7 +173,7 @@
                                                 <th>Dosen Pembimbing Perusahaan</th>
                                                 <th>Nilai Sidang Penguji</th>
                                                 <th>Nilai Sidang Pembimbing</th>
-                                                <th>Nilai Akhir</th>
+                                                {{-- <th>Nilai Akhir</th> --}}
                                             </tr>
                                         </thead>
     
@@ -184,11 +184,11 @@
                                                 <td>{{1+$no++}}</td>
                                                 <td>{{$nilai->username}}</td>
                                                 <td>{{$nilai->name}}</td>
-                                                <td>{{$rataDospem}}</td>
-                                                <td>{{$rataDospemPerusahaan}}</td>
+                                                <td>{{$nilai->rataDospem}}</td>
+                                                <td>{{$nilai->rataDospemPer}}</td>
                                                 <td>{{$nilai->sidang_penguji}}</td>
                                                 <td>{{$nilai->sidang_pembimbing}}</td>
-                                                <td class="text-center">{{$temp}}</td>
+                                                {{-- <td class="text-center">{{$temp}}</td> --}}
                                             </tr>
                                             @endforeach
                                         </tbody>
