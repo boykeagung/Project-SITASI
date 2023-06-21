@@ -201,15 +201,15 @@
         <hr style="margin-left: 10px; margin-right: 10px">
 
         <h2 style=" margin-top:2; text-align:center; font-weight: normal; font-size: 100%; text-decoration: underline;  ">
-            DAFTAR HADIR BIMBINGAN PELAKSANAN KERJA PRAKTEK (KP) DI   {{}} <br>
+            DAFTAR HADIR BIMBINGAN PELAKSANAN KERJA PRAKTEK (KP) DI    <br>
             PROGRAM STUDI SISTEM INFORMASI ITENAS BANDUNG <br>
             
         </h2>
 
         <div class="row">
             <div class="col-left">
-                <p>Nama <span class="tab-nama"></span>      :</td> </p>
-                <p>NRP <span class="tab-nrp"></span>       :</td> </p>
+                <p>Nama <span class="tab-nama"></span>      ::{{ Auth::user()->name }}</td> </p>
+                <p>NRP <span class="tab-nrp"></span>       ::{{ Auth::user()->username }}</td> </p>
             </div>
             <div class="col-right">
                 <p>Nama Dosen Pembimbing : </p>
@@ -236,12 +236,14 @@
                 <tbody>
                     <?php $no = 0?>
                     @foreach ($bimbingan_kp as $bkp)
+                    @if($bkp->status_p1 == 'Diterima')
                     <tr>
                         <td style="text-align: center;">{{1+$no++}}</td>
                         <td style="text-align: center; padding:15">{{$bkp->tanggal_bimbingan}}</td>
                         <td style="text-align: center">{{$bkp->kegiatan}}</td>
                         <td style="text-align: center"></td>
                     </tr>
+                    @endif
                     @endforeach
         
                 </tbody>

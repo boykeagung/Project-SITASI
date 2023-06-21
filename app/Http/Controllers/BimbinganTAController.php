@@ -59,7 +59,10 @@ class BimbinganTAController extends Controller
     public function generate()
     {
         $username = Auth::user()->username;
-        $data['bimbingan_ta'] = bimbingan_ta::all()->where('id_ta', '=', "TA$username");
+        $data['bimbingan_ta'] = bimbingan_ta::join('ta', 'bimbingan_ta.id_ta', '=', 'ta.id_ta')
+            ->where('bimbingan_ta.id_ta', 'like', '%' . $username . '%')
+            ->select('bimbingan_ta.*', 'ta.pembimbing1', 'ta.pembimbing2', 'ta.judul')
+            ->get();
         $pdf = PDF::loadView('mahasiswa.dashboard-mahasiswa-bimbingan-ta-print', $data);
         return $pdf->stream();
     }
