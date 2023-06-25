@@ -9,7 +9,8 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\NilaiDosPem;
 use App\Models\NilaiDosPemPerusahaan;
 use App\Models\NilaiKoordinatorKP;
-
+// use Illuminate\Support\Facades\DB;
+use DB;
 
 class NilaiDosPemController extends Controller
 {
@@ -23,47 +24,46 @@ class NilaiDosPemController extends Controller
         $data['nilai_koordinator_kp'] = NilaiKoordinatorKP::all()->where('username', '=', $username);
 
         //Nilai rata-rata Dosen Pembimbing
-        $nilaiDospem = NilaiDosPem::where('username', '=', $username)
-        ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6')); 
-        $rataDospem = round($nilaiDospem, 2 );
+        // $nilaiDospem = NilaiDosPem::
+        // sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6')); 
+        // $rataDospem = round($nilaiDospem, 2 );
 
         //Nilai rata-rata Dosen Pembimbing Perusahaan
-        $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::where('username', '=', $username)
-        ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6'));
-        $rataDospemPerusahaan = round($nilaiDospemPerusahaan, 2);
+        // $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::where('username', '=', $username)
+        // ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6'));
+        // $rataDospemPerusahaan = round($nilaiDospemPerusahaan, 2);
 
         //Nilai (Dosen Pembimbing Perusahaan + Dosen Pembimbing Perusahaan) / 2
-        $akhirPem = ($rataDospemPerusahaan + $rataDospem) / 2;
+        // $akhirPem = ($rataDospemPerusahaan + $rataDospem) / 2;
 
         //Nilai rata-rata Sidang
-        $rataSidang = NilaiKoordinatorKP::where('username', '=', $username)
-        ->sum(\DB::raw('(sidang_penguji + sidang_pembimbing) / 2'));
+        // $rataSidang = NilaiKoordinatorKP::where('username', '=', $username)
+        // ->sum(\DB::raw('(sidang_penguji + sidang_pembimbing) / 2'));
 
         //Nilai Akhir
-        $nilaiAkhir = ($akhirPem + $rataSidang) / 2;
+        // $nilaiAkhir = ($akhirPem + $rataSidang) / 2;
 
         //Convert Nilai
-        if ($nilaiAkhir <= 39 ) {
-			$temp = 'E';
-		} else if ($nilaiAkhir <= 49) {
-			$temp = 'D';
-		} else if ($nilaiAkhir <= 59) {
-			$temp = 'C';
-		} else if ($nilaiAkhir <= 64) {
-			$temp = 'BC';
-		} else if ($nilaiAkhir <= 73) {
-            $temp = 'B';
-        }
-        else if ($nilaiAkhir <= 79) {
-			$temp = 'AB';
-        }
-        else if ($nilaiAkhir <= 80) {
-			$temp = 'A';
-        } else $temp = 'A';
+        // if ($nilaiAkhir <= 39 ) {
+		// 	$temp = 'E';
+		// } else if ($nilaiAkhir <= 49) {
+		// 	$temp = 'D';
+		// } else if ($nilaiAkhir <= 59) {
+		// 	$temp = 'C';
+		// } else if ($nilaiAkhir <= 64) {
+		// 	$temp = 'BC';
+		// } else if ($nilaiAkhir <= 73) {
+        //     $temp = 'B';
+        // }
+        // else if ($nilaiAkhir <= 79) {
+		// 	$temp = 'AB';
+        // }
+        // else if ($nilaiAkhir <= 80) {
+		// 	$temp = 'A';
+        // } else $temp = 'A';
         
 
-        return view('mahasiswa.dashboard-mahasiswa-penilaian-kp', $data, ['rataDospem'=>$rataDospem,'rataDospemPerusahaan'=>$rataDospemPerusahaan, 
-        'temp'=> $temp, 'nilaiAkhir'=>$nilaiAkhir, 'akhirPem'=> $akhirPem]);
+        return view('mahasiswa.dashboard-mahasiswa-penilaian-kp', $data, []);
     }
 
     public function create()
@@ -79,18 +79,15 @@ class NilaiDosPemController extends Controller
             'name' => 'required',
             'kepribadian' => 'required',
             'penguasaan_materi' => 'required',
-            'keterampilan' => 'required', 
+            'keterampilan' => 'required',
             'kreatifitas' => 'required',
             'tanggung_jawab' => 'required',
             'komunikasi' => 'required',
-            'pdf_nilai' => "mimes:pdf|max:25000|"
+            'pdf_nilai' => "mimes:pdf|max:25000"
+            
         ]);
 
-        $input = $request->all();
-        // $password = bcrypt($request->input('password'));
-
-        $input['status'] = "Diproses";
-
+        // Local PDF
         if ($nilai = $request->file('pdf_nilai')) {
             $destinationPath = 'Nilai_KP_Dospem/';
             $dospem = time() . "_" . $nilai->getClientOriginalName();
@@ -98,8 +95,32 @@ class NilaiDosPemController extends Controller
             $input['pdf_nilai'] = "$dospem";
         }
 
+        // //Calculate
+        $nilaiDospem = round(( $request->kepribadian + $request->penguasaan_materi + 
+        $request->keterampilan + $request->kreatifitas + 
+        $request->tanggung_jawab + $request->komunikasi ) / 6 ,2); 
+
+        // Insert
+        $input = $request->all();
+
+        $username = $request->input('username');
+        $input['username'] = "$username"; // username
+
+        $input['id_nilai_dospem'] = "NDP$username"; //unique ID
+
+        $input['rata_rata'] = "$nilaiDospem"; //hasil rata rata
 
         NilaiDosPem::create($input);
+
+        // Insert rata-rata into Koor KP
+        $input = DB::table('nilai_dospem')->get();
+        foreach($input as $input){
+            DB::table('nilai_koordinator_kp')
+            ->where('username', '=', $username)
+            ->updateOrInsert(['username'=> $username],['rataDospem' => $input->rata_rata,'name' => $input->name]); //insert data, jika sudah ada akan di update. Dicek berdasarkan username (nrp)
+
+        }
+
         return redirect('dashboard-mahasiswa-penilaian-kp');
     }
 
@@ -118,7 +139,6 @@ class NilaiDosPemController extends Controller
         ]);
 
         $input = $request->all();
-        // $input['status'] = "Diproses";
 
         if ($nilai = $request->file('pdf_nilai')) {
             $destinationPath = 'Nilai_KP_Dospem_Perusahaan/';
@@ -140,54 +160,5 @@ class NilaiDosPemController extends Controller
         $dospem->delete($request->all());
         return redirect('dashboard-mahasiswa-penilaian-kp');
     }
-
-
-    // public function rataDospem(){
-
-    //     $rataDospem = NilaiDosPem::avg('nilai_dospem');
-    // }
-
-
-    public function generateNilai($id)
-    {
-        // $data['kp_form001'] = Form001::findOrFail($id)
-        //     ->select('username', 'nama' ,'perusahaan1', 'alamat_perusahaan1', 'bidang_perusahaan1','perusahaan2', 'alamat_perusahaan2', 'bidang_perusahaan2')
-        //     ->where('id', '=', $id)
-        //     ->get($id);
-        $pdf = PDF::loadView('mahasiswa.generate_nilai_kp', $data);
-        return $pdf->stream();
-
-             
-    }
-
-    public function sum(Request $request){
-        $request["sum"] = $request->a + $request->b;
-        SumTable::store($request->all());
-
-        //OR
-        
-        $number_one = $request->a;
-        $number_two = $request->b;
-        $sum = $number_one + $number_two;
-        DB::table('yourtable')->insert(
-            ['one' => $number_one, 'two' => $number_two,'sum' => $sum]
-        );
-        
-        //OR
-        $table = new table; //modelname
-
-        $table->one = $number_one;
-        $table->two = $number_two;
-        $table->sum = $sum;
-
-        $table->save();
-        if(!$table)
-        return 0;   
-        else return 1;
-
-
-     }
-
-
-    
+   
 }

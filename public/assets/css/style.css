@@ -2014,6 +2014,12 @@ a.bb {
   letter-spacing: 4px;
   color: #666;
   text-align: center; }
+  
+.login-bg{
+
+  background-image: url("../assets/img/header-bg-3.png");
+  
+}
 
 .font-weight-600 {
   font-weight: 600 !important; }

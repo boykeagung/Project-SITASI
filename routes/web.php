@@ -574,7 +574,7 @@ Route::group(['middleware' => ['auth', 'rolecek:koordinator-kp']], function () {
     Route::get('dashboard-koordinator-penilaian-kp', [NilaiKoordinatorKPController::class, 'index']);
     Route::get('dashboard-koordinator-tambah-penilaian-kp', [NilaiKoordinatorKPController::class, 'create']);
     Route::post('dashboard-koordinator-penilaian-kp', [NilaiKoordinatorKPController::class, 'store']);
-    Route::get('dashboard-koordinator-edit-penilaian-kp-dospem/{id}', [NilaiKoordinatorKPController::class, 'edit']); //select
+    Route::get('dashboard-koordinator-edit-penilaian-kp/{id}', [NilaiKoordinatorKPController::class, 'edit']); //select
     Route::put('dashboard-koordinator-penilaian-kp/{id}', [NilaiKoordinatorKPController::class, 'update']);
     Route::delete('dashboard-koordinator-penilaian-kp/{id}', [NilaiKoordinatorKPController::class, 'delete']); //delete
 

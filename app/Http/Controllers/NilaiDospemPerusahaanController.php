@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Barryvdh\DomPDF\Facade\Pdf; 
 use App\Models\NilaiDosPemPerusahaan;
+use DB;
 
 class NilaiDospemPerusahaanController extends Controller
 {
@@ -33,11 +34,7 @@ class NilaiDospemPerusahaanController extends Controller
             'pdf_nilai' => "mimes:pdf|max:25000"
         ]);
 
-        $input = $request->all();
-        
-
-        $input['status'] = "Diproses";
-
+        // Local PDF
         if ($nilai = $request->file('pdf_nilai')) {
             $destinationPath = 'Nilai_KP_Dospem_Perusahaan/';
             $dospemPer = time() . "_" . $nilai->getClientOriginalName();
@@ -45,7 +42,32 @@ class NilaiDospemPerusahaanController extends Controller
             $input['pdf_nilai'] = "$dospemPer";
         }
 
+        //Calculate
+        $nilaiDospemPer = round(( $request->kepribadian + $request->penguasaan_materi + 
+        $request->keterampilan + $request->kreatifitas + 
+        $request->tanggung_jawab + $request->komunikasi ) / 6 ,2);
+
+        // Insert
+        $input = $request->all();
+
+        $username = $request->input('username'); //set username
+        $input['username'] = "$username"; 
+
+        $input['id_nilai_dospem_per'] = "NDPP$username"; //unique ID
+
+        $input['rata_rata'] = "$nilaiDospemPer"; //hasil rata rata
+
         NilaiDosPemPerusahaan::create($input);
+
+
+        // Insert rata-rata into Koor KP
+        $input = DB::table('nilai_dospem_perusahaan')->get();
+        foreach($input as $input){
+            DB::table('nilai_koordinator_kp')
+            ->where('username', '=', $username)
+            ->updateOrInsert(['username'=> $username],['name'=> $input->name,'rataDospemPer'=> $input->rata_rata]); //insert data, jika sudah ada akan di update. Dicek berdasarkan username (nrp)
+        }
+
         return redirect('dashboard-mahasiswa-penilaian-kp');
     }
 
@@ -95,11 +117,6 @@ class NilaiDospemPerusahaanController extends Controller
         //     ->where('id', '=', $id)
         //     ->get($id);
         $pdf = PDF::loadView('mahasiswa.generate_nilai_kp', $data);
-        return $pdf->stream();
-
-             
+        return $pdf->stream();        
     }
-
-
-    // ========================================================================== //
 }
