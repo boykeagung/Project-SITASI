@@ -288,11 +288,12 @@
                                             @foreach ($nilai_koordinator_kp as $nilai)
                                             <tr>
                                                 <td>{{1+$no++}}</td>
-                                                <td>{{$rataDospem}}</td>
-                                                <td>{{$rataDospemPerusahaan}}</td>
+                                                {{-- <td>{{$rataDospem}}</td>
+                                                <td>{{$rataDospemPerusahaan}}</td> --}}
                                                 <td>{{$nilai->sidang_penguji}}</td>
                                                 <td>{{$nilai->sidang_pembimbing}}</td>
-                                                <td>{{$temp}}</td>
+                                                <td>{{$nilai->nilai_akhir}}</td>
+                                                {{-- <td>{{$temp}}</td> --}}
                                                 <td>
                                                     @if($nilai->pdf_nilai == null)
                                                     {{link_to('Nilai_KP_Dospem_Perusahaan/'.$nilai->pdf_nilai,'File Belum Di Upload',['class'=>'btn btn-danger disabled','target'=>'_blank'])}}

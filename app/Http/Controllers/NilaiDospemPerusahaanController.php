@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Barryvdh\DomPDF\Facade\Pdf; 
 use App\Models\NilaiDosPemPerusahaan;
+use DB;
 
 class NilaiDospemPerusahaanController extends Controller
 {
@@ -46,17 +47,27 @@ class NilaiDospemPerusahaanController extends Controller
         $request->keterampilan + $request->kreatifitas + 
         $request->tanggung_jawab + $request->komunikasi ) / 6 ,2);
 
-         // Insert
-         $input = $request->all();
+        // Insert
+        $input = $request->all();
 
-         $username = $request->input('username'); //set username
-         $input['username'] = "$username"; 
- 
-         $input['id_nilai_dospem_per'] = "NDPP$username"; //unique ID
- 
-         $input['rata_rata'] = "$nilaiDospemPer"; //hasil rata rata
+        $username = $request->input('username'); //set username
+        $input['username'] = "$username"; 
+
+        $input['id_nilai_dospem_per'] = "NDPP$username"; //unique ID
+
+        $input['rata_rata'] = "$nilaiDospemPer"; //hasil rata rata
 
         NilaiDosPemPerusahaan::create($input);
+
+
+        // Insert rata-rata into Koor KP
+        $input = DB::table('nilai_dospem_perusahaan')->get();
+        foreach($input as $input){
+            DB::table('nilai_koordinator_kp')
+            ->where('username', '=', $username)
+            ->updateOrInsert(['username'=> $username],['name'=> $input->name,'rataDospemPer'=> $input->rata_rata]); //insert data, jika sudah ada akan di update. Dicek berdasarkan username (nrp)
+        }
+
         return redirect('dashboard-mahasiswa-penilaian-kp');
     }
 

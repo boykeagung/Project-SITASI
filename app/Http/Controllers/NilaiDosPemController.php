@@ -110,8 +110,17 @@ class NilaiDosPemController extends Controller
 
         $input['rata_rata'] = "$nilaiDospem"; //hasil rata rata
 
-
         NilaiDosPem::create($input);
+
+        // Insert rata-rata into Koor KP
+        $input = DB::table('nilai_dospem')->get();
+        foreach($input as $input){
+            DB::table('nilai_koordinator_kp')
+            ->where('username', '=', $username)
+            ->updateOrInsert(['username'=> $username],['rataDospem' => $input->rata_rata,'name' => $input->name]); //insert data, jika sudah ada akan di update. Dicek berdasarkan username (nrp)
+
+        }
+
         return redirect('dashboard-mahasiswa-penilaian-kp');
     }
 

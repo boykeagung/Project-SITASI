@@ -23,43 +23,6 @@ class NilaiKoordinatorKPController extends Controller
         $data['nilai_dospem'] = NilaiDosPem::all();
         $data['nilai_dospem_perusahaan'] = NilaiDosPemPerusahaan::all();
 
-        // $data['nilai_koordinator_kp'] = NilaiKoordinatorKP::join('nilai_dospem', 'nilai_koordinator_kp.rataDospem', '=', 'nilai_dospem.rata_rata')
-        // ->join('nilai_dospem_perusahaan', 'nilai_dospem.username', '=', 'nilai_dospem_perusahaan.username')
-        // ->select('nilai_koordinator_kp.*', 'nilai_dospem_perusahaan.name', 'nilai_dospem.username')
-        // ->get();
-
-
-        // $data['nilai_koordinator_kp'] = DB::table('nilai_koordinator_kp')
-        // ->join('user', 'nilai_koordinator_kp.username', '=', 'user.username')
-        // ->join('nilai_dospem', 'nilai_koordinator_kp.id_nilai_dospem', '=', 'nilai_dospem.id_nilai_koor')
-        // ->join('nilai_dospem_perusahaan', 'nilai_koordinator_kp.id_nilai_dospem_per', '=', 'nilai_dospem_perusahaan.id_nilai_koor')
-        // ->select('user.username', 'nilai_dospem.rata_rata', 'nilai_dospem_perusahaan.rata_rata')
-        // ->insertUsing(['username', 'rataDospem', 'rataDospemPer'], function ($query) {
-        //     $query->from('user')
-        //         ->join('user', 'nilai_koordinator_kp.username', '=', 'user.username')
-        //         ->join('nilai_dospem', 'nilai_koordinator_kp.id_nilai_dospem', '=', 'nilai_dospem.id_nilai_koor')
-        //         ->join('nilai_dospem_perusahaan', 'nilai_koordinator_kp.id_nilai_dospem_per', '=', 'nilai_dospem_perusahaan.id_nilai_koor')
-        //         ->select('user.username', 'nilai_dospem.rata_rata', 'nilai_dospem_perusahaan.rata_rata');
-        // }); 
-
-        // $data['nilai_koordinator_kp'] = DB::table('nilai_koordinator_kp')
-        // ->join('nilai_dospem as ndp', 'nilai_koordinator_kp.id_nilai_koor', '=', 'ndp.id_nilai_koor')
-        // ->join('nilai_dospem_perusahaan as ndpp', 'nilai_koordinator_kp.id_nilai_koor', '=', 'ndpp.id_nilai_koor')
-        // ->select('ndp.rata_rata', 'ndpp.rata_rata')
-        // ->insertUsing(['rataDospem', 'rataDospemPer'], function ($query) {
-        //     $query->from('nilai_dospem')
-        //         ->join('nilai_dospem as ndp', 'nilai_koordinator_kp.id_nilai_koor', '=', 'ndp.id_nilai_koor')
-        //         ->join('nilai_dospem_perusahaan as ndpp', 'nilai_koordinator_kp.id_nilai_koor', '=', 'ndpp.id_nilai_koor')
-        //         ->select('ndp.rata_rata as ndpp', 'ndpp.rata_rata');
-        // });
-
-        $data['nilai_koordinator_kp'] = NilaiKoordinatorKP::
-        join('nilai_dospem', 'nilai_koordinator_kp.id_nilai_dospem', '=', 'nilai_dospem.id_nilai_dospem')
-        ->join('users', 'nilai_dospem.username', '=', 'users.username')
-        ->select('nilai_dospem.rata_rata', 'users.username')
-        ->get();
-
-
         // =========================================================================
         //Nilai rata-rata
         // $name['user'] = User::select();
@@ -107,6 +70,8 @@ class NilaiKoordinatorKPController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'id_nilai_koor',
+
 
         ]);
 
@@ -115,11 +80,12 @@ class NilaiKoordinatorKPController extends Controller
 
         $input['status'] = "Diproses";
 
+
         $nilaiDospem = NilaiDosPem::sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6')); 
         $rataDospem = round($nilaiDospem, 2);
 
-        $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6'))
-        ;
+        $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6'));
+        
         $rataDospemPerusahaan = round($nilaiDospemPerusahaan, 2);
 
         if ($nilai = $request->file('pdf_nilai')) {
@@ -130,8 +96,73 @@ class NilaiKoordinatorKPController extends Controller
         }
 
 
+
         NilaiKoordinatorKP::create($input, ['rataDospem'=>$rataDospem,'rataDospemPerusahaan'=>$rataDospemPerusahaan]);
         return redirect('dashboard-koordinator-penilaian-kp');
+    }
+
+    public function edit($id)
+    {
+        $data['nilai_koordinator_kp'] = NilaiKoordinatorKP::find($id);
+        return view('koordinator_kp.dashboard-koordinator-edit-penilaian-kp', $data);
+    }
+
+    public function update($id, Request $request)
+    {
+    
+        $this->validate($request, [
+            'pdf_nilai' => "mimes:pdf|max:5000",
+
+        ]);
+
+
+        // // Konversi Nilai
+        // // Nilai (Dosen Pembimbing Perusahaan + Dosen Pembimbing Perusahaan) / 2
+        // $akhirPem = ($rataDospemPerusahaan + $rataDospem) / 2;
+
+        // // Nilai rata-rata Sidang
+        // $rataSidang = NilaiKoordinatorKP::where('username', '=', $username)
+        // ->sum(\DB::raw('(sidang_penguji + sidang_pembimbing) / 2'));
+
+        // // Nilai Akhir
+        // $nilaiAkhir = ($akhirPem + $rataSidang) / 2;
+
+        $input = $request->all();
+
+        $sidang_penguji = $request->input('sidang_penguji');
+        $sidang_pembimbing = $request->input('sidang_pembimbing');
+        $rataDospem = $request->input('rataDospem');
+        $rataDospemPer = $request->input('rataDospemPer');
+
+        
+        $akhir = round(((($sidang_penguji + $sidang_pembimbing) / 2) + (($rataDospem + $rataDospemPer) / 2)) /2, 2);
+
+        if ($akhir <= 39 ) {
+			$konversi = 'E';
+		} else if ($akhir <= 49) {
+			$konversi = 'D';
+		} else if ($akhir <= 59) {
+			$konversi = 'C';
+		} else if ($akhir <= 64) {
+			$konversi = 'BC';
+		} else if ($akhir <= 73) {
+            $konversi = 'B';
+        }
+        else if ($akhir <= 79) {
+			$konversi = 'AB';
+        }
+        else if ($akhir <= 80) {
+			$konversi = 'A';
+        }else
+			$konversi = 'A';
+
+
+        $input = $request->all();
+
+        $input['nilai_akhir'] = "$konversi"; // nilai akhir
+
+        NilaiKoordinatorKP::find($id)->update($input);
+        return redirect('dashboard-koordinator-penilaian-kp')->with('success');
     }
     
 }
