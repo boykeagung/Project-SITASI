@@ -49,7 +49,7 @@
                         Praktik</span></a></li>
             <li class="{{ Request::is('dashboard-mahasiswa-penilaian-kp') ? 'active' : '' }}"><a class="nav-link"
                 href=<?php echo url('dashboard-mahasiswa-penilaian-kp'); ?>><i class="fas fa-book-open"></i>
-                <span>Input Nilai Kerja
+                <span>Nilai Kerja
                         Praktik</span></a></li>
             <li class="menu-header">Yudisium</li>
             <li class="{{ Request::is('dashboard-mahasiswa-yudisium') ? 'active' : '' }}"><a class="nav-link"
@@ -63,12 +63,6 @@
             <li class="{{ Request::is('profile-mahasiswa') ? 'active' : '' }}"><a class="nav-link"
                     href=<?php echo url('profile-mahasiswa'); ?>><i class="fas fa-user-alt"></i>
                     <span>Profile</span></a></li>
-            <!--<li class="menu-header">Pengguna</li>
-<li><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Pengguna Admin</span></a></li>
-<li><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Pengguna Mahasiswa</span></a></li>
-
-<li class="menu-header">Management Tugas Akhir</li>
-<li><a class="nav-link" href=""><i class="fas fa-file"></i> <span>Data Tugas Akhir</span></a></li>-->
         </ul>
     </aside>
 </div>

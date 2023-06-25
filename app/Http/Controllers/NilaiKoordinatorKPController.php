@@ -23,41 +23,6 @@ class NilaiKoordinatorKPController extends Controller
         $data['nilai_dospem'] = NilaiDosPem::all();
         $data['nilai_dospem_perusahaan'] = NilaiDosPemPerusahaan::all();
 
-        // =========================================================================
-        //Nilai rata-rata
-        // $name['user'] = User::select();
-        // $name = User::select()->username;
-
-        // $nilaiDospem = NilaiDosPem::groupBy('id')
-        // ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6')); 
-        // $rataDospem = round($nilaiDospem, 2);       
-
-        // $nilaiDospemPerusahaan = NilaiDosPemPerusahaan:: groupBy(\DB::raw('username'))
-        // ->sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6'))
-        // ;
-        // $rataDospemPerusahaan = round($nilaiDospemPerusahaan, 2);
-
-        // $akhir = ($rataDospemPerusahaan + $rataDospem) / 2;
-
-        // if ($akhir <= 39 ) {
-		// 	$temp = 'E';
-		// } else if ($akhir <= 49) {
-		// 	$temp = 'D';
-		// } else if ($akhir <= 59) {
-		// 	$temp = 'C';
-		// } else if ($akhir <= 64) {
-		// 	$temp = 'BC';
-		// } else if ($akhir <= 73) {
-        //     $temp = 'B';
-        // }
-        // else if ($akhir <= 79) {
-		// 	$temp = 'AB';
-        // }
-        // else if ($akhir <= 80) {
-		// 	$temp = 'A';
-        // }else
-		// 	$temp = 'A';
-
         return view('koordinator_kp.dashboard-koordinator-penilaian-kp', $data);
     }
 
@@ -76,17 +41,6 @@ class NilaiKoordinatorKPController extends Controller
         ]);
 
         $input = $request->all();
-        // $password = bcrypt($request->input('password'));
-
-        $input['status'] = "Diproses";
-
-
-        $nilaiDospem = NilaiDosPem::sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6')); 
-        $rataDospem = round($nilaiDospem, 2);
-
-        $nilaiDospemPerusahaan = NilaiDosPemPerusahaan::sum(\DB::raw('(kepribadian + penguasaan_materi + keterampilan + kreatifitas + tanggung_jawab + komunikasi) / 6'));
-        
-        $rataDospemPerusahaan = round($nilaiDospemPerusahaan, 2);
 
         if ($nilai = $request->file('pdf_nilai')) {
             $destinationPath = 'Nilai_KP_Dospem/';
@@ -95,9 +49,7 @@ class NilaiKoordinatorKPController extends Controller
             $input['pdf_nilai'] = "$dospem";
         }
 
-
-
-        NilaiKoordinatorKP::create($input, ['rataDospem'=>$rataDospem,'rataDospemPerusahaan'=>$rataDospemPerusahaan]);
+        NilaiKoordinatorKP::create($input);
         return redirect('dashboard-koordinator-penilaian-kp');
     }
 
@@ -115,18 +67,6 @@ class NilaiKoordinatorKPController extends Controller
 
         ]);
 
-
-        // // Konversi Nilai
-        // // Nilai (Dosen Pembimbing Perusahaan + Dosen Pembimbing Perusahaan) / 2
-        // $akhirPem = ($rataDospemPerusahaan + $rataDospem) / 2;
-
-        // // Nilai rata-rata Sidang
-        // $rataSidang = NilaiKoordinatorKP::where('username', '=', $username)
-        // ->sum(\DB::raw('(sidang_penguji + sidang_pembimbing) / 2'));
-
-        // // Nilai Akhir
-        // $nilaiAkhir = ($akhirPem + $rataSidang) / 2;
-
         $input = $request->all();
 
         $sidang_penguji = $request->input('sidang_penguji');
@@ -134,9 +74,10 @@ class NilaiKoordinatorKPController extends Controller
         $rataDospem = $request->input('rataDospem');
         $rataDospemPer = $request->input('rataDospemPer');
 
-        
-        $akhir = round(((($sidang_penguji + $sidang_pembimbing) / 2) + (($rataDospem + $rataDospemPer) / 2)) /2, 2);
+        // Kalkulasi nilai AKhir
+        $akhir = round(( (($sidang_penguji + $sidang_pembimbing) / 2) + (($rataDospem + $rataDospemPer) / 2) ) /2, 2);
 
+        // Konversi Nilai
         if ($akhir <= 39 ) {
 			$konversi = 'E';
 		} else if ($akhir <= 49) {
@@ -156,10 +97,10 @@ class NilaiKoordinatorKPController extends Controller
         }else
 			$konversi = 'A';
 
-
         $input = $request->all();
 
-        $input['nilai_akhir'] = "$konversi"; // nilai akhir
+        // Insert nilai konversi ke column nilai_akhir pada tabel nilai_koordinator_kp
+        $input['nilai_akhir'] = "$konversi";
 
         NilaiKoordinatorKP::find($id)->update($input);
         return redirect('dashboard-koordinator-penilaian-kp')->with('success');

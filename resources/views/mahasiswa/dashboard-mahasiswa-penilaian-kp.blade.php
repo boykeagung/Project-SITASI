@@ -16,10 +16,6 @@
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-12">
                         <div class=" card">
-                            {{-- <div class="row card-header">
-                                <h4 class="col">Nilai Kerja Praktik Dosen Pembimbing</h4>
-                                <h4 class="col">Nilai Kerja Praktik Dosen Pembimbing Perusahaan</h4>
-                            </div> --}}
                             <div class="row card-body table-responsive">  
                                 <div class="col ml px-5">
 
@@ -62,16 +58,7 @@
                                                     <th style="width: 0%">No</th>
                                                     <th class="text-center">Jenis Penilaian</th>
                                                     <th class="text-center">Nilai</th>
-                                                    {{-- <th>Keterampilan</th>
-                                                    <th>Kreatifitas</th>
-                                                    <th>Tanggung Jawab</th>
-                                                    <th>Komunikasi</th>
-                                                    <th>Nilai</th>
-                                                    <th>Action</th>
-                                                    <th>Delete</th> --}}
-                                                    {{-- <th>Average</th> --}}
-                                                    {{-- <th>Form</th> --}}
-                    
+
                                                 </tr>
                                             </thead>
         
@@ -164,38 +151,11 @@
                                             <table class="table table-bordered table-striped" style="width: 100%" id="table4">
                                                 <thead class="text-center">
                                                     <tr style="border: 0">
-                                                        {{-- <th style="background: white; border: 0 ">
-                                                            
-                                                            <a href=<?php echo url('dashboard-mahasiswa-tambah-penilaian-kp-dospem-perusahaan') ?>
-                                                                class="btn btn-primary mb-3">
-                                                                <i class="fas fa-plus"></i> Tambah Nilai</a>
-
-                                                                @if($nilai->pdf_nilai == null)
-                                                                {{link_to('Nilai_KP_Dospem_Perusahaan/'.$nilai->pdf_nilai,'File Belum Di Upload',['class'=>'btn btn-danger mb-3 disabled','target'=>'_blank'])}}
-                                                                <br>
-                                                            
-                                                                @else
-                                                                {{link_to('Nilai_KP_Dospem_Persuhaan/'.$nilai->pdf_nilai,'Lihat',['class'=>'btn btn-info mb-3 ','target'=>'_blank'])}}
-                                                                @endif
-
-                                                                {{link_to('dashboard-mahasiswa-edit-penilaian-kp-dospem-perusahaan/'.$nilai->username,'Edit',['class'=>'btn btn-warning'])}}
-                                                        </th> --}}
-
                                                     </tr>
                                                     <tr>
                                                         <th style="width: 0%">No</th>
                                                         <th class="text-center">Jenis Penilaian</th>
                                                         <th class="text-center">Nilai</th>
-                                                        {{-- <th class="text-center">Action</th> --}}
-                                                        {{-- <th>Keterampilan</th>
-                                                        <th>Kreatifitas</th>
-                                                        <th>Tanggung Jawab</th>
-                                                        <th>Komunikasi</th>
-                                                        <th>Nilai</th>
-                                                        <th>Action</th>
-                                                        <th>Delete</th> --}}
-                                                        {{-- <th>Average</th> --}}
-                                                        {{-- <th>Form</th> --}}
                                                     </tr>
                                                 </thead>
             
@@ -271,15 +231,14 @@
                                     <table class="table table-bordered table-striped" id="table2">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Nilai Dosen Pembimbing</th>
-                                                <th>Dosen Pembimbing Perusahaan</th>
-                                                <th>Sidang Penguji</th>
-                                                <th>Sidang Pembimbing</th>
-                                                <th>Nilai Akhir</th>
-                                                <th>Bukti Nilai</th>
-                                                <th>Edit</th>
-                                                {{-- <th>Delete</th> --}}
+                                                {{-- <th class="text-center">No</th> --}}
+                                                <th class="text-center">Nilai <br> Dosen Pembimbing</th>
+                                                <th class="text-center">Nilai <br> Dosen Pembimbing Perusahaan</th>
+                                                <th class="text-center">Sidang Penguji</th>
+                                                <th class="text-center">Sidang Pembimbing</th>
+                                                <th class="text-center">Nilai Akhir</th>
+                                                {{-- <th>Bukti Nilai</th> --}}
+                                                {{-- <th>Edit</th> --}}
                                             </tr>
                                         </thead>
     
@@ -287,14 +246,13 @@
                                             <?php $no = 0?>
                                             @foreach ($nilai_koordinator_kp as $nilai)
                                             <tr>
-                                                <td>{{1+$no++}}</td>
-                                                {{-- <td>{{$rataDospem}}</td>
-                                                <td>{{$rataDospemPerusahaan}}</td> --}}
-                                                <td>{{$nilai->sidang_penguji}}</td>
-                                                <td>{{$nilai->sidang_pembimbing}}</td>
-                                                <td>{{$nilai->nilai_akhir}}</td>
-                                                {{-- <td>{{$temp}}</td> --}}
-                                                <td>
+                                                {{-- <td class="text-center" style="font-size: 16px">{{1+$no++}}</td> --}}
+                                                <td class="text-center" style="font-size: 16px">{{$nilai->rataDospem}}</td>
+                                                <td class="text-center" style="font-size: 16px">{{$nilai->rataDospemPer}}</td>
+                                                <td class="text-center" style="font-size: 16px">{{$nilai->sidang_penguji}}</td>
+                                                <td class="text-center" style="font-size: 16px">{{$nilai->sidang_pembimbing}}</td>
+                                                <td class="text-center" style="font-size: 16px">{{$nilai->nilai_akhir}}</td>
+                                                {{-- <td>
                                                     @if($nilai->pdf_nilai == null)
                                                     {{link_to('Nilai_KP_Dospem_Perusahaan/'.$nilai->pdf_nilai,'File Belum Di Upload',['class'=>'btn btn-danger disabled','target'=>'_blank'])}}
                                                     <br>
@@ -305,13 +263,6 @@
                                                 </td>
                                                 <td>
                                                     {{link_to('dashboard-mahasiswa-edit-penilaian-kp-dospem-perusahaan/'.$nilai->id,'Edit',['class'=>'btn btn-warning'])}}
-                                                </td>
-                                                {{-- <td>
-                                                    {!!
-                                                    Form::open(['url'=>'dashboard-mahasiswa-penilaian-kp/perusahaan/'.$nilai->id,'method'=>'delete'])!!}
-                                                    {!! Form::submit('Delete',['class'=>'btn
-                                                    btn-danger','onclick'=>'return confirm("Are you sure?")'])!!}
-                                                    {!! Form::close()!!}
                                                 </td> --}}
                                             </tr>
                                             @endforeach
@@ -322,11 +273,7 @@
                     </div>
                 </div>
             </div>
-
-            
-
             @include('footer')
-
         </div>
     </div>
 </div>
